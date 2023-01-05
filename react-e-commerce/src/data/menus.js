@@ -1,28 +1,15 @@
 const menus = [
-    {
-        title:'Browse catogories',
-        position:1,
-        children: [
-            {
-                title:'Action',
-                position: 1
-            },
-            {
-                title:'Another action',
-                position: 2
-            }
-        ]
-    },
+  
     {
         title:'Home',
         position:1,
         children: [
             {
-                title:'Action',
+                title:'Home children 1',
                 position: 1
             },
             {
-                title:'Another action',
+                title:'Home children 2',
                 position: 2
             }
         ]
