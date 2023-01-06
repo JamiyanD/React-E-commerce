@@ -4,7 +4,7 @@ import products from "./data/products"
 
 import './App.css';
 function Section3() {
-    const productLoop1 = products.map(element => {
+    const productLoop = products.map(element => {
         return (
             <ProductFunc
                 title={element.title}
@@ -13,15 +13,7 @@ function Section3() {
             />
         )
     })
-    const productLoop2 = products.map(element => {
-        return (
-            <ProductFunc
-                title={element.title}
-                price={element.price}
-                imgUrl={element.imgUrl}
-            />
-        )
-    })
+  
     return (
         <section className="mt-5">
             <Stack direction="horizontal" id="product-up" >
@@ -35,12 +27,10 @@ function Section3() {
 
             </Stack>
             <div id="product-down">
-                <div class="row h-50">
-                    {productLoop1}
+                <div class="row ">
+                    {productLoop}
                 </div>
-                <div class="row h-50 mt-3">
-                    {productLoop2}
-                </div>
+               
             </div>
         </section>
 

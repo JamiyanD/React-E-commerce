@@ -30,6 +30,23 @@
   list-style: none;
   padding: 0;
 }
+.carousel1-img{
+  height: 400px;
+}
+.carousel2-img{
+  height: 100px;
+}
+#card{
+  width: 200px;
+ 
+}
+.card-img{
+  height: 200px;
+}
+.alice-carousel ul{
+  margin: 5px;
+}
+
 #up{
   height:74px ;
 }

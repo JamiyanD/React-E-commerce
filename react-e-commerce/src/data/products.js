@@ -18,6 +18,21 @@ const products = [
         title:"Playstation",
         price:"12.70$",
         imgUrl:"../img/playstation.png"
+    },
+    {
+        title:"Playstation",
+        price:"12.70$",
+        imgUrl:"../img/playstation.png"
+    },
+    {
+        title:"Playstation",
+        price:"12.70$",
+        imgUrl:"../img/playstation.png"
+    },
+    {
+        title:"Playstation",
+        price:"12.70$",
+        imgUrl:"../img/playstation.png"
     }
 ]
 export default products

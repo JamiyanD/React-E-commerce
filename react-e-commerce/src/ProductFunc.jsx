@@ -2,9 +2,9 @@ import {Stack} from "react-bootstrap"
 import './App.css';
 function ProductFunc(props) {
     return (
-        <div id="card" class="col m-2 p-2 border rounded h-100 ">
+        <div id="card" class=" m-2 p-2 border rounded h-100 ">
             <Stack direction="horizontal" className="h-50">
-                <img class="w-75 h-100" src={props.imgUrl} alt=""></img>
+                <img class="w-75 card-img" src={props.imgUrl} alt=""></img>
                 <img class="mb-auto" src="./img/heart.png" alt=""></img>
             </Stack>
             <h5>{props.title}</h5>
