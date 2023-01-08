@@ -15,7 +15,7 @@ function MainMenu() {
     return (
         <Stack className="bg-light" direction="horizontal" >
             <Nav className=""  >
-                <NavDropdown title="Browse catogories" className="bg-warning mx-5 " id="colors">
+                <NavDropdown title="Browse catogories" className="orange mx-5 " id="colors">
                     <NavDropdown.Item>Action</NavDropdown.Item>
                 </NavDropdown>
                 {subMenus}

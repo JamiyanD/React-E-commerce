@@ -14,19 +14,19 @@ function Header (props){
             <p1 className="m-2">Track your order</p1>
           </div>
         </Stack>
-        <Stack direction="horizontal" id="down" className='colors'>
-            <img className="m-5" src="./img/logo 1 (1).png" alt=""></img>
-            <InputGroup className="ms-auto w-25">
-                <Form.Control  placeholder="Search any things"/>
-                <Button variant=" bg-warning text-white" >Search</Button>
-            </InputGroup>
-            <Stack direction="horizontal" className="ms-auto">
+        <div direction="horizontal" id="down" className='colors d-flex justify-content-around align-items-center '>
+            <img className="" src="./img/logo 1 (1).png" alt=""></img>
+            <div className="input-group w-25 input me-5">
+                <input  class="form-control" placeholder="Search any things"/>
+                <button className="orange btn btn-warning text-white " >Search</button>
+            </div>
+            <Stack direction="horizontal" className="">
                 <img className="m-2" src="./img/user.png" alt=""></img>
                 <p className="m-2 text-white">Sign in</p>
                 <img className="m-2" src="./img/Frame 6.png" alt=""></img>
                 <img className="m-2" src="./img/Frame 8.png" alt=""></img>
             </Stack>
-        </Stack>
+        </div>
         </header>
     )
 }

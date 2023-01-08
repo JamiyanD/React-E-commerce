@@ -1,7 +1,7 @@
 import { Stack } from "react-bootstrap"
 function Section6() {
     return (
-        <section class=" d-flex  bg-info bg-opacity-25 align-items-center justify-content-around rounded mt-5">
+        <section class=" d-flex blue color align-items-center justify-content-around rounded mt-5">
             <Stack direction="horizontal" class="">
                 <img class="me-2" src="./img/1.png" alt=""></img>
                 <div class="">

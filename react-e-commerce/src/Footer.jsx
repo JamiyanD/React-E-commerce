@@ -1,7 +1,7 @@
 
 function Footer(){
     return(
-        <footer class="bg-info bg-opacity-25 py-5" id="footer">
+        <footer class="blue py-5" id="footer">
         <div class="row">
             <div class="col">
                 <img src="./img/logo-1 1.png" alt=""></img>

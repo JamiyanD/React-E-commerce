@@ -1,36 +1,63 @@
 import { Stack, Button } from "react-bootstrap"
-import ProductFunc from "./ProductFunc"
 import products from "./data/products"
-
+import AliceCarousel from 'react-alice-carousel'
+import Slider from "react-slick";
 import './App.css';
+import ReactStars from "react-rating-stars-component";
 function Section3() {
     const productLoop = products.map(element => {
         return (
-            <ProductFunc
-                title={element.title}
-                price={element.price}
-                imgUrl={element.imgUrl}
-            />
+            <div id="card" class=" m-3 p-2 border rounded col-3">
+                <Stack direction="horizontal" className="h-50">
+                    <img class="w-75 h-100" src={element.imgUrl} alt=""></img>
+                    <img class="mb-auto" src="./img/heart.png" alt=""></img>
+                </Stack>
+                <h5>{element.title}</h5>
+                <Stack direction="horizontal" >
+                    <p1>{element.price}</p1>
+                    <img class="ms-auto" src="./img/shop.png" alt=""></img>
+                </Stack>
+                <ReactStars
+                    size={24}
+                />,
+            </div>
         )
     })
-  
+    var settings = {
+        dots: true,
+        slidesToShow: 4,
+        slidesToScroll: 4,
+        rows: 1,
+        slidesPerRow: 2
+
+    };
     return (
-        <section className="mt-5">
+        <section className="">
             <Stack direction="horizontal" id="product-up" >
                 <h3 className="color">Popular products</h3>
                 <div id="genre" className="ms-auto">
-                    <button class="color border-secondary border-opacity-50 rounded-pill bg-light m-2">Cameras</button>
-                    <button class="color border-secondary border-opacity-50 rounded-pill bg-light m-2">Laptops</button>
-                    <button class="color border-secondary border-opacity-50 rounded-pill bg-light m-2">Tablets</button>
-                    <button class="color border-secondary border-opacity-50 rounded-pill bg-light m-2">Mouse</button>
+                    <button class="color btn btn-outline-secondary rounded-pill bg-light m-2">Cameras</button>
+                    <button class="color  btn btn-outline-secondary rounded-pill bg-light m-2">Laptops</button>
+                    <button class="color  btn btn-outline-secondary rounded-pill bg-light m-2">Tablets</button>
+                    <button class="color  btn btn-outline-secondary rounded-pill bg-light m-2">Mouse</button>
                 </div>
 
             </Stack>
             <div id="product-down">
-                <div class="row ">
+                {/* <AliceCarousel 
+                class="d-flex flex-wrap justify-content-evenly" 
+                autoPlay autoPlayInterval={"5000"}  
+                disableButtonsControls={true} 
+                responsive={responsive}
+                rows={2}
+                
+             >
                     {productLoop}
-                </div>
-               
+                </AliceCarousel> */}
+                <Slider {...settings} >
+
+                    {productLoop}
+                </Slider>
             </div>
         </section>
 

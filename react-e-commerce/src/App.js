@@ -1,6 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap-icons/font/bootstrap-icons.css'
+import "react-alice-carousel/lib/alice-carousel.css";
 import './App.css';
+// Import css files
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import Header from './Header'
 import MainMenu from './MainMenu'
 import Section1 from './Section1';

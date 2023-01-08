@@ -1,10 +1,9 @@
 .App {
-  max-width: 950px;
-   margin: auto;
-   width: 100%;
-  border:1px solid black
+  width: 950px;
+  margin: auto;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
 }
-
 .color{
   color: #1B5A7D;
 }
@@ -14,12 +13,20 @@
 #color{
   color: black;
 }
+#color::after{
+  margin:10px 0 0 10px;
+ 
+}
 #colors{
   color: white;
 }
 #colors::placeholder {
   color: white;
 }
+.orange{
+  background-color:#EDA415  ;
+}
+
 #footer ul li::before{
   content: "\25CF";
   color:rgb(201, 197, 197);
@@ -30,29 +37,95 @@
   list-style: none;
   padding: 0;
 }
+.input{
+  width: 35% !important;
+}
 .carousel1-img{
   height: 400px;
 }
 .carousel2-img{
+  height: 80px;
+}
+.carousel-indicators button{  
+  border: 1px solid gray !important;
+  width:12px !important;
+  height: 12px!important;
+  border-radius: 50%!important;
+}
+.carousel-indicators .active{
+  background-color: #EDA415 !important;
+  border: 1px solid #EDA415 !important;
+}
+.carousel-indicators{
+  position: absolute;
+  left:25px;
+  display: inline-block;
+  bottom :80px;
+  
+}
+.slick-dots button{
+  border: 1px solid gray !important;
+  width:12px !important;
+  height: 12px!important;
+  border-radius: 50%!important;
+  
+}
+.slick-dots button::before{
+  display: none;
+}
+.slick-active button{
+  background-color: #EDA415 !important;
+  border: 1px solid #EDA415 !important;
+}
+.carousel1-price{
+  background-color: #EDA415;
+  width: 100px;
   height: 100px;
+  border-radius: 50%;
+  position: absolute;
+  right: 50px;
+  bottom:80px;
+  font-size: 20px;
+}
+.alice-carousel__prev-btn-item span{
+  position: absolute !important;
+  top:85px !important;
+  left: 8px !important;
+ 
+
+}
+.alice-carousel__prev-btn-item span::after{
+  content:url('../public/img/Frame\ 20.png') !important;
+}
+
+.alice-carousel__next-btn-item span{
+
+  position: absolute !important;
+  top:85px !important;
+  right: 8px !important;
+
+}
+.alice-carousel__next-btn-item span::after{
+  content:url('../public/img/Frame\ 20\ \(1\).png') !important;
+}
+.alice-carousel__stage{
+  margin:0 !important;
 }
 #card{
-  width: 200px;
+  width: 200px !important;
+  height: 220px;
  
-}
-.card-img{
-  height: 200px;
 }
 .alice-carousel ul{
   margin: 5px;
 }
 
 #up{
-  height:74px ;
+  height:60px ;
 }
 
 #down{
-  height: 80px;
+  height: 70px;
 }
 #nav{
   height: 50px;
@@ -63,9 +136,9 @@ section:nth-child(4){
 
 }
 #product-down{
-  height: 458px;
-
+  height: 508px;
 }
+
 #section-background{
   height: 300px;
   background-image: url("../public/img/pexels.png");
@@ -74,10 +147,13 @@ section:nth-child(4){
 }
 
 .small-card{
-  height: 201px;
+  height: 150px;
+}
+.blue{
+  background-color: #E2F4FF;
 }
 section:nth-child(7){
-  height: 430px;
+  height: 330px;
 }
 section:nth-child(8){
   height: 100px;

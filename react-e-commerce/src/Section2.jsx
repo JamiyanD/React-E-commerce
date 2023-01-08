@@ -9,18 +9,16 @@ function Section2() {
                 name={par.name}
                 items={par.items}
                 imgUrl={par.imgUrl}
-                // name2={par.name2}
-                // items2={par.items2}
-                // imgUrl2={par.imgUrl2}
-                // name3={par.name3}
-                // items3={par.items3}
-                // imgUrl3={par.imgUrl3}
             />
         )
     })
     return (
         <div >
-            <AliceCarousel autoPlay autoPlayInterval={"5000"}  disableDotsControls={true} responsive={{0: {items: 3, itemsFit: 'contain'}}} >
+            <AliceCarousel 
+            autoPlay autoPlayInterval={"5000"}  
+            disableDotsControls={true} 
+            responsive={{0: {items: 3, itemsFit: 'contain'}}} 
+              >
                 {images}
             </AliceCarousel>
         </div>
