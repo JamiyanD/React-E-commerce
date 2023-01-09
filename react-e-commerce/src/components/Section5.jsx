@@ -3,8 +3,13 @@ import ReactStars from "react-rating-stars-component";
 function Section5() {
     return (
         <section class="row mt-5 ps-3">
+<<<<<<< HEAD:react-e-commerce/src/components/Section5.jsx
             <div class="col-7 d-flex border rounded h-100">
                 <img class="w-50" src="./img/big-speaker.png" alt=""></img>
+=======
+            <div class="col-7 d-flex border rounded">
+                <img class="w-50 h-100" src="./img/big-speaker.png" alt=""></img>
+>>>>>>> a946c4111117ea44f240d2417e69d29f0eadc347:react-e-commerce/src/Section5.jsx
                 <div class="w-50 d-flex flex-column justify-content-center ">
                     <h5 class="color">JBL bar 2.1 deep bass</h5>
                     <p1>$11,70</p1>
