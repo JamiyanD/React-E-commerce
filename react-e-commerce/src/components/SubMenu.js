@@ -3,16 +3,16 @@ import { Nav, NavDropdown, NavLink } from "react-bootstrap";
 const SubMenu = (props) => {
     const subMenu = 
     props.children.length > 0 ? (
-        <NavDropdown title={props.title} id="color">
+        <NavDropdown title={props.title}  id="green" class="">
             {props.children.map(child => {
                 return (
-                    <NavDropdown.Item>
+                    <NavDropdown.Item className=" ">
                         {child.title}
                     </NavDropdown.Item>
                 )
             })}
         </NavDropdown>
-    ) : (<NavLink id="color">{props.title}</NavLink>)
+    ) : (<NavLink  className="green">{props.title}</NavLink>)
     
     return (
         <div>

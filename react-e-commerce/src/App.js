@@ -5,22 +5,22 @@ import './App.css';
 // Import css files
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Header from './Header'
-import MainMenu from './MainMenu'
-import Section1 from './Section1';
-import Section2 from './Section2';
-import Section3 from './Section3';
-import Section4 from './Section4';
-import Section5 from './Section5';
-import Section6 from './Section6';
-import Section7 from './Section7';
-import Section8 from './Section8';
-import Section9 from './Section9';
-import Section10 from './Section10';
-import Footer from './Footer';
+import Header from './components/Header'
+import MainMenu from './components/MainMenu'
+import Section1 from './components/Section1';
+import Section2 from './components/Section2';
+import Section3 from './components/Section3';
+import Section4 from './components/Section4';
+import Section5 from './components/Section5';
+import Section6 from './components/Section6';
+import Section7 from './components/Section7';
+import Section8 from './components/Section8';
+import Section9 from './components/Section9';
+import Section10 from './components/Section10';
+import Footer from './components/Footer';
 function App() {
   return (
-    <div className="App">
+    <div className="App container">
       <Header/>
       <MainMenu />
       <Section1/>

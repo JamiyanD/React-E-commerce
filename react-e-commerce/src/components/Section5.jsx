@@ -3,7 +3,7 @@ import ReactStars from "react-rating-stars-component";
 function Section5() {
     return (
         <section class="row mt-5 ps-3">
-            <div class="col-7 d-flex border rounded">
+            <div class="col-7 d-flex border rounded h-100">
                 <img class="w-50" src="./img/big-speaker.png" alt=""></img>
                 <div class="w-50 d-flex flex-column justify-content-center ">
                     <h5 class="color">JBL bar 2.1 deep bass</h5>

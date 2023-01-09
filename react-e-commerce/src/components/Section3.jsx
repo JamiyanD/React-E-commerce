@@ -1,13 +1,13 @@
 import { Stack, Button } from "react-bootstrap"
-import products from "./data/products"
+import products from "../data/products"
 import AliceCarousel from 'react-alice-carousel'
 import Slider from "react-slick";
-import './App.css';
+
 import ReactStars from "react-rating-stars-component";
 function Section3() {
     const productLoop = products.map(element => {
         return (
-            <div id="card" class=" m-3 p-2 border rounded col-3">
+            <div id="card" class=" m-3 p-2 border rounded w-75">
                 <Stack direction="horizontal" className="h-50">
                     <img class="w-75 h-100" src={element.imgUrl} alt=""></img>
                     <img class="mb-auto" src="./img/heart.png" alt=""></img>

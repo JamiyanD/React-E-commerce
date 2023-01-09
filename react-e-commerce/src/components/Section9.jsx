@@ -1,5 +1,5 @@
 import{Stack} from "react-bootstrap"
-import news from "./data/news"
+import news from "../data/news"
 import Slider from "react-slick";
 function Section9(){
 

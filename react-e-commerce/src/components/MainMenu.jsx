@@ -1,6 +1,6 @@
 import SubMenu from "./SubMenu"
 import { Nav, Stack, NavDropdown } from "react-bootstrap"
-import menus from './data/menus'
+import menus from '../data/menus'
 
 function MainMenu() {
     const subMenus = menus.map(subMenu => {
@@ -13,16 +13,16 @@ function MainMenu() {
         )
     })
     return (
-        <Stack className="bg-light" direction="horizontal" >
+        <div className="bg-light d-flex align-items-center" direction="horizontal" >
             <Nav className=""  >
-                <NavDropdown title="Browse catogories" className="orange mx-5 " id="colors">
+                <NavDropdown title="Browse catogories" className="orange mx-5 dropdown1" id="colors">
                     <NavDropdown.Item>Action</NavDropdown.Item>
                 </NavDropdown>
                 {subMenus}
             </Nav>
-            <strong className="ms-5 color">30 days free return</strong>
+            <strong class="ms-auto green">30 days free return</strong>
 
-        </Stack>
+        </div>
     )
 }
 export default MainMenu

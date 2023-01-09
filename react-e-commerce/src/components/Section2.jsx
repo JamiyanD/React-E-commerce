@@ -1,6 +1,6 @@
 import { Stack, Carousel } from 'react-bootstrap'
 import AliceCarousel from 'react-alice-carousel'
-import carousel2Data from './data/carousel2'
+import carousel2Data from '../data/carousel2'
 import Section2Func from './Section2Func'
 function Section2() {
     const images = carousel2Data.map(par => {

@@ -1,4 +1,4 @@
-import people from "./data/people"
+import people from "../data/people"
 import Slider from "react-slick";
 function Section7() {
     const person = people.map(element => {

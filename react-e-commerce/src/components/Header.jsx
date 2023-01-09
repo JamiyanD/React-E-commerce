@@ -14,9 +14,9 @@ function Header (props){
             <p1 className="m-2">Track your order</p1>
           </div>
         </Stack>
-        <div direction="horizontal" id="down" className='colors d-flex justify-content-around align-items-center '>
+        <div id="down" className='green-bg d-flex justify-content-around align-items-center '>
             <img className="" src="./img/logo 1 (1).png" alt=""></img>
-            <div className="input-group w-25 input me-5">
+            <div className="input-group input me-5">
                 <input  class="form-control" placeholder="Search any things"/>
                 <button className="orange btn btn-warning text-white " >Search</button>
             </div>
