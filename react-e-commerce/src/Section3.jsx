@@ -5,21 +5,27 @@ import Slider from "react-slick";
 import './App.css';
 import ReactStars from "react-rating-stars-component";
 function Section3() {
-    const productLoop = products.map(element => {
+    const productLoop = products.map(props => {
+        function handleUpVote(props){
+            console.log("unvoted")
+            console.log(props.id)
+        }
         return (
             <div id="card" class=" m-3 p-2 border rounded col-3">
                 <Stack direction="horizontal" className="h-50">
-                    <img class="w-75 h-100" src={element.imgUrl} alt=""></img>
+                    <img class="w-75 h-100" src={props.imgUrl} alt=""></img>
                     <img class="mb-auto" src="./img/heart.png" alt=""></img>
                 </Stack>
-                <h5>{element.title}</h5>
+                <h5>{props.title}</h5>
                 <Stack direction="horizontal" >
-                    <p1>{element.price}</p1>
-                    <img class="ms-auto" src="./img/shop.png" alt=""></img>
+                    <p1>{props.price}</p1>
+                    <a onClick={() => {handleUpVote(props)}} class="ms-auto">
+                    <img  src="./img/shop.png" alt=""></img>
+                    </a>
                 </Stack>
                 <ReactStars
-                    size={24}
-                />,
+                    size={20}
+                />
             </div>
         )
     })
