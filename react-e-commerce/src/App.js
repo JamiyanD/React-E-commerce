@@ -18,9 +18,11 @@ import Section8 from './components/Section8';
 import Section9 from './components/Section9';
 import Section10 from './components/Section10';
 import Footer from './components/Footer';
+import Detail from './components/Detail'
 function App() {
   return (
     <div className="App container">
+      {/* <Detail /> */}
       <Header/>
       <MainMenu />
       <Section1/>

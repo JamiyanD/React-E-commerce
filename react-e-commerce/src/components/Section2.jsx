@@ -17,7 +17,7 @@ function Section2() {
             <AliceCarousel 
             autoPlay autoPlayInterval={"5000"}  
             disableDotsControls={true} 
-            responsive={{0: {items: 3, itemsFit: 'contain'}}} 
+            responsive={{0: {items: 3}}} 
               >
                 {images}
             </AliceCarousel>

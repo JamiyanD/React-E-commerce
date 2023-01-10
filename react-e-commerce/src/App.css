@@ -1,6 +1,4 @@
 .App {
-  /* width: 950px;
-  margin: auto; */
   font-family: 'Poppins', sans-serif;
   font-size: 14px;
 }
@@ -10,12 +8,8 @@
 .green-bg{
   background-color: #1B5A7D;
 }
-#color{
-  color: black;
-}
 #color::after{
   margin:10px 0 0 10px;
- 
 }
 #colors{
   color: white;
@@ -87,35 +81,39 @@
   bottom:80px;
   font-size: 20px;
 }
+
+
 .alice-carousel__prev-btn-item span{
   position: absolute !important;
   top:85px !important;
   left: 8px !important;
- 
-
 }
 .alice-carousel__prev-btn-item span::after{
   content:url('../public/img/Frame\ 20.png') !important;
 }
-
 .alice-carousel__next-btn-item span{
-
   position: absolute !important;
   top:85px !important;
   right: 8px !important;
-
 }
 .alice-carousel__next-btn-item span::after{
   content:url('../public/img/Frame\ 20\ \(1\).png') !important;
 }
 .alice-carousel__stage{
   margin:0 !important;
+  
+  
 }
-#card{
-  width: 200px ;
-  height: 220px;
+.card {
+  width: 200px !important;
+  height: 220px !important;
+}
+.alice .alice-carousel__stage{
+  display: flex !important;
  
+
 }
+
 .alice-carousel ul{
   margin: 5px;
 }
