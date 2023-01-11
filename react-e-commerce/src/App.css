@@ -184,3 +184,23 @@ section:nth-child(10){
 section:nth-child(12){
   height: 150px;
 }
+
+
+
+
+
+
+
+
+
+
+.circle{
+  width: 18px ;
+  height: 18px;
+  background-color: #D0EC48;
+  color: #D0EC48;
+  border-radius: 50%;
+}
+.detail-button {
+  height: 53px;
+}

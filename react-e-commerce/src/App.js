@@ -22,8 +22,8 @@ import Detail from './components/Detail'
 function App() {
   return (
     <div className="App container">
-      {/* <Detail /> */}
-      <Header/>
+      <Detail />
+      {/* <Header/>
       <MainMenu />
       <Section1/>
       <Section2/>
@@ -35,7 +35,7 @@ function App() {
         <Section8 />
         <Section9 />
         <Section10 />
-        <Footer />
+        <Footer /> */}
     </div>
             );
 }
