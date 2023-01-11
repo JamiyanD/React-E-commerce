@@ -1,8 +1,8 @@
 import {InputGroup, Form, Button} from "react-bootstrap"
 function Section10(){
     return(
-        <section class="blue mt-5 pt-4">
-        <div id="subscribe" class="w-100  d-flex justify-content-evenly align-items-center bg-white ">
+        <section id="subscribe" class="blue mt-5 pt-4">
+        <div  class="w-100 h-100 d-flex justify-content-evenly align-items-center bg-white ">
             <h3 class="color"><strong>Subscribe newsletter</strong></h3>
             <InputGroup className="w-25 " >
                 <Form.Control  placeholder="Email address" className="orange" id="colors"/>

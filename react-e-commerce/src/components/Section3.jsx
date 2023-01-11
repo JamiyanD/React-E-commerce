@@ -1,23 +1,30 @@
 import { Stack, Button } from "react-bootstrap"
+import Modal from 'react-bootstrap/Modal';
 import products from "../data/products"
 import AliceCarousel from 'react-alice-carousel'
-import Slider from "react-slick";
+import Detail from "./Detail";
+import { useState } from "react";
 
 import ReactStars from "react-rating-stars-component";
 function Section3() {
-    const productLoop = products.map(props => {
+    const [show, setShow] = useState(false)
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+    const [fullscreen, setFullscreen] = useState(true)
 
-        const children = props.children.map(child => {
+    const productLoop = products.map(props => {
+        const children = props.children.map(element => {
             return (
-                <div className="  p-2 border rounded w-25">
+                <div className="w-25">
+                <div className="m-2  p-2 border rounded card">
                     <Stack direction="horizontal" className="h-50">
-                        <img className="w-75 h-100" src={child.imgUrl} alt=""></img>
+                        <img className="w-75 h-100" src={element.imgUrl} alt=""></img>
                         <img className="mb-auto" src="./img/heart.png" alt=""></img>
                     </Stack>
-                    <h5>{child.title}</h5>
+                    <h5>{element.title}</h5>
                     <Stack direction="horizontal" >
-                        <p1>{child.price}</p1>
-                        <a onClick={() => { handleUpVote(child) }} className="ms-auto">
+                        <p1>{element.price}</p1>
+                        <a onClick={handleShow} className="ms-auto">
                             <img src="./img/shop.png" alt=""></img>
                         </a>
                     </Stack>
@@ -25,44 +32,27 @@ function Section3() {
                         size={20}
                     />
                 </div>
+                </div>
             )
         }
         )
-        function handleUpVote(props) {
-            console.log("unvoted")
-            console.log(props.id)
-        }
         return (
             <div className="d-flex
             flex-wrap">
                 {children}
+                <div>
+                <Modal show={show} onHide={handleClose} fullscreen={fullscreen}>
+                    <Modal.Header closeButton>
+                    </Modal.Header>
+                    <Modal.Body>
+                   <Detail />
+                   </Modal.Body>
+                </Modal>
             </div>
-            // <div  class=" m-3 p-2 border rounded card">
-            //     <Stack direction="horizontal" className="h-50">
-            //         <img class="w-75 h-100" src={props.imgUrl} alt=""></img>
-            //         <img class="mb-auto" src="./img/heart.png" alt=""></img>
-            //     </Stack>
-            //     <h5>{props.title}</h5>
-            //     <Stack direction="horizontal" >
-            //         <p1>{props.price}</p1>
-            //         <a onClick={() => { handleUpVote(props) }} class="ms-auto">
-            //             <img src="./img/shop.png" alt=""></img>
-            //         </a>
-            //     </Stack>
-            //     <ReactStars
-            //         size={20}
-            //     />
-            // </div>
+            </div>
         )
     })
-    var settings = {
-        dots: true,
-        slidesToShow: 4,
-        slidesToScroll: 4,
-        rows: 1,
-        slidesPerRow: 2
 
-    };
     return (
         <section className="">
             <Stack direction="horizontal" id="product-up" >
@@ -76,15 +66,10 @@ function Section3() {
 
             </Stack>
             <div id="product-down">
-                {/* <Slider {...settings} >
-                    {productLoop}
-                </Slider> */}
                 <AliceCarousel
                     autoPlay autoPlayInterval={"5000"}
                     disableButtonsControls={true}
-                    className="alice"
-
-                >
+                    className="alice">
                     {productLoop}
                 </AliceCarousel>
             </div>

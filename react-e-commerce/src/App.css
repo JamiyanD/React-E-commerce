@@ -104,9 +104,10 @@
   
   
 }
+
 .card {
-  width: 200px !important;
-  height: 220px !important;
+  width: 200px ;
+  height: 220px ;
 }
 .alice .alice-carousel__stage{
   display: flex !important;
@@ -148,9 +149,7 @@ section:nth-child(4){
   height: 109px;
 
 }
-#product-down{
-  height: 508px;
-}
+
 
 #section-background{
   height: 300px;
@@ -194,13 +193,39 @@ section:nth-child(12){
 
 
 
-.circle{
+.detail-circle{
   width: 18px ;
   height: 18px;
   background-color: #D0EC48;
   color: #D0EC48;
   border-radius: 50%;
 }
+.detail-circle-border{
+  width: 27px;
+  height: 27px;
+  border:1px solid #afafaf;
+  border-radius: 50%;
+}
 .detail-button {
   height: 53px;
+}
+.detail-header{
+  height: 60px;
+}
+.detail-home::after{
+  content:"\276F";
+  margin-left:5px
+}
+.detail-img{
+  width: 220px;
+}
+.detail-click{
+  height: 100px;
+}
+.bold-blue{
+  background-color:#003F62 ;
+}
+.detail-card {
+  width: 200px ;
+  height: 200px ;
 }
