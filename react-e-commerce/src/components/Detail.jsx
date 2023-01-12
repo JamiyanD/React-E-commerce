@@ -6,7 +6,7 @@ import Mainmenu from './MainMenu'
 import Carousel2 from '../data/carousel2'
 import Section10 from "./Section10";
 import Footer from "./Footer";
-function Detail() {
+function Detail(props) {
 
     const children = Carousel2.map(element => {
         return (
@@ -41,14 +41,14 @@ function Detail() {
             </div>
             <div className="detail-container d-flex ">
                 <div className="detail-img-container w-50">
-                    <img class="w-100" src="./img/green console.png" alt="" />
+                    <img class="w-100" src={props.imgUrl} alt="" />
                     <div className="w-100 hstack gap-3 mt-3 ">
-                        <img className="detail-img " src="./img/black console.png" alt="" />
-                        <img className="detail-img  " src="./img/black console.png" alt="" />
+                        <img className="detail-img " src={props.imgUrl} alt="" />
+                        <img className="detail-img  " src={props.imgUrl} alt="" />
                     </div>
                 </div>
                 <div className="detail-text w-50 ms-5">
-                    <h3 className="green">Play game</h3>
+                    <h3 className="green">{props.title}</h3>
                     <h3>$11,70</h3>
                     <div className="d-flex align-items-center">
                         <ReactStars
