@@ -196,16 +196,10 @@ section:nth-child(12){
 .detail-circle{
   width: 18px ;
   height: 18px;
-  background-color: #D0EC48;
-  color: #D0EC48;
+  accent-color: green ;
   border-radius: 50%;
 }
-.detail-circle-border{
-  width: 27px;
-  height: 27px;
-  border:1px solid #afafaf;
-  border-radius: 50%;
-}
+
 .detail-button {
   height: 53px;
 }

@@ -64,11 +64,9 @@ function Detail() {
                     <p1>Hurry up! only 34 product left in stock!</p1>
                     <hr></hr>
 
-                    <h5 className="d-flex align-item-center mt-4">Color :
-                        <div className="detail-circle-border ms-2">
-                            <span className="detail-circle d-flex ms-1 mt-1 align-items-center"></span>
-                        </div>
-                        <span className="detail-circle d-flex ms-2 mt-1 align-items-center bg-black"></span>
+                    <h5 className="d-flex align-items-center mt-4">Color :
+                            <input className="detail-circle ms-2" type={"radio"} name={"gender"}></input>
+                            <input className="detail-circle ms-2" type={"radio"} name={"gender"}></input>
                     </h5>
                     <h5 className="d-flex align-items-center">Size :
                         <button className="col-2 ms-2 ">30</button>
@@ -103,7 +101,7 @@ function Detail() {
             </div>
             <div className="detail-click d-flex align-items-center justify-content-center">
                 <button className="btn btn-outline-secondary rounded-pill">Description</button>
-                <button className="ms-3 rounded-pill text-white bold-blue">Reviews  </button>
+                <button className="ms-3 btn rounded-pill text-white bold-blue">Reviews  </button>
             </div>
             <div className="border border-2 p-3 rounded">
                 <h5>Customer reviews</h5>
