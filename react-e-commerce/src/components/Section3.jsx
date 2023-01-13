@@ -6,35 +6,19 @@ import Detail from "./Detail";
 import { useState } from "react";
 
 import ReactStars from "react-rating-stars-component";
-function Section3() {
-    
+function Section3(event) {
+    const [heart, setHeart] = useState(false)
     const [fullscreen, setFullscreen] = useState(true)
     const [show, setShow] = useState(false)
     const handleClose = () => setShow(false);
     const handleShow = (par) => {
-
         setShow(true)
-        pass(par)
-
+        // console.log(par)
     };
-
-
-    let page = 123;
-    const pass = (event) => {
-        page = event 
-       console.log(page)
-       return (
-        <div>
-        {page}
-        </div>
-       )
-     }
-     pass()
-
 
     const detailCard = products.map(par => {
         const detailChildren = par.children.map(props => {
-            if(props.id == 3){
+            if (props.id == 2) {
                 return (
                     <div>
                         <Detail
@@ -45,15 +29,17 @@ function Section3() {
                     </div>
                 )
             }
-            
+
         })
-        console.log(detailChildren)
         return (
             <div>
                 {detailChildren}
             </div>
         )
     })
+
+
+
 
     const productLoop = products.map(props => {
         const children = props.children.map(element => {
@@ -62,7 +48,16 @@ function Section3() {
                     <div className="m-2  p-2 border rounded card">
                         <Stack direction="horizontal" className="h-50">
                             <img className="w-75 h-100" src={element.imgUrl} alt=""></img>
-                            <img className="mb-auto" src="./img/heart.png" alt=""></img>
+                            <img onClick={() => {
+                                console.log(element.id)
+                                event.setWishList(event.wishList + 1)
+                                setHeart(true)
+                            }
+                            } className="mb-auto" src="./img/heart.png" alt=""></img>
+                            {heart ? <h1 onClick={() => {
+                                event.setWishList(event.wishList - 1)
+                            }}>b</h1>
+                            : ""}
                         </Stack>
                         <h5>{element.title}</h5>
                         <Stack direction="horizontal" >
@@ -102,7 +97,8 @@ function Section3() {
                 <AliceCarousel
                     autoPlay autoPlayInterval={"5000"}
                     disableButtonsControls={true}
-                    className="alice">
+                    className="alice"
+                >
                     {productLoop}
 
                 </AliceCarousel>
@@ -112,10 +108,11 @@ function Section3() {
                     <Modal.Header closeButton>
                     </Modal.Header>
                     <Modal.Body>
-                    {detailCard}
+                        {detailCard}
                     </Modal.Body>
                 </Modal>
             </div>
+
         </section>
 
 
@@ -147,3 +144,5 @@ export default Section3
     //         </div>
     //     )
     // })
+
+
