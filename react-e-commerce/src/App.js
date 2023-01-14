@@ -20,26 +20,28 @@ import Section10 from './components/Section10';
 import Footer from './components/Footer';
 import Detail from './components/Detail'
 import { useState } from 'react';
+import { products } from './data/products'
 function App() {
-  const [wishList ,setWishList] = useState(0)
+  const [addWishlist, setAddWishlist] = useState([]);
+
+ console.log(addWishlist)
   return (
     <div className="App container">
-      {/* <Detail /> */}
-      <Header wishList={wishList} />
+      <Header addWishlist={addWishlist} />
       <MainMenu />
-      {/* <Section1/> */}
-      {/* <Section2/> */}
-      <Section3 setWishList={setWishList} wishList={wishList} />
-      <Section4/>
-      <Section5/>
-        <Section6 />
-        <Section7 />
-        <Section8 />
-        <Section9 />
-        <Section10 />
-        <Footer />
+      <Section1/>
+      <Section2/>
+      <Section3 setAddWishlist={setAddWishlist} addWishlist={addWishlist} />
+      <Section4 />
+      <Section5 />
+      <Section6 />
+      <Section7 />
+      <Section8 />
+      <Section9 />
+      <Section10 />
+      <Footer />
     </div>
-            );
+  );
 }
 
 export default App;

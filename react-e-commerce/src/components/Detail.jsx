@@ -6,7 +6,7 @@ import Mainmenu from './MainMenu'
 import Carousel2 from '../data/carousel2'
 import Section10 from "./Section10";
 import Footer from "./Footer";
-function Detail(props) {
+function Detail({ data, addWishlist }) {
 
     const children = Carousel2.map(element => {
         return (
@@ -30,10 +30,11 @@ function Detail(props) {
         )
     }
     )
-
+  
+    console.log(addWishlist)
     return (
         <div className="container">
-            <Header />
+            <Header addWishlist={addWishlist}/>
             <Mainmenu />
             <div className="detail-header gap-2 hstack">
                 <p1 className="detail-home fw-semibold">Home</p1>
@@ -41,14 +42,14 @@ function Detail(props) {
             </div>
             <div className="detail-container d-flex ">
                 <div className="detail-img-container w-50">
-                    <img class="w-100" src={props.imgUrl} alt="" />
+                    <img class="w-100" src={data.imgUrl} alt="" />
                     <div className="w-100 hstack gap-3 mt-3 ">
-                        <img className="detail-img " src={props.imgUrl} alt="" />
-                        <img className="detail-img  " src={props.imgUrl} alt="" />
+                        <img className="detail-img " src={data.imgUrl} alt="" />
+                        <img className="detail-img  " src={data.imgUrl} alt="" />
                     </div>
                 </div>
                 <div className="detail-text w-50 ms-5">
-                    <h3 className="green">{props.title}</h3>
+                    <h3 className="green">{data.title}</h3>
                     <h3>$11,70</h3>
                     <div className="d-flex align-items-center">
                         <ReactStars

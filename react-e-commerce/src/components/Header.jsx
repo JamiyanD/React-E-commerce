@@ -4,11 +4,40 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import { useState } from 'react'
 import products from '../data/products'
-import { Badge } from 'react-bootstrap'
+import { Badge, Modal } from 'react-bootstrap'
+import SignUp from './SignUp'
 
-function Header(props) {
-    const [ show, setShow] = useState(false)
-   
+const WishBox = ({ addWishlist }) => {
+	return (
+		<div className="wishlist">
+			<h3>Wishlist</h3>
+			{addWishlist.length === 0 && <h4>Your wishlist is empty</h4>}
+			{addWishlist.map((wish) => {
+				return (
+					<div className="wishlist-product" key={wish.id}>
+						<img src={wish.imgUrl} alt={wish.imgUrl} />
+						<div className="product-content">
+							<p className="product-name">{wish.title}</p>
+							<p className="product-price">{wish.price}</p>
+						</div>
+					</div>
+				);
+			})}
+		</div>
+	);
+};
+
+
+function Header({addWishlist}) {
+	const [list, setList] = useState(false);
+
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+    const handleProduct = (productId) => {
+        setShow(true);
+     
+    };
     return (
         <header>
             <Stack direction="horizontal" id="up">
@@ -28,17 +57,17 @@ function Header(props) {
                 </div>
                 <Stack direction="horizontal" className="">
                     <img className="m-2" src="./img/user.png" alt=""></img>
-                    <p className="m-2 text-white">Sign in</p>
-                    <img  onClick={() => setShow(!show)} className="m-2" src="./img/Frame 6.png" alt=""></img>
-                    {show ? <div className="wish  " >
-                        <h5>Wishlist</h5>
-                        <hr></hr>
-                    </div> : ""}
-                    <Badge>{props.wishList}</Badge>
+                    <p onClick={() => handleProduct()} className="m-2 text-white">Sign in</p>
+                    <img  onClick={() => setList(!list)} className="m-2" src="./img/Frame 6.png" alt=""></img>
+                    {list && <WishBox addWishlist={addWishlist} />}
+                    <Badge>{addWishlist.length}</Badge>
                     <img className="m-2" src="./img/Frame 8.png" alt=""></img>
                     <Badge>0</Badge>
                 </Stack>
             </div>
+            <Modal show={show} onHide={handleClose}  >
+               <SignUp />
+                </Modal> 
         </header>
     )
 }
