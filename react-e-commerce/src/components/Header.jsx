@@ -22,37 +22,8 @@ function Header({ addWishlist, setAddWishlist }) {
 
     };
 
-    const WishBox = ({ addWishlist}) => {
-        const downWishList = (productId) => {
-            const filtered = addWishlist.filter(product => {
-                if (product.id !== productId) {
-                    return product
-                }
-            });
-            console.log("filtered", filtered)
-      
-            setAddWishlist([...filtered]);
-        
-        };
-        return (
-            <div className="wishlist">
-                <h3>Wishlist</h3>
-                {addWishlist.length === 0 && <h4>Your wishlist is empty</h4>}
-                {addWishlist.map((wish) => {
-                    return (
-                        <div className="wishlist-product" key={wish.id}>
-                            <img src={wish.imgUrl} alt={wish.imgUrl} />
-                            <div className="product-content">
-                                <p className="product-name">{wish.title}</p>
-                                <p className="product-price">{wish.price}</p>
-                            </div>
-                            <button  onClick={() => downWishList(wish.id)}>X</button>
-                        </div>
-                    );
-                })}
-            </div>
-        );
-    };
+
+ 
     return (
         <header>
             <Stack direction="horizontal" id="up">
@@ -74,7 +45,7 @@ function Header({ addWishlist, setAddWishlist }) {
                     <img className="m-2" src="./img/user.png" alt=""></img>
                     <p onClick={() => handleProduct()} className="m-2 text-white"><Link className='text-white' to={'/signup'}>Sign in</Link></p>
                     <img onClick={() => setList(!list)} className="m-2" src="./img/Frame 6.png" alt=""></img>
-                    {list && <WishBox addWishlist={addWishlist} />}
+                    {list && <WishBox addWishlist={addWishlist} setAddWishlist={setAddWishlist} />}
                     <Badge>{addWishlist.length}</Badge>
                     <img className="m-2" src="./img/Frame 8.png" alt=""></img>
                     <Badge>0</Badge>
@@ -93,3 +64,35 @@ function Header({ addWishlist, setAddWishlist }) {
     )
 }
 export default Header
+
+const WishBox = ({ addWishlist,setAddWishlist }) => {
+    const downWishList = (productId) => {
+        const filtered = addWishlist.filter(product => {
+            if (product.id !== productId) {
+                return product
+            }
+        });
+        console.log("filtered", filtered)
+    
+        setAddWishlist([...filtered]);
+    
+    };
+    return (
+        <div className="wishlist">
+            <h3>Wishlist</h3>
+            {addWishlist.length === 0 && <h4>Your wishlist is empty</h4>}
+            {addWishlist.map((wish) => {
+                return (
+                    <div className="wishlist-product" key={wish.id}>
+                        <img src={wish.imgUrl} alt={wish.imgUrl} />
+                        <div className="product-content">
+                            <p className="product-name">{wish.title}</p>
+                            <p className="product-price">{wish.price}</p>
+                        </div>
+                        <button  onClick={() => downWishList(wish.id)}>X</button>
+                    </div>
+                );
+            })}
+        </div>
+    );
+};

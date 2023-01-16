@@ -28,15 +28,16 @@ function App() {
   const [addWishlist, setAddWishlist] = useState([]);
 
 
-  console.log(addWishlist)
+
+
   return (
     <div className="App container">
       
-      <Header addWishlist={addWishlist} setAddWishlist={setAddWishlist}/>
+      <Header addWishlist={addWishlist} setAddWishlist={setAddWishlist}  />
       <MainMenu />
       <Section1 />
       <Section2 />
-      <Section3 setAddWishlist={setAddWishlist} addWishlist={addWishlist} />
+      <Section3 setAddWishlist={setAddWishlist} addWishlist={addWishlist}  />
       <Section4 />
       <Section5 />
       <Section6 />

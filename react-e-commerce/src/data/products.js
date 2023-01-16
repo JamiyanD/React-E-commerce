@@ -169,49 +169,58 @@ export const products = [
       id: 1,
       title: "Camera",
       imgUrl: "img/camera.png",
-      price: 11.7
+      price: 11.7,
+      stars:2,
+
     },
     {
       id: 2,
       title: "Laptop",
       imgUrl: "../img/laptop.png",
-      price: 12
+      price: 12,
+      stars:3,
     },
     {
       id: 3,
       title: "Speaker",
       imgUrl: "../img/speaker.png",
-      price: 8
+      price: 8,
+      stars:0,
     },
     {
       id: 4,
       title: "Camera",
       imgUrl: "../img/camera.png",
-      price: 20
+      price: 20,
+      stars:4,
     },
     {
       id: 5,
       title: "Camera",
       imgUrl: "../img/camera.png",
-      price: 11.7
+      price: 11.7,
+      stars:1,
     },
     {
       id: 6,
       title: "Camera",
       imgUrl: "../img/camera.png",
-      price: 12
+      price: 12,
+      stars:3,
     },
     {
       id: 7,
       title: "Camera",
       imgUrl: "../img/camera.png",
-      price: 12
+      price: 12,
+      stars:5,
     },
     {
       id: 8,
       title: "Camera",
       imgUrl: "../img/camera.png",
-      price: 20
+      price: 20,
+      stars:0,
     },
     
   ]

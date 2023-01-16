@@ -1,7 +1,9 @@
 import{Stack} from "react-bootstrap"
 import news from "../data/news"
 import Slider from "react-slick";
-function Section9(){
+
+
+export default function Section9 ()  {
 
     const jaya = news.map(element => {
         return (
@@ -40,4 +42,3 @@ function Section9(){
     </section>
     )
 }
-export default Section9

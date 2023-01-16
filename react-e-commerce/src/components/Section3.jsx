@@ -7,7 +7,7 @@ import { useState } from "react";
 import { AiFillHeart } from 'react-icons/ai'
 import ReactStars from "react-rating-stars-component";
 import { ProductBox } from "./ProductBox";
-function Section3({ setAddWishlist, addWishlist, setDownWishList }) {
+function Section3({ setAddWishlist, addWishlist }) {
 
  
     var settings = {
@@ -20,6 +20,8 @@ function Section3({ setAddWishlist, addWishlist, setDownWishList }) {
         slidesPerRow: 2
        
     };
+
+   
 
     return (
         <section className="">
@@ -38,7 +40,8 @@ function Section3({ setAddWishlist, addWishlist, setDownWishList }) {
                     {products.map(data => {
                         return (
                             <ProductBox
-                            setDownWishList={setDownWishList}
+                        
+                       
                             setAddWishlist={setAddWishlist}
                                 addWishlist={addWishlist}
                                 title={data.title}

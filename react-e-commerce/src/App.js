@@ -25,9 +25,9 @@ import { Routes, Route, Link } from 'react-router-dom';
 import SignUp from './components/SignUp';
 import Home from './components/Home'
 function App() {
-  const [addWishlist, setAddWishlist] = useState([]);
 
-  console.log(addWishlist)
+
+
   return (
     <div className="App container">
   

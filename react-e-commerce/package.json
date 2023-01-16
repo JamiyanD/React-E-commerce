@@ -18,6 +18,7 @@
     "react-rating-stars-component": "^2.2.0",
     "react-router-dom": "^6.6.2",
     "react-scripts": "5.0.1",
+    "react-simple-star-rating": "^5.1.7",
     "react-slick": "^0.29.0",
     "slick-carousel": "^1.8.1",
     "slider": "^1.0.4",
