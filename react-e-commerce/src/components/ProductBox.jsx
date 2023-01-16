@@ -5,6 +5,7 @@ import { useState } from 'react'
 import ReactStars from "react-rating-stars-component";
 import { Modal } from 'react-bootstrap'
 import Detail from './Detail'
+import { Routes, Route, Link } from 'react-router-dom';
 
 
 export const ProductBox = ({  setAddWishlist, addWishlist,data }) => {
@@ -37,7 +38,7 @@ export const ProductBox = ({  setAddWishlist, addWishlist,data }) => {
             }
         });
         console.log(filtered)
-    
+  
         setAddWishlist([...filtered]);
     
     };
@@ -49,8 +50,8 @@ export const ProductBox = ({  setAddWishlist, addWishlist,data }) => {
    
             <div className="m-2  p-2 border rounded product" >
                 <Stack direction="horizontal" className="h-50">
-
-                    <img onClick={() => handleProduct(data.id)} className="col-10 h-100" src={data.imgUrl} alt=""></img>
+                    <Link to={'/detail'}  className="col-10 h-100">
+                    <img onClick={() => handleProduct(data.id)} className=" h-100" src={data.imgUrl} alt=""></img></Link>
                     {heart ? <AiFillHeart className="heart-icon" color="red" onClick={() => {
                         downWishList(data.id); setHeart(false);
                     }}></AiFillHeart>

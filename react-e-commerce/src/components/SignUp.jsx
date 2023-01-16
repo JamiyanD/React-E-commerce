@@ -1,8 +1,16 @@
-
-export default function SignUp() {
+import { Routes, Route, Link } from 'react-router-dom';
+import MainMenu from './MainMenu';
+import Header from './Header'
+export default function SignUp({ addWishlist }) {
 
     return (
+        <div>
+     
+
         <form className="SignUp-container vstack">
+          
+
+        
             <h1 className="my-4 fw-bold">Sign up</h1>
             <label className="fw-semibold mt-2">Name*</label>
             <input type="text" name="username" placeholder="Enter your name" class="form-control" />
@@ -16,5 +24,6 @@ export default function SignUp() {
             }}>Create account</button>
             <label className="text-muted text-center">Already have an account? <strong className="Pink">Log in</strong></label>
         </form>
+        </div>
     )
 }

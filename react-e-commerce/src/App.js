@@ -21,25 +21,30 @@ import Footer from './components/Footer';
 import Detail from './components/Detail'
 import { useState } from 'react';
 import { products } from './data/products'
+import { Routes, Route, Link } from 'react-router-dom';
+import SignUp from './components/SignUp';
+import Home from './components/Home'
 function App() {
   const [addWishlist, setAddWishlist] = useState([]);
 
- console.log(addWishlist)
+  console.log(addWishlist)
   return (
     <div className="App container">
-      <Header addWishlist={addWishlist} />
-      <MainMenu />
-      <Section1/>
-      <Section2/>
-      <Section3 setAddWishlist={setAddWishlist} addWishlist={addWishlist} />
-      <Section4 />
-      <Section5 />
-      <Section6 />
-      <Section7 />
-      <Section8 />
-      <Section9 />
+  
+      <Routes>
+        <Route path="/" element={<Home />} />
+
+  
+        <Route path="/signup" element={<SignUp />} />
+      </Routes>
+      {/* <Routes>
+        <Route path="/detail" element={<Detail />} />
+      </Routes> */}
       <Section10 />
       <Footer />
+
+
+
     </div>
   );
 }
