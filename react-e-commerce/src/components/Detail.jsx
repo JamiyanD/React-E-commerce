@@ -1,12 +1,15 @@
 import ReactStars from "react-rating-stars-component";
 import AliceCarousel from 'react-alice-carousel'
 import { Stack } from "react-bootstrap"
-import Header from './Header'
+import { useLocation } from "react-router-dom";
 import Mainmenu from './MainMenu'
 import Carousel2 from '../data/carousel2'
 import Section10 from "./Section10";
 import Footer from "./Footer";
-function Detail({ data, addWishlist }) {
+function Detail({  addWishlist }) {
+
+    const location = useLocation();
+   console.log(location.state)
 
     const children = Carousel2.map(element => {
         return (
@@ -40,14 +43,14 @@ function Detail({ data, addWishlist }) {
             </div>
             <div className="detail-container d-flex ">
                 <div className="detail-img-container w-50">
-                    {/* <img class="w-100" src={data.imgUrl} alt="" /> */}
+                    <img class="w-100" src={location.state.imgUrl} alt="" />
                     <div className="w-100 hstack gap-3 mt-3 ">
-                        {/* <img className="detail-img " src={data.imgUrl} alt="" />
-                        <img className="detail-img  " src={data.imgUrl} alt="" /> */}
+                        <img className="detail-img " src={location.state.imgUrl} alt="" />
+                        <img className="detail-img  " src={location.state.imgUrl} alt="" />
                     </div>
                 </div>
                 <div className="detail-text w-50 ms-5">
-                    {/* <h3 className="green">{data.title}</h3> */}
+                    <h3 className="green">{location.state.title}</h3>
                     <h3>$11,70</h3>
                     <div className="d-flex align-items-center">
                         <ReactStars

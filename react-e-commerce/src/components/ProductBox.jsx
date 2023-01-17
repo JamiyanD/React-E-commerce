@@ -8,7 +8,7 @@ import Detail from './Detail'
 import { Routes, Route, Link } from 'react-router-dom';
 import {Rating} from 'react-simple-star-rating'
 
-export const ProductBox = ({ setAddWishlist, addWishlist, data,  }) => {
+export const ProductBox = ({ setAddWishlist, addWishlist, data, colors  }) => {
 
     const[stars, setStars] = useState(data.stars)
       const [heart, setHeart] = useState(false)
@@ -41,21 +41,21 @@ export const ProductBox = ({ setAddWishlist, addWishlist, data,  }) => {
         setAddWishlist([...filtered]);
 
     };
-
+   
 
     return (
 
 
         <div className="m-2  p-2 border rounded product" >
             <Stack direction="horizontal" className="h-50">
-                <Link to={'/detail'} className="col-10 h-100">
+                <Link to={'/detail'} className="col-10 h-100" state={data}>
                     <img onClick={() => handleProduct(data.id)} className=" h-100" src={data.imgUrl} alt=""></img></Link>
-                {heart ? <AiFillHeart className="heart-icon" color="red" onClick={() => {
+                {heart ? <AiFillHeart className="heart-icon" color={colors} onClick={() => {
                     downWishList(data.id); setHeart(false);
                 }}></AiFillHeart>
-                    : <AiOutlineHeart className="heart-icon" onClick={() => {
-                        upWishList(data.id); setHeart(true)
-                    }}></AiOutlineHeart>}
+                    : <AiFillHeart color={colors}  className="heart-icon" onClick={() => {
+                        upWishList(data.id); setHeart(true); 
+                    }}></AiFillHeart>}
 
 
             </Stack>
@@ -69,6 +69,7 @@ export const ProductBox = ({ setAddWishlist, addWishlist, data,  }) => {
           initialValue={stars}
        
           />
+     
             <Modal show={show} onHide={handleClose} size="lg" >
                 <Detail data={data} addWishlist={addWishlist}></Detail>
             </Modal>

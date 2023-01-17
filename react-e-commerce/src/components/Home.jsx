@@ -24,7 +24,8 @@ import { products } from '../data/products'
 import { Routes, Route, Link } from 'react-router-dom';
 import SignUp from './SignUp';
 
-function Home({addWishlist, setAddWishlist}) {
+function Home({addWishlist, setAddWishlist,colors}) {
+  
   
 
 
@@ -37,7 +38,7 @@ function Home({addWishlist, setAddWishlist}) {
     
       <Section1 />
       <Section2 />
-      <Section3 setAddWishlist={setAddWishlist} addWishlist={addWishlist}  />
+      <Section3 setAddWishlist={setAddWishlist} addWishlist={addWishlist} colors={colors} />
       <Section4 />
       <Section5 />
       <Section6 />
