@@ -1,16 +1,13 @@
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import MainMenu from './MainMenu';
 import Header from './Header'
-export default function SignUp({ addWishlist }) {
-
+export default function SignUp({  }) {
+ const location = useLocation();
+   console.log(location)
+   const addWishlist = location.state
     return (
         <div>
-     
-
         <form className="SignUp-container vstack">
-          
-
-        
             <h1 className="my-4 fw-bold">Sign up</h1>
             <label className="fw-semibold mt-2">Name*</label>
             <input type="text" name="username" placeholder="Enter your name" class="form-control" />

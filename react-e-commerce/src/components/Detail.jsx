@@ -34,22 +34,20 @@ function Detail({ data, addWishlist }) {
     console.log(addWishlist)
     return (
         <div className="container">
-            <Header addWishlist={addWishlist}/>
-            <Mainmenu />
             <div className="detail-header gap-2 hstack">
                 <p1 className="detail-home fw-semibold">Home</p1>
                 <p1 className="detail-home fw-semibold ">All category</p1>
             </div>
             <div className="detail-container d-flex ">
                 <div className="detail-img-container w-50">
-                    <img class="w-100" src={data.imgUrl} alt="" />
+                    {/* <img class="w-100" src={data.imgUrl} alt="" /> */}
                     <div className="w-100 hstack gap-3 mt-3 ">
-                        <img className="detail-img " src={data.imgUrl} alt="" />
-                        <img className="detail-img  " src={data.imgUrl} alt="" />
+                        {/* <img className="detail-img " src={data.imgUrl} alt="" />
+                        <img className="detail-img  " src={data.imgUrl} alt="" /> */}
                     </div>
                 </div>
                 <div className="detail-text w-50 ms-5">
-                    <h3 className="green">{data.title}</h3>
+                    {/* <h3 className="green">{data.title}</h3> */}
                     <h3>$11,70</h3>
                     <div className="d-flex align-items-center">
                         <ReactStars
@@ -120,9 +118,7 @@ function Detail({ data, addWishlist }) {
                     {children}
                 </AliceCarousel>
             </div>
-            <Section10 className="mb-5"/>
-            
-            <Footer></Footer>
+          
         </div>
     )
 }

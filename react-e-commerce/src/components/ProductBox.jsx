@@ -38,8 +38,6 @@ export const ProductBox = ({ setAddWishlist, addWishlist, data,  }) => {
                 return product
             }
         });
-
-
         setAddWishlist([...filtered]);
 
     };

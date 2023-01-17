@@ -24,8 +24,8 @@ import { products } from '../data/products'
 import { Routes, Route, Link } from 'react-router-dom';
 import SignUp from './SignUp';
 
-function App() {
-  const [addWishlist, setAddWishlist] = useState([]);
+function Home({addWishlist, setAddWishlist}) {
+  
 
 
 
@@ -33,8 +33,8 @@ function App() {
   return (
     <div className="App container">
       
-      <Header addWishlist={addWishlist} setAddWishlist={setAddWishlist}  />
-      <MainMenu />
+      
+    
       <Section1 />
       <Section2 />
       <Section3 setAddWishlist={setAddWishlist} addWishlist={addWishlist}  />
@@ -44,13 +44,10 @@ function App() {
       <Section7 />
       <Section8 />
       <Section9 />
-      <Section10 />
-      <Footer />
-
 
 
     </div>
   );
 }
 
-export default App;
+export default Home;

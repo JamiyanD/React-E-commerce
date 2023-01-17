@@ -69,23 +69,6 @@ export default Section3
 
 
 
-    // const detailCard = products.map(par => {
-    //     const detailChildren = par.children.map(props => {
-    //         return (
-    //             <div>
-    //                 <Detail
-    //                     id={props.id}
-    //                     imgUrl={props.imgUrl}
-    //                     title={props.title}
-    //                 />
-    //             </div>
-    //         )
-    //     })
-    //     return (
-    //         <div>
-    //             {detailChildren}
-    //         </div>
-    //     )
-    // })
+
 
 

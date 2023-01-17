@@ -25,21 +25,18 @@ import { Routes, Route, Link } from 'react-router-dom';
 import SignUp from './components/SignUp';
 import Home from './components/Home'
 function App() {
-
+  const [addWishlist, setAddWishlist] = useState([]);
 
 
   return (
     <div className="App container">
-  
+      <Header addWishlist={addWishlist} setAddWishlist={setAddWishlist}/>
+      <MainMenu />
       <Routes>
-        <Route path="/" element={<Home />} />
-
-  
+        <Route path="/" element={<Home addWishlist={addWishlist} setAddWishlist={setAddWishlist}/>} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/detail" element={<Detail addWishlist={addWishlist} setAddWishlist={setAddWishlist}/>} />
       </Routes>
-      {/* <Routes>
-        <Route path="/detail" element={<Detail />} />
-      </Routes> */}
       <Section10 />
       <Footer />
 

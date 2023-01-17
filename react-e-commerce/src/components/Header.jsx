@@ -43,7 +43,7 @@ function Header({ addWishlist, setAddWishlist }) {
                 </div>
                 <Stack direction="horizontal" className="">
                     <img className="m-2" src="./img/user.png" alt=""></img>
-                    <p onClick={() => handleProduct()} className="m-2 text-white"><Link className='text-white' to={'/signup'}>Sign in</Link></p>
+                    <p onClick={() => handleProduct()} className="m-2 text-white"><Link className='text-white' to={'/signup'} >Sign in</Link></p>
                     <img onClick={() => setList(!list)} className="m-2" src="./img/Frame 6.png" alt=""></img>
                     {list && <WishBox addWishlist={addWishlist} setAddWishlist={setAddWishlist} />}
                     <Badge>{addWishlist.length}</Badge>
