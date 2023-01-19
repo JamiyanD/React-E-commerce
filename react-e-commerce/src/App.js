@@ -26,20 +26,20 @@ import SignUp from './components/SignUp';
 import Home from './components/Home'
 function App() {
   const [addWishlist, setAddWishlist] = useState([]);
-  {products.map(data => {
-    return (
-        <ProductBox
+//   {products.map(data => {
+//     return (
+//         <ProductBox
     
    
-        setAddWishlist={setAddWishlist}
-            addWishlist={addWishlist}
-            title={data.title}
-            imgUrl={data.imgUrl}
-            price={data.price}
-            data={data} />
-    )
-}
-)}
+//         setAddWishlist={setAddWishlist}
+//             addWishlist={addWishlist}
+//             title={data.title}
+//             imgUrl={data.imgUrl}
+//             price={data.price}
+//             data={data} />
+//     )
+// }
+// )}
 
   return (
     <div className="App container">
