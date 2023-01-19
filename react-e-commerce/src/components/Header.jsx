@@ -11,7 +11,7 @@ import { Routes, Route, Link } from 'react-router-dom';
 
 
 
-function Header({ addWishlist, setAddWishlist }) {
+function Header({ addWishlist, setAddWishlist, downWishList }) {
     const [list, setList] = useState(false);
 
     const [show, setShow] = useState(false);
@@ -45,7 +45,7 @@ function Header({ addWishlist, setAddWishlist }) {
                     <img className="m-2" src="./img/user.png" alt=""></img>
                     <p onClick={() => handleProduct()} className="m-2 text-white"><Link className='text-white' to={'/signup'} >Sign in</Link></p>
                     <img onClick={() => setList(!list)} className="m-2" src="./img/Frame 6.png" alt=""></img>
-                    {list && <WishBox addWishlist={addWishlist} setAddWishlist={setAddWishlist} />}
+                    {list && <WishBox addWishlist={addWishlist} downWishList={downWishList} />}
                     <Badge>{addWishlist.length}</Badge>
                     <img className="m-2" src="./img/Frame 8.png" alt=""></img>
                     <Badge>0</Badge>
@@ -65,18 +65,8 @@ function Header({ addWishlist, setAddWishlist }) {
 }
 export default Header
 
-const WishBox = ({ addWishlist,setAddWishlist }) => {
-    const downWishList = (productId) => {
-        const filtered = addWishlist.filter(product => {
-            if (product.id !== productId) {
-                return product
-            }
-        });
-        console.log("filtered", filtered)
-    
-        setAddWishlist([...filtered]);
-    
-    };
+const WishBox = ({ addWishlist,downWishList }) => {
+   
     return (
         <div className="wishlist">
             <h3>Wishlist</h3>

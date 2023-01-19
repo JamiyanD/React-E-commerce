@@ -7,7 +7,7 @@ import { useState } from "react";
 import { AiFillHeart } from 'react-icons/ai'
 import ReactStars from "react-rating-stars-component";
 import { ProductBox } from "./ProductBox";
-function Section3({ setAddWishlist, addWishlist }) {
+function Section3({ setAddWishlist, addWishlist,colors }) {
 
  
     var settings = {
@@ -41,7 +41,7 @@ function Section3({ setAddWishlist, addWishlist }) {
                         return (
                             <ProductBox
                         
-                       
+                            colors={colors}
                             setAddWishlist={setAddWishlist}
                                 addWishlist={addWishlist}
                                 title={data.title}

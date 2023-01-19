@@ -26,29 +26,34 @@ import SignUp from './components/SignUp';
 import Home from './components/Home'
 function App() {
   const [addWishlist, setAddWishlist] = useState([]);
-//   {products.map(data => {
-//     return (
-//         <ProductBox
-    
-   
-//         setAddWishlist={setAddWishlist}
-//             addWishlist={addWishlist}
-//             title={data.title}
-//             imgUrl={data.imgUrl}
-//             price={data.price}
-//             data={data} />
-//     )
-// }
-// )}
+let colors =''
+  const downWishList = (productId) => {
+    const filtered = addWishlist.filter(product => {
+        if (product.id !== productId) {
+            return product
+        }
+    });
+    console.log("filtered", filtered)
+
+    setAddWishlist([...filtered]);
+
+
+
+};
+ 
 
   return (
     <div className="App container">
-      <Header addWishlist={addWishlist} setAddWishlist={setAddWishlist}/>
+      <Header addWishlist={addWishlist} setAddWishlist={setAddWishlist} downWishList={downWishList}/>
       <MainMenu />
       <Routes>
-        <Route path="/" element={<Home addWishlist={addWishlist} setAddWishlist={setAddWishlist}/>} />
+        <Route path="/" element={<Home addWishlist={addWishlist} setAddWishlist={setAddWishlist} colors={colors}/>} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/detail" element={<Detail addWishlist={addWishlist} setAddWishlist={setAddWishlist}/>} />
+   
+   
+        
+  
+        <Route path="/detail" element={<Detail    />} />
       </Routes>
       <Section10 />
       <Footer />
@@ -59,4 +64,4 @@ function App() {
   );
 }
 
-export default App;
+export default App
