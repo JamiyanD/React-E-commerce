@@ -282,13 +282,16 @@ section:nth-child(12){
   width: 200px ;
   height: 200px ;
 }
+.big-product{
+  height: 400px;
+}
 
 
 
 
-.SignUp-container{
+.signup-container{
   width: 360px;
-  height: 80vh;
+  height: 50vh;
   margin: auto;
   font-family: 'Inter', sans-serif;
 }

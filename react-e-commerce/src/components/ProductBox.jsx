@@ -39,7 +39,7 @@ export const ProductBox = ({ setAddWishlist, addWishlist, data }) => {
   return (
     <div className="m-2  p-2 border rounded product">
       <Stack direction="horizontal" className="h-50">
-        <Link to={"/detail"} className="col-10 h-100">
+        <Link to={"/detail"} className="col-10 h-100" state={data}>
           <img
             onClick={() => handleProduct(data.id)}
             className=" h-100"
@@ -69,10 +69,10 @@ export const ProductBox = ({ setAddWishlist, addWishlist, data }) => {
         <p1>{data.price}</p1>
         <img className="ms-auto" src="./img/shop.png" alt=""></img>
       </Stack>
-      <Rating initialValue={stars} />
-      <Modal show={show} onHide={handleClose} size="lg">
+      <Rating initialValue={stars} size={30} />
+      {/* <Modal show={show} onHide={handleClose} size="lg">
         <Detail data={data} addWishlist={addWishlist}></Detail>
-      </Modal>
+      </Modal> */}
     </div>
   );
 };
