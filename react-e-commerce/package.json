@@ -20,6 +20,7 @@
     "react-scripts": "5.0.1",
     "react-simple-star-rating": "^5.1.7",
     "react-slick": "^0.29.0",
+    "semantic-ui-css": "^2.5.0",
     "slick-carousel": "^1.8.1",
     "slider": "^1.0.4",
     "web-vitals": "^2.1.4"

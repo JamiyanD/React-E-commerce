@@ -10,7 +10,6 @@ import { Routes, Route, Link } from "react-router-dom";
 
 function Header({ addWishlist, setAddWishlist, downWishList }) {
   const [list, setList] = useState(false);
-
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -20,7 +19,7 @@ function Header({ addWishlist, setAddWishlist, downWishList }) {
 
   return (
     <header>
-      <Stack direction="horizontal" id="up">
+      <div className="hstack" id="up">
         <p1 className="m-5">Need help? Call us: (+98) 0234 456 789</p1>
         <div id="up-inner" className="ms-auto  ">
           <img className="m-2" src="./img/location.png" alt=""></img>
@@ -28,7 +27,7 @@ function Header({ addWishlist, setAddWishlist, downWishList }) {
           <img className="m-2" src="./img/group.png" alt=""></img>
           <p1 className="m-2">Track your order</p1>
         </div>
-      </Stack>
+      </div>
       <div
         id="down"
         className="green-bg d-flex justify-content-around align-items-center "
@@ -39,38 +38,34 @@ function Header({ addWishlist, setAddWishlist, downWishList }) {
         </Link>
         <div className="input-group input me-5">
           <input class="form-control" placeholder="Search any things" />
-          <button className="orange btn btn-warning text-white ">Search</button>
+          <button className="orange btn text-white ">Search</button>
         </div>
-        <Stack direction="horizontal" className="">
+        <div className="hstack">
           <img className="m-2" src="./img/user.png" alt=""></img>
-
           <Link to={"/signup"} onClick={() => handleProduct()}>
             <p className="text-white my-2">Sign in</p>
           </Link>
-
           <img
             onClick={() => setList(!list)}
-            className="m-2"
+            className="ms-2"
             src="./img/Frame 6.png"
             alt=""
           ></img>
           {list && (
             <WishBox addWishlist={addWishlist} downWishList={downWishList} />
           )}
-          <Badge>{addWishlist.length}</Badge>
-          <img className="m-2" src="./img/Frame 8.png" alt=""></img>
-          <Badge>0</Badge>
+          <span class="m-1  badge rounded-pill  orange">
+            {addWishlist.length}
+          </span>
           <Link to={"/cart"}>
-            <p className="m-2 text-white">Cart</p>
+            <img className="ms-2" src="./img/shopping-cart.png" alt="" />
           </Link>
-        </Stack>
+          <span class=" m-1 badge rounded-pill  orange">
+            {addWishlist.length}
+          </span>
+        </div>
       </div>
       <div></div>
-
-      {/* <Modal show={show} onHide={handleClose}  >
-                
-                <SignUp />
-            </Modal> */}
     </header>
   );
 }

@@ -16,19 +16,12 @@ import { products } from "./data/products";
 import { Routes, Route, Link } from "react-router-dom";
 import SignUp from "./components/SignUp";
 import Home from "./components/Home";
+import Login from "./components/Login";
 function App() {
   const [addWishlist, setAddWishlist] = useState([]);
-  let colors = "";
-  const downWishList = (productId) => {
-    const filtered = addWishlist.filter((product) => {
-      if (product.id !== productId) {
-        return product;
-      }
-    });
-    console.log("filtered", filtered);
-
-    setAddWishlist([...filtered]);
-  };
+  function downWishList(productId) {
+    setAddWishlist(addWishlist.filter((product) => product.id !== productId));
+  }
 
   return (
     <div className="App container">
@@ -45,13 +38,13 @@ function App() {
             <Home
               addWishlist={addWishlist}
               setAddWishlist={setAddWishlist}
-              colors={colors}
+              downWishList={downWishList}
             />
           }
         />
         <Route path="/signup" element={<SignUp />} />
-
         <Route path="/detail" element={<Detail />} />
+        <Route path="/login" element={<Login />} />
         <Route
           path="/cart"
           element={

@@ -8,71 +8,51 @@ import Detail from "./Detail";
 import { Routes, Route, Link } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";
 
-export const ProductBox = ({ setAddWishlist, addWishlist, data }) => {
+export default function ProductBox({
+  setAddWishlist,
+  addWishlist,
+  data,
+  downWishList,
+}) {
   const [stars, setStars] = useState(data.stars);
-  //   const [heart, setHeart] = useState(false)
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-  const handleProduct = (productId) => {
-    setShow(true);
-  };
 
   const upWishList = (productId) => {
-    const filtered = products.filter((product) => {
-      if (product.id === productId) {
-        return product;
-      }
-    });
+    const filtered = products.filter((product) => product.id === productId);
     setAddWishlist([...addWishlist, ...filtered]);
   };
 
-  const downWishList = (productId) => {
-    const filtered = addWishlist.filter((product) => {
-      if (product.id !== productId) {
-        return product;
-      }
-    });
-    setAddWishlist([...filtered]);
-  };
   const heart = addWishlist.filter((wish) => wish.id === data.id)[0];
   return (
-    <div className="m-2  p-2 border rounded product">
-      <Stack direction="horizontal" className="h-50">
-        <Link to={"/detail"} className="col-10 h-100" state={data}>
-          <img
-            onClick={() => handleProduct(data.id)}
-            className=" h-100"
-            src={data.imgUrl}
-            alt=""
-          ></img>
-        </Link>
-        {heart ? (
-          <AiFillHeart
-            className="heart-icon"
-            color="red"
-            onClick={() => {
-              downWishList(data.id);
-            }}
-          ></AiFillHeart>
-        ) : (
-          <AiOutlineHeart
-            className="heart-icon"
-            onClick={() => {
-              upWishList(data.id);
-            }}
-          ></AiOutlineHeart>
-        )}
-      </Stack>
-      <h5>{data.title}</h5>
-      <Stack direction="horizontal">
-        <p1>{data.price}</p1>
-        <img className="ms-auto" src="./img/shop.png" alt=""></img>
-      </Stack>
-      <Rating initialValue={stars} size={30} />
-      {/* <Modal show={show} onHide={handleClose} size="lg">
-        <Detail data={data} addWishlist={addWishlist}></Detail>
-      </Modal> */}
+    <div className="">
+      <div className="m-3  p-3 border rounded-4 product">
+        <div className="h-50 w-100 d-flex justify-content-between">
+          <Link to={"/detail"} className=" h-100 col-8" state={data}>
+            <img className=" h-100 w-100 ms-2" src={data.imgUrl} alt=""></img>
+          </Link>
+          {heart ? (
+            <AiFillHeart
+              className="heart-icon"
+              color="red"
+              onClick={() => {
+                downWishList(data.id);
+              }}
+            ></AiFillHeart>
+          ) : (
+            <AiOutlineHeart
+              className="heart-icon"
+              onClick={() => {
+                upWishList(data.id);
+              }}
+            ></AiOutlineHeart>
+          )}
+        </div>
+        <h5 className="my-2 green">{data.title}</h5>
+        <div className="hstack">
+          <p1>${data.price}</p1>
+          <img className="ms-auto" src="./img/shop.png" alt=""></img>
+        </div>
+        <Rating initialValue={stars} size={20} />
+      </div>
     </div>
   );
-};
+}

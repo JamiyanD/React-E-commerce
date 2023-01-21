@@ -1,27 +1,15 @@
-import { Routes, Route, Link, useLocation, Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import Header from "./Header";
-export default function SignUp({}) {
-  const location = useLocation();
-  console.log(location);
-  const addWishlist = location.state;
-
+export default function Login() {
   const navigate = useNavigate();
   function onSubmit(e) {
-    navigate("/login");
+    navigate("/");
     e.preventDefault();
   }
   return (
     <div>
       <form className="signup-container vstack" onSubmit={onSubmit}>
-        <h1 className="my-4 fw-bold">Sign up</h1>
-        <label className="fw-semibold mt-2">Name*</label>
-        <input
-          type="text"
-          name="username"
-          placeholder="Enter your name"
-          class="form-control"
-        />
+        <h1 className="my-4 fw-bold">Sign in</h1>
+
         <label className="fw-semibold mt-3">Email*</label>
         <input
           class="form-control"

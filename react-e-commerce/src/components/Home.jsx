@@ -24,7 +24,7 @@ import { products } from "../data/products";
 import { Routes, Route, Link } from "react-router-dom";
 import SignUp from "./SignUp";
 import Cart from "./Cart";
-function Home({ addWishlist, setAddWishlist, colors }) {
+function Home({ addWishlist, setAddWishlist, downWishList }) {
   return (
     <div className="App container">
       {/* <Cart /> */}
@@ -34,7 +34,7 @@ function Home({ addWishlist, setAddWishlist, colors }) {
       <Section3
         setAddWishlist={setAddWishlist}
         addWishlist={addWishlist}
-        colors={colors}
+        downWishList={downWishList}
       />
       <Section4 />
       <Section5 />

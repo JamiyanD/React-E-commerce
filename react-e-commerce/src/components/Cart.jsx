@@ -1,4 +1,5 @@
 import CloseButton from "react-bootstrap/CloseButton";
+import { useState } from "react";
 
 export default function Cart({ addWishlist, setAddWishlist, downWishList }) {
   return (
@@ -10,11 +11,11 @@ export default function Cart({ addWishlist, setAddWishlist, downWishList }) {
       <div className="row">
         <div className="col-8 ">
           <div className="hstack p-2 blue">
-            <h5 className="col-5">Product</h5>
+            <h5 className="col-5 my-2">Product</h5>
             <div className="col-8  hstack">
-              <h5 className="col-3">Price</h5>
-              <h5 className="col-4">Quantity</h5>
-              <h5 className="col-2">Subtotal</h5>
+              <h5 className="col-3 my-2">Price</h5>
+              <h5 className="col-4 my-2">Quantity</h5>
+              <h5 className="col-2 my-2">Subtotal</h5>
             </div>
           </div>
           {addWishlist.length === 0 && (
@@ -22,34 +23,19 @@ export default function Cart({ addWishlist, setAddWishlist, downWishList }) {
           )}
           {addWishlist.map((wish) => {
             return (
-              <div className="hstack border-bottom" key={wish.id}>
-                <img className="col-2" src={wish.imgUrl} alt="" />
-                <div className="col-3 p-2 ps-4">
-                  <p>
-                    <strong>{wish.title}</strong>
-                  </p>
-                  <p className="">Color:Green</p>
-                  <p1 className="">Size: 30</p1>
-                </div>
-                <div className="col-8 hstack">
-                  <h5 className="col-3">${wish.price}</h5>
-                  <div className="col-4">
-                    <button className=" border">-</button>
-                    <button className="col-4 border">1</button>
-                    <button className="border ">+</button>
-                  </div>
-                  <h5 className="col-2">$ 11,70</h5>
-                  <button
-                    className="btn-close ms-4"
-                    onClick={() => downWishList(wish.id)}
-                  ></button>
-                </div>
-              </div>
+              <CarList
+                id={wish.id}
+                imgUrl={wish.imgUrl}
+                title={wish.title}
+                price={wish.price}
+                downWishList={downWishList}
+                wish={wish}
+              />
             );
           })}
 
           <div className="d-flex justify-content-between mt-4">
-            <button className="orange btn btn-warning text-white rounded-pill">
+            <button className="orange btn  text-white rounded-pill">
               Continue shopping
             </button>
             <button className="btn btn-outline-secondary rounded-pill">
@@ -62,12 +48,12 @@ export default function Cart({ addWishlist, setAddWishlist, downWishList }) {
         </div>
         <div className="col-4 border p-0">
           <div className="blue text-center py-2">
-            <h5 className="">Cart total</h5>
+            <h5 className="my-2">Cart total</h5>
           </div>
           <div className="p-4">
             <div className="d-flex justify-content-between ">
-              <h5>Subtotal</h5>
-              <h5>$23,20</h5>
+              <h5 className="my-1">Subtotal</h5>
+              <h5 className="my-1">$23,20</h5>
             </div>
             <hr />
             <div class="input-group mb-3 ">
@@ -79,10 +65,7 @@ export default function Cart({ addWishlist, setAddWishlist, downWishList }) {
               <button class="btn border green">Apply</button>
             </div>
             <hr />
-            <select
-              class="form-select rounded-4"
-              aria-label="Default select example"
-            >
+            <select class="form-select rounded-4">
               <option selected>Country</option>
               <option value="1">One</option>
               <option value="2">Two</option>
@@ -92,7 +75,7 @@ export default function Cart({ addWishlist, setAddWishlist, downWishList }) {
               <p>Total amount</p>
               <p>$23,20</p>
             </div>
-            <button className="col-10 ms-4 orange btn btn-warning text-white rounded-pill">
+            <button className="col-10 ms-4 orange btn text-white rounded-pill">
               Proceed to checkout
             </button>
           </div>
@@ -101,3 +84,47 @@ export default function Cart({ addWishlist, setAddWishlist, downWishList }) {
     </div>
   );
 }
+
+const CarList = ({ downWishList, price, id, title, imgUrl }) => {
+  const [number, setNumber] = useState(1);
+  const multiple = number * price;
+  return (
+    <div className="hstack border-bottom" key={id}>
+      <img className="col-2" src={imgUrl} alt="" />
+      <div className="col-3 p-2">
+        <p>
+          <strong>{title}</strong>
+        </p>
+        <p className="">Color:Green</p>
+        <p1 className="">Size: 30</p1>
+      </div>
+      <div className="col-8 hstack">
+        <p1 className="col-3 fw-semibold">${price}</p1>
+        <div className="col-4">
+          <button
+            className=" border"
+            onClick={() => {
+              setNumber(number - 1);
+            }}
+          >
+            -
+          </button>
+          <button className="col-4 border">{number}</button>
+          <button
+            className="border "
+            onClick={() => {
+              setNumber(number + 1);
+            }}
+          >
+            +
+          </button>
+        </div>
+        <p1 className="col-2 fw-semibold">$ {multiple}</p1>
+        <button
+          className="btn-close ms-4"
+          onClick={() => downWishList(id)}
+        ></button>
+      </div>
+    </div>
+  );
+};
