@@ -1,0 +1,149 @@
+.App{
+  font-family: 'Inter', Helvetica, sans-serif;
+}
+a{
+  text-decoration: none;
+}
+
+.dropdown-toggle::after{
+  display: none;
+}
+.navbar-toggler:focus,
+.navbar-toggler:active{
+    box-shadow: none;
+}
+.navbar-toggler{
+  border: none;
+}
+.dropdown-menu{
+  border: none;
+  padding: 0;
+}
+.dropdown-item:hover{
+  color: #2C9AFF ;
+}
+.dropdown-title:hover{
+  color: #2C9AFF ;
+}
+
+.MuiBreadcrumbs-separator{
+  color: white;
+}
+.color-blue{
+  background-color: #2C9AFF !important;
+
+}
+.sign-logo{
+  height: 70px;
+  width: 100px;
+}
+.sign-button{
+  width: 380px;
+}
+
+.swal-button{
+  background-color:#2C9AFF ;
+  font-weight: normal;
+}
+.swal-text{
+  text-align: center;
+  width: 70%;
+}
+.swal-footer{
+  text-align: center;
+}
+
+.offcanvas{
+  width: 25% !important;
+}
+
+.toolbar{
+  height: 160px;
+}
+
+.content{
+  position: relative;
+  bottom: 70px;
+}
+.sign-in{
+  position: relative;
+  top: 200px;
+}
+
+.MuiButton-contained,.MuiButtonBase-root {
+  text-transform: none !important;
+}
+
+.MuiPaginationItem-page{
+  background-color: #2C9AFF !important;
+  color:white !important;
+  border-radius: 20% !important;
+}
+.MuiPaginationItem-icon{
+  color: gray;
+}
+
+.form-control:focus{
+  box-shadow:none;
+  border-color: lightgrey;
+  
+}
+
+.css-19kzrtu{
+  padding: 0 !important;
+}
+
+.new-product-radio{
+  width: 250px;
+  height: 60px;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  border-style: dashed;
+  padding: 10px;
+};
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {   
+    -webkit-appearance: "Always Show Up/Down Arrows";
+}
+
+.add-user-modal{
+  position: absolute;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  background-color: white;
+  box-Shadow: 24;
+  padding: 4;
+}
+
+.add-user-input:focus{
+  background-color: rgb(235, 235, 235) !important;
+}
+
+.MuiRadio-colorPrimary{
+  border: none !important;
+  color:#2C9AFF !important;
+}
+.MuiRadio-colorSecondary{
+  background-color: black!important;
+  border: none !important;
+  color: black;
+}
+
+.avatar{
+  width: 100px !important;
+  height: 100px !important;
+}
+
+.chip{
+  font-weight: bold;
+color: #2C9AFF !important;
+border: none !important;
+background-color: rgb(218, 237, 255) !important;
+}
+
+.MuiTableCell-body{
+  color: rgb(29, 25, 25) !important;
+}
