@@ -30,7 +30,6 @@ function App() {
         setAddWishlist={setAddWishlist}
         downWishList={downWishList}
       />
-      <MainMenu />
       <Routes>
         <Route
           path="/"

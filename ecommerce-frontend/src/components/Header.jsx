@@ -1,13 +1,15 @@
-import Stack from "react-bootstrap/Stack";
 import InputGroup from "react-bootstrap/InputGroup";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useState } from "react";
 import products from "../data/products";
-import { Badge, Modal } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 import SignUp from "./SignUp";
 import { Routes, Route, Link } from "react-router-dom";
-
+import menus from "../data/menus";
+import { Nav, Stack, NavLink } from "react-bootstrap";
+import SubMenu from "./SubMenu";
+import Badge from "@mui/material/Badge";
 function Header({ addWishlist, setAddWishlist, downWishList }) {
   const [list, setList] = useState(false);
   const [show, setShow] = useState(false);
@@ -20,49 +22,52 @@ function Header({ addWishlist, setAddWishlist, downWishList }) {
   return (
     <header>
       <div className="hstack" id="up">
-        <p1 className="m-5">Need help? Call us: (+98) 0234 456 789</p1>
-        <div id="up-inner" className="ms-auto  ">
-          <img className="m-2" src="./img/location.png" alt=""></img>
-          <p1 className="m-2">Our store</p1>
-          <img className="m-2" src="./img/group.png" alt=""></img>
-          <p1 className="m-2">Track your order</p1>
-        </div>
+        <p1 className="my-3 text-black-50">Утас: (+976) 9988-2655</p1>
+        <p1 className="m-2 ms-auto text-black-50">Киткат ХХК</p1>
       </div>
       <div
         id="down"
-        className="green-bg d-flex justify-content-around align-items-center "
+        className=" d-flex justify-content-between align-items-center "
       >
         {" "}
         <Link to={"/"} addWishlist={addWishlist}>
-          <img className="" src="./img/logo 1 (1).png" alt=""></img>
-        </Link>
-        <div className="input-group input me-5">
-          <input class="form-control" placeholder="Search any things" />
-          <button className="orange btn text-white ">Search</button>
-        </div>
-        <div className="hstack">
-          <img className="m-2" src="./img/user.png" alt=""></img>
-          <Link to={"/signup"} onClick={() => handleProduct()}>
-            <p className="text-white my-2">Sign in</p>
-          </Link>
           <img
-            onClick={() => setList(!list)}
-            className="ms-2"
-            src="./img/Frame 6.png"
+            style={{ width: 130, height: 130 }}
+            className=""
+            src="https://logodix.com/logo/1167676.png"
             alt=""
           ></img>
+        </Link>
+        <div className=" d-flex align-items-center fs-5 w-50">
+          <Nav className="">
+            <SubMenu />
+            <NavLink className="">Бидний тухай</NavLink>
+            <NavLink className="">Мэдээ</NavLink>
+            <NavLink className="">Холбоо барих</NavLink>
+          </Nav>
+        </div>
+        <div className="hstack gap-4">
+          <Link to={"/signup"} onClick={() => handleProduct()}>
+            <p className="sign-in">НЭВТРЭХ/БҮРТГҮҮЛЭХ</p>
+          </Link>
+          <i className="bi bi-search text-danger " style={{ fontSize: 25 }}></i>
+          <Badge badgeContent={addWishlist.length} color="error">
+            <i
+              className="bi bi-heart text-danger "
+              style={{ fontSize: 25 }}
+              onClick={() => setList(!list)}
+            ></i>
+          </Badge>
+
           {list && (
             <WishBox addWishlist={addWishlist} downWishList={downWishList} />
           )}
-          <span class="m-1  badge rounded-pill  orange">
-            {addWishlist.length}
-          </span>
-          <Link to={"/cart"}>
-            <img className="ms-2" src="./img/shopping-cart.png" alt="" />
-          </Link>
-          <span class=" m-1 badge rounded-pill  orange">
-            {addWishlist.length}
-          </span>
+
+          <Badge badgeContent={addWishlist.length} color="error">
+            <Link to={"/cart"}>
+              <i class="bi bi-cart text-danger" style={{ fontSize: 25 }}></i>
+            </Link>
+          </Badge>
         </div>
       </div>
       <div></div>

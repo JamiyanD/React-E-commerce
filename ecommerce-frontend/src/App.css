@@ -21,10 +21,20 @@
   background-color:#EDA415  ;
 }
 
+.nav div a,.nav a,.sign-in{
+  color: black;
+  
+  }
+.sign-in:hover{
+  color: red;
+}
+.nav a:hover{
+  color: red;
+  }
 
-
-
-
+  .dropdown-toggle::after {
+    display: none !important; 
+  }
 footer ul li::before{
   content: "\25CF";
   color:rgb(201, 197, 197);
@@ -118,25 +128,14 @@ footer ul  {
 
 
 
-
+/* 
 #up{
   height:60px ;
 }
 #down{
   height: 70px;
-}
-.nav div a{
-  height: 40px;
+} */
 
-}
-.nav a::after{
- margin:0 0 0 15px !important;
- }
-.nav a{
-  height: 40px;
-  display: flex !important;
-  align-items: center !important;
-}
 .product{
   height: 220px ;
 }
