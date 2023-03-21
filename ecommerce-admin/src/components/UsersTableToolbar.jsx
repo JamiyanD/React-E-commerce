@@ -17,7 +17,7 @@ import Modal from "@mui/material/Modal";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import Typography from "@mui/material/Typography";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import FormHelperText from "@mui/joy/FormHelperText";
 import EditIcon from "@mui/icons-material/Edit";
 export default function UsersTableToolbar(props) {
@@ -84,61 +84,10 @@ export default function UsersTableToolbar(props) {
     fetchRoles();
   }, []);
 
-  async function handleSubmit(e) {
-    e.preventDefault();
-    console.log(currentUser);
-    const AXIOS_DATA = await axios.post(url, currentUser);
-    console.log(AXIOS_DATA);
-    if (AXIOS_DATA.status == 200) {
-      setOpen(false);
-      axiosScreen();
-    }
-  }
-
-  function handleFullName(e) {
-    setCurrentUser({
-      ...currentUser,
-      full_name: e.target.value,
-    });
-  }
-
-  function handlePhoneNumber(e) {
-    setCurrentUser({
-      ...currentUser,
-      phone_number: e.target.value,
-    });
-  }
-  function handleEmail(e) {
-    setCurrentUser({
-      ...currentUser,
-      email: e.target.value,
-    });
-  }
-  function handlePassword(e) {
-    setCurrentUser({
-      ...currentUser,
-      password: e.target.value,
-    });
-  }
-
-  function handleRadio(e) {
-    if (e.target.value) {
-      setCurrentUser({
-        ...currentUser,
-        role: e.target.value,
-      });
-    }
-  }
-  // function handleUpload(e) {
-  //   setCurrentUser({
-  //     ...currentUser,
-  //     imgURL: e.target.value,
-  //   });
-  // }
-
-  const [open, setOpen] = React.useState(false);
+  const location = useLocation();
+  console.log(location);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+
   return (
     <Toolbar
       sx={{
@@ -247,7 +196,7 @@ export default function UsersTableToolbar(props) {
           </Button>
         </Stack>
       )}
-
+      {/* 
       <Modal
         open={open}
         onClose={handleClose}
@@ -382,7 +331,7 @@ export default function UsersTableToolbar(props) {
             </form>
           </Box>
         </Box>
-      </Modal>
+      </Modal> */}
     </Toolbar>
   );
 }
