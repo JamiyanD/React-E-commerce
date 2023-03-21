@@ -1,38 +1,65 @@
 import { Stack, Carousel, Row, Col } from "react-bootstrap";
-import carousel1 from "../data/carousel1";
-
 import AliceCarousel from "react-alice-carousel";
 function Section1() {
-  const image = carousel1.map((element) => {
-    return (
-      <Carousel.Item className="h-100 ">
-        <div className="h-100 hstack">
+  return (
+    <Carousel
+      interval={null}
+      controls={false}
+      variant="dark"
+      className="mt-5 "
+      fade
+    >
+      <Carousel.Item className=" main-carousel1">
+        <div className="h-100 hstack ">
           <div className="d-flex flex-column w-50 align-items-center">
-            <h1 class="w-50 green fs-1">{element.name}</h1>
+            <h1 class="w-50 fs-1 text-white main-carousel-title">
+              Бичиг хэрэг, Бэлэг дурсгалын өргөн сонголт
+            </h1>
             <div class="w-50 align-items-center">
-              <button className=" orange btn  text-white border-white rounded-4 ">
-                Shop now
-              </button>
-              <button className=" m-2 color rounded-4  btn btn-outline-secondary">
-                View more
+              <button className="btn rounded-5 border border-4 border-white text-white fw-semibold hstack main-carousel-button">
+                БҮГДИЙГ ҮЗЭХ
+                <h2 className=" d-inline">
+                  <i class="bi bi-arrow-right-short text-white "></i>
+                </h2>
               </button>
             </div>
           </div>
-          <img
-            className=" carousel1-img ms-auto"
-            src={element.imgURL}
-            alt=""
-          ></img>
-          <div className="carousel1-price d-flex justify-content-center align-items-center text-white">
-            only <br></br>$89
+        </div>
+      </Carousel.Item>
+      <Carousel.Item className=" main-carousel1">
+        <div className="h-100 hstack ">
+          <div className="d-flex flex-column w-50 align-items-center">
+            <h1 class="w-50 fs-1 text-white main-carousel-title">
+              Хэвлэлийн материал худалдаа
+            </h1>
+            <div class="w-50 align-items-center">
+              <button className="btn rounded-5 border border-4 border-white text-white fw-semibold hstack main-carousel-button">
+                БҮГДИЙГ ҮЗЭХ
+                <h2 className=" d-inline">
+                  <i class="bi bi-arrow-right-short text-white "></i>
+                </h2>
+              </button>
+            </div>
           </div>
         </div>
       </Carousel.Item>
-    );
-  });
-  return (
-    <Carousel interval={null} controls={false} className="mt-5 h-100">
-      {image}
+      <Carousel.Item className=" main-carousel1">
+        <div className="h-100 hstack ">
+          <div className="d-flex flex-column w-50 align-items-center">
+            <h1 class="w-50 fs-1 text-white main-carousel-title">
+              Хаяг хэвлэлийн үйлдвэрлэл
+            </h1>
+            <div class="w-50 align-items-center">
+              <button className="btn rounded-5 border border-4 border-white text-white fw-semibold hstack main-carousel-button">
+                БҮГДИЙГ ҮЗЭХ
+                <h2 className=" d-inline">
+                  <i class="bi bi-arrow-right-short text-white "></i>
+                </h2>
+              </button>
+            </div>
+          </div>
+        </div>
+      </Carousel.Item>
     </Carousel>
   );
 }

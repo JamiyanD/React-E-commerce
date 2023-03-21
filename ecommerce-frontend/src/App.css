@@ -2,28 +2,11 @@
   font-family: 'Poppins', sans-serif;
   font-size: 14px;
 }
-.green, #green{
-  color: #1B5A7D;
-}
-.green-bg{
-  background-color: #1B5A7D;
-}
-#color::after{
-  margin:10px 0 0 10px;
-}
-#colors{
-  color: white;
-}
-#colors::placeholder {
-  color: white;
-}
-.orange{
-  background-color:#EDA415  ;
-}
+
+
 
 .nav div a,.nav a,.sign-in{
   color: black;
-  
   }
 .sign-in:hover{
   color: red;
@@ -31,10 +14,47 @@
 .nav a:hover{
   color: red;
   }
-
-  .dropdown-toggle::after {
+.dropdown-toggle::after {
     display: none !important; 
-  }
+}
+
+
+
+
+.main-carousel1{
+  background-image: url('https://img.freepik.com/free-photo/still-life-perfectly-ordered-fitness-gym-accessories_52683-100701.jpg?w=1380&t=st=1679410557~exp=1679411157~hmac=7b1741966a7946b8093075693c708328409653c756d233e977377db31a9598b8');
+  background-repeat: no-repeat;
+  background-size: 100%;
+ background-position: center;
+ height: 50vh;
+}
+.carousel-indicators button{  
+  background-color: white !important;
+  width:12px !important;
+  height: 12px!important;
+  border-radius: 50%!important;
+}
+.main-carousel-title {
+  animation-name: title;
+  animation-duration: 2s;  
+  animation-delay: 1s;
+  animation-fill-mode: backwards;
+}
+@keyframes title {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+.main-carousel-button{
+  animation-name: button;
+  animation-duration: 2s;  
+  animation-delay: 2.5s;
+  animation-fill-mode: backwards;
+  animation-timing-function: linear;
+}
+@keyframes button {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
 footer ul li::before{
   content: "\25CF";
   color:rgb(201, 197, 197);
@@ -54,23 +74,10 @@ footer ul  {
 .carousel2-img{
   height: 80px;
 }
-.carousel-indicators button{  
-  border: 1px solid gray !important;
-  width:12px !important;
-  height: 12px!important;
-  border-radius: 50%!important;
-}
-.carousel-indicators .active{
-  background-color: #EDA415 !important;
-  border: 1px solid #EDA415 !important;
-}
-.carousel-indicators{
-  position: absolute;
-  left:25px;
-  display: inline-block;
-  bottom :80px;
-  
-}
+
+
+
+
 .slick-dots li{
   width: 12px !important;
 }

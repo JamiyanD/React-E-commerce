@@ -84,9 +84,61 @@ export default function UsersTableToolbar(props) {
     fetchRoles();
   }, []);
 
-  const location = useLocation();
-  console.log(location);
+  async function handleSubmit(e) {
+    e.preventDefault();
+    console.log(currentUser.role);
+    const AXIOS_DATA = await axios.post(URL, currentUser);
+    console.log(AXIOS_DATA.status);
+    if (AXIOS_DATA.status == 200) {
+      navigate("/usersList");
+      setOpen(false);
+    }
+  }
+
+  function handleFullName(e) {
+    setCurrentUser({
+      ...currentUser,
+      full_name: e.target.value,
+    });
+  }
+
+  function handlePhoneNumber(e) {
+    setCurrentUser({
+      ...currentUser,
+      phone_number: e.target.value,
+    });
+  }
+  function handleEmail(e) {
+    setCurrentUser({
+      ...currentUser,
+      email: e.target.value,
+    });
+  }
+  function handlePassword(e) {
+    setCurrentUser({
+      ...currentUser,
+      password: e.target.value,
+    });
+  }
+
+  function handleRadio(e) {
+    if (e.target.value) {
+      setCurrentUser({
+        ...currentUser,
+        role: e.target.value,
+      });
+    }
+  }
+  // function handleUpload(e) {
+  //   setCurrentUser({
+  //     ...currentUser,
+  //     imgURL: e.target.value,
+  //   });
+  // }
+
+  const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   return (
     <Toolbar
@@ -196,7 +248,7 @@ export default function UsersTableToolbar(props) {
           </Button>
         </Stack>
       )}
-      {/* 
+
       <Modal
         open={open}
         onClose={handleClose}
@@ -331,7 +383,7 @@ export default function UsersTableToolbar(props) {
             </form>
           </Box>
         </Box>
-      </Modal> */}
+      </Modal>
     </Toolbar>
   );
 }
