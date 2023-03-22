@@ -6,7 +6,7 @@ function Section1() {
       interval={null}
       controls={false}
       variant="dark"
-      className="mt-5 "
+      className="my-5 "
       fade
     >
       <Carousel.Item className=" main-carousel1">

@@ -20,7 +20,7 @@ function Section3({ setAddWishlist, addWishlist, downWishList }) {
 
   return (
     <section className="">
-      <div className="hstack" id="product-up">
+      {/* <div className="hstack" id="product-up">
         <h2 className="green">Popular products</h2>
         <div id="genre" className="ms-auto">
           <button class="green btn btn-outline-secondary rounded-pill bg-light m-2">
@@ -53,7 +53,7 @@ function Section3({ setAddWishlist, addWishlist, downWishList }) {
             );
           })}
         </Slider>
-      </div>
+      </div> */}
     </section>
   );
 }

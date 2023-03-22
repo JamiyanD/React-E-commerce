@@ -3,29 +3,61 @@ import AliceCarousel from "react-alice-carousel";
 import carousel2Data from "../data/carousel2";
 
 function Section2() {
-  const images = carousel2Data.map((par) => {
-    return (
-      <div className="w-100 d-flex justify-content-evenly align-items-center mt-5 ">
-        <div className="col-10 h-75 d-flex justify-content-between  align-items-center border rounded-4 p-3 ">
-          <img className="carousel2-img w-50" src={par.imgUrl} alt=""></img>
-          <p1 className="col-5 color">
-            <strong className="green">{par.name}</strong>
-            <br></br>({par.items} items)
-          </p1>
+  return (
+    <div className="my-5 d-flex">
+      <div className="col-3 d-flex border-end">
+        <h1 className="mx-4">
+          <i class="bi bi-truck "></i>
+        </h1>
+
+        <div>
+          <h4 className="mb-2 section2-h text-primary-emphasis">
+            Хүргэлт Үнэгүй
+          </h4>
+          <p className="text-muted">
+            150,000 төгрөгнөөс дээш худалдан авалт хийсэн тохиолдолд хүргэлт
+            үнэгүй.
+          </p>
         </div>
       </div>
-    );
-  });
-  return (
-    <div>
-      <AliceCarousel
-        autoPlay
-        autoPlayInterval={"5000"}
-        disableDotsControls={true}
-        responsive={{ 0: { items: 3 } }}
-      >
-        {images}
-      </AliceCarousel>
+      <div className="col-3 d-flex border-end">
+        <h1 className="mx-4">
+          <i class="bi bi-credit-card"></i>
+        </h1>
+
+        <div>
+          <h4 className="mb-2 section2-h text-primary-emphasis">
+            Төлбөрийн Олон Сонголт
+          </h4>
+          <p className="text-muted">
+            Та хүссэн төлбөрийн сонголтоо сонгох боломжтой
+          </p>
+        </div>
+      </div>
+      <div className="col-3 d-flex border-end">
+        <h1 className="mx-4">
+          <i class="bi bi-gift"></i>
+        </h1>
+
+        <div>
+          <h4 className="mb-2 section2-h text-primary-emphasis">
+            Шуурхай хүргэлт
+          </h4>
+          <p className="text-muted">Хүргэлт маргааш өдөртөө таны гарт</p>
+        </div>
+      </div>
+      <div className="col-3 d-flex border-end">
+        <h1 className="mx-4">
+          <i class="bi bi-chat-right"></i>
+        </h1>
+
+        <div>
+          <h4 className="mb-2 section2-h text-primary-emphasis">
+            Онлайн туслах
+          </h4>
+          <p className="text-muted">Захиалгын Цаг 10:00-19:00</p>
+        </div>
+      </div>
     </div>
   );
 }

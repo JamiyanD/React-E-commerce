@@ -31,11 +31,11 @@ function Home({ addWishlist, setAddWishlist, downWishList }) {
 
       <Section1 />
       <Section2 />
-      <Section3
+      {/* <Section3
         setAddWishlist={setAddWishlist}
         addWishlist={addWishlist}
         downWishList={downWishList}
-      />
+      /> */}
       <Section4 />
       <Section5 />
       <Section6 />

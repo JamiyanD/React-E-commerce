@@ -4,20 +4,9 @@ import Slider from "react-slick";
 function Section7() {
   const person = people.map((element) => {
     return (
-      <div class=" mb-2 px-2 green">
-        <div className="border rounded-4 p-3">
-          <div className="hstack">
-            <img class="me-2" src={element.imgURL} alt=""></img>
-            <h5 class="ms-3">{element.name}</h5>
-          </div>
-          <div class="blue rounded ">
-            <p class="mt-3 p-2">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias,
-              ipsam? Magni iusto praesentium voluptates tempora modi vitae
-              veritatis laudantium aliquam.
-            </p>
-          </div>
-        </div>
+      <div class="small-carousel-div ">
+        <img src={element.imgURL} alt="" className="h-100 m-0" />
+        <h4 className="text-center dark-blue me-5">МАЛГАЙ</h4>
       </div>
     );
   });
@@ -25,13 +14,14 @@ function Section7() {
     dots: true,
     infinite: false,
     speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 3,
+    slidesToShow: 5,
+    slidesToScroll: 1,
   };
   return (
-    <Slider {...settings} className="mt-5">
-      {person}
-    </Slider>
+    <section className="my-5">
+      <h1 className="text-center dark-blue mb-5">Бичгийн Хэрэгслүүд</h1>
+      <Slider {...settings}>{person}</Slider>
+    </section>
   );
 }
 export default Section7;

@@ -1,270 +1,348 @@
 .App {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 14px;
 }
 
+.dark-blue {
+  color: #01213a;
+}
 
+.red:hover {
+  color: red !important;
+}
 
-.nav div a,.nav a,.sign-in{
+.nav div a,
+.nav a,
+.sign-in {
   color: black;
-  }
-.sign-in:hover{
+}
+
+.sign-in:hover {
   color: red;
 }
-.nav a:hover{
+
+.nav a:hover {
   color: red;
-  }
+}
+
 .dropdown-toggle::after {
-    display: none !important; 
+  display: none !important;
 }
 
-
-
-
-.main-carousel1{
-  background-image: url('https://img.freepik.com/free-photo/still-life-perfectly-ordered-fitness-gym-accessories_52683-100701.jpg?w=1380&t=st=1679410557~exp=1679411157~hmac=7b1741966a7946b8093075693c708328409653c756d233e977377db31a9598b8');
+.main-carousel1 {
+  background-image: url("https://img.freepik.com/free-photo/still-life-perfectly-ordered-fitness-gym-accessories_52683-100701.jpg?w=1380&t=st=1679410557~exp=1679411157~hmac=7b1741966a7946b8093075693c708328409653c756d233e977377db31a9598b8");
   background-repeat: no-repeat;
   background-size: 100%;
- background-position: center;
- height: 50vh;
+  background-position: center;
+  height: 50vh;
 }
-.carousel-indicators button{  
+
+.carousel-indicators button {
   background-color: white !important;
-  width:12px !important;
-  height: 12px!important;
-  border-radius: 50%!important;
+  width: 12px !important;
+  height: 12px !important;
+  border-radius: 50% !important;
 }
+
 .main-carousel-title {
   animation-name: title;
-  animation-duration: 2s;  
+  animation-duration: 2s;
   animation-delay: 1s;
   animation-fill-mode: backwards;
 }
+
 @keyframes title {
-  from {opacity: 0;}
-  to {opacity: 1;}
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
-.main-carousel-button{
+
+.main-carousel-button {
   animation-name: button;
-  animation-duration: 2s;  
+  animation-duration: 2s;
   animation-delay: 2.5s;
   animation-fill-mode: backwards;
   animation-timing-function: linear;
 }
+
 @keyframes button {
-  from {opacity: 0;}
-  to {opacity: 1;}
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
-footer ul li::before{
+
+.section3-div1 {
+  background-image: url("https://img.freepik.com/free-photo/health-club-without-people-with-exercise-equipment_637285-8446.jpg?w=1380&t=st=1679483862~exp=1679484462~hmac=e72aee0a15b6bcef7271588de6cd103032312417a892bae9e66fe1e3cab5adc6");
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition-duration: 0.5s;
+}
+
+.section3-div1:hover,
+.section3-div2:hover,
+.section3-div3:hover,
+.section3-div4:hover {
+  background-position: 5%;
+}
+
+.section3-button:hover {
+  background-color: palevioletred;
+  border-color: palevioletred !important;
+}
+
+.section3-div2 {
+  background-image: url("https://img.freepik.com/free-photo/sports-girl-training-stadium_1157-25349.jpg?w=1380&t=st=1679488106~exp=1679488706~hmac=4c00ba31a64033a1bdcf798cfbb532298924f17cccb70e07ee3b7c4bc77a776a");
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition-duration: 0.5s;
+}
+
+.section3-div3 {
+  background-image: url("https://img.freepik.com/free-photo/interior-equipment-modern-gym-close-up-view-suspension-straps-sport-fitness-health_613910-20264.jpg?w=1380&t=st=1679488047~exp=1679488647~hmac=fd6df7474ba19b0c32f2f993459f7ec282a517583572ecbd2e22aa3ec1278c34");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 230px;
+  transition-duration: 0.5s;
+}
+
+.section3-div4 {
+  background-image: url("https://img.freepik.com/free-photo/3d-realistic-render-ladies-t-shirt-clean-empty-template-mockup-design-logo_1048-17306.jpg?w=1480&t=st=1679488223~exp=1679488823~hmac=0c99fc3fa94da03fd2cf82cb6090a83ce5c37e8dd0a5bde7fe45acffa9eb3a0d");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 230px;
+  transition-duration: 0.5s;
+}
+
+.section3-div {
+  height: 500px;
+}
+
+.section4-div1:hover,
+.section4-div2:hover,
+.section4-div3:hover,
+.section4-div4:hover {
+  transform: scale(1.1);
+}
+
+.section4-div {
+  height: 300px;
+  width: 300px;
+  overflow: hidden;
+  position: relative;
+}
+
+.section4-div1 {
+  background-image: url("https://img.freepik.com/free-photo/interior-equipment-modern-gym-close-up-view-suspension-straps-sport-fitness-health_613910-20264.jpg?w=1380&t=st=1679488047~exp=1679488647~hmac=fd6df7474ba19b0c32f2f993459f7ec282a517583572ecbd2e22aa3ec1278c34");
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition-duration: 0.3s;
+}
+
+.section4-div2 {
+  background-image: url("https://img.freepik.com/free-photo/sports-girl-training-stadium_1157-25349.jpg?w=1380&t=st=1679488106~exp=1679488706~hmac=4c00ba31a64033a1bdcf798cfbb532298924f17cccb70e07ee3b7c4bc77a776a");
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition-duration: 0.3s;
+}
+
+.section4-div3 {
+  background-image: url("https://img.freepik.com/free-photo/health-club-without-people-with-exercise-equipment_637285-8446.jpg?w=1380&t=st=1679483862~exp=1679484462~hmac=e72aee0a15b6bcef7271588de6cd103032312417a892bae9e66fe1e3cab5adc6");
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition-duration: 0.3s;
+}
+
+.section4-div4 {
+  background-image: url("https://img.freepik.com/free-photo/3d-realistic-render-ladies-t-shirt-clean-empty-template-mockup-design-logo_1048-17306.jpg?w=1480&t=st=1679488223~exp=1679488823~hmac=0c99fc3fa94da03fd2cf82cb6090a83ce5c37e8dd0a5bde7fe45acffa9eb3a0d");
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition-duration: 0.3s;
+}
+
+.section4-h {
+  color: #ffffff;
+  font-weight: bold;
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+}
+
+.card-img {
+  width: 100px;
+  height: 100px;
+}
+.section5-div {
+  background-image: url("https://img.freepik.com/free-photo/3d-realistic-render-ladies-t-shirt-clean-empty-template-mockup-design-logo_1048-17306.jpg?w=1480&t=st=1679488223~exp=1679488823~hmac=0c99fc3fa94da03fd2cf82cb6090a83ce5c37e8dd0a5bde7fe45acffa9eb3a0d");
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition-duration: 0.5s;
+}
+.section5-div:hover {
+  background-position: 5%;
+}
+.section5-tab {
+  height: 384px;
+}
+
+.small-carousel-div {
+  height: 150px;
+  width: 150px;
+}
+
+footer ul li::before {
   content: "\25CF";
-  color:rgb(201, 197, 197);
+  color: rgb(201, 197, 197);
   margin-right: 10px;
   width: 10px;
 }
-footer ul  {
+
+footer ul {
   list-style: none;
   padding: 0;
 }
-.input{
+
+.input {
   width: 35% !important;
 }
-.carousel1-img{
-  height: 350px;
-}
-.carousel2-img{
-  height: 80px;
+
+.slick-dots li {
+  width: 8px !important;
 }
 
-
-
-
-.slick-dots li{
-  width: 12px !important;
-}
-.slick-dots button{
-  border: 1px solid gray !important;
-  width:12px !important;
-  height: 12px!important;
-  border-radius: 50%!important;
-  
-}
-.slick-dots button::before{
-  display: none;
-}
-.slick-active button{
-  background-color: #EDA415 !important;
-  border: 1px solid #EDA415 !important;
-}
-.carousel1-price{
-  background-color: #EDA415;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  position: absolute;
-  right: 0;
-  bottom:60px;
-  font-size: 20px;
-}
-.alice-carousel__prev-btn-item span{
-  position: absolute !important;
-  top:80px !important;
-  left: 8px !important;
-}
-.alice-carousel__prev-btn-item span::after{
-  content:url('../public/img/Frame\ 20.png') !important;
-
-}
-.alice-carousel__next-btn-item span{
-  position: absolute !important;
-  top:80px !important;
-  right: 8px !important;
-}
-.alice-carousel__next-btn-item span::after{
-  content:url('../public/img/Frame\ 20\ \(1\).png') !important;
-}
-.alice-carousel__stage{
-  margin:0 !important;
-}
-.alice .alice-carousel__stage{
-  display: flex !important;
-}
-.alice-carousel ul{
-  margin: 5px;
-}
-
-
-
-
-/* 
-#up{
-  height:60px ;
-}
-#down{
-  height: 70px;
+/* .slick-dots button {
+  border: 0.5px solid gray !important;
+  width: 5px !important;
+  height: 5px !important;
+  border-radius: 50% !important;
 } */
 
-.product{
-  height: 220px ;
-}
+/* .slick-dots button::before {
+  display: none;
+} */
+/* 
+.slick-active button {
+  background-color: #eda415 !important;
+  border: 1px solid #eda415 !important;
+} */
 
-section:nth-child(4){
-  height: 109px;
-}
-#section-background{
+/* #section-background{
   height: 300px;
   background-image: url("../public/img/pexels.png");
   background-repeat: no-repeat;
   background-size: 100%;
-}
-.small-card{
+} */
+.small-card {
   height: 150px;
 }
-.blue{
-  background-color: #E2F4FF;
-}
-section:nth-child(8){
-  height: 100px;
-}
-#subscribe{
+
+#subscribe {
   height: 119px;
 }
-.wish{
+
+.wish {
   width: 300px;
   height: 300px;
   background-color: white;
   position: absolute;
-  top:100px;
+  top: 100px;
   right: 50px;
   z-index: 1;
 }
+
 .heart-icon {
   width: 30px;
   height: 30px;
-	background-color: #b3d4e5;
-	padding: 7px;
-	border-radius: 50%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	cursor: pointer;
+  background-color: #b3d4e5;
+  padding: 7px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
   margin-bottom: auto;
 }
 
-
-
-
 .wishlist {
-	border: 1px solid #eee;
-	background-color: #fff;
-	position: absolute;
-	top: 130px;
-	width: 300px;
-	padding: 20px;
-	border-radius: 6px;
-	z-index: 2;
+  border: 1px solid #eee;
+  background-color: #fff;
+  position: absolute;
+  top: 130px;
+  width: 300px;
+  padding: 20px;
+  border-radius: 6px;
+  z-index: 2;
 }
+
 .wishlist h3 {
-	margin-bottom: 20px;
+  margin-bottom: 20px;
 }
+
 .wishlist h4 {
-	color: #b3d4e5;
+  color: #b3d4e5;
 }
+
 .wishlist-product {
-	display: flex;
-	align-items: center;
-	gap: 20px;
-	border-bottom: 1px solid #b6b6b6;
-	padding: 8px 0;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border-bottom: 1px solid #b6b6b6;
+  padding: 8px 0;
 }
+
 .wishlist-product img {
-	width: 100px;
+  width: 100px;
 }
 
-
-
-
-
-
-.detail-circle{
-  width: 18px ;
+.detail-circle {
+  width: 18px;
   height: 18px;
-  accent-color: green ;
+  accent-color: green;
   border-radius: 50%;
 }
-.detail-header{
+
+.detail-header {
   height: 60px;
 }
-.detail-home::after{
-  content:"\276F";
-  margin-left:5px
+
+.detail-home::after {
+  content: "\276F";
+  margin-left: 5px;
 }
-.detail-img{
+
+.detail-img {
   height: 150px;
 }
 
-.bold-blue{
-  background-color:#003F62 ;
+.bold-blue {
+  background-color: #003f62;
 }
-.detail-card {
 
-  height: 200px ;
+.detail-card {
+  height: 200px;
 }
-.big-product{
+
+.big-product {
   height: 400px;
 }
 
-
-
-
-.signup-container{
+.signup-container {
   width: 360px;
   margin: auto;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
-.pink{
-  background-color: #7F56D9;
+.pink {
+  background-color: #7f56d9;
 }
-.Pink{
-  color: #7F56D9;
+
+.Pink {
+  color: #7f56d9;
 }
