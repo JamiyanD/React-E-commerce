@@ -10,7 +10,7 @@ function Section1() {
       fade
     >
       <Carousel.Item className=" main-carousel1">
-        <div className="h-100 hstack ">
+        <div className="h-100 hstack container">
           <div className="d-flex flex-column w-50 align-items-center">
             <h1 class="w-50 fs-1 text-white main-carousel-title">
               Бичиг хэрэг, Бэлэг дурсгалын өргөн сонголт
@@ -27,7 +27,7 @@ function Section1() {
         </div>
       </Carousel.Item>
       <Carousel.Item className=" main-carousel1">
-        <div className="h-100 hstack ">
+        <div className="h-100 hstack container">
           <div className="d-flex flex-column w-50 align-items-center">
             <h1 class="w-50 fs-1 text-white main-carousel-title">
               Хэвлэлийн материал худалдаа
@@ -44,7 +44,7 @@ function Section1() {
         </div>
       </Carousel.Item>
       <Carousel.Item className=" main-carousel1">
-        <div className="h-100 hstack ">
+        <div className="h-100 hstack container">
           <div className="d-flex flex-column w-50 align-items-center">
             <h1 class="w-50 fs-1 text-white main-carousel-title">
               Хаяг хэвлэлийн үйлдвэрлэл

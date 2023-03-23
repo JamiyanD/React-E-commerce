@@ -1,13 +1,57 @@
-import {Stack} from "react-bootstrap"
-function Section8(){
-    return(
-        <section class=" d-flex align-items-center blue justify-content-between mt-5">
-        <img class="col-2" src="./img/brand-1.png" alt=""></img>
-        <img class="col-2" src="./img/brand-2.png" alt=""></img>
-        <img class="col-2" src="./img/brand-3.png" alt=""></img>
-        <img class="col-2" src="./img/brand-4.png" alt=""></img>
-        <img class="col-2" src="./img/brand-5.png" alt=""></img>
+import { Stack, Button } from "react-bootstrap";
+import Slider from "react-slick";
+
+export default function Section9() {
+  return (
+    <section class="my-5">
+      <h1 className="text-center dark-blue my-5 ">Мэдээ, мэдээлэл</h1>
+      <div className="hstack gap-5">
+        <div className="col">
+          <img
+            className="w-100"
+            src="https://cdn.itoim.mn/media/imagel/14127/image.jpeg"
+            alt=""
+          />
+          <p className="text-muted my-3">НИЙТЭЛСЭН ОН САР:2023-03-24</p>
+          <h3 className="dark-blue">
+            “Nike”-ийн үүсгэн байгуулагч Фил Найтын амжилтын нууц
+          </h3>
+          <p className="text-secondary">
+            Улаанбаатар хотын бүх цэгт хүргэнэ. Мөн орон нутгийн унаанд тавина.
+          </p>
+          <h5 className="dark-blue">Дэлгэрэнгүй...</h5>
+        </div>
+        <div className="col">
+          <img
+            className="w-100"
+            src="https://cdn.itoim.mn/media/imagel/14127/image.jpeg"
+            alt=""
+          />
+          <p className="text-muted my-3">НИЙТЭЛСЭН ОН САР:2023-03-24</p>
+          <h3 className="dark-blue">
+            “Nike”-ийн үүсгэн байгуулагч Фил Найтын амжилтын нууц
+          </h3>
+          <p className="text-secondary">
+            Улаанбаатар хотын бүх цэгт хүргэнэ. Мөн орон нутгийн унаанд тавина.
+          </p>
+          <h5 className="dark-blue">Дэлгэрэнгүй...</h5>
+        </div>
+        <div className="col">
+          <img
+            className="w-100"
+            src="https://cdn.itoim.mn/media/imagel/14127/image.jpeg"
+            alt=""
+          />
+          <p className="text-muted my-3">НИЙТЭЛСЭН ОН САР:2023-03-24</p>
+          <h3 className="dark-blue">
+            “Nike”-ийн үүсгэн байгуулагч Фил Найтын амжилтын нууц
+          </h3>
+          <p className="text-secondary">
+            Улаанбаатар хотын бүх цэгт хүргэнэ. Мөн орон нутгийн унаанд тавина.
+          </p>
+          <h5 className="dark-blue">Дэлгэрэнгүй...</h5>
+        </div>
+      </div>
     </section>
-    )
+  );
 }
-export default Section8

@@ -6,10 +6,13 @@ import products from "../data/products";
 import { Modal } from "react-bootstrap";
 import SignUp from "./SignUp";
 import { Routes, Route, Link } from "react-router-dom";
-import menus from "../data/menus";
+import menus from "../data/categories";
 import { Nav, Stack, NavLink } from "react-bootstrap";
 import SubMenu from "./SubMenu";
 import Badge from "@mui/material/Badge";
+import CloseIcon from "@mui/icons-material/Close";
+import HighlightOffIcon from "@mui/icons-material/HighlightOff";
+import Cart from "./Cart";
 function Header({ addWishlist, setAddWishlist, downWishList }) {
   const [list, setList] = useState(false);
   const [show, setShow] = useState(false);
@@ -20,7 +23,7 @@ function Header({ addWishlist, setAddWishlist, downWishList }) {
   };
 
   return (
-    <header>
+    <header className="container">
       <div className="hstack" id="up">
         <p1 className="my-3 text-black-50">Утас: (+976) 9988-2655</p1>
         <p1 className="m-2 ms-auto text-black-50">Киткат ХХК</p1>
@@ -50,10 +53,43 @@ function Header({ addWishlist, setAddWishlist, downWishList }) {
           <Link to={"/signup"} onClick={() => handleProduct()}>
             <p className="sign-in">НЭВТРЭХ/БҮРТГҮҮЛЭХ</p>
           </Link>
-          <i className="bi bi-search text-danger " style={{ fontSize: 25 }}></i>
+          <i
+            className="bi bi-search pink"
+            style={{ fontSize: 25 }}
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasWithBothOptions"
+            aria-controls="offcanvasWithBothOptions"
+          ></i>
+          <div
+            class="offcanvas offcanvas-top search-offcanvas"
+            data-bs-scroll="true"
+            tabindex="-1"
+            id="offcanvasWithBothOptions"
+            aria-labelledby="offcanvasWithBothOptionsLabel"
+          >
+            <div class="offcanvas-header container hstack justify-content-end p-0 mt-3 h-25">
+              <HighlightOffIcon
+                className=""
+                data-bs-dismiss="offcanvas"
+                aria-label="Close"
+              ></HighlightOffIcon>
+            </div>
+
+            <div class="offcanvas-body container d-flex align-items-start justify-content-center h-50 p-0">
+              <input
+                type=""
+                name=""
+                class="form-control rounded-3 w-50 me-3"
+                placeholder="Хайх"
+              />
+              <button className="border-0 rounded-4 btn pink-bg text-white col-1 btn-dark ">
+                ХАЙХ
+              </button>
+            </div>
+          </div>
           <Badge badgeContent={addWishlist.length} color="error">
             <i
-              className="bi bi-heart text-danger "
+              className="bi bi-heart pink "
               style={{ fontSize: 25 }}
               onClick={() => setList(!list)}
             ></i>
@@ -62,12 +98,7 @@ function Header({ addWishlist, setAddWishlist, downWishList }) {
           {list && (
             <WishBox addWishlist={addWishlist} downWishList={downWishList} />
           )}
-
-          <Badge badgeContent={addWishlist.length} color="error">
-            <Link to={"/cart"}>
-              <i class="bi bi-cart text-danger" style={{ fontSize: 25 }}></i>
-            </Link>
-          </Badge>
+          <Cart />
         </div>
       </div>
       <div></div>

@@ -7,8 +7,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Header from "./components/Header";
 import MainMenu from "./components/MainMenu";
-import Cart from "./components/Cart";
-import Section10 from "./components/Section10";
+
 import Footer from "./components/Footer";
 import Detail from "./components/Detail";
 import { useState } from "react";
@@ -17,6 +16,7 @@ import { Routes, Route, Link } from "react-router-dom";
 import SignUp from "./components/SignUp";
 import Home from "./components/Home";
 import Login from "./components/Login";
+import ProductBox from "./components/ProductBox";
 function App() {
   const [addWishlist, setAddWishlist] = useState([]);
   function downWishList(productId) {
@@ -24,7 +24,7 @@ function App() {
   }
 
   return (
-    <div className="App container">
+    <div className="App ">
       <Header
         addWishlist={addWishlist}
         setAddWishlist={setAddWishlist}
@@ -44,7 +44,8 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/detail" element={<Detail />} />
         <Route path="/login" element={<Login />} />
-        <Route
+        <Route path="/product-box" element={<ProductBox />} />
+        {/* <Route
           path="/cart"
           element={
             <Cart
@@ -53,9 +54,9 @@ function App() {
               downWishList={downWishList}
             />
           }
-        />
+        /> */}
       </Routes>
-      <Section10 />
+
       <Footer />
     </div>
   );

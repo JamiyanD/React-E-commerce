@@ -1,45 +1,53 @@
 function Footer() {
   return (
-    <footer class="blue py-5 green">
-      <div class="row">
-        <div class="col">
-          <img src="./img/logo-1 1.png" alt=""></img>
-          <p class="my-4">64 st james boulevard hoswick, ze2 7zj</p>
-          <hr></hr>
-          <img class="me-2" src="./img/google.png" alt=""></img>
-          <img class="me-2" src="./img/facebook.png" alt=""></img>
-          <img class="me-2" src="./img/whatsapp.png" alt=""></img>
+    <footer class="blue-dark my-5  green">
+      <div class="row container mx-auto text-white py-5">
+        <div class="col text-center">
+          <img
+            className="w-50"
+            src="https://logodix.com/logo/1167676.png"
+            alt=""
+          ></img>
+          <p class=" text-start ">
+            Бичиг хэрэг, Хаяг рекламын бүх төрлийн үйлчилгээ
+          </p>
         </div>
         <div class="col">
-          <h5 class="fs-5">Find product</h5>
-          <ul class="">
-            <li>Brownze arnold</li>
-            <li>Chronograph blue</li>
-            <li>Smart phones</li>
-            <li>Automatic watch</li>
-            <li>Hair straighteners</li>
+          <p class="fs-5 mb-4">ЧУХАЛ ХОЛБООС</p>
+          <ul class="text-secondary vstack gap-2 p-0">
+            <li>Нүүр</li>
+            <li>Холбоо Барих</li>
+            <li>Нэвтрэх/ Бүртгүүлэх</li>
+            <li>Үйлчилгээний нөхцөл</li>
+            <li>Хүргэлтийн Нөхцөл</li>
           </ul>
         </div>
         <div class="col">
-          <h5 class="fs-5">Get help</h5>
-          <ul class="">
-            <li>About us</li>
-            <li>Contact us</li>
-            <li>Return policy</li>
-            <li>Privacy policy</li>
-            <li>Payment policy</li>
+          <p class="fs-5 mb-4">ДЭЛГҮҮР</p>
+          <ul class="text-secondary vstack gap-2 p-0">
+            <li>Бичиг хэрэг</li>
+            <li>Бэлэг дурсгал</li>
+            <li>Хэвлэлийн Материал</li>
+            <li>Хаяг Хэвлэлийн Үйлдвэрлэл</li>
           </ul>
         </div>
         <div class="col">
-          <h5 class="fs-5">About us</h5>
-          <ul class="">
-            <li>News</li>
-            <li>Service</li>
-            <li>Our policy</li>
-            <li>Custmer care</li>
-            <li>Faq's</li>
+          <p class="fs-5 mb-4">БИДЭНТЭЙ ХОЛБОГДОХ</p>
+          <ul class="text-secondary vstack gap-2 p-0">
+            <li>(+976)-9988-2655</li>
+            <li>
+              Даваа–Баасан: 9:00-19:00 <br />
+              Бямба-Ням: 10:00-19:00
+            </li>
+            <li>d.jamiyan48@gmail.com</li>
+            <li>Jaya Jaya</li>
           </ul>
         </div>
+      </div>
+      <hr className="text-secondary m-0" />
+      <div className="d-flex justify-content-around container text-white ">
+        <p class=" my-4">2023 Киткат ХХК</p>
+        <p class=" my-4 ">Developed by Jaya</p>
       </div>
     </footer>
   );

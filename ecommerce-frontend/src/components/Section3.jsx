@@ -1,60 +1,53 @@
-import { Stack, Button, Heart } from "react-bootstrap";
-import Slider from "react-slick";
-import { products } from "../data/products";
-
-import Detail from "./Detail";
-import { useState } from "react";
-import { AiFillHeart } from "react-icons/ai";
-import ReactStars from "react-rating-stars-component";
-import ProductBox from "./ProductBox";
-function Section3({ setAddWishlist, addWishlist, downWishList }) {
-  var settings = {
-    dots: true,
-    infinite: false,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 4,
-    row: 2,
-    slidesPerRow: 2,
-  };
-
+import { Stack } from "react-bootstrap";
+function Section3() {
   return (
-    <section className="">
-      {/* <div className="hstack" id="product-up">
-        <h2 className="green">Popular products</h2>
-        <div id="genre" className="ms-auto">
-          <button class="green btn btn-outline-secondary rounded-pill bg-light m-2">
-            Cameras
+    <div class="my-5 hstack gap-5 section3-div">
+      <div className="section3-div1 col p-5 h-100">
+        <h1 className="text-white m-4">
+          Бэлэг<br></br> дурсгал
+        </h1>
+        <button className="btn rounded-5 border border-4 border-white text-white fw-semibold hstack m-4 section3-button">
+          Худалдан авах
+          <h3 className=" d-inline">
+            <i class="bi bi-arrow-right-short text-white "></i>
+          </h3>
+        </button>
+      </div>
+      <div className="section3-div2 col p-3 h-100">
+        <p className="text-white m-4 mb-0">Сурагчийн хэрэгсэл</p>
+        <h1 className="text-white ms-4 mt-0">Дэвтэр</h1>
+        <button className="btn rounded-5 border border-4 border-white text-white fw-semibold hstack m-4 section3-button">
+          Худалдан авах
+          <h3 className=" d-inline">
+            <i class="bi bi-arrow-right-short text-white "></i>
+          </h3>
+        </button>
+      </div>
+      <div className="d-flex flex-column justify-content-between h-100 col ">
+        <div className="section3-div3 ">
+          {" "}
+          <p className="text-white m-4 mb-0">Сурагчийн хэрэгсэл</p>
+          <h1 className="text-white ms-4 mt-0">Дэвтэр</h1>
+          <button className="btn rounded-5 border border-4 border-white text-white fw-semibold hstack m-4 section3-button">
+            Худалдан авах
+            <h3 className=" d-inline">
+              <i class="bi bi-arrow-right-short text-white "></i>
+            </h3>
           </button>
-          <button class="green  btn btn-outline-secondary rounded-pill bg-light m-2">
-            Laptops
-          </button>
-          <button class="green  btn btn-outline-secondary rounded-pill bg-light m-2">
-            Tablets
-          </button>
-          <button class="green  btn btn-outline-secondary rounded-pill bg-light m-2">
-            Mouse
+        </div>
+        <div className="section3-div4 ">
+          {" "}
+          <p className="text-white m-4 mb-0">Сурагчийн хэрэгсэл</p>
+          <h1 className="text-white ms-4 mt-0">Дэвтэр</h1>
+          <button className="btn rounded-5 border border-4 border-white text-white fw-semibold hstack m-4 section3-button">
+            Худалдан авах
+            <h3 className=" d-inline">
+              <i class="bi bi-arrow-right-short text-white "></i>
+            </h3>
           </button>
         </div>
       </div>
-      <div id="product-down " className="mt-2">
-        <Slider {...settings}>
-          {products.map((data) => {
-            return (
-              <ProductBox
-                downWishList={downWishList}
-                setAddWishlist={setAddWishlist}
-                addWishlist={addWishlist}
-                title={data.title}
-                imgUrl={data.imgUrl}
-                price={data.price}
-                data={data}
-              />
-            );
-          })}
-        </Slider>
-      </div> */}
-    </section>
+    </div>
   );
 }
 export default Section3;

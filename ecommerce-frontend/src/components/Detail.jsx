@@ -4,7 +4,6 @@ import { Stack } from "react-bootstrap";
 import Header from "./Header";
 import Mainmenu from "./MainMenu";
 import Carousel2 from "../data/carousel2";
-import Section10 from "./Section10";
 import Footer from "./Footer";
 import { useLocation } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";

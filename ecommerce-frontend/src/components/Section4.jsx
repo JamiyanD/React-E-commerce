@@ -1,53 +1,33 @@
 import { Stack } from "react-bootstrap";
+import ReactStars from "react-rating-stars-component";
 function Section4() {
   return (
-    <div class="my-5 hstack gap-5 section3-div">
-      <div className="section3-div1 col p-5 h-100">
-        <h1 className="text-white m-4">
-          Бэлэг<br></br> дурсгал
-        </h1>
-        <button className="btn rounded-5 border border-4 border-white text-white fw-semibold hstack m-4 section3-button">
-          Худалдан авах
-          <h3 className=" d-inline">
-            <i class="bi bi-arrow-right-short text-white "></i>
-          </h3>
-        </button>
-      </div>
-      <div className="section3-div2 col p-3 h-100">
-        <p className="text-white m-4 mb-0">Сурагчийн хэрэгсэл</p>
-        <h1 className="text-white ms-4 mt-0">Дэвтэр</h1>
-        <button className="btn rounded-5 border border-4 border-white text-white fw-semibold hstack m-4 section3-button">
-          Худалдан авах
-          <h3 className=" d-inline">
-            <i class="bi bi-arrow-right-short text-white "></i>
-          </h3>
-        </button>
-      </div>
-      <div className="d-flex flex-column justify-content-between h-100 col ">
-        <div className="section3-div3 ">
-          {" "}
-          <p className="text-white m-4 mb-0">Сурагчийн хэрэгсэл</p>
-          <h1 className="text-white ms-4 mt-0">Дэвтэр</h1>
-          <button className="btn rounded-5 border border-4 border-white text-white fw-semibold hstack m-4 section3-button">
-            Худалдан авах
-            <h3 className=" d-inline">
-              <i class="bi bi-arrow-right-short text-white "></i>
-            </h3>
-          </button>
+    <section class="">
+      <h1 className="text-center dark-blue">Ангилал</h1>
+      <p className="text-center text-muted">
+        Өргөн сонголт, хямд үнэ, чанартай бүтээгдэхүүнийг нэг дороос та яг одоо
+        захиалаад, хүргүүлээд аваарай.
+      </p>
+      <div className="hstack gap-5">
+        <div className="section4-div">
+          <div className="section4-div1 col h-100 w-100 "></div>
+          <h3 className="section4-h ">БИЧИГ ХЭРЭГ</h3>
         </div>
-        <div className="section3-div4 ">
-          {" "}
-          <p className="text-white m-4 mb-0">Сурагчийн хэрэгсэл</p>
-          <h1 className="text-white ms-4 mt-0">Дэвтэр</h1>
-          <button className="btn rounded-5 border border-4 border-white text-white fw-semibold hstack m-4 section3-button">
-            Худалдан авах
-            <h3 className=" d-inline">
-              <i class="bi bi-arrow-right-short text-white "></i>
-            </h3>
-          </button>
+        <div className="section4-div">
+          <div className="section4-div2 col h-100 w-100 "></div>
+          <h3 className="section4-h">ХЭВЛЭЛИЙН МАТЕРИАЛ</h3>
+        </div>
+        <div className="section4-div">
+          <div className="section4-div3 col h-100 w-100 "></div>
+          <h3 className="section4-h ">ХАЯГ ҮЙЛДВЭРЛЭЛИЙН МАТЕРИАЛ</h3>
+        </div>
+        <div className="section4-div">
+          <div className="section4-div4 col h-100 w-100"></div>
+          <h3 className="section4-h ">БЭЛЭГ ДУРСГАЛ</h3>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
+
 export default Section4;

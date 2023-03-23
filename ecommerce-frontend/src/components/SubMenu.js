@@ -1,5 +1,5 @@
 import { Nav, NavDropdown, NavLink } from "react-bootstrap";
-import menus from "../data/menus";
+import menus from "../data/categories";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useState } from "react";
 function SubMenu() {
