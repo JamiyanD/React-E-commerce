@@ -17,6 +17,10 @@ import SignUp from "./components/SignUp";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import ProductBox from "./components/ProductBox";
+import ProductDetail from "./components/ProductDetail";
+import AboutUs from "./components/AboutUs";
+import Blog from "./components/Blog";
+import Contact from "./components/Contact";
 function App() {
   const [addWishlist, setAddWishlist] = useState([]);
   function downWishList(productId) {
@@ -45,6 +49,10 @@ function App() {
         <Route path="/detail" element={<Detail />} />
         <Route path="/login" element={<Login />} />
         <Route path="/product-box" element={<ProductBox />} />
+        <Route path="/product" element={<ProductDetail />} />
+        <Route path="/about-us" element={<AboutUs />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/contact" element={<Contact />} />
         {/* <Route
           path="/cart"
           element={

@@ -15,6 +15,7 @@ import Stack from "@mui/material/Stack";
 export default function ProductBox() {
   const [defaultSelect, setDefaultSelect] = useState("");
   const [selectValue, setSelectValue] = useState("");
+  const [showlist, setShowList] = useState(false);
   async function handleChange(select) {
     setSelectValue(select.target.value);
   }
@@ -24,8 +25,14 @@ export default function ProductBox() {
       <div className="w-75 ms-4">
         <div className="hstack">
           <div>
-            <AppsIcon className="mx-2"></AppsIcon>
-            <FormatListBulletedIcon color="disabled"></FormatListBulletedIcon>
+            <AppsIcon
+              className="mx-2"
+              onClick={() => setShowList(false)}
+            ></AppsIcon>
+            <FormatListBulletedIcon
+              color="disabled"
+              onClick={() => setShowList(true)}
+            ></FormatListBulletedIcon>
           </div>
           <div className="ms-auto hstack">
             {" "}
@@ -71,25 +78,53 @@ export default function ProductBox() {
           </div>
         </div>
         <hr />
-        <div>
-          <ul className="d-flex flex-wrap p-0">
-            {product.map((product, index) => {
-              return (
-                <li className=" m-3 product-box-img " key={index}>
-                  <img src={product.imgURL} alt="" className="w-100 " />
-                  <p className="dark-blue text-center">{product.title}</p>
-                  <p className="text-secondary text-center">
-                    ₮ {product.price}
-                  </p>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
+        {showlist ? (
+          product.map((product) => (
+            <div className="hstack border-bottom">
+              <img
+                src={product.imgURL}
+                alt=""
+                className="product-box-list-img m-4"
+              />
+              <div>
+                <p className="fs-5 mb-2">{product.title}</p>
+                <p>₮{product.price}</p>
+                <div className="hstack gap-2">
+                  <button className="border-0 rounded-4 btn pink-bg text-white btn-dark ">
+                    <i class="bi bi-basket me-2"></i>САГСАНД ХИЙХ
+                  </button>
+                  <h3 className="m-0">
+                    <i class="bi bi-eye"></i>
+                  </h3>
+                </div>
+              </div>
+            </div>
+          ))
+        ) : (
+          <div>
+            <ul className="d-flex flex-wrap p-0 product">
+              {product.map((product, index) => {
+                return (
+                  <li className=" m-3 product-box-img " key={index}>
+                    <img src={product.imgURL} alt="" className="w-100 " />
+                    <p className="dark-blue text-center">{product.title}</p>
+                    <p className="text-secondary text-center">
+                      ₮ {product.price}
+                    </p>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        )}
         <hr />
         <div className="d-flex justify-content-center my-5">
           <Stack spacing={2}>
-            <Pagination count={10} size="large" className="dark-blue " />
+            <Pagination
+              count={10}
+              size="large"
+              className="dark-blue pagination"
+            />
           </Stack>
         </div>
       </div>

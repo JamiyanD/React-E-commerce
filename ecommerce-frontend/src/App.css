@@ -2,7 +2,7 @@
   font-family: "Poppins", sans-serif;
   font-size: 14px;
 }
-ul li {
+.product li {
   list-style: none;
 }
 
@@ -237,7 +237,7 @@ ul li {
 /**/
 
 .color-button:hover {
-  color: WHITE;
+  color: white !important;
   background-color: #e84f69;
   border-color: #e84f69;
 }
@@ -245,14 +245,59 @@ ul li {
   width: 208px;
   height: 208px;
 }
-.Mui-selected {
+.pagination .Mui-selected {
   background-color: white !important;
   border: 2px solid #01213a !important;
 }
-.MuiButtonBase-root:hover {
+.pagination .MuiButtonBase-root:hover {
   background-color: white !important;
   background-color: white !important;
   border: 2px solid #01213a !important;
+}
+.product-box-list-img {
+  height: 250px;
+}
+
+/**/
+
+.product-detail-thumbnail {
+  width: 120px;
+}
+.product-detail-img {
+  width: 600px;
+}
+.rate-div {
+  height: 60px;
+  background-color: #3d9cd2;
+}
+.iiz__btn {
+  background-color: transparent !important;
+  opacity: 50%;
+}
+
+/**/
+
+.about-us-absolute-img {
+  width: 200px;
+  height: 200px;
+  right: -55px;
+  bottom: 50px;
+  border: 20px solid white;
+}
+.about-us-background-img {
+  background-image: url("https://img.freepik.com/free-photo/brown-leather-shoes_74190-2611.jpg?w=1380&t=st=1679830606~exp=1679831206~hmac=c3e0a6330d97d59dfe3bd9b306adcb9a28196edaa62d81ad2b64a720faedf5d5");
+  background-size: cover;
+  background-size: 70%;
+  background-position: right;
+  background-repeat: no-repeat;
+  height: 500px;
+}
+
+/**/
+
+.blog-card {
+  width: 450px;
+  margin-right: 21px;
 }
 /* .slick-dots button {
   border: 0.1px solid gray !important;
@@ -357,10 +402,6 @@ ul li {
 
 .detail-img {
   height: 150px;
-}
-
-.bold-blue {
-  background-color: #003f62;
 }
 
 .detail-card {
