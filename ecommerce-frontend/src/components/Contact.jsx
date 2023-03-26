@@ -16,7 +16,7 @@ export default function Contact() {
   };
   return (
     <div className="container ">
-      <div className="d-flex gap-5">
+      <div className="d-flex gap-5 my-5">
         <div className="border-end w-50 ">
           <h1 className="dark-blue">Холбоо барих</h1>
           <p className="dark-blue fw-semibold">
@@ -107,13 +107,15 @@ export default function Contact() {
           </button>
         </div>
       </div>
-      <div style={{ height: "100vh", width: "100%" }}>
-        <GoogleMapReact
-          defaultCenter={defaultProps.center}
-          defaultZoom={defaultProps.zoom}
-        >
-          <AnyReactComponent lat={37.7749} lng={-122.4194} text="My Marker" />
-        </GoogleMapReact>
+      <div>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10696.455222449256!2d106.92076028772159!3d47.914835371338675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5d969250b4dca6f5%3A0x458d53bf252ffc5c!2sPeace%20Tower%2C%20Ulaanbaatar!5e0!3m2!1sen!2smn!4v1633434386176!5m2!1sen!2smn"
+          width="100%"
+          height="450"
+          allowfullscreen=""
+          loading="lazy"
+          className=""
+        ></iframe>
       </div>
     </div>
   );
