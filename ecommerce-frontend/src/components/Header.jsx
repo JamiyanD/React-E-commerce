@@ -28,10 +28,7 @@ function Header({ addWishlist, setAddWishlist, downWishList }) {
         <p1 className="my-3 text-black-50">Утас: (+976) 9988-2655</p1>
         <p1 className="m-2 ms-auto text-black-50">Киткат ХХК</p1>
       </div>
-      <div
-        id="down"
-        className=" d-flex justify-content-between align-items-center "
-      >
+      <div id="down" className=" d-flex align-items-center">
         {" "}
         <Link to={"/"} addWishlist={addWishlist}>
           <img
@@ -41,18 +38,64 @@ function Header({ addWishlist, setAddWishlist, downWishList }) {
             alt=""
           ></img>
         </Link>
-        <div className=" d-flex align-items-center fs-5 w-50">
-          <Nav className="">
+        <div className="  fs-5 w-50  ">
+          <Nav className="d-flex align-items-center justify-content-end gap-4 me-5">
             <SubMenu />
-            <NavLink className="">Бидний тухай</NavLink>
-            <NavLink className="">Мэдээ</NavLink>
-            <NavLink className="">Холбоо барих</NavLink>
+
+            <NavLink className="p-0" href="/about-us">
+              Бидний тухай
+            </NavLink>
+            <NavLink className="p-0" href="/blog">
+              Мэдээ
+            </NavLink>
+            <NavLink className="p-0" href="/contact">
+              Холбоо барих
+            </NavLink>
           </Nav>
         </div>
-        <div className="hstack gap-4">
-          <Link to={"/signup"} onClick={() => handleProduct()}>
-            <p className="sign-in">НЭВТРЭХ/БҮРТГҮҮЛЭХ</p>
-          </Link>
+        <div className="d-flex align-items-center gap-4 w-50 justify-content-end">
+          <div class="dropdown w-50 text-end">
+            <a
+              // type="button"
+              className="pink-hover dropdown-toggle text-black"
+              aria-expanded="false"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+            >
+              НЭВТРЭХ/БҮРТГҮҮЛЭХ
+            </a>
+            <form class="dropdown-menu p-4 dropdown-menu-end login-dropdown">
+              <div className="d-flex justify-content-between">
+                <p className="">Нэвтрэх</p>
+                <p className="pink ">Бүртгүүлэх</p>
+              </div>
+              <div class="mb-3 ">
+                <label className=" text-secondary ">Имэйл хаяг</label>
+                <input
+                  class="form-control  p-3 "
+                  type=""
+                  name="email"
+                  placeholder="Имэйл "
+                />
+              </div>
+              <div class="mb-3">
+                <label className="text-secondary">Нууц үг</label>
+                <input
+                  class="form-control  p-3"
+                  type=""
+                  name="email"
+                  placeholder="Нууц үг"
+                />
+              </div>
+
+              <button className="w-100 btn pink-bg btn-dark fw-semibold  border-0 rounded-5 p-3 text-white ">
+                Нэвтрэх
+              </button>
+              <p className="pink text-end mt-2 ">Нууц үгээ мартсан уу?</p>
+            </form>
+          </div>
+
           <i
             className="bi bi-search pink"
             style={{ fontSize: 25 }}

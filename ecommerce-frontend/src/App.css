@@ -26,13 +26,15 @@
   color: #e84f69 !important;
 }
 
+/**/
+
 .nav div a,
 .nav a,
 .sign-in {
   color: black;
 }
 
-.sign-in:hover {
+.pink-hover:hover {
   color: #e84f69;
 }
 
@@ -43,6 +45,18 @@
 .dropdown-toggle::after {
   display: none !important;
 }
+.nav-dropdown {
+  font-size: 20px !important;
+}
+.submenu .dropdown:hover .dropdown-menu {
+  display: block;
+  margin-top: 0; /* remove the gap so it doesn't close */
+}
+.login-dropdown {
+  width: 300px;
+}
+
+/**/
 
 .main-carousel1 {
   background-image: url("https://img.freepik.com/free-photo/still-life-perfectly-ordered-fitness-gym-accessories_52683-100701.jpg?w=1380&t=st=1679410557~exp=1679411157~hmac=7b1741966a7946b8093075693c708328409653c756d233e977377db31a9598b8");
@@ -298,6 +312,16 @@
 .blog-card {
   width: 450px;
   margin-right: 21px;
+}
+
+/**/
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: "Always Show Up/Down Arrows";
+}
+.cart-input {
+  width: 60px;
 }
 /* .slick-dots button {
   border: 0.1px solid gray !important;
