@@ -158,7 +158,7 @@ const WishBox = ({ addWishlist, downWishList }) => {
       {addWishlist.map((wish) => {
         return (
           <div className="wishlist-product" key={wish.id}>
-            <img src={wish.imgUrl} alt={wish.imgUrl} />
+            <img src={wish.imgURL} alt={wish.imgURL} />
             <div className="product-content">
               <p className="product-name">{wish.title}</p>
               <p className="product-price">{wish.price}</p>

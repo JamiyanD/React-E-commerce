@@ -1,15 +1,21 @@
 import Badge from "@mui/material/Badge";
 import CloseIcon from "@mui/icons-material/Close";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { CartContext } from "../context/CartContext";
+import { Link } from "react-router-dom";
 export default function Cart() {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const toggleShow = () => setShow((s) => !s);
+  const [cartList, setCartList] = useContext(CartContext);
+  function downCartList(id) {
+    setCartList(cartList.filter((product) => product.id !== id));
+  }
   return (
     <div>
-      <Badge badgeContent="" color="error">
+      <Badge badgeContent={cartList.length} color="error">
         <i
           class="bi bi-cart pink"
           onClick={toggleShow}
@@ -34,7 +40,43 @@ export default function Cart() {
         </Offcanvas.Header>
         <hr />
         <Offcanvas.Body>
-          <p className="text-center text-secondary">Сагс хоосон.</p>
+          {cartList.length ? (
+            <div className="h-100 d-flex flex-column justify-content-between">
+              <div>
+                {cartList.map((cart) => (
+                  <div className="p-2 d-flex border-bottom">
+                    <img src={cart.imgURL} alt="" className="col-4" />
+                    <div className="col-6 mx-3">
+                      <p className="dark-blue">{cart.title}</p>
+                      <p className="pink">1 x ₮{cart.price}</p>
+                    </div>
+                    <button
+                      type="button"
+                      class="btn-close col-1 mt-4"
+                      aria-label="Close"
+                      onClick={() => downCartList(cart.id)}
+                    ></button>
+                  </div>
+                ))}
+              </div>
+              <div className="border-top pt-2">
+                <div className="d-flex">
+                  <p className="dark-blue fs-4">ДҮН</p>
+                  <p className="pink ms-auto fs-4">₮ 4,000</p>
+                </div>
+                <Link to={"/cart"}>
+                  <button className="border-0 rounded-5 btn grey-bg dark-blue text-white w-100 btn-dark p-3 fw-semibold">
+                    САГС
+                  </button>
+                </Link>
+                <button className="border-0 rounded-5 btn pink-bg text-white w-100 btn-dark p-3 fw-semibold mt-3">
+                  ТӨЛБӨР ТООЦОО
+                </button>
+              </div>
+            </div>
+          ) : (
+            <p className="text-center text-secondary">Сагс хоосон.</p>
+          )}
         </Offcanvas.Body>
       </Offcanvas>
     </div>

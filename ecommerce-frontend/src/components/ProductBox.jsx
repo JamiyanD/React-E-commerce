@@ -12,7 +12,13 @@ import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import AppsIcon from "@mui/icons-material/Apps";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
-export default function ProductBox() {
+import { Carousel } from "react-bootstrap";
+import Products from "./Products";
+export default function ProductBox({
+  addWishlist,
+  setAddWishlist,
+  downWishList,
+}) {
   const [defaultSelect, setDefaultSelect] = useState("");
   const [selectValue, setSelectValue] = useState("");
   const [showlist, setShowList] = useState(false);
@@ -94,7 +100,11 @@ export default function ProductBox() {
                     <i class="bi bi-basket me-2"></i>САГСАНД ХИЙХ
                   </button>
                   <h3 className="m-0">
-                    <i class="bi bi-eye"></i>
+                    <i
+                      class="bi bi-eye"
+                      data-bs-toggle="modal"
+                      data-bs-target="#exampleModal"
+                    ></i>
                   </h3>
                 </div>
               </div>
@@ -102,16 +112,15 @@ export default function ProductBox() {
           ))
         ) : (
           <div>
-            <ul className="d-flex flex-wrap p-0 product">
-              {product.map((product, index) => {
+            <ul className="d-flex flex-wrap p-0 product ">
+              {product.map((data, index) => {
                 return (
-                  <li className=" m-3 product-box-img " key={index}>
-                    <img src={product.imgURL} alt="" className="w-100 " />
-                    <p className="dark-blue text-center">{product.title}</p>
-                    <p className="text-secondary text-center">
-                      ₮ {product.price}
-                    </p>
-                  </li>
+                  <Products
+                    data={data}
+                    addWishlist={addWishlist}
+                    setAddWishlist={setAddWishlist}
+                    downWishList={downWishList}
+                  />
                 );
               })}
             </ul>
@@ -126,6 +135,100 @@ export default function ProductBox() {
               className="dark-blue pagination"
             />
           </Stack>
+        </div>
+      </div>
+
+      <div
+        class="modal fade h-50 product-modal "
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-lg bg-white  modal-dialog-centered h-100">
+          <div class="modal-content h-100">
+            <div class="modal-body d-flex h-100 p-0">
+              <div
+                id="carouselExampleControls"
+                class="carousel slide w-50 h-100 carousel-dark"
+                data-bs-ride="carousel"
+              >
+                <div class="carousel-inner h-100">
+                  <div class="carousel-item active h-100">
+                    <img
+                      src="https://img.freepik.com/free-photo/new-sneakers_93675-130032.jpg?w=1380&t=st=1679499554~exp=1679500154~hmac=5c0f10e4ed882e89543abd0a3a53b8e6457e0c8b54a68e881a28e03dc537c31b"
+                      class=" w-100 h-100"
+                      alt="..."
+                    />
+                  </div>
+                  <div class="carousel-item h-100">
+                    <img
+                      src="https://img.freepik.com/free-photo/shoes_1203-8153.jpg?w=1380&t=st=1679496573~exp=1679497173~hmac=6ab86931f35b6506dd844fcf08f30404e5e25832975d2762c33cece0eb69f84d"
+                      class=" w-100 h-100"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+                <button
+                  class="carousel-control-prev"
+                  type="button"
+                  data-bs-target="#carouselExampleControls"
+                  data-bs-slide="prev"
+                >
+                  <span
+                    class="carousel-control-prev-icon"
+                    aria-hidden="true"
+                  ></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button
+                  class="carousel-control-next"
+                  type="button"
+                  data-bs-target="#carouselExampleControls"
+                  data-bs-slide="next"
+                >
+                  <span
+                    class="carousel-control-next-icon"
+                    aria-hidden="true"
+                  ></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+              {/* <img
+                src="https://img.freepik.com/free-photo/new-sneakers_93675-130032.jpg?w=1380&t=st=1679499554~exp=1679500154~hmac=5c0f10e4ed882e89543abd0a3a53b8e6457e0c8b54a68e881a28e03dc537c31b"
+                alt=""
+                className="w-50  h-100"
+              /> */}
+              <div className="w-50 ps-3">
+                <div className="w-100 text-end">
+                  <button
+                    type="button"
+                    className="btn-close m-1"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <p className="fs-4 mb-2 dark-blue">
+                  ТЭМДЭГЛЭЛИЙН ДЭВТЭР 117Х79мм
+                </p>
+                <p className=" fs-5">₮ 2,000</p>
+                <p className="dark-blue">Тоо хэмжээ: </p>
+                <div className="d-flex gap-3">
+                  <input
+                    type="number"
+                    name="quantity"
+                    className=" rounded-5  form-control cart-input "
+                  />
+                  <button className="border-0 rounded-pill btn pink-bg text-white btn-dark p-3">
+                    <i class="bi bi-basket me-2"></i>САГСАНД ХИЙХ
+                  </button>
+                </div>
+                <hr />
+                <span className="dark-blue">Ангилал: </span>
+                <span className="text-secondary ">Тэмдэглэлийн дэвтэр</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -46,7 +46,16 @@ function App() {
 
         <Route path="/detail" element={<Detail />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/product-box" element={<ProductBox />} />
+        <Route
+          path="/product-box"
+          element={
+            <ProductBox
+              addWishlist={addWishlist}
+              setAddWishlist={setAddWishlist}
+              downWishList={downWishList}
+            />
+          }
+        />
         <Route path="/product" element={<ProductDetail />} />
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/blog" element={<Blog />} />
