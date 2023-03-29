@@ -35,7 +35,8 @@ export default function UsersList() {
 
   async function axiosScreen() {
     const AXIOS_DATA = await axios.get(URL);
-    setUsers(AXIOS_DATA.data);
+    console.log(AXIOS_DATA.data.data);
+    setUsers(AXIOS_DATA.data.data);
     return AXIOS_DATA;
   }
 
@@ -49,7 +50,7 @@ export default function UsersList() {
       userId: userId,
     };
     const AXIOS_DATA = await axios.delete(URL, { data });
-    setUsers(AXIOS_DATA.data);
+    setUsers(AXIOS_DATA.data.data);
     setSelected([]);
   }
 
@@ -192,10 +193,10 @@ export default function UsersList() {
                       <TableCell sx={{ padding: 0 }}>
                         <Checkbox
                           onClick={(event) =>
-                            handleCheckbox(event, parametr.id)
+                            handleCheckbox(event, parametr._id)
                           }
                           color="primary"
-                          checked={isSelected(parametr.id)}
+                          checked={isSelected(parametr._id)}
                         />
                       </TableCell>
 
@@ -213,7 +214,7 @@ export default function UsersList() {
                           aria-label="more"
                           id="long-button"
                           aria-haspopup="true"
-                          onClick={handleMenuClick(parametr.id)}
+                          onClick={handleMenuClick(parametr._id)}
                         >
                           <MoreVertIcon />
                         </IconButton>
@@ -223,19 +224,19 @@ export default function UsersList() {
                             "aria-labelledby": "long-button",
                           }}
                           anchorEl={anchorEl}
-                          open={openElem === parametr.id}
+                          open={openElem === parametr._id}
                           onClose={handleClose}
                           PaperProps={{}}
                         >
                           <MenuItem
                             component={Link}
-                            to={`/user/edit/${parametr.id}`}
+                            to={`/user/edit/${parametr._id}`}
                           >
                             Edit
                           </MenuItem>
                           <MenuItem
                             onClick={() => {
-                              handleDelete(parametr.id);
+                              handleDelete(parametr._id);
                               handleClose();
                             }}
                           >

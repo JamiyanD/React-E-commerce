@@ -87,7 +87,7 @@ const product = [
     id: 13,
     title: "Who avoids a pain that produces?",
     imgURL:
-      "https://img.freepik.com/premium-photo/sneaker-shoes-isolated-white-background-side-view_849973-12.jpg?w=1380",
+      "https://img.freepik.com/premium-photo/sneaker-shoes-isolated-white-background-side-view_849973-12.jpg?w=1380                                 ",
     price: 2000,
   },
   {

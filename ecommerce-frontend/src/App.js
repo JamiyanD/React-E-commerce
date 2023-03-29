@@ -9,7 +9,7 @@ import MainMenu from "./components/MainMenu";
 import Footer from "./components/Footer";
 import Detail from "./components/Detail";
 import { useState } from "react";
-import { products } from "./data/products";
+
 import { Routes, Route, Link } from "react-router-dom";
 import Home from "./components/Home";
 import Login from "./components/Login";

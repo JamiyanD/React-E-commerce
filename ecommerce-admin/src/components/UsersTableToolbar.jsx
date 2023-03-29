@@ -88,10 +88,14 @@ export default function UsersTableToolbar(props) {
     e.preventDefault();
     console.log(currentUser.role);
     const AXIOS_DATA = await axios.post(URL, currentUser);
-    console.log(AXIOS_DATA.status);
+    console.log(AXIOS_DATA);
     if (AXIOS_DATA.status == 200) {
       navigate("/usersList");
       setOpen(false);
+      const AXIOS_DATA = await axios.get(url);
+      console.log(AXIOS_DATA.data.data);
+      setUsers(AXIOS_DATA.data.data);
+      setCurrentUser("");
     }
   }
 

@@ -23,6 +23,7 @@ import EditIcon from "@mui/icons-material/Edit";
 export default function EditUser() {
   const navigate = useNavigate();
   const { id } = useParams();
+
   const url = "http://localhost:8080/users/users";
   const [currentUser, setCurrentUser] = useState({
     full_name: "",
@@ -36,8 +37,9 @@ export default function EditUser() {
   }, []);
   async function axiosProduct() {
     const AXIOS_DATA = await axios.put(url, { userId: id });
+    console.log(AXIOS_DATA);
     if (AXIOS_DATA.status == 200) {
-      setCurrentUser(AXIOS_DATA.data[0]);
+      setCurrentUser(AXIOS_DATA.data.data);
     }
   }
 

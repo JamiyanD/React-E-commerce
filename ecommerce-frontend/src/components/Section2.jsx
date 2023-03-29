@@ -1,6 +1,5 @@
 import { Stack, Carousel } from "react-bootstrap";
 import AliceCarousel from "react-alice-carousel";
-import carousel2Data from "../data/carousel2";
 
 function Section2() {
   return (

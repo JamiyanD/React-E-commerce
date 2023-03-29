@@ -2,7 +2,6 @@ import InputGroup from "react-bootstrap/InputGroup";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useState } from "react";
-import products from "../data/products";
 import { Modal } from "react-bootstrap";
 import SignUp from "./SignUp";
 import { Routes, Route, Link } from "react-router-dom";

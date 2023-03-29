@@ -1,6 +1,6 @@
 function Footer() {
   return (
-    <footer class="blue-dark my-5  green">
+    <footer class="dark-blue-bg my-5  green">
       <div class="row container mx-auto text-white py-5">
         <div class="col text-center">
           <img

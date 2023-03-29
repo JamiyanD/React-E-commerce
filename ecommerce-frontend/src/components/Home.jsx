@@ -18,7 +18,6 @@ import Section8 from "./Section8";
 import Footer from "./Footer";
 import Detail from "./Detail";
 import { useState } from "react";
-import { products } from "../data/products";
 import { Routes, Route, Link } from "react-router-dom";
 import SignUp from "./SignUp";
 function Home({ addWishlist, setAddWishlist, downWishList }) {

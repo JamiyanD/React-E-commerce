@@ -49,7 +49,7 @@ export default function Products({
             <p className="dark-blue ">{data.title}</p>
             <p className="text-secondary ">₮ {data.price}</p>
             <button
-              className="border-0 rounded-4 btn blue-dark-bg text-white btn-dark "
+              className="border-0 rounded-4 btn dark-blue-bg text-white btn-dark "
               onClick={() => {
                 addCartList(data.id);
               }}

@@ -1,23 +1,34 @@
-console.log("it is my app.js");
-import express from "express";
-import cors from "cors";
-import fs from "fs";
-import bcrypt from "bcrypt";
-import productCategories_router from "./routes/productCategories.js";
-import userRoles_router from "./routes/userRoles.js";
-import users_router from "./routes/users.js";
-import products_router from "./routes/products.js";
+const cors = require("cors");
+// import fs from "fs";
+// import bcrypt from "bcrypt";
+// import productCategories_router from "./routes/productCategories.js";
+// import userRoles_router from "./routes/userRoles.js";
+// import products_router from "./routes/products.js";
+const express = require("express");
+const mongoose = require("mongoose");
+const users_router = require("./routes/users-api");
+
 const app = express();
 const PORT = 8080;
-const SALT_ROUNDS = 10;
+const MONGO_CONNECTION_STRING =
+  "mongodb+srv://jamiyan:jamiyan48@jaya.qs1n9nb.mongodb.net/ishop";
 
 app.use(cors());
 app.use(express.json());
-app.use("/users", userRoles_router);
-app.use("/products", productCategories_router);
+// app.use("/users", userRoles_router);
+// app.use("/products", productCategories_router);
 app.use("/users", users_router);
-app.use("/products", products_router);
+// app.use("/products", products_router);
 
+app.listen(PORT, () => {
+  mongoose
+    .connect(MONGO_CONNECTION_STRING)
+    .then(() => console.log("Database connected succesfully"))
+    .catch((error) => console.error(error));
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
+
+// const SALT_ROUNDS = 10;
 // app.post("/user", (request, response) => {
 //   const body = request.body;
 //   const isEdit = body.isEdit;
@@ -426,7 +437,3 @@ app.use("/products", products_router);
 //     }
 //   });
 // });
-
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
