@@ -13,9 +13,9 @@ import TextField from "@mui/material/TextField";
 import IconButton from "@mui/material/IconButton";
 import toast, { Toaster } from "react-hot-toast";
 import Container from "@mui/material/Container";
-import UsersTableHead from "../components/UsersTableHead";
-import UserTableToolbar from "../components/UsersTableToolbar";
-import UsersTableToolbar from "../components/UsersTableToolbar";
+import UsersTableHead from "./UsersTableHead";
+import UserTableToolbar from "./UsersTableToolbar";
+import UsersTableToolbar from "./UsersTableToolbar";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -29,15 +29,20 @@ import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Pagination from "@mui/material/Pagination";
 import { Link } from "react-router-dom";
-export default function UsersList() {
-  const URL = "http://localhost:8080/users/users";
+import CategoryTableHead from "./CategoryTableHead";
+import CategoryTableToolbar from "./CategotyTableToolbar";
+import EditCategory from "./EditCategory";
+
+export default function CategoryList() {
+  const URL = "http://localhost:8080/products/category";
   const [users, setUsers] = useState([]);
+  const [currentCategory, setCurrentCategory] = useState("");
+  const [openCategoryEdit, setOpenCategoryEdit] = useState(false);
 
   async function axiosScreen() {
     const AXIOS_DATA = await axios.get(URL);
     console.log(AXIOS_DATA.data.data);
     setUsers(AXIOS_DATA.data.data);
-    return AXIOS_DATA;
   }
 
   useEffect(() => {
@@ -52,6 +57,14 @@ export default function UsersList() {
     const AXIOS_DATA = await axios.delete(URL, { data });
     setUsers(AXIOS_DATA.data.data);
     setSelected([]);
+  }
+
+  async function handleEdit(id) {
+    setOpenCategoryEdit(true);
+    console.log(id);
+    const AXIOS_DATA = await axios.put(URL, { userId: id });
+    setCurrentCategory({ ...currentCategory, ...AXIOS_DATA.data.data });
+    console.log(currentCategory);
   }
 
   // menu
@@ -159,7 +172,7 @@ export default function UsersList() {
     <Box sx={{ backgroundColor: "white" }} className="rounded-5 p-3">
       <Box sx={{ flexGrow: 1, p: 2 }} className="border border-1 rounded-5">
         <Box>
-          <UsersTableToolbar
+          <CategoryTableToolbar
             numSelected={selected.length}
             handleDelete={handleDelete}
             selected={selected}
@@ -169,7 +182,7 @@ export default function UsersList() {
 
           <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
-              <UsersTableHead
+              <CategoryTableHead
                 setSelected={setSelected}
                 users={users}
                 selected={selected}
@@ -188,6 +201,7 @@ export default function UsersList() {
                       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                       tabIndex={-1}
                       key={index}
+
                       // selected={isSelected(parametr.id)}
                     >
                       <TableCell sx={{ padding: 0 }}>
@@ -200,24 +214,20 @@ export default function UsersList() {
                         />
                       </TableCell>
 
-                      <TableCell>{parametr.full_name}</TableCell>
-                      <TableCell>{parametr.email}</TableCell>
-                      <TableCell>{parametr.role}</TableCell>
-                      <TableCell> {parametr.password}</TableCell>
-                      <TableCell component="th" scope="row">
-                        {parametr.phone_number}
+                      <TableCell className="fs-3 text-muted" align="center">
+                        {parametr.category_name}
                       </TableCell>
-                      <TableCell>{parametr.joined_date}</TableCell>
-                      <TableCell>
-                        {" "}
-                        <IconButton
+
+                      <TableCell align="center">
+                        <button
+                          className="btn btn-secondary text-secondary bg-light border-0"
                           aria-label="more"
                           id="long-button"
                           aria-haspopup="true"
                           onClick={handleMenuClick(parametr._id)}
                         >
-                          <MoreVertIcon />
-                        </IconButton>
+                          Actions <ExpandMoreIcon className=" text-secondary" />
+                        </button>
                         <Menu
                           id="long-menu"
                           MenuListProps={{
@@ -229,8 +239,10 @@ export default function UsersList() {
                           PaperProps={{}}
                         >
                           <MenuItem
-                            component={Link}
-                            to={`/user/edit/${parametr._id}`}
+                            onClick={() => {
+                              handleEdit(parametr._id);
+                              handleClose();
+                            }}
                           >
                             Edit
                           </MenuItem>
@@ -293,6 +305,13 @@ export default function UsersList() {
             />
           </Stack>
         </Box>
+        <EditCategory
+          openCategoryEdit={openCategoryEdit}
+          setOpenCategoryEdit={setOpenCategoryEdit}
+          currentCategory={currentCategory}
+          setCurrentCategory={setCurrentCategory}
+          setUsers={setUsers}
+        />
       </Box>
     </Box>
   );

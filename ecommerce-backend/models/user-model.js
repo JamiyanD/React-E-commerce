@@ -7,7 +7,5 @@ let usersSchema = new mongoose.Schema({
   joined_data: String,
   password: Number,
 });
-
-const Users = mongoose.model("users", usersSchema);
-
-module.exports = Users;
+const User = mongoose.model("users", usersSchema);
+module.exports = User;

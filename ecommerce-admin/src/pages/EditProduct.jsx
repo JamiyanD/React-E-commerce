@@ -38,11 +38,11 @@ export default function EditProduct() {
     // quantity: "",
   });
 
-  const CATEGORIES_URL = "http://localhost:8080/products/product-categories";
+  const CATEGORIES_URL = "http://localhost:8080/products/category";
   async function fetchCategories() {
     const FETCHED_DATA = await fetch(CATEGORIES_URL);
     const FETCHED_JSON = await FETCHED_DATA.json();
-    setCategories(FETCHED_JSON);
+    setCategories(FETCHED_JSON.data);
   }
   useEffect(() => {
     fetchCategories();
@@ -200,8 +200,8 @@ export default function EditProduct() {
                 {categories &&
                   categories.map((category, index) => {
                     return (
-                      <MenuItem key={index} value={category.name}>
-                        {category.name}
+                      <MenuItem key={index} value={category.category_name}>
+                        {category.category_name}
                       </MenuItem>
                     );
                   })}

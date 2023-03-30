@@ -22,14 +22,14 @@ import FormHelperText from "@mui/joy/FormHelperText";
 import EditIcon from "@mui/icons-material/Edit";
 import { ModalContext } from "../context/new-user-context";
 import NewUser from "../pages/NewUser";
-export default function UsersTableToolbar(props) {
-  const navigate = useNavigate();
+import AddCategory from "./AddCategory";
+export default function CategoryTableToolbar(props) {
   const [roles, setRoles] = useState([]);
   const [searchColor, setSearchColor] = useState(false);
   const URL = "http://localhost:8080/users/users";
   const { numSelected, setUsers, handleDelete, selected, axiosScreen } = props;
   const [selectValue, setSelectValue] = React.useState("");
-  const [open, setOpen] = useContext(ModalContext);
+  const [openAddCategory, setOpenAddCategory] = useState(false);
 
   async function handleSearch(e) {
     e.preventDefault();
@@ -41,42 +41,6 @@ export default function UsersTableToolbar(props) {
       setUsers(AXIOS_DATA.data);
     }
   }
-
-  const CATEGORIES_URL = "http://localhost:8080/users/roles";
-  async function fetchCategories() {
-    const FETCHED_DATA = await fetch(CATEGORIES_URL);
-    const FETCHED_JSON = await FETCHED_DATA.json();
-    console.log(FETCHED_JSON);
-    setRoles(FETCHED_JSON.data);
-  }
-  useEffect(() => {
-    fetchCategories();
-    setOpen(false);
-  }, []);
-
-  async function handleChange(select) {
-    const AXIOS_DATA = await axios.get(URL);
-    setUsers(AXIOS_DATA.data);
-    if (select.target.value) {
-      const filteredUser = AXIOS_DATA.data.filter(
-        (user) => user.role == select.target.value
-      );
-
-      setUsers(filteredUser);
-    }
-    console.log(select.target.value);
-    setSelectValue(select.target.value);
-  }
-
-  const ROLE_URL = "http://localhost:8080/users/userRoles";
-  async function fetchRoles() {
-    const FETCHED_DATA = await fetch(ROLE_URL);
-    const FETCHED_JSON = await FETCHED_DATA.json();
-    setRoles(FETCHED_JSON);
-  }
-  useEffect(() => {
-    fetchRoles();
-  }, []);
 
   return (
     <Toolbar
@@ -136,57 +100,20 @@ export default function UsersTableToolbar(props) {
         </Stack>
       ) : (
         <Stack direction="row" alignItems="center" className="ms-auto" gap={2}>
-          <FormControl
-            sx={{
-              minWidth: 140,
-            }}
-            size="small"
-            className="bg-light rounded-3"
-          >
-            <Select
-              value={selectValue}
-              className="rounded-3"
-              sx={{
-                boxShadow: "none",
-                ".MuiOutlinedInput-notchedOutline": { border: 0 },
-                "&.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
-                  {
-                    border: 0,
-                  },
-                "&.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                  {
-                    border: "1px solid lightgrey",
-                  },
-              }}
-              onChange={handleChange}
-              inputProps={{ "aria-label": "Without label" }}
-              displayEmpty
-              IconComponent={(props) => (
-                <ExpandMoreIcon className="m-2 text-black-50" {...props} />
-              )}
-            >
-              <MenuItem value="">All</MenuItem>
-              {roles &&
-                roles.map((role, index) => {
-                  return (
-                    <MenuItem key={index} value={role.roles_name}>
-                      {role.roles_name}
-                    </MenuItem>
-                  );
-                })}
-            </Select>
-          </FormControl>
           <Button
             variant="contained"
             className="color-blue rounded-3"
             onClick={() => {
-              console.log(open);
-              setOpen(true);
+              setOpenAddCategory(true);
             }}
           >
-            Add User
+            Add Category
           </Button>
-          <NewUser setUsers={setUsers} />
+          <AddCategory
+            setUsers={setUsers}
+            setOpenAddCategory={setOpenAddCategory}
+            openAddCategory={openAddCategory}
+          />
         </Stack>
       )}
     </Toolbar>

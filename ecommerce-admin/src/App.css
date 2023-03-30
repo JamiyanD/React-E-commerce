@@ -1,149 +1,156 @@
-.App{
-  font-family: 'Inter', Helvetica, sans-serif;
+.App {
+  font-family: "Inter", Helvetica, sans-serif;
 }
-a{
+a {
   text-decoration: none;
 }
 
-.dropdown-toggle::after{
+.dropdown-toggle::after {
   display: none;
 }
 .navbar-toggler:focus,
-.navbar-toggler:active{
-    box-shadow: none;
+.navbar-toggler:active {
+  box-shadow: none;
 }
-.navbar-toggler{
+.navbar-toggler {
   border: none;
 }
-.dropdown-menu{
+.dropdown-menu {
   border: none;
   padding: 0;
 }
-.dropdown-item:hover{
-  color: #2C9AFF ;
+.dropdown-item:hover {
+  color: #2c9aff;
 }
-.dropdown-title:hover{
-  color: #2C9AFF ;
+.dropdown-title:hover {
+  color: #2c9aff;
 }
 
-.MuiBreadcrumbs-separator{
+.MuiBreadcrumbs-separator {
   color: white;
 }
-.color-blue{
-  background-color: #2C9AFF !important;
-
+.color-blue {
+  background-color: #2c9aff !important;
 }
-.sign-logo{
+.sign-logo {
   height: 70px;
   width: 100px;
 }
-.sign-button{
+.sign-button {
   width: 380px;
 }
 
-.swal-button{
-  background-color:#2C9AFF ;
+.swal-button {
+  background-color: #2c9aff;
   font-weight: normal;
 }
-.swal-text{
+.swal-text {
   text-align: center;
   width: 70%;
 }
-.swal-footer{
+.swal-footer {
   text-align: center;
 }
 
-.offcanvas{
+.offcanvas {
   width: 25% !important;
 }
 
-.toolbar{
+.toolbar {
   height: 160px;
 }
 
-.content{
+.content {
   position: relative;
   bottom: 70px;
 }
-.sign-in{
+.sign-in {
   position: relative;
   top: 200px;
 }
 
-.MuiButton-contained,.MuiButtonBase-root {
+.MuiButton-contained,
+.MuiButtonBase-root {
   text-transform: none !important;
 }
 
-.MuiPaginationItem-page{
-  background-color: #2C9AFF !important;
-  color:white !important;
+.MuiPaginationItem-page {
+  background-color: #2c9aff !important;
+  color: white !important;
   border-radius: 20% !important;
 }
-.MuiPaginationItem-icon{
+.MuiPaginationItem-icon {
   color: gray;
 }
 
-.form-control:focus{
-  box-shadow:none;
+.form-control:focus {
+  box-shadow: none;
   border-color: lightgrey;
-  
 }
 
-.css-19kzrtu{
+.css-19kzrtu {
   padding: 0 !important;
 }
 
-.new-product-radio{
+.new-product-radio {
   width: 250px;
   height: 60px;
   border: 1px solid lightgray;
   border-radius: 10px;
   border-style: dashed;
   padding: 10px;
-};
-
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button {   
-    -webkit-appearance: "Always Show Up/Down Arrows";
 }
 
-.add-user-modal{
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: "Always Show Up/Down Arrows";
+}
+
+.add-user-modal {
   position: absolute;
   top: 50%;
-  left:50%;
+  left: 50%;
   transform: translate(-50%, -50%);
   width: 60%;
   background-color: white;
-  box-Shadow: 24;
+  box-shadow: 24;
   padding: 4;
+  outline: none !important;
 }
 
-.add-user-input:focus{
+.add-user-input:focus {
   background-color: rgb(235, 235, 235) !important;
 }
 
-.MuiRadio-colorPrimary{
+.MuiRadio-colorPrimary {
   border: none !important;
-  color:#2C9AFF !important;
+  color: #2c9aff !important;
 }
-.MuiRadio-colorSecondary{
-  background-color: black!important;
+.MuiRadio-colorSecondary {
+  background-color: black !important;
   border: none !important;
   color: black;
 }
 
-.avatar{
+.avatar {
   width: 100px !important;
   height: 100px !important;
 }
 
-.chip{
+.chip {
   font-weight: bold;
-color: #2C9AFF !important;
-border: none !important;
-background-color: rgb(218, 237, 255) !important;
+  color: #2c9aff !important;
+  border: none !important;
+  background-color: rgb(218, 237, 255) !important;
 }
 
-.MuiTableCell-body{
+.MuiTableCell-body {
   color: rgb(29, 25, 25) !important;
+}
+
+/**/
+
+.roles-square {
+  width: 245px;
+  height: 125px;
 }

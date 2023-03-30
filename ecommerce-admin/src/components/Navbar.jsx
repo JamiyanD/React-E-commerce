@@ -21,13 +21,15 @@ import TextField from "@mui/material/TextField";
 import MenuIcon from "@mui/icons-material/Menu";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
-import { useState } from "react";
+import { useState, useContext } from "react";
+
 function OffcanvasNavbar() {
   const [moreIcon, setMoreIcon] = useState(true);
   const [moreIcon2, setMoreIcon2] = useState(true);
+
   return (
     <nav class="navbar navbar-expand-lg bg-white ">
-      <Container className=" d-flex justify-content-between">
+      <Container className=" d-flex justify-content-between p-0">
         <div className="hstack">
           <button
             class="navbar-toggler"
@@ -50,17 +52,21 @@ function OffcanvasNavbar() {
             id="offcanvasNavbar"
             aria-labelledby="offcanvasNavbarLabel"
           >
-            <div class="offcanvas-body">
-              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="/">
-                    <i class="bi bi-house-door me-2"></i>
+            <div class="offcanvas-body  ">
+              <ul class="navbar-nav justify-content-end flex-grow-1  gap-2 ">
+                <li class="nav-item ">
+                  <a
+                    class="nav-link active text-body"
+                    aria-current="page"
+                    href="/"
+                  >
+                    <i class="bi bi-house-door me-2 d-lg-none"></i>
                     <span className="dropdown-title">Home</span>
                   </a>
                 </li>
                 <li class="nav-item dropdown">
                   <a
-                    class="nav-link dropdown-toggle  active "
+                    class="nav-link dropdown-toggle  active text-body"
                     href="#"
                     role="button"
                     data-bs-toggle="dropdown"
@@ -71,38 +77,55 @@ function OffcanvasNavbar() {
                     }}
                   >
                     {moreIcon ? (
-                      <span className="dropdown-title hstack">
-                        <i class="bi bi-person-fill me-2"></i>
-                        User Management
-                        <ExpandMoreIcon className="ms-auto" fontSize="small" />
+                      <span className="dropdown-title d-flex justify-content-between align-items-center">
+                        <div>
+                          <i class="bi bi-person me-2 d-lg-none"></i>
+                          User Management
+                        </div>
+                        <ExpandMoreIcon
+                          className=" d-lg-none"
+                          fontSize="small"
+                          color="disabled"
+                        />
                       </span>
                     ) : (
                       <span
-                        className="dropdown-title hstack"
+                        className="dropdown-title d-flex justify-content-between align-items-center"
                         style={{ color: "#2C9AFF" }}
                       >
-                        <i class="bi bi-person-fill me-2"></i>
-                        User Management
-                        <ExpandLessIcon className="ms-auto" fontSize="small" />
+                        <div>
+                          <i class="bi bi-person me-2 d-lg-none"></i>
+                          User Management
+                        </div>
+                        <ExpandLessIcon
+                          className=" d-lg-none"
+                          fontSize="small"
+                          color="disabled"
+                        />
                       </span>
                     )}
                   </a>
-                  <ul class="dropdown-menu">
+                  <ul class="dropdown-menu ">
                     <li>
-                      <a class="dropdown-item " href="/newUser">
+                      <a class="dropdown-item text-body" href="/newUser">
                         <i class="bi bi-dot"></i> New User
                       </a>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="/usersList">
+                      <a class="dropdown-item text-body" href="/usersList">
                         <i class="bi bi-dot"></i> Users List
+                      </a>
+                    </li>{" "}
+                    <li>
+                      <a class="dropdown-item text-body" href="/roles">
+                        <i class="bi bi-dot"></i> Roles
                       </a>
                     </li>
                   </ul>
                 </li>
                 <li class="nav-item dropdown">
                   <a
-                    class="nav-link dropdown-toggle  active"
+                    class="nav-link dropdown-toggle  active text-body"
                     href="#"
                     role="button"
                     data-bs-toggle="dropdown"
@@ -113,31 +136,48 @@ function OffcanvasNavbar() {
                     }}
                   >
                     {moreIcon2 ? (
-                      <span className="dropdown-title hstack">
-                        <i class="bi bi-cart3 me-2"></i>
-                        eCommerce
-                        <ExpandMoreIcon className="ms-auto" fontSize="small" />
+                      <span className="dropdown-title d-flex justify-content-between align-items-center">
+                        <div>
+                          <i class="bi bi-cart3 me-2 d-lg-none"></i>
+                          Catalog
+                        </div>
+                        <ExpandMoreIcon
+                          className=" d-lg-none"
+                          fontSize="small"
+                          color="disabled"
+                        />
                       </span>
                     ) : (
                       <span
-                        className="dropdown-title hstack"
+                        className="dropdown-title d-flex justify-content-between align-items-center"
                         style={{ color: "#2C9AFF" }}
                       >
-                        <i class="bi bi-cart3 me-2"></i>
-                        eCommerce
-                        <ExpandLessIcon className="ms-auto" fontSize="small" />
+                        <div className="htack">
+                          <i class="bi bi-cart3 me-2 d-lg-none"> </i>
+                          Catalog
+                        </div>
+                        <ExpandLessIcon
+                          className="d-lg-none"
+                          fontSize="small"
+                          color="disabled"
+                        />
                       </span>
                     )}
                   </a>
                   <ul class="dropdown-menu">
                     <li>
-                      <a class="dropdown-item" href="/newProduct">
+                      <a class="dropdown-item text-body" href="/newProduct">
                         <i class="bi bi-dot"></i> Add Product
                       </a>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="/productsList">
+                      <a class="dropdown-item text-body" href="/productsList">
                         <i class="bi bi-dot"></i> Products List
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item text-body" href="/category">
+                        <i class="bi bi-dot"></i> Categories
                       </a>
                     </li>
                   </ul>
@@ -149,7 +189,7 @@ function OffcanvasNavbar() {
         <div className="hstack">
           <div class="dropdown d-lg-none">
             <button
-              class=" dropdown-toggle p-2 m-2 border-0 text-black-50 bg-light"
+              class=" dropdown-toggle p-2 m-2 border-0 text-black-50 bg-white"
               data-bs-toggle="dropdown"
             >
               <SearchIcon />

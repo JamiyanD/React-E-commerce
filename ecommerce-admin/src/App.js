@@ -16,6 +16,8 @@ import UsersList from "./pages/UsersList";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import CategoryList from "./components/CategoryList";
+import RolesList from "./components/RolesList";
 function App() {
   const [showNavbar, setShowNavbar] = useState(true);
   return (
@@ -34,6 +36,8 @@ function App() {
           <Route path="/product/edit/:id" element={<EditProduct />} />
           <Route path="/eCommerce" element={<Home />} />
           <Route path="/" element={<Home />} />
+          <Route path="/category" element={<CategoryList />} />
+          <Route path="/roles" element={<RolesList />} />
         </Routes>
       </Container>
       <Routes>

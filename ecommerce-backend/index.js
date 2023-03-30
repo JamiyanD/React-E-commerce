@@ -7,18 +7,19 @@ const cors = require("cors");
 const express = require("express");
 const mongoose = require("mongoose");
 const users_router = require("./routes/users-api");
+const products_router = require("./routes/products-api");
 
 const app = express();
 const PORT = 8080;
 const MONGO_CONNECTION_STRING =
-  "mongodb+srv://jamiyan:jamiyan48@jaya.qs1n9nb.mongodb.net/ishop";
+  "mongodb+srv://jamiyan:jamiyan48@jaya.qs1n9nb.mongodb.net/ecommerce";
 
 app.use(cors());
 app.use(express.json());
 // app.use("/users", userRoles_router);
 // app.use("/products", productCategories_router);
 app.use("/users", users_router);
-// app.use("/products", products_router);
+app.use("/products", products_router);
 
 app.listen(PORT, () => {
   mongoose

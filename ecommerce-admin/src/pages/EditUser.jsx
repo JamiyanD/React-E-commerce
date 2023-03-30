@@ -44,11 +44,11 @@ export default function EditUser() {
   }
 
   const [roles, setRoles] = useState([]);
-  const ROLE_URL = "http://localhost:8080/users/userRoles";
+  const ROLE_URL = "http://localhost:8080/users/roles";
   async function fetchRoles() {
     const FETCHED_DATA = await fetch(ROLE_URL);
     const FETCHED_JSON = await FETCHED_DATA.json();
-    setRoles(FETCHED_JSON);
+    setRoles(FETCHED_JSON.data);
   }
   useEffect(() => {
     fetchRoles();
@@ -344,7 +344,7 @@ export default function EditUser() {
                             <input
                               key={khuslen}
                               onChange={handleRadio}
-                              value={role.name}
+                              value={role.roles_name}
                               className="form-check-input me-3"
                               type="radio"
                               size="medium"
@@ -353,7 +353,7 @@ export default function EditUser() {
                             />
                             <div>
                               <Typography variant="subtitle2" gutterBottom>
-                                {role.name}
+                                {role.roles_name}
                               </Typography>
                               <FormHelperText className="">
                                 A product name is required and recommended to be
