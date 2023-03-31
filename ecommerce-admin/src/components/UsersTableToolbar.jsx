@@ -29,7 +29,6 @@ export default function UsersTableToolbar(props) {
   const URL = "http://localhost:8080/users/users";
   const { numSelected, setUsers, handleDelete, selected, axiosScreen } = props;
   const [selectValue, setSelectValue] = React.useState("");
-  const [open, setOpen] = useContext(ModalContext);
 
   async function handleSearch(e) {
     e.preventDefault();
@@ -51,7 +50,6 @@ export default function UsersTableToolbar(props) {
   }
   useEffect(() => {
     fetchCategories();
-    setOpen(false);
   }, []);
 
   async function handleChange(select) {
@@ -179,14 +177,10 @@ export default function UsersTableToolbar(props) {
           <Button
             variant="contained"
             className="color-blue rounded-3"
-            onClick={() => {
-              console.log(open);
-              setOpen(true);
-            }}
+            href="/newUser"
           >
             Add User
           </Button>
-          <NewUser setUsers={setUsers} />
         </Stack>
       )}
     </Toolbar>

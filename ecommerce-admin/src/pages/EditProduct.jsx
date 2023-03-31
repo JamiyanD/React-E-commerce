@@ -29,7 +29,7 @@ export default function EditProduct() {
   const navigate = useNavigate();
   const { id } = useParams();
   const [categories, setCategories] = useState([]);
-  const [defaultSelect, setDefaultSelect] = useState(1);
+  const [defaultSelect, setDefaultSelect] = useState("Published");
   const [currentProducts, setCurrentProducts] = useState({
     // name: "",
     // category: 1,
@@ -52,21 +52,21 @@ export default function EditProduct() {
     axiosProduct();
   }, []);
   async function axiosProduct() {
-    const AXIOS_DATA = await axios.put(URL, { productId: id });
+    const AXIOS_DATA = await axios.put(URL, { productsId: id });
     if (AXIOS_DATA.status == 200) {
-      setCurrentProducts(AXIOS_DATA.data[0]);
+      setCurrentProducts(AXIOS_DATA.data.data);
     }
   }
 
   async function handleSubmit(e) {
     e.preventDefault();
     const putData = {
-      productId: id,
+      productsId: id,
       name: currentProducts.name,
       code: currentProducts.code,
       price: currentProducts.price,
       quantity: currentProducts.quantity,
-      category_id: currentProducts.category_id,
+      category: currentProducts.category,
       isEdit: true,
     };
     console.log(putData);
@@ -107,7 +107,7 @@ export default function EditProduct() {
     console.log(select.target.value);
     setCurrentProducts({
       ...currentProducts,
-      category_id: select.target.value,
+      category: select.target.value,
     });
   }
 
@@ -179,7 +179,7 @@ export default function EditProduct() {
             </Typography>
             <FormControl sx={{ minWidth: 120 }} size="small">
               <Select
-                value={currentProducts.category_id}
+                value={defaultSelect}
                 onChange={handleChange}
                 displayEmpty
                 inputProps={{ "aria-label": "Without label" }}
@@ -206,6 +206,7 @@ export default function EditProduct() {
                     );
                   })}
               </Select>
+
               <FormHelperText>Set the product status.</FormHelperText>
             </FormControl>
           </Stack>

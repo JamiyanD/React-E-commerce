@@ -38,8 +38,7 @@ export default function ProductsList({ currentProducts, setCurrentProducts }) {
 
   async function axiosScreen() {
     const AXIOS_DATA = await axios.get(URL);
-    setUsers(AXIOS_DATA.data);
-    console.log(AXIOS_DATA);
+    setUsers(AXIOS_DATA.data.data);
     return AXIOS_DATA;
   }
 
@@ -47,13 +46,14 @@ export default function ProductsList({ currentProducts, setCurrentProducts }) {
     axiosScreen();
   }, []);
 
-  async function handleDelete(userId) {
+  async function handleDelete(id) {
     const data = {
-      userId: userId,
+      productsId: id,
     };
+
     const AXIOS_DATA = await axios.delete(URL, { data });
     if (AXIOS_DATA.status == 200) {
-      setUsers(AXIOS_DATA.data);
+      setUsers(AXIOS_DATA.data.data);
       console.log(AXIOS_DATA.data);
     }
     setSelected([]);
@@ -177,17 +177,17 @@ export default function ProductsList({ currentProducts, setCurrentProducts }) {
                       <TableCell sx={{ padding: 0 }}>
                         <Checkbox
                           onClick={(event) =>
-                            handleCheckbox(event, parametr.id)
+                            handleCheckbox(event, parametr._id)
                           }
                           color="primary"
-                          checked={isSelected(parametr.id)}
+                          checked={isSelected(parametr._id)}
                         />
                       </TableCell>
 
                       <TableCell>{parametr.name}</TableCell>
                       <TableCell>{parametr.code}</TableCell>
                       <TableCell>{parametr.quantity}</TableCell>
-                      <TableCell>{parametr.price.toFixed(2)}</TableCell>
+                      <TableCell>{parametr.price}</TableCell>
                       <TableCell>
                         <Rating
                           name="half-rating"
@@ -200,7 +200,7 @@ export default function ProductsList({ currentProducts, setCurrentProducts }) {
                       </TableCell>
                       <TableCell component="th" scope="row">
                         <Chip
-                          label={parametr.category_id}
+                          label={parametr.category}
                           size="small"
                           className="opacity-75 "
                         />
@@ -211,7 +211,7 @@ export default function ProductsList({ currentProducts, setCurrentProducts }) {
                           aria-label="more"
                           id="long-button"
                           aria-haspopup="true"
-                          onClick={handleMenuClick(parametr.id)}
+                          onClick={handleMenuClick(parametr._id)}
                         >
                           <MoreVertIcon />
                         </IconButton>
@@ -221,19 +221,19 @@ export default function ProductsList({ currentProducts, setCurrentProducts }) {
                             "aria-labelledby": "long-button",
                           }}
                           anchorEl={anchorEl}
-                          open={openElem === parametr.id}
+                          open={openElem === parametr._id}
                           onClose={handleClose}
                           PaperProps={{}}
                         >
                           <MenuItem
                             component={Link}
-                            to={`/product/edit/${parametr.id}`}
+                            to={`/product/edit/${parametr._id}`}
                           >
                             Edit
                           </MenuItem>
                           <MenuItem
                             onClick={() => {
-                              handleDelete(parametr.id);
+                              handleDelete(parametr._id);
                               handleClose();
                             }}
                           >

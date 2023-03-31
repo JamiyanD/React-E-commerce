@@ -28,6 +28,7 @@ import Menu from "@mui/material/Menu";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Pagination from "@mui/material/Pagination";
+import Chip from "@mui/material/Chip";
 import { Link } from "react-router-dom";
 export default function UsersList() {
   const URL = "http://localhost:8080/users/users";
@@ -202,7 +203,15 @@ export default function UsersList() {
 
                       <TableCell>{parametr.full_name}</TableCell>
                       <TableCell>{parametr.email}</TableCell>
-                      <TableCell>{parametr.role}</TableCell>
+                      <TableCell>
+                        {" "}
+                        <Chip
+                          label={parametr.role}
+                          color="primary"
+                          size="small"
+                          className="chip"
+                        />
+                      </TableCell>
                       <TableCell> {parametr.password}</TableCell>
                       <TableCell component="th" scope="row">
                         {parametr.phone_number}
