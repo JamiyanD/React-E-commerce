@@ -95,7 +95,7 @@ export default function NewUser({ setUsers }) {
       });
     }
   }
-  function handleUpload(e) {
+  function handleFileUpload(e) {
     // setCurrentUser({
     //   ...currentUser,
     //   imgURL: e.target.value,
@@ -125,10 +125,11 @@ export default function NewUser({ setUsers }) {
               className=""
             >
               <input
+                name="image"
                 hidden
                 accept="image/*"
                 type="file"
-                onChange={handleUpload}
+                onChange={handleFileUpload}
               />
               <EditIcon className="text-secondary text-opacity-50" />
             </IconButton>

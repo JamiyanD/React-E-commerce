@@ -1,25 +1,44 @@
 const cors = require("cors");
-// import fs from "fs";
-// import bcrypt from "bcrypt";
-// import productCategories_router from "./routes/productCategories.js";
-// import userRoles_router from "./routes/userRoles.js";
-// import products_router from "./routes/products.js";
 const express = require("express");
 const mongoose = require("mongoose");
+const fs = require("fs");
 const users_router = require("./routes/users-api");
 const products_router = require("./routes/products-api");
+const multer = require("multer");
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "./upload");
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.originalname);
+  },
+});
 
 const app = express();
 const PORT = 8080;
 const MONGO_CONNECTION_STRING =
   "mongodb+srv://jamiyan:jamiyan48@jaya.qs1n9nb.mongodb.net/ecommerce";
+const upload = multer({ storage: storage });
 
 app.use(cors());
 app.use(express.json());
-// app.use("/users", userRoles_router);
-// app.use("/products", productCategories_router);
+app.use("/upload", express.static("upload"));
 app.use("/users", users_router);
 app.use("/products", products_router);
+
+app.post("/products", upload.single("image"), (request, response, next) => {
+  // console.log(request.file);
+  // console.log(request.body);
+  const arrayFiles = [];
+  const files = fs.readdirSync("./upload").forEach((file) => {
+    const fileUrl = `http://localhost:8080/upload/${file}`;
+    arrayFiles.push(fileUrl);
+  });
+  // console.log(arrayFiles);
+  response.json({
+    data: [],
+  });
+});
 
 app.listen(PORT, () => {
   mongoose
@@ -29,6 +48,7 @@ app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
 
+/* */
 // const SALT_ROUNDS = 10;
 // app.post("/user", (request, response) => {
 //   const body = request.body;

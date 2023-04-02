@@ -23,9 +23,10 @@ import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 export default function NewUser() {
-  const URL = "http://localhost:8080/products/products";
+  const PRODUCTS_URL = "http://localhost:8080/products";
   const [categories, setCategories] = useState([]);
   const navigate = useNavigate();
+  const [image, setImage] = useState("");
   const [currentProducts, setCurrentProducts] = useState({
     category: "Published",
     isEdit: false,
@@ -44,19 +45,38 @@ export default function NewUser() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const AXIOS_DATA = await axios.post(URL, currentProducts);
+    // console.log(e.target.image.files[0]);
+    // const data = new FormData();
+    // const files = e.target.image.files;
+    // data.append("image", files[0]);
+    // console.log(data);
+
+    // const options = {
+    //   method: `POST`,
+    //   body: data,
+    // };
+    const AXIOS_DATA = await axios.post(PRODUCTS_URL, currentProducts);
+    const AXIOS_UPLOAD_IMAGE = await axios.post(
+      PRODUCTS_URL,
+      currentProducts.imgURL
+    );
     if (AXIOS_DATA.status == 200) {
       navigate("/productsList");
     }
   }
 
   function handleUpload(e) {
-    // setImage(URL.createObjectURL(e.target.files[0]));
+    setImage(URL.createObjectURL(e.target.files[0]));
     // console.log(URL.createObjectURL(e.target.files[0]));
-    // setCurrentProducts({
-    //   ...currentProducts,
-    //   imgURL: "Not Yet",
-    // });
+    console.log(e.target.files[0]);
+    const data = new FormData();
+    const files = e.target.files;
+    data.append("image", files[0]);
+    console.log(data);
+    setCurrentProducts({
+      ...currentProducts,
+      imgURL: data,
+    });
   }
 
   function handleName(e) {
@@ -127,20 +147,21 @@ export default function NewUser() {
             <Typography variant="h6" sx={{ width: "300px" }}>
               Thumbnail
             </Typography>
-            <IconButton
+            <img src={image} alt="" style={{ width: "200px" }} />
+            {/* <IconButton
               color="primary"
               aria-label="upload picture"
               component="label"
               className=""
-            >
-              <input
-                hidden
-                accept="image/*"
-                type="file"
-                onChange={handleUpload}
-              />
-              <EditIcon className="text-secondary text-opacity-50" />
-            </IconButton>
+            > */}
+            <input
+              name="image"
+              accept="image/*"
+              type="file"
+              onChange={handleUpload}
+            />
+            {/* <EditIcon className="text-secondary text-opacity-50" />
+            </IconButton> */}
 
             <FormHelperText className="form-text mx-auto">
               Set the product thumbnail image. Only *.png, *.jpg and *.jpeg
