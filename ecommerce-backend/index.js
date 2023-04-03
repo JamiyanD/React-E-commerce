@@ -4,41 +4,17 @@ const mongoose = require("mongoose");
 const fs = require("fs");
 const users_router = require("./routes/users-api");
 const products_router = require("./routes/products-api");
-const multer = require("multer");
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "./upload");
-  },
-  filename: (req, file, cb) => {
-    cb(null, file.originalname);
-  },
-});
 
 const app = express();
 const PORT = 8080;
 const MONGO_CONNECTION_STRING =
   "mongodb+srv://jamiyan:jamiyan48@jaya.qs1n9nb.mongodb.net/ecommerce";
-const upload = multer({ storage: storage });
 
 app.use(cors());
 app.use(express.json());
 app.use("/upload", express.static("upload"));
 app.use("/users", users_router);
 app.use("/products", products_router);
-
-app.post("/products", upload.single("image"), (request, response, next) => {
-  // console.log(request.file);
-  // console.log(request.body);
-  const arrayFiles = [];
-  const files = fs.readdirSync("./upload").forEach((file) => {
-    const fileUrl = `http://localhost:8080/upload/${file}`;
-    arrayFiles.push(fileUrl);
-  });
-  // console.log(arrayFiles);
-  response.json({
-    data: [],
-  });
-});
 
 app.listen(PORT, () => {
   mongoose

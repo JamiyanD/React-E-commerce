@@ -23,7 +23,8 @@ import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 export default function NewUser() {
-  const PRODUCTS_URL = "http://localhost:8080/products";
+  const PRODUCTS_UPLOAD_URL = "http://localhost:8080/products";
+  const PRODUCTS_URL = "http://localhost:8080/products/products";
   const [categories, setCategories] = useState([]);
   const navigate = useNavigate();
   const [image, setImage] = useState("");
@@ -45,21 +46,25 @@ export default function NewUser() {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    console.log(e.target.image.files[0]);
+    const data = new FormData();
+    const files = e.target.image.files[0];
+    const names = e.target.name.value;
+    console.log(names);
+    data.append("name", names);
+    data.append("image", files);
+    console.log(data);
     // console.log(e.target.image.files[0]);
     // const data = new FormData();
     // const files = e.target.image.files;
     // data.append("image", files[0]);
     // console.log(data);
 
-    // const options = {
-    //   method: `POST`,
-    //   body: data,
-    // };
-    const AXIOS_DATA = await axios.post(PRODUCTS_URL, currentProducts);
-    const AXIOS_UPLOAD_IMAGE = await axios.post(
-      PRODUCTS_URL,
-      currentProducts.imgURL
-    );
+    const AXIOS_DATA = await axios.post(PRODUCTS_URL, data);
+    // const AXIOS_UPLOAD_IMAGE = await axios.post(
+    //   PRODUCTS_UPLOAD_URL,
+    //   currentProducts.imgURL
+    // );
     if (AXIOS_DATA.status == 200) {
       navigate("/productsList");
     }
@@ -68,15 +73,15 @@ export default function NewUser() {
   function handleUpload(e) {
     setImage(URL.createObjectURL(e.target.files[0]));
     // console.log(URL.createObjectURL(e.target.files[0]));
-    console.log(e.target.files[0]);
-    const data = new FormData();
-    const files = e.target.files;
-    data.append("image", files[0]);
-    console.log(data);
-    setCurrentProducts({
-      ...currentProducts,
-      imgURL: data,
-    });
+    // console.log(e.target.files[0]);
+    // const data = new FormData();
+    // const files = e.target.files;
+    // data.append("image", files[0]);
+    // console.log(data);
+    // setCurrentProducts({
+    //   ...currentProducts,
+    //   imgURL: data,
+    // });
   }
 
   function handleName(e) {
@@ -142,7 +147,7 @@ export default function NewUser() {
       className="rounded-5 p-3"
     >
       <Box sx={{ flexGrow: 1, p: 2 }} className="p-0">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} encType="multipart/form-data">
           <div className="border border-2 rounded-5 p-3 border-light mb-3">
             <Typography variant="h6" sx={{ width: "300px" }}>
               Thumbnail
