@@ -166,14 +166,7 @@ export default function ProductsList({ currentProducts, setCurrentProducts }) {
                 {stableSort(users, getComparator(order, orderBy))
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map((parametr, index) => (
-                    <TableRow
-                      hover
-                      role="checkbox"
-                      // aria-checked={isSelected(parametr.id)}
-                      tabIndex={-1}
-                      key={index}
-                      // selected={isSelected(parametr.id)}
-                    >
+                    <TableRow hover role="checkbox" tabIndex={-1} key={index}>
                       <TableCell sx={{ padding: 0 }}>
                         <Checkbox
                           onClick={(event) =>
@@ -184,10 +177,23 @@ export default function ProductsList({ currentProducts, setCurrentProducts }) {
                         />
                       </TableCell>
 
-                      <TableCell>{parametr.name}</TableCell>
-                      <TableCell>{parametr.code}</TableCell>
-                      <TableCell>{parametr.quantity}</TableCell>
-                      <TableCell>{parametr.price}</TableCell>
+                      <TableCell className="d-flex align-items-center gap-3 fw-semibold">
+                        <img
+                          src={`http://localhost:8080/upload/${parametr.filename}`}
+                          alt=""
+                          style={{ width: "70px", height: "70px" }}
+                        />
+                        {parametr.name}{" "}
+                      </TableCell>
+                      <TableCell className="products-tablecell-text">
+                        {parametr.code}
+                      </TableCell>
+                      <TableCell className="products-tablecell-text">
+                        {parametr.quantity}
+                      </TableCell>
+                      <TableCell className="products-tablecell-text">
+                        {parametr.price.toFixed(2)}
+                      </TableCell>
                       <TableCell>
                         <Rating
                           name="half-rating"

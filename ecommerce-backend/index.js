@@ -13,6 +13,7 @@ const MONGO_CONNECTION_STRING =
 app.use(cors());
 app.use(express.json());
 app.use("/upload", express.static("upload"));
+app.use("/user-upload", express.static("user-upload"));
 app.use("/users", users_router);
 app.use("/products", products_router);
 

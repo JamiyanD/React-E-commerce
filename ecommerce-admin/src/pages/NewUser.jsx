@@ -31,9 +31,10 @@ export default function NewUser({ setUsers }) {
     isEdit: false,
     joined_date: new Date().toString().substr(3, 21),
   });
+  const [image, setImage] = useState("");
   const [roles, setRoles] = useState([]);
   const navigate = useNavigate();
-  const URL = "http://localhost:8080/users/users";
+  const USER_URL = "http://localhost:8080/users/users";
   const ROLE_URL = "http://localhost:8080/users/roles";
 
   async function fetchRoles() {
@@ -47,13 +48,25 @@ export default function NewUser({ setUsers }) {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    console.log(currentUser.role);
-    const AXIOS_DATA = await axios.post(URL, currentUser);
+
+    const data = new FormData();
+    const files = e.target.image.files[0];
+    console.log(currentUser);
+    data.append("full_name", currentUser.full_name);
+    data.append("phone_number", currentUser.phone_number);
+    data.append("email", currentUser.email);
+    data.append("image", files);
+    data.append("password", currentUser.password);
+    data.append("role", currentUser.role);
+    data.append("filename", currentUser.filename);
+    data.append("joined_date", currentUser.joined_date);
+
+    const AXIOS_DATA = await axios.post(USER_URL, data);
     console.log(AXIOS_DATA);
     if (AXIOS_DATA.status == 200) {
       navigate("/usersList");
 
-      const AXIOS_DATA = await axios.get(URL);
+      const AXIOS_DATA = await axios.get(USER_URL);
       console.log(AXIOS_DATA.data.data);
       setUsers(AXIOS_DATA.data.data);
       setCurrentUser("");
@@ -96,10 +109,14 @@ export default function NewUser({ setUsers }) {
     }
   }
   function handleFileUpload(e) {
-    // setCurrentUser({
-    //   ...currentUser,
-    //   imgURL: e.target.value,
-    // });
+    setImage(URL.createObjectURL(e.target.files[0]));
+    console.log(e.target.files[0]);
+    const filename = e.target.value;
+    console.log(filename);
+    setCurrentUser({
+      ...currentUser,
+      filename: filename.substr(12, filename.length),
+    });
   }
 
   const [value, setValue] = React.useState("1");
@@ -113,7 +130,7 @@ export default function NewUser({ setUsers }) {
       className="rounded-5 p-3"
     >
       <Box sx={{ flexGrow: 1, p: 2 }} className="p-0">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} encType="multipart/form-data">
           <div className="border border-2 rounded-5 p-3 border-light mb-3">
             <Typography variant="h6" sx={{ width: "300px" }}>
               Thumbnail
@@ -126,15 +143,16 @@ export default function NewUser({ setUsers }) {
             >
               <input
                 name="image"
-                hidden
                 accept="image/*"
                 type="file"
+                hidden
                 onChange={handleFileUpload}
               />
               <EditIcon className="text-secondary text-opacity-50" />
+              <img src={image} alt="" style={{ width: "200px" }} />
             </IconButton>
 
-            <FormHelperText className="form-text mx-auto">
+            <FormHelperText className="text-muted mx-auto">
               Only *.png, *.jpg and *.jpeg image files are accepted
             </FormHelperText>
           </div>
@@ -160,7 +178,7 @@ export default function NewUser({ setUsers }) {
                   </Typography>
                   <input
                     type=""
-                    name="name"
+                    name="fullname"
                     className="form-control mb-4"
                     placeholder="Name"
                     onChange={handleFullName}
@@ -172,7 +190,7 @@ export default function NewUser({ setUsers }) {
                   </Typography>
                   <input
                     type=""
-                    name="name"
+                    name="email"
                     className="form-control mb-4"
                     placeholder="Email"
                     onChange={handleEmail}
@@ -194,7 +212,7 @@ export default function NewUser({ setUsers }) {
                   </Typography>
                   <input
                     type=""
-                    name=""
+                    name="password"
                     className="form-control rounded-3 mb-4"
                     placeholder="Password"
                     onChange={handlePassword}
@@ -206,7 +224,7 @@ export default function NewUser({ setUsers }) {
                   </Typography>
                   <input
                     type=""
-                    name="name"
+                    name="phone-number"
                     class="form-control mb-4"
                     placeholder="Phone Number"
                     onChange={handlePhoneNumber}

@@ -201,7 +201,15 @@ export default function UsersList() {
                         />
                       </TableCell>
 
-                      <TableCell>{parametr.full_name}</TableCell>
+                      <TableCell className="d-flex align-items-center gap-3 fw-semibold">
+                        {" "}
+                        <img
+                          src={`http://localhost:8080/user-upload/${parametr.filename}`}
+                          alt=""
+                          style={{ width: "70px", height: "70px" }}
+                        />
+                        {parametr.full_name}
+                      </TableCell>
                       <TableCell>{parametr.email}</TableCell>
                       <TableCell>
                         {" "}
@@ -212,7 +220,7 @@ export default function UsersList() {
                           className="chip"
                         />
                       </TableCell>
-                      <TableCell> {parametr.password}</TableCell>
+
                       <TableCell component="th" scope="row">
                         {parametr.phone_number}
                       </TableCell>

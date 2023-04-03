@@ -11,43 +11,38 @@ const headCells = [
     label: "FULL NAME",
     numeric: false,
     disablePadding: false,
-    id: "name",
+    id: "fullname",
   },
   {
     label: "EMAIL",
     numeric: false,
     disablePadding: false,
-    id: "code",
+    id: "email",
   },
   {
     label: "ROLE",
     numeric: false,
     disablePadding: false,
-    id: "quantity",
+    id: "role",
   },
-  {
-    label: "PASSWORD",
-    numeric: false,
-    disablePadding: false,
-    id: "price",
-  },
+
   {
     label: "PHONE NUMBER",
     numeric: false,
     disablePadding: false,
-    id: "rating",
+    id: "phone-number",
   },
   {
     label: "JOINED DATE",
     numeric: false,
     disablePadding: false,
-    id: "status",
+    id: "joined-date",
   },
   {
     label: "ACTIONS",
     numeric: false,
     disablePadding: false,
-    id: "action",
+    id: "actions",
   },
 ];
 

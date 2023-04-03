@@ -154,3 +154,8 @@ input[type="number"]::-webkit-outer-spin-button {
   width: 245px;
   height: 125px;
 }
+
+.products-tablecell-text {
+  color: #7e8299 !important;
+  font-weight: 600;
+}

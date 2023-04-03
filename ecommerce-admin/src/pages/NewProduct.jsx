@@ -46,25 +46,22 @@ export default function NewUser() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    console.log(e.target.image.files[0]);
+    // console.log(e.target.image.files[0]);
     const data = new FormData();
     const files = e.target.image.files[0];
-    const names = e.target.name.value;
-    console.log(names);
-    data.append("name", names);
+    console.log(currentProducts);
+    data.append("name", currentProducts.name);
+    data.append("filename", currentProducts.filename);
+    data.append("price", currentProducts.price);
     data.append("image", files);
-    console.log(data);
-    // console.log(e.target.image.files[0]);
-    // const data = new FormData();
-    // const files = e.target.image.files;
-    // data.append("image", files[0]);
-    // console.log(data);
+    data.append("code", currentProducts.code);
+    data.append("quantity", currentProducts.quantity);
+    data.append("category", currentProducts.category);
 
-    const AXIOS_DATA = await axios.post(PRODUCTS_URL, data);
-    // const AXIOS_UPLOAD_IMAGE = await axios.post(
-    //   PRODUCTS_UPLOAD_URL,
-    //   currentProducts.imgURL
-    // );
+    const config = {
+      headers: { "content-type": "multipart/form-data" },
+    };
+    const AXIOS_DATA = await axios.post(PRODUCTS_URL, data, config);
     if (AXIOS_DATA.status == 200) {
       navigate("/productsList");
     }
@@ -72,18 +69,14 @@ export default function NewUser() {
 
   function handleUpload(e) {
     setImage(URL.createObjectURL(e.target.files[0]));
-    // console.log(URL.createObjectURL(e.target.files[0]));
-    // console.log(e.target.files[0]);
-    // const data = new FormData();
-    // const files = e.target.files;
-    // data.append("image", files[0]);
-    // console.log(data);
-    // setCurrentProducts({
-    //   ...currentProducts,
-    //   imgURL: data,
-    // });
+    const filename = e.target.value;
+    console.log(filename);
+    setCurrentProducts({
+      ...currentProducts,
+      filename: filename.substr(12, filename.length),
+    });
   }
-
+  console.log(currentProducts);
   function handleName(e) {
     setCurrentProducts({
       ...currentProducts,

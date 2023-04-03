@@ -2,17 +2,27 @@ const express = require("express");
 const Users = require("../models/user-model");
 const Roles = require("../models/user-roles-model");
 const users_router = express.Router();
+const multer = require("multer");
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "./user-upload");
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.originalname);
+  },
+});
 
+const upload = multer({ storage: storage });
 users_router.get("/users", async (req, res) => {
   const result = await Users.find({});
   res.json({ data: result });
 });
 
-users_router.post("/users", async (req, res) => {
+users_router.post("/users", upload.single("image"), async (req, res) => {
   const { isEdit, full_name, userId } = req.body;
   const body = req.body;
-  console.log(body);
-  console.log(full_name, userId);
+  console.log("file", req.file);
+  console.log("body", req.body);
   if (isEdit) {
     const updateUser = await Users.updateOne(
       { _id: userId },
