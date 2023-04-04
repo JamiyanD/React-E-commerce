@@ -142,25 +142,40 @@ export default function NewUser() {
       <Box sx={{ flexGrow: 1, p: 2 }} className="p-0">
         <form onSubmit={handleSubmit} encType="multipart/form-data">
           <div className="border border-2 rounded-5 p-3 border-light mb-3">
-            <Typography variant="h6" sx={{ width: "300px" }}>
-              Thumbnail
-            </Typography>
-            <img src={image} alt="" style={{ width: "200px" }} />
-            {/* <IconButton
-              color="primary"
-              aria-label="upload picture"
-              component="label"
-              className=""
-            > */}
-            <input
-              name="image"
-              accept="image/*"
-              type="file"
-              onChange={handleUpload}
-            />
-            {/* <EditIcon className="text-secondary text-opacity-50" />
-            </IconButton> */}
+            <Typography variant="h6">Thumbnail</Typography>
+            <div className="position-relative">
+              {image ? (
+                <img
+                  src={image}
+                  alt=""
+                  style={{ width: "200px" }}
+                  className="rounded-4 shadow m-4"
+                />
+              ) : (
+                <img
+                  src="https://learncrypto.com/_nuxt/img/901a7a4.jpg"
+                  alt=""
+                  style={{ width: "200px" }}
+                  className="rounded-4 shadow m-4"
+                />
+              )}
 
+              <IconButton
+                color="primary"
+                aria-label="upload picture"
+                component="label"
+                className="position-absolute upload-edit-icon shadow"
+              >
+                <input
+                  name="image"
+                  accept="image/*"
+                  type="file"
+                  hidden
+                  onChange={handleUpload}
+                />
+                <EditIcon className="text-secondary text-opacity-50" />
+              </IconButton>
+            </div>
             <FormHelperText className="form-text mx-auto">
               Set the product thumbnail image. Only *.png, *.jpg and *.jpeg
               image files are accepted
@@ -268,7 +283,7 @@ export default function NewUser() {
                   </Typography>
                   <RadioGroup
                     row
-                    className="hstack gap-3 mb-4"
+                    className="d-flex justify-content-between mb-4"
                     onChange={handleRadio}
                     value={radioValue}
                   >
@@ -276,19 +291,19 @@ export default function NewUser() {
                       control={<Radio color="primary" />}
                       label="No Discount"
                       value={1}
-                      className="new-product-radio"
+                      className="new-product-radio m-0"
                     />
                     <FormControlLabel
                       control={<Radio />}
                       label="Percentage %"
                       value={2}
-                      className="new-product-radio"
+                      className="new-product-radio m-0"
                     />
                     <FormControlLabel
                       control={<Radio />}
                       label="Fixed Price"
                       value={3}
-                      className="new-product-radio"
+                      className="new-product-radio m-0"
                     />
                   </RadioGroup>
                   {showTax && (

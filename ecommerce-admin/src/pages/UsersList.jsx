@@ -201,7 +201,7 @@ export default function UsersList() {
                         />
                       </TableCell>
 
-                      <TableCell className="d-flex align-items-center gap-3 fw-semibold">
+                      <TableCell className="d-flex align-items-center gap-3 tablecell-name">
                         {" "}
                         <img
                           src={`http://localhost:8080/user-upload/${parametr.filename}`}
@@ -210,7 +210,9 @@ export default function UsersList() {
                         />
                         {parametr.full_name}
                       </TableCell>
-                      <TableCell>{parametr.email}</TableCell>
+                      <TableCell className="products-tablecell-text">
+                        {parametr.email}
+                      </TableCell>
                       <TableCell>
                         {" "}
                         <Chip
@@ -221,10 +223,16 @@ export default function UsersList() {
                         />
                       </TableCell>
 
-                      <TableCell component="th" scope="row">
+                      <TableCell
+                        component="th"
+                        scope="row"
+                        className="products-tablecell-text"
+                      >
                         {parametr.phone_number}
                       </TableCell>
-                      <TableCell>{parametr.joined_date}</TableCell>
+                      <TableCell className="products-tablecell-text">
+                        {parametr.joined_date}
+                      </TableCell>
                       <TableCell>
                         {" "}
                         <IconButton

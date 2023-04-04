@@ -177,7 +177,7 @@ export default function ProductsList({ currentProducts, setCurrentProducts }) {
                         />
                       </TableCell>
 
-                      <TableCell className="d-flex align-items-center gap-3 fw-semibold">
+                      <TableCell className="d-flex align-items-center gap-3 tablecell-name">
                         <img
                           src={`http://localhost:8080/upload/${parametr.filename}`}
                           alt=""

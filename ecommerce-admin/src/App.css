@@ -92,8 +92,16 @@ a {
   padding: 0 !important;
 }
 
+.upload-edit-icon{
+  top: 0px;
+  left: 210px;
+  width: 35px;
+  background-color: white !important;
+
+
+}
 .new-product-radio {
-  width: 240px;
+  width: 300px;
   height: 60px;
   border: 1px solid lightgray;
   border-radius: 10px;
@@ -158,4 +166,7 @@ input[type="number"]::-webkit-outer-spin-button {
 .products-tablecell-text {
   color: #7e8299 !important;
   font-weight: 600;
+}
+.tablecell-name{
+  font-weight: 500 !important;
 }
