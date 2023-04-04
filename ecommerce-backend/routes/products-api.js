@@ -16,7 +16,7 @@ const upload = multer({ storage: storage });
 
 products_router.get("/category", async (req, res) => {
   const result = await Category.find({});
-  res.json({ data: result });
+  res.json({ status: "success", data: result });
 });
 
 products_router.post("/category", async (req, res) => {
@@ -63,7 +63,7 @@ products_router.post("/products", upload.single("image"), async (req, res) => {
     category,
     code,
     rating,
-    imgURL,
+    filename,
   } = req.body;
   console.log("file", req.file);
   console.log("body", req.body);
@@ -78,9 +78,11 @@ products_router.post("/products", upload.single("image"), async (req, res) => {
           category: category,
           code: code,
           rating: rating,
+          filename: filename,
         },
       }
     );
+    console.log(updateProduts);
     const result = await Products.find({});
     res.json({ data: result });
   } else {
@@ -92,7 +94,7 @@ products_router.post("/products", upload.single("image"), async (req, res) => {
 
 products_router.get("/products", async (req, res) => {
   const result = await Products.find({});
-  res.json({ data: result });
+  res.json(result);
 });
 module.exports = products_router;
 
@@ -109,4 +111,14 @@ products_router.put("/products", async (req, res) => {
   const body = req.body;
   const findProducts = await Products.findOne({ _id: body.productsId });
   res.json({ data: findProducts });
+});
+
+products_router.get("/search", async (req, res) => {
+  console.log(req.query);
+  const savedProducts = await Products.find({
+    name: { $regex: req.query.value, $options: "i" },
+  });
+  console.log(savedProducts);
+
+  res.json(savedProducts);
 });

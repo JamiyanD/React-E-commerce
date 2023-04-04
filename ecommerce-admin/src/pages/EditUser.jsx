@@ -23,7 +23,7 @@ import EditIcon from "@mui/icons-material/Edit";
 export default function EditUser() {
   const navigate = useNavigate();
   const { id } = useParams();
-
+  const [image, setImage] = useState("");
   const url = "http://localhost:8080/users/users";
   const [currentUser, setCurrentUser] = useState({
     full_name: "",
@@ -32,6 +32,7 @@ export default function EditUser() {
     role: "",
     phone_number: "",
   });
+
   useEffect(() => {
     axiosProduct();
   }, []);
@@ -65,8 +66,20 @@ export default function EditUser() {
       isEdit: true,
       joined_date: currentUser.joined_date,
     };
-    console.log(putData);
-    const AXIOS_DATA = await axios.post(url, putData);
+    const data = new FormData();
+    const files = e.target.image.files[0];
+    console.log(files);
+    data.append("isEdit", true);
+    data.append("userId", id);
+    data.append("full_name", currentUser.full_name);
+    data.append("filename", currentUser.filename);
+    data.append("phone_number", currentUser.phone_number);
+    data.append("image", files);
+    data.append("email", currentUser.email);
+    data.append("password", currentUser.password);
+    data.append("role", currentUser.role);
+    data.append("joined_date", currentUser.joined_date);
+    const AXIOS_DATA = await axios.post(url, data);
 
     if (AXIOS_DATA.status == 200) {
       setOpen(false);
@@ -108,12 +121,15 @@ export default function EditUser() {
       });
     }
   }
-  // function handleUpload(e) {
-  //   setCurrentUser({
-  //     ...currentUser,
-  //     imgURL: e.target.value,
-  //   });
-  // }
+  function handleUpload(e) {
+    setImage(URL.createObjectURL(e.target.files[0]));
+    const filename = e.target.value;
+    console.log(filename);
+    setCurrentUser({
+      ...currentUser,
+      filename: filename.substr(12, filename.length),
+    });
+  }
 
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -128,7 +144,7 @@ export default function EditUser() {
         <Stack alignItems="center" gap={1}>
           <Avatar
             alt="Remy Sharp"
-            src="https://preview.keenthemes.com/metronic8/demo30/assets/media/avatars/300-13.jpg"
+            src={`http://localhost:8080/user-upload/${currentUser.filename}`}
             id="dropdownMenuButton"
             data-bs-toggle="dropdown"
             aria-expanded="false"
@@ -272,20 +288,39 @@ export default function EditUser() {
                 User Information
               </Typography>
               <FormHelperText className=" mt-3">Update Avatar</FormHelperText>
-              <IconButton
-                color="primary"
-                aria-label="upload picture"
-                component="label"
-                className=""
-              >
-                <input
-                  hidden
-                  accept="image/*"
-                  type="file"
-                  // onChange={handleUpload}
-                />
-                <EditIcon className="text-secondary text-opacity-50" />
-              </IconButton>
+              <div className="position-relative">
+                {image ? (
+                  <img
+                    src={image}
+                    alt=""
+                    style={{ width: "200px" }}
+                    className="rounded-4 shadow m-4"
+                  />
+                ) : (
+                  <img
+                    src={`http://localhost:8080/user-upload/${currentUser.filename}`}
+                    alt=""
+                    style={{ width: "200px" }}
+                    className="rounded-4 shadow m-4"
+                  />
+                )}
+
+                <IconButton
+                  color="primary"
+                  aria-label="upload picture"
+                  component="label"
+                  className="position-absolute upload-edit-icon shadow"
+                >
+                  <input
+                    name="image"
+                    accept="image/*"
+                    type="file"
+                    hidden
+                    onChange={handleUpload}
+                  />
+                  <EditIcon className="text-secondary text-opacity-50" />
+                </IconButton>
+              </div>
               <Typography variant="subtitle2" className="mt-3">
                 Name
               </Typography>

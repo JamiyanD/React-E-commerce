@@ -108,7 +108,7 @@ export default function NewUser({ setUsers }) {
       });
     }
   }
-  function handleFileUpload(e) {
+  function handleUpload(e) {
     setImage(URL.createObjectURL(e.target.files[0]));
     console.log(e.target.files[0]);
     const filename = e.target.value;
@@ -132,25 +132,40 @@ export default function NewUser({ setUsers }) {
       <Box sx={{ flexGrow: 1, p: 2 }} className="p-0">
         <form onSubmit={handleSubmit} encType="multipart/form-data">
           <div className="border border-2 rounded-5 p-3 border-light mb-3">
-            <Typography variant="h6" sx={{ width: "300px" }}>
-              Thumbnail
-            </Typography>
-            <IconButton
-              color="primary"
-              aria-label="upload picture"
-              component="label"
-              className=""
-            >
-              <input
-                name="image"
-                accept="image/*"
-                type="file"
-                hidden
-                onChange={handleFileUpload}
-              />
-              <EditIcon className="text-secondary text-opacity-50" />
-              <img src={image} alt="" style={{ width: "200px" }} />
-            </IconButton>
+            <Typography variant="h6">Thumbnail</Typography>
+            <div className="position-relative">
+              {image ? (
+                <img
+                  src={image}
+                  alt=""
+                  style={{ width: "200px" }}
+                  className="rounded-4 shadow m-4"
+                />
+              ) : (
+                <img
+                  src="https://learncrypto.com/_nuxt/img/901a7a4.jpg"
+                  alt=""
+                  style={{ width: "200px" }}
+                  className="rounded-4 shadow m-4"
+                />
+              )}
+
+              <IconButton
+                color="primary"
+                aria-label="upload picture"
+                component="label"
+                className="position-absolute upload-edit-icon shadow"
+              >
+                <input
+                  name="image"
+                  accept="image/*"
+                  type="file"
+                  hidden
+                  onChange={handleUpload}
+                />
+                <EditIcon className="text-secondary text-opacity-50" />
+              </IconButton>
+            </div>
 
             <FormHelperText className="text-muted mx-auto">
               Only *.png, *.jpg and *.jpeg image files are accepted

@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { CartContext } from "../context/CartContext";
 import product from "../data/product";
 export default function Products({
-  data,
+  product,
   addWishlist,
   setAddWishlist,
   downWishList,
@@ -26,17 +26,21 @@ export default function Products({
   return (
     <div>
       <li
-        className=" m-3 product-box-img "
+        className=" m-3 product-box-card "
         onMouseEnter={showDropdown}
         onMouseLeave={hideDropdown}
       >
-        <img src={data.imgURL} alt="" className="w-100 " />
+        <img
+          src={`http://localhost:8080/upload/${product.filename}`}
+          alt=""
+          className=" product-box-img"
+        />
         {showFullCard ? (
           // <li
           //   className=" m-3  product-box-img text-center position-relative"
           //   onMouseLeave={hideDropdown}
           // >
-          <div className=" product-box-img-hover  bg-white text-center shadow position-absolute">
+          <div className=" product-box-card-hover  bg-white text-center shadow position-absolute">
             <div className="position-relative w-100">
               <h2
                 data-bs-toggle="modal"
@@ -46,12 +50,12 @@ export default function Products({
                 <i class="bi bi-eye "></i>
               </h2>
             </div>
-            <p className="dark-blue ">{data.title}</p>
-            <p className="text-secondary ">₮ {data.price}</p>
+            <p className="dark-blue ">{product.name}</p>
+            <p className="text-secondary ">₮ {product.price}</p>
             <button
               className="border-0 rounded-4 btn dark-blue-bg text-white btn-dark "
               onClick={() => {
-                addCartList(data.id);
+                addCartList(product.id);
               }}
             >
               <i class="bi bi-basket me-2"></i>САГСАНД ХИЙХ
@@ -60,8 +64,8 @@ export default function Products({
         ) : (
           // </li>
           <div>
-            <p className="dark-blue text-center">{data.title}</p>
-            <p className="text-secondary text-center">₮ {data.price}</p>
+            <p className="dark-blue text-center mt-2">{product.name}</p>
+            <p className="text-secondary text-center">₮ {product.price}</p>
           </div>
         )}
       </li>

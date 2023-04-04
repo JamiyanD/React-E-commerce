@@ -2,12 +2,25 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import categories from "../data/categories";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Typography from "@mui/material/Typography";
 import Slider from "@mui/material/Slider";
 export default function ProductBoxAside() {
   const [defaultSelect, setDefaultSelect] = useState("");
   const [sliderValue, setSliderValue] = useState([0, 120000]);
+  const [categories, setCategories] = useState([]);
+
+  const CATEGORIES_URL = "http://localhost:8080/products/category";
+  async function fetchCategories() {
+    const FETCHED_DATA = await fetch(CATEGORIES_URL);
+    const FETCHED_JSON = await FETCHED_DATA.json();
+    if (FETCHED_JSON.status == "success") {
+      setCategories(FETCHED_JSON.data);
+    }
+  }
+  useEffect(() => {
+    fetchCategories();
+  }, []);
 
   const handleSlider = (event) => {
     console.log(event.target.value);
@@ -55,8 +68,8 @@ export default function ProductBoxAside() {
             </MenuItem>
             {categories.map((category, index) => {
               return (
-                <MenuItem key={index} value={category.name}>
-                  {category.name}
+                <MenuItem key={index} value={category.category_name}>
+                  {category.category_name}
                 </MenuItem>
               );
             })}
@@ -67,7 +80,9 @@ export default function ProductBoxAside() {
         <h3 className="dark-blue">Ангилал</h3>
         <hr />
         {categories.map((category) => {
-          return <p className="dark-blue pink-hover">{category.name}</p>;
+          return (
+            <p className="dark-blue pink-hover">{category.category_name}</p>
+          );
         })}
       </div>
       <div className=" border border-1 p-3">

@@ -15,18 +15,39 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 users_router.get("/users", async (req, res) => {
   const result = await Users.find({});
-  res.json({ data: result });
+  res.json(result);
 });
 
 users_router.post("/users", upload.single("image"), async (req, res) => {
-  const { isEdit, full_name, userId } = req.body;
+  const {
+    isEdit,
+    full_name,
+    userId,
+    phone_number,
+    email,
+    password,
+    role,
+    filename,
+    joined_date,
+  } = req.body;
   const body = req.body;
   console.log("file", req.file);
   console.log("body", req.body);
   if (isEdit) {
     const updateUser = await Users.updateOne(
       { _id: userId },
-      { $set: { full_name: full_name } }
+      {
+        $set: {
+          full_name: full_name,
+          phone_number: phone_number,
+          email: email,
+          password: password,
+          role: role,
+          filename: filename,
+          joined_date: joined_date,
+          filename: filename,
+        },
+      }
     );
     console.log(updateUser);
     res.json({ data: [] });
@@ -75,7 +96,7 @@ users_router.post("/roles", async (req, res) => {
 
 users_router.get("/roles", async (req, res) => {
   const result = await Roles.find({});
-  res.json({ data: result });
+  res.json({ status: "success", data: result });
 });
 
 users_router.put("/roles", async (req, res) => {
@@ -91,6 +112,16 @@ users_router.delete("/roles", async (req, res) => {
 
   const result = await Roles.find({});
   res.json({ data: result });
+});
+
+users_router.get("/search", async (req, res) => {
+  console.log(req.query);
+  const savedUsers = await Users.find({
+    full_name: { $regex: req.query.value, $options: "i" },
+  });
+  console.log(savedUsers);
+
+  res.json(savedUsers);
 });
 
 module.exports = users_router;

@@ -25,11 +25,11 @@ import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 export default function EditProduct() {
-  const URL = "http://localhost:8080/products/products";
+  const PRODUCTS_URL = "http://localhost:8080/products/products";
   const navigate = useNavigate();
   const { id } = useParams();
   const [categories, setCategories] = useState([]);
-  const [defaultSelect, setDefaultSelect] = useState("Published");
+  const [defaultSelect, setDefaultSelect] = useState("Жордан");
   const [currentProducts, setCurrentProducts] = useState({
     // name: "",
     // category: 1,
@@ -37,7 +37,7 @@ export default function EditProduct() {
     // code: "",
     // quantity: "",
   });
-
+  const [image, setImage] = useState("");
   const CATEGORIES_URL = "http://localhost:8080/products/category";
   async function fetchCategories() {
     const FETCHED_DATA = await fetch(CATEGORIES_URL);
@@ -52,7 +52,7 @@ export default function EditProduct() {
     axiosProduct();
   }, []);
   async function axiosProduct() {
-    const AXIOS_DATA = await axios.put(URL, { productsId: id });
+    const AXIOS_DATA = await axios.put(PRODUCTS_URL, { productsId: id });
     if (AXIOS_DATA.status == 200) {
       setCurrentProducts(AXIOS_DATA.data.data);
     }
@@ -60,17 +60,20 @@ export default function EditProduct() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const putData = {
-      productsId: id,
-      name: currentProducts.name,
-      code: currentProducts.code,
-      price: currentProducts.price,
-      quantity: currentProducts.quantity,
-      category: currentProducts.category,
-      isEdit: true,
-    };
-    console.log(putData);
-    const AXIOS_DATA = await axios.post(URL, putData);
+
+    const data = new FormData();
+    const files = e.target.image.files[0];
+    data.append("isEdit", true);
+    data.append("productsId", id);
+    data.append("name", currentProducts.name);
+    data.append("filename", currentProducts.filename);
+    data.append("price", currentProducts.price);
+    data.append("image", files);
+    data.append("code", currentProducts.code);
+    data.append("quantity", currentProducts.quantity);
+    data.append("category", currentProducts.category);
+
+    const AXIOS_DATA = await axios.post(PRODUCTS_URL, data);
     if (AXIOS_DATA.status == 200) {
       navigate("/productsList");
     }
@@ -112,12 +115,13 @@ export default function EditProduct() {
   }
 
   function handleUpload(e) {
-    // setImage(URL.createObjectURL(e.target.files[0]));
-    // console.log(URL.createObjectURL(e.target.files[0]));
-    // setCurrentProducts({
-    //   ...currentProducts,
-    //   imgURL: "Not Yet",
-    // });
+    setImage(URL.createObjectURL(e.target.files[0]));
+    const filename = e.target.value;
+    console.log(filename);
+    setCurrentProducts({
+      ...currentProducts,
+      filename: filename.substr(12, filename.length),
+    });
   }
 
   const [value, setValue] = React.useState("1");
@@ -147,32 +151,47 @@ export default function EditProduct() {
       className="rounded-5"
     >
       <Box sx={{ flexGrow: 1, p: 2 }} className="p-0">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} encType="multipart/form-data">
           <div className="border border-2 rounded-5 p-3 border-light mb-3">
-            <Typography variant="h6" sx={{ width: "300px" }}>
-              Thumbnail
-            </Typography>
-            <IconButton
-              color="primary"
-              aria-label="upload picture"
-              component="label"
-              className=""
-            >
-              <input
-                hidden
-                accept="image/*"
-                type="file"
-                onChange={handleUpload}
-              />
-              <EditIcon className="text-secondary text-opacity-50" />
-            </IconButton>
+            <Typography variant="h6">Thumbnail</Typography>
+            <div className="position-relative">
+              {image ? (
+                <img
+                  src={image}
+                  alt=""
+                  style={{ width: "200px" }}
+                  className="rounded-4 shadow m-4"
+                />
+              ) : (
+                <img
+                  src={`http://localhost:8080/upload/${currentProducts.filename}`}
+                  alt=""
+                  style={{ width: "200px" }}
+                  className="rounded-4 shadow m-4"
+                />
+              )}
 
-            <p className="form-text mx-auto">
+              <IconButton
+                color="primary"
+                aria-label="upload picture"
+                component="label"
+                className="position-absolute upload-edit-icon shadow"
+              >
+                <input
+                  name="image"
+                  accept="image/*"
+                  type="file"
+                  hidden
+                  onChange={handleUpload}
+                />
+                <EditIcon className="text-secondary text-opacity-50" />
+              </IconButton>
+            </div>
+            <FormHelperText className="form-text mx-auto">
               Set the product thumbnail image. Only *.png, *.jpg and *.jpeg
               image files are accepted
-            </p>
+            </FormHelperText>
           </div>
-
           <Stack className="border border-2 rounded-5 p-3 border-light mb-3">
             <Typography variant="h6" gutterBottom>
               Status

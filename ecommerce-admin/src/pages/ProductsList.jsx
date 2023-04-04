@@ -38,7 +38,7 @@ export default function ProductsList({ currentProducts, setCurrentProducts }) {
 
   async function axiosScreen() {
     const AXIOS_DATA = await axios.get(URL);
-    setUsers(AXIOS_DATA.data.data);
+    setUsers(AXIOS_DATA.data);
     return AXIOS_DATA;
   }
 
@@ -138,10 +138,7 @@ export default function ProductsList({ currentProducts, setCurrentProducts }) {
   const [selectValue, setSelectValue] = useState(5);
 
   return (
-    <Box
-      sx={{ display: "flex", backgroundColor: "white" }}
-      className="rounded-5 p-3"
-    >
+    <Box sx={{ backgroundColor: "white" }} className="rounded-5 p-3">
       <Box sx={{ flexGrow: 1, p: 2 }} className="border border-1 rounded-5">
         <Box>
           <EnhancedTableToolbar
@@ -152,7 +149,7 @@ export default function ProductsList({ currentProducts, setCurrentProducts }) {
             setSelected={setSelected}
           />
           <TableContainer component={Paper}>
-            <Table stickyHeader aria-label="sticky table">
+            <Table sx={{ minWidth: 650 }} aria-label="simple table">
               <ProductsTableHead
                 setSelected={setSelected}
                 users={users}
@@ -166,7 +163,13 @@ export default function ProductsList({ currentProducts, setCurrentProducts }) {
                 {stableSort(users, getComparator(order, orderBy))
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map((parametr, index) => (
-                    <TableRow hover role="checkbox" tabIndex={-1} key={index}>
+                    <TableRow
+                      hover
+                      role="checkbox"
+                      tabIndex={-1}
+                      key={index}
+                      sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                    >
                       <TableCell sx={{ padding: 0 }}>
                         <Checkbox
                           onClick={(event) =>
@@ -178,12 +181,15 @@ export default function ProductsList({ currentProducts, setCurrentProducts }) {
                       </TableCell>
 
                       <TableCell className="d-flex align-items-center gap-3 tablecell-name">
-                        <img
-                          src={`http://localhost:8080/upload/${parametr.filename}`}
-                          alt=""
-                          style={{ width: "70px", height: "70px" }}
-                        />
-                        {parametr.name}{" "}
+                        {parametr.filename && (
+                          <img
+                            src={`http://localhost:8080/upload/${parametr.filename}`}
+                            alt=""
+                            style={{ width: "70px", height: "70px" }}
+                          />
+                        )}
+
+                        {parametr.name}
                       </TableCell>
                       <TableCell className="products-tablecell-text">
                         {parametr.code}
@@ -192,7 +198,7 @@ export default function ProductsList({ currentProducts, setCurrentProducts }) {
                         {parametr.quantity}
                       </TableCell>
                       <TableCell className="products-tablecell-text">
-                        {parametr.price.toFixed(2)}
+                        ₮{parametr.price}
                       </TableCell>
                       <TableCell>
                         <Rating

@@ -36,8 +36,8 @@ export default function UsersList() {
 
   async function axiosScreen() {
     const AXIOS_DATA = await axios.get(URL);
-    console.log(AXIOS_DATA.data.data);
-    setUsers(AXIOS_DATA.data.data);
+    console.log(AXIOS_DATA.data);
+    setUsers(AXIOS_DATA.data);
     return AXIOS_DATA;
   }
 
@@ -133,29 +133,6 @@ export default function UsersList() {
   }
   const [selectValue, setSelectValue] = useState(5);
 
-  // async function handleSearch(e) {
-  //   e.preventDefault();
-  //   const searchInput = e.target.search.value;
-  //   const SEARCH_URL = `http://localhost:8080/search-user?value=${searchInput}`;
-  //   const AXIOS_DATA = await axios.get(SEARCH_URL);
-  //   if (AXIOS_DATA.status == 200) {
-  //     setUsers(AXIOS_DATA.data);
-  //   }
-  // }
-
-  // const handleChange = async (select) => {
-  //   const AXIOS_DATA = await axios.get(URL);
-  //   setUsers(AXIOS_DATA.data);
-  //   console.log(select.target.value);
-  //   if (select.target.value) {
-  //     const filteredUser = AXIOS_DATA.data.filter(
-  //       (user) => user.role == select.target.value
-  //     );
-  //     setUsers(filteredUser);
-  //   }
-  //   setSelectValue(select.target.value);
-  // };
-
   return (
     <Box sx={{ backgroundColor: "white" }} className="rounded-5 p-3">
       <Box sx={{ flexGrow: 1, p: 2 }} className="border border-1 rounded-5">
@@ -202,11 +179,11 @@ export default function UsersList() {
                       </TableCell>
 
                       <TableCell className="d-flex align-items-center gap-3 tablecell-name">
-                        {" "}
                         <img
                           src={`http://localhost:8080/user-upload/${parametr.filename}`}
                           alt=""
                           style={{ width: "70px", height: "70px" }}
+                          className="rounded-circle"
                         />
                         {parametr.full_name}
                       </TableCell>
@@ -214,7 +191,6 @@ export default function UsersList() {
                         {parametr.email}
                       </TableCell>
                       <TableCell>
-                        {" "}
                         <Chip
                           label={parametr.role}
                           color="primary"

@@ -2,7 +2,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import categories from "../data/categories";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Typography from "@mui/material/Typography";
 import Slider from "@mui/material/Slider";
 import product from "../data/product";
@@ -14,6 +14,7 @@ import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import { Carousel } from "react-bootstrap";
 import Products from "./Products";
+import axios from "axios";
 export default function ProductBox({
   addWishlist,
   setAddWishlist,
@@ -22,6 +23,17 @@ export default function ProductBox({
   const [defaultSelect, setDefaultSelect] = useState("");
   const [selectValue, setSelectValue] = useState("");
   const [showlist, setShowList] = useState(false);
+  const PRODUCTS_URL = "http://localhost:8080/products/products";
+  const [showProducts, setShowProducts] = useState([]);
+
+  async function axiosProducts() {
+    const AXIOS_DATA = await axios.get(PRODUCTS_URL);
+    setShowProducts(AXIOS_DATA.data);
+  }
+
+  useEffect(() => {
+    axiosProducts();
+  }, []);
   async function handleChange(select) {
     setSelectValue(select.target.value);
   }
@@ -85,15 +97,15 @@ export default function ProductBox({
         </div>
         <hr />
         {showlist ? (
-          product.map((product) => (
+          showProducts.map((product) => (
             <div className="hstack border-bottom">
               <img
-                src={product.imgURL}
+                src={`http://localhost:8080/upload/${product.filename}`}
                 alt=""
                 className="product-box-list-img m-4"
               />
               <div>
-                <p className="fs-5 mb-2">{product.title}</p>
+                <p className="fs-5 mb-2">{product.name}</p>
                 <p>₮{product.price}</p>
                 <div className="hstack gap-2">
                   <button className="border-0 rounded-4 btn pink-bg text-white btn-dark ">
@@ -113,10 +125,10 @@ export default function ProductBox({
         ) : (
           <div>
             <ul className="d-flex flex-wrap p-0 product ">
-              {product.map((data, index) => {
+              {showProducts.map((product, index) => {
                 return (
                   <Products
-                    data={data}
+                    product={product}
                     addWishlist={addWishlist}
                     setAddWishlist={setAddWishlist}
                     downWishList={downWishList}

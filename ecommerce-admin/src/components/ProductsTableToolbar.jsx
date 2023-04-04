@@ -33,6 +33,7 @@ export default function EnhancedTableToolbar(props) {
     const searchInput = e.target.search.value;
     const SEARCH_URL = `http://localhost:8080/products/search?value=${searchInput}`;
     const AXIOS_DATA = await axios.get(SEARCH_URL);
+    console.log(AXIOS_DATA);
     if (AXIOS_DATA.status == 200) {
       setUsers(AXIOS_DATA.data);
     }
@@ -42,7 +43,9 @@ export default function EnhancedTableToolbar(props) {
   async function fetchCategories() {
     const FETCHED_DATA = await fetch(CATEGORIES_URL);
     const FETCHED_JSON = await FETCHED_DATA.json();
-    setCategories(FETCHED_JSON.data);
+    if (FETCHED_JSON.status == "success") {
+      setCategories(FETCHED_JSON.data);
+    }
   }
   useEffect(() => {
     fetchCategories();
@@ -51,10 +54,9 @@ export default function EnhancedTableToolbar(props) {
   async function handleChange(select) {
     const AXIOS_DATA = await axios.get(URL);
     setUsers(AXIOS_DATA.data);
-    console.log("ds");
     if (select.target.value) {
       const filteredUser = AXIOS_DATA.data.filter(
-        (user) => user.category_id == select.target.value
+        (user) => user.category == select.target.value
       );
       setUsers(filteredUser);
     }
@@ -149,7 +151,7 @@ export default function EnhancedTableToolbar(props) {
                 <ExpandMoreIcon className="m-2 text-black-50" {...props} />
               )}
             >
-              <MenuItem value="">All</MenuItem>
+              <MenuItem value="">Бүгд</MenuItem>
               {categories &&
                 categories.map((category, index) => {
                   return (

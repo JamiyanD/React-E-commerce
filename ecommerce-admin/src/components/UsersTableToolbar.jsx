@@ -46,7 +46,9 @@ export default function UsersTableToolbar(props) {
     const FETCHED_DATA = await fetch(CATEGORIES_URL);
     const FETCHED_JSON = await FETCHED_DATA.json();
     console.log(FETCHED_JSON);
-    setRoles(FETCHED_JSON.data);
+    if (FETCHED_JSON.status == "success") {
+      setRoles(FETCHED_JSON.data);
+    }
   }
   useEffect(() => {
     fetchCategories();
@@ -163,7 +165,7 @@ export default function UsersTableToolbar(props) {
                 <ExpandMoreIcon className="m-2 text-black-50" {...props} />
               )}
             >
-              <MenuItem value="">All</MenuItem>
+              <MenuItem value="">Бүгд</MenuItem>
               {roles &&
                 roles.map((role, index) => {
                   return (

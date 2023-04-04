@@ -92,13 +92,11 @@ a {
   padding: 0 !important;
 }
 
-.upload-edit-icon{
+.upload-edit-icon {
   top: 0px;
   left: 210px;
   width: 35px;
   background-color: white !important;
-
-
 }
 .new-product-radio {
   width: 300px;
@@ -118,12 +116,14 @@ input[type="number"]::-webkit-outer-spin-button {
   position: absolute;
   top: 50%;
   left: 50%;
+  height: 100%;
   transform: translate(-50%, -50%);
-  width: 60%;
+  width: 40%;
   background-color: white;
   box-shadow: 24;
   padding: 4;
   outline: none !important;
+  overflow: scroll;
 }
 
 .add-user-input:focus {
@@ -167,6 +167,6 @@ input[type="number"]::-webkit-outer-spin-button {
   color: #7e8299 !important;
   font-weight: 600;
 }
-.tablecell-name{
+.tablecell-name {
   font-weight: 500 !important;
 }
