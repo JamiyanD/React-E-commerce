@@ -2,15 +2,20 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import categories from "../data/categories";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Typography from "@mui/material/Typography";
 import Slider from "@mui/material/Slider";
+import axios from "axios";
+import { ProductsContext } from "../context/products";
+
 export default function ProductBoxAside() {
   const [defaultSelect, setDefaultSelect] = useState("");
   const [sliderValue, setSliderValue] = useState([0, 120000]);
   const [categories, setCategories] = useState([]);
-
+  const PRODUCTS_URL = "http://localhost:8080/products/products";
   const CATEGORIES_URL = "http://localhost:8080/products/category";
+  const [showProducts, setShowProducts] = useContext(ProductsContext);
+
   async function fetchCategories() {
     const FETCHED_DATA = await fetch(CATEGORIES_URL);
     const FETCHED_JSON = await FETCHED_DATA.json();
@@ -26,6 +31,18 @@ export default function ProductBoxAside() {
     console.log(event.target.value);
     setSliderValue(event.target.value);
   };
+
+  async function handleCategory(category) {
+    console.log(category);
+    const AXIOS_DATA = await axios.get(PRODUCTS_URL);
+    setShowProducts(AXIOS_DATA.data);
+    if (category) {
+      const filteredUser = AXIOS_DATA.data.filter(
+        (product) => product.category == category
+      );
+      setShowProducts(filteredUser);
+    }
+  }
   return (
     <aside className=" vstack gap-5 w-25">
       <div className="hstack border border-1 p-3">
@@ -81,7 +98,12 @@ export default function ProductBoxAside() {
         <hr />
         {categories.map((category) => {
           return (
-            <p className="dark-blue pink-hover">{category.category_name}</p>
+            <p
+              className="dark-blue pink-hover cursor-pointer"
+              onClick={() => handleCategory(category.category_name)}
+            >
+              {category.category_name}
+            </p>
           );
         })}
       </div>

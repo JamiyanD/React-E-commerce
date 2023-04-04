@@ -8,13 +8,16 @@ import "react-alice-carousel/lib/alice-carousel.css";
 import { BrowserRouter } from "react-router-dom";
 import "semantic-ui-css/semantic.min.css";
 import { CartProvider } from "./context/CartContext";
+import { ProductsProvider } from "./context/products";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <React.StrictMode>
       <CartProvider>
-        <App />
+        <ProductsProvider>
+          <App />
+        </ProductsProvider>
       </CartProvider>
     </React.StrictMode>
   </BrowserRouter>

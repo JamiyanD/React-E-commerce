@@ -5,6 +5,9 @@
 .product li {
   list-style: none;
 }
+.cursor-pointer {
+  cursor: pointer;
+}
 
 .dark-blue {
   color: #01213a !important;

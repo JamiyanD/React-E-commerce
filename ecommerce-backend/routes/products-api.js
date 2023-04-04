@@ -122,3 +122,19 @@ products_router.get("/search", async (req, res) => {
 
   res.json(savedProducts);
 });
+
+products_router.get("/list", async (req, res) => {
+  console.log(req.query);
+  const page = req.query.page;
+  console.log(page);
+  const productsPerPage = req.query.productsPerPage;
+  try {
+    const savedProducts = await Products.find()
+      .limit(productsPerPage)
+      .skip(productsPerPage * page);
+    console.log(savedProducts);
+    res.json(savedProducts);
+  } catch (error) {
+    res.json([]);
+  }
+});

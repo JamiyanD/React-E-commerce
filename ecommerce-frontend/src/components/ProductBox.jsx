@@ -2,7 +2,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import categories from "../data/categories";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Typography from "@mui/material/Typography";
 import Slider from "@mui/material/Slider";
 import product from "../data/product";
@@ -15,6 +15,7 @@ import Stack from "@mui/material/Stack";
 import { Carousel } from "react-bootstrap";
 import Products from "./Products";
 import axios from "axios";
+import { ProductsContext } from "../context/products";
 export default function ProductBox({
   addWishlist,
   setAddWishlist,
@@ -23,8 +24,9 @@ export default function ProductBox({
   const [defaultSelect, setDefaultSelect] = useState("");
   const [selectValue, setSelectValue] = useState("");
   const [showlist, setShowList] = useState(false);
-  const PRODUCTS_URL = "http://localhost:8080/products/products";
-  const [showProducts, setShowProducts] = useState([]);
+  const PRODUCTS_URL =
+    "http://localhost:8080/products/list?page=0&productsPerPage=16";
+  const [showProducts, setShowProducts] = useContext(ProductsContext);
 
   async function axiosProducts() {
     const AXIOS_DATA = await axios.get(PRODUCTS_URL);
@@ -37,6 +39,16 @@ export default function ProductBox({
   async function handleChange(select) {
     setSelectValue(select.target.value);
   }
+
+  async function handlePagination(event, value) {
+    console.log("page", value);
+    const PAGINATION_URL = `http://localhost:8080/products/list?page=${
+      value - 1
+    }&productsPerPage=16`;
+    const PAGINATION_DATA = await axios.get(PAGINATION_URL);
+    setShowProducts(PAGINATION_DATA.data);
+  }
+
   return (
     <div className="container d-flex">
       <ProductBoxAside />
@@ -145,6 +157,8 @@ export default function ProductBox({
               count={10}
               size="large"
               className="dark-blue pagination"
+              // page={page}
+              onChange={handlePagination}
             />
           </Stack>
         </div>
