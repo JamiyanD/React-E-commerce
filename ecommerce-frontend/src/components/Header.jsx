@@ -1,7 +1,7 @@
 import InputGroup from "react-bootstrap/InputGroup";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import { Modal } from "react-bootstrap";
 import SignUp from "./SignUp";
 import { Routes, Route, Link } from "react-router-dom";
@@ -12,14 +12,53 @@ import Badge from "@mui/material/Badge";
 import CloseIcon from "@mui/icons-material/Close";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import Cart from "./Cart";
+import axios from "axios";
+import { ProductsContext } from "../context/products";
+import Products from "./Products";
+import categories from "../data/categories";
+
 function Header({ addWishlist, setAddWishlist, downWishList }) {
   const [list, setList] = useState(false);
   const [show, setShow] = useState(false);
+  const [query, setQuery] = useState("");
+  const [characters, setCharacters] = useState([]);
+  const [showProducts, setShowProducts] = useContext(ProductsContext);
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handleProduct = (productId) => {
     setShow(true);
   };
+
+  async function handleSearch(e) {
+    e.preventDefault();
+    // console.log(e.target.search.value);
+    // const searchInput = e.target.search.value;
+    // const SEARCH_URL = `http://localhost:8080/products/search?value=${searchInput}`;
+    // const AXIOS_DATA = await axios.get(SEARCH_URL);
+    // console.log(AXIOS_DATA);
+    // if (AXIOS_DATA.status == 200) {
+    //   setShowProducts(AXIOS_DATA.data);
+    // }
+  }
+  useEffect(() => {
+    console.log(query);
+    if (query) {
+      const fetchData = async () => {
+        try {
+          const AXIOS_DATA = await axios.get(
+            `http://localhost:8080/products/search?value=${query}`
+          );
+          setCharacters(AXIOS_DATA.data);
+        } catch (error) {
+          console.error(error);
+        }
+      };
+      fetchData();
+    } else {
+      setCharacters([]);
+    }
+  }, [query]);
 
   return (
     <header className="container">
@@ -102,31 +141,68 @@ function Header({ addWishlist, setAddWishlist, downWishList }) {
             data-bs-target="#offcanvasWithBothOptions"
             aria-controls="offcanvasWithBothOptions"
           ></i>
+
           <div
-            class="offcanvas offcanvas-top search-offcanvas"
+            style={
+              characters.length ? { height: "650px" } : { height: "150px" }
+            }
+            className="offcanvas offcanvas-top"
             data-bs-scroll="true"
             tabindex="-1"
             id="offcanvasWithBothOptions"
             aria-labelledby="offcanvasWithBothOptionsLabel"
           >
-            <div class="offcanvas-header container hstack justify-content-end p-0 mt-3 h-25">
+            <div class="offcanvas-header container hstack justify-content-end p-0 mt-3 ">
               <HighlightOffIcon
                 className=""
                 data-bs-dismiss="offcanvas"
                 aria-label="Close"
               ></HighlightOffIcon>
             </div>
+            <div className="offcanvas-body container ">
+              <form
+                onSubmit={handleSearch}
+                class=" d-flex align-items-start justify-content-center p-0 "
+              >
+                <input
+                  type=""
+                  name="search"
+                  class="form-control rounded-3 w-50 me-3"
+                  placeholder="Хайх"
+                  onChange={(event) => {
+                    setQuery(event.target.value);
+                    console.log(query);
+                  }}
+                />
+                <button
+                  type="submit"
+                  className="border-0 rounded-4 btn pink-bg text-white col-1 btn-dark "
+                >
+                  ХАЙХ
+                </button>
+              </form>
 
-            <div class="offcanvas-body container d-flex align-items-start justify-content-center h-50 p-0">
-              <input
-                type=""
-                name=""
-                class="form-control rounded-3 w-50 me-3"
-                placeholder="Хайх"
-              />
-              <button className="border-0 rounded-4 btn pink-bg text-white col-1 btn-dark ">
-                ХАЙХ
-              </button>
+              <div className="d-flex flex-wrap p-0 product ">
+                {characters.map((product, index) => {
+                  return (
+                    <li className=" m-3 product-box-card ">
+                      <img
+                        src={`http://localhost:8080/upload/${product.filename}`}
+                        alt=""
+                        className=" product-box-img"
+                      />
+                      <div>
+                        <p className="dark-blue text-center mt-2">
+                          {product.name}
+                        </p>
+                        <p className="text-secondary text-center">
+                          ₮ {product.price}
+                        </p>
+                      </div>
+                    </li>
+                  );
+                })}
+              </div>
             </div>
           </div>
           <Badge badgeContent={addWishlist.length} color="error">

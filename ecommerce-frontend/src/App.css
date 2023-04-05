@@ -56,10 +56,20 @@
 }
 .submenu .dropdown:hover .dropdown-menu {
   display: block;
-  margin-top: 0; /* remove the gap so it doesn't close */
+  position: absolute;
+  inset: 0px 0px auto auto;
+  margin: 0px;
+  transform: translate(0px, 126px);
 }
 .login-dropdown {
-  width: 300px;
+}
+.dropdown {
+  position: static !important;
+}
+.dropdown-menu {
+  /* box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important; */
+  margin-top: 0px !important;
+  width: 100% !important;
 }
 
 /**/
@@ -242,8 +252,9 @@
   box-shadow: none;
   border-color: black;
 }
+
 .search-offcanvas {
-  height: 140px !important;
+  height: 650px !important;
 }
 
 .input {

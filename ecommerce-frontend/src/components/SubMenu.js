@@ -14,23 +14,10 @@ function SubMenu() {
     setShow(false);
   };
   return (
-    // <DropdownButton
-    //   title={
-    //     <span className="fs-4">
-    //       Дэлгүүр<ExpandMoreIcon></ExpandMoreIcon>
-    //     </span>
-    //   }
-    //   className=""
-    //   variant="white"
-    //   show={show}
-    //   onMouseEnter={showDropdown}
-    //   onMouseLeave={hideDropdown}
-    //   href="/product-box"
-    // >
     <div className="submenu">
-      <div class="dropdown">
+      <div class="dropdown ">
         <a
-          class=" dropdown-toggle"
+          class=" dropdown-toggle p-2"
           show={show}
           onMouseEnter={showDropdown}
           onMouseLeave={hideDropdown}
@@ -42,24 +29,82 @@ function SubMenu() {
             Дэлгүүр<ExpandMoreIcon></ExpandMoreIcon>
           </span>
         </a>
+        <div className="dropdown-menu p-5 dropdown-menu-end ">
+          <div className="d-flex container gap-5">
+            <div class=" login-dropdown d-flex flex-column gap-2 ">
+              <h5 className="dark-blue">Жордан</h5>
+              <a class="text-secondary" href="#">
+                Action
+              </a>
+              <a class="" href="#">
+                Another action
+              </a>
+              <a class="" href="#">
+                Something else here
+              </a>
+            </div>
+            <div class="login-dropdown d-flex flex-column gap-2 ">
+              <h5>Чөлөөт загвар</h5>
 
-        <ul class="dropdown-menu">
-          <li>
-            <a class="dropdown-item" href="#">
-              Action
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="#">
-              Another action
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="#">
-              Something else here
-            </a>
-          </li>
-        </ul>
+              <a class="" href="#">
+                Action
+              </a>
+
+              <a class="" href="#">
+                Another action
+              </a>
+
+              <a class="" href="#">
+                Something else here
+              </a>
+            </div>
+            <div class="login-dropdown d-flex flex-column gap-2 ">
+              <h5>Уулын гутал</h5>
+
+              <a class="" href="#">
+                Action
+              </a>
+
+              <a class="" href="#">
+                Another action
+              </a>
+
+              <a class="" href="#">
+                Something else here
+              </a>
+            </div>
+            <div class="login-dropdown d-flex flex-column gap-2  ">
+              <h5>Сагсан бөмбөг</h5>
+
+              <a class="" href="#">
+                Action
+              </a>
+
+              <a class="" href="#">
+                Another action
+              </a>
+
+              <a class="" href="#">
+                Something else here
+              </a>
+            </div>
+            <div class="login-dropdown d-flex flex-column gap-2 ">
+              <h5>Гүйлтийн гутал</h5>
+
+              <a class="" href="#">
+                Action
+              </a>
+
+              <a class="" href="#">
+                Another action
+              </a>
+
+              <a class="" href="#">
+                Something else here
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     /* {menus.map((child, index) => {

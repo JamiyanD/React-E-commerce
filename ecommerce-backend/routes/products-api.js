@@ -115,12 +115,16 @@ products_router.put("/products", async (req, res) => {
 
 products_router.get("/search", async (req, res) => {
   console.log(req.query);
-  const savedProducts = await Products.find({
-    name: { $regex: req.query.value, $options: "i" },
-  });
-  console.log(savedProducts);
+  try {
+    const savedProducts = await Products.find({
+      name: { $regex: req.query.value, $options: "i" },
+    });
+    console.log(savedProducts);
 
-  res.json(savedProducts);
+    res.json(savedProducts);
+  } catch (error) {
+    res.json([]);
+  }
 });
 
 products_router.get("/list", async (req, res) => {
