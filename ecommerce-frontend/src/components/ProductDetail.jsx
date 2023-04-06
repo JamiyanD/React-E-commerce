@@ -1,10 +1,25 @@
 import { useParams } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "react-inner-image-zoom/lib/InnerImageZoom/styles.css";
 import InnerImageZoom from "react-inner-image-zoom";
+import axios from "axios";
+
 export default function ProductDetail() {
   const { id } = useParams();
   const [number, setNumber] = useState(1);
+  const PRODUCTS_URL = "http://localhost:8080/products/products";
+  const [currentProducts, setCurrentProducts] = useState("");
+
+  async function axiosProducts() {
+    const AXIOS_DATA = await axios.put(PRODUCTS_URL, { productsId: id });
+    if (AXIOS_DATA.status == 200) {
+      setCurrentProducts(AXIOS_DATA.data);
+      console.log(AXIOS_DATA);
+    }
+  }
+  useEffect(() => {
+    axiosProducts();
+  }, []);
   return (
     <div className="container">
       <div className="d-flex">
@@ -23,14 +38,14 @@ export default function ProductDetail() {
           </div>
           <InnerImageZoom
             zoomType="hover"
-            src="https://img.freepik.com/free-photo/new-sneakers_93675-130032.jpg?w=1380&t=st=1679499554~exp=1679500154~hmac=5c0f10e4ed882e89543abd0a3a53b8e6457e0c8b54a68e881a28e03dc537c31b"
+            src={`http://localhost:8080/upload/${currentProducts.filename}`}
             alt=""
             className="product-detail-img m-2"
           />
         </div>
         <div className="m-4 w-100">
-          <p className="fs-5 mb-2 dark-blue">ТЭМДЭГЛЭЛИЙН ДЭВТЭР 117Х79мм</p>
-          <p>₮2,000</p>
+          <p className="fs-5 mb-2 dark-blue">{currentProducts.name}</p>
+          <p>₮{currentProducts.price}</p>
           <div className="d-flex gap-3">
             <div className="rounded-5 border border-2 col-3 ">
               <button
@@ -61,7 +76,8 @@ export default function ProductDetail() {
           </div>
           <hr />
           <p>
-            <strong className="dark-blue">Ангилал</strong>: Тэмдэглэлийн дэвтэр
+            <strong className="dark-blue">Ангилал</strong>:{" "}
+            {currentProducts.category}
           </p>
         </div>
       </div>

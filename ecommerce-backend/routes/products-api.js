@@ -109,8 +109,9 @@ products_router.delete("/products", async (req, res) => {
 
 products_router.put("/products", async (req, res) => {
   const body = req.body;
+  console.log(body);
   const findProducts = await Products.findOne({ _id: body.productsId });
-  res.json({ data: findProducts });
+  res.json(findProducts);
 });
 
 products_router.get("/search", async (req, res) => {

@@ -16,6 +16,7 @@ import { Carousel } from "react-bootstrap";
 import Products from "./Products";
 import axios from "axios";
 import { ProductsContext } from "../context/products";
+import { Link } from "react-router-dom";
 export default function ProductBox({
   addWishlist,
   setAddWishlist,
@@ -136,15 +137,17 @@ export default function ProductBox({
           ))
         ) : (
           <div>
-            <ul className="d-flex flex-wrap p-0 product ">
+            <ul className="d-flex flex-wrap p-0 product">
               {showProducts.map((product, index) => {
                 return (
-                  <Products
-                    product={product}
-                    addWishlist={addWishlist}
-                    setAddWishlist={setAddWishlist}
-                    downWishList={downWishList}
-                  />
+                  <Link to={`/product-detail/${product._id}`}>
+                    <Products
+                      product={product}
+                      addWishlist={addWishlist}
+                      setAddWishlist={setAddWishlist}
+                      downWishList={downWishList}
+                    />
+                  </Link>
                 );
               })}
             </ul>

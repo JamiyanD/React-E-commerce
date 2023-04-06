@@ -36,70 +36,70 @@ function SubMenu() {
               <a class="text-secondary" href="#">
                 Action
               </a>
-              <a class="" href="#">
+              <a class="text-secondary" href="#">
                 Another action
               </a>
-              <a class="" href="#">
+              <a class="text-secondary" href="#">
                 Something else here
               </a>
             </div>
             <div class="login-dropdown d-flex flex-column gap-2 ">
-              <h5>Чөлөөт загвар</h5>
+              <h5 className="dark-blue">Чөлөөт загвар</h5>
 
-              <a class="" href="#">
+              <a class="text-secondary" href="#">
                 Action
               </a>
 
-              <a class="" href="#">
+              <a class="text-secondary" href="#">
                 Another action
               </a>
 
-              <a class="" href="#">
+              <a class="text-secondary" href="#">
                 Something else here
               </a>
             </div>
             <div class="login-dropdown d-flex flex-column gap-2 ">
-              <h5>Уулын гутал</h5>
+              <h5 className="dark-blue">Уулын гутал</h5>
 
-              <a class="" href="#">
+              <a class="text-secondary" href="#">
                 Action
               </a>
 
-              <a class="" href="#">
+              <a class="text-secondary" href="#">
                 Another action
               </a>
 
-              <a class="" href="#">
+              <a class="text-secondary" href="#">
                 Something else here
               </a>
             </div>
             <div class="login-dropdown d-flex flex-column gap-2  ">
-              <h5>Сагсан бөмбөг</h5>
+              <h5 className="dark-blue">Сагсан бөмбөг</h5>
 
-              <a class="" href="#">
+              <a class="text-secondary" href="#">
                 Action
               </a>
 
-              <a class="" href="#">
+              <a class="text-secondary" href="#">
                 Another action
               </a>
 
-              <a class="" href="#">
+              <a class="text-secondary" href="#">
                 Something else here
               </a>
             </div>
             <div class="login-dropdown d-flex flex-column gap-2 ">
-              <h5>Гүйлтийн гутал</h5>
+              <h5 className="dark-blue">Гүйлтийн гутал</h5>
 
-              <a class="" href="#">
+              <a class="text-secondary" href="#">
                 Action
               </a>
 
-              <a class="" href="#">
+              <a class="text-secondary" href="#">
                 Another action
               </a>
 
-              <a class="" href="#">
+              <a class="text-secondary" href="#">
                 Something else here
               </a>
             </div>
