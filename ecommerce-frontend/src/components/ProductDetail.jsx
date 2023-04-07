@@ -3,13 +3,22 @@ import { useEffect, useState } from "react";
 import "react-inner-image-zoom/lib/InnerImageZoom/styles.css";
 import InnerImageZoom from "react-inner-image-zoom";
 import axios from "axios";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { FreeMode, Navigation, Thumbs, Mousewheel, Pagination } from "swiper";
+import { images } from "../data/images";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/thumbs";
+import "../main.scss";
+import "swiper/css/free-mode";
 
 export default function ProductDetail() {
   const { id } = useParams();
   const [number, setNumber] = useState(1);
   const PRODUCTS_URL = "http://localhost:8080/products/products";
   const [currentProducts, setCurrentProducts] = useState("");
-
+  const [activeThumb, setActiveThumb] = useState(null);
+  console.log(activeThumb);
   async function axiosProducts() {
     const AXIOS_DATA = await axios.put(PRODUCTS_URL, { productsId: id });
     if (AXIOS_DATA.status == 200) {
@@ -20,11 +29,58 @@ export default function ProductDetail() {
   useEffect(() => {
     axiosProducts();
   }, []);
+
   return (
     <div className="container">
       <div className="d-flex">
-        <div className="d-flex mb-5">
-          <div className="d-flex flex-column">
+        <div
+          className="mb-5 d-flex"
+          style={{
+            width: "750px",
+            height: "650px",
+            backgroundColor: "#fff",
+            padding: "20px",
+          }}
+        >
+          <Swiper
+            // onMouseEnter={setActiveThumb}
+
+            onSwiper={setActiveThumb}
+            // loop={true}
+            spaceBetween={20}
+            mousewheel={true}
+            slidesPerView={4}
+            modules={[Mousewheel]}
+            className=" mySwiper"
+            direction={"vertical"}
+          >
+            {images.map((item, index) => (
+              <SwiperSlide key={index}>
+                <div className="">
+                  <img src={item.url} alt="" />
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          <Swiper
+            loop={true}
+            spaceBetween={10}
+            navigation={true}
+            modules={[Navigation, Thumbs]}
+            grabCursor={true}
+            thumbs={{
+              swiper:
+                activeThumb && !activeThumb.destroyed ? activeThumb : null,
+            }}
+            className=" mySwiper2"
+          >
+            {images.map((item, index) => (
+              <SwiperSlide key={index}>
+                <img src={item.url} alt="" className="zoom" />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          {/* <div className="d-flex flex-column">
             <img
               src="https://img.freepik.com/free-photo/new-sneakers_93675-130032.jpg?w=1380&t=st=1679499554~exp=1679500154~hmac=5c0f10e4ed882e89543abd0a3a53b8e6457e0c8b54a68e881a28e03dc537c31b"
               alt=""
@@ -41,7 +97,7 @@ export default function ProductDetail() {
             src={`http://localhost:8080/upload/${currentProducts.filename}`}
             alt=""
             className="product-detail-img m-2"
-          />
+          /> */}
         </div>
         <div className="m-4 w-100">
           <p className="fs-5 mb-2 dark-blue">{currentProducts.name}</p>
