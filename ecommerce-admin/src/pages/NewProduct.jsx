@@ -33,6 +33,10 @@ export default function NewUser() {
     isEdit: false,
   });
   const [defaultSelect, setDefaultSelect] = useState("Published");
+  const [changeColor, setChangeColor] = useState("");
+  const [size, setSize] = useState("");
+  const [gender, setGender] = useState("");
+  const [height, setHeight] = useState("");
   const CATEGORIES_URL = "http://localhost:8080/products/category";
 
   async function fetchCategories() {
@@ -57,6 +61,10 @@ export default function NewUser() {
     data.append("code", currentProducts.code);
     data.append("quantity", currentProducts.quantity);
     data.append("category", currentProducts.category);
+    data.append("color", currentProducts.color);
+    data.append("size", currentProducts.size);
+    data.append("height", currentProducts.height);
+    data.append("gender", currentProducts.gender);
 
     const config = {
       headers: { "content-type": "multipart/form-data" },
@@ -76,7 +84,7 @@ export default function NewUser() {
       filename: filename.substr(12, filename.length),
     });
   }
-  console.log(currentProducts);
+
   function handleName(e) {
     setCurrentProducts({
       ...currentProducts,
@@ -112,6 +120,34 @@ export default function NewUser() {
       category: select.target.value,
     });
   }
+  function handleColor(e) {
+    setChangeColor(e.target.value);
+    setCurrentProducts({
+      ...currentProducts,
+      color: e.target.value,
+    });
+  }
+  function handleSize(e) {
+    setSize(e.target.value);
+    setCurrentProducts({
+      ...currentProducts,
+      size: e.target.value,
+    });
+  }
+  function handleGender(e) {
+    setGender(e.target.value);
+    setCurrentProducts({
+      ...currentProducts,
+      gender: e.target.value,
+    });
+  }
+  function handleHeight(e) {
+    setHeight(e.target.value);
+    setCurrentProducts({
+      ...currentProducts,
+      height: e.target.value,
+    });
+  }
 
   const [value, setValue] = React.useState("1");
   const handleTabs = (event, newValue) => {
@@ -133,7 +169,7 @@ export default function NewUser() {
       setShowTax(true);
     }
   }
-
+  console.log(currentProducts);
   return (
     <Box
       sx={{ display: "flex", backgroundColor: "white" }}
@@ -321,14 +357,14 @@ export default function NewUser() {
                       </FormHelperText>
                     </>
                   )}
-                  <Stack direction="row">
+                  <Stack direction="row" gap={2}>
                     <FormControl className="w-50" size="small">
                       <Typography variant="subtitle2" gutterBottom>
-                        Tax Class
+                        Color
                       </Typography>
                       <Select
-                        value=""
-                        onChange={""}
+                        value={changeColor}
+                        onChange={handleColor}
                         displayEmpty
                         inputProps={{ "aria-label": "Without label" }}
                         className=" rounded-3 text-muted"
@@ -354,29 +390,75 @@ export default function NewUser() {
                         <MenuItem disabled value="">
                           Select an option
                         </MenuItem>
-                        <MenuItem k value="1">
-                          Tax Free
-                        </MenuItem>
-                        <MenuItem k value="2">
-                          Taxable Goods
-                        </MenuItem>
-                        <MenuItem k value="3">
-                          Downloadable Product
-                        </MenuItem>
+                        <MenuItem value="хар">хар</MenuItem>
+                        <MenuItem value="цагаан">цагаан</MenuItem>
+                        <MenuItem value="цэнхэр">цэнхэр</MenuItem>
+                        <MenuItem value="саарал">саарал</MenuItem>
+                        <MenuItem value="бор">бор</MenuItem>
+                        <MenuItem value="ногоон">ногоон</MenuItem>
+                        <MenuItem value="солонго">солонго</MenuItem>
+                        <MenuItem value="ягаан">ягаан</MenuItem>
+
+                        <MenuItem value="чернил">чернил</MenuItem>
+                        <MenuItem value="улаан">улаан</MenuItem>
+                        <MenuItem value="шар">шар</MenuItem>
                       </Select>
-                      <FormHelperText>
-                        Set the product tax class.
+                      <FormHelperText>Set the color.</FormHelperText>
+                    </FormControl>
+
+                    <FormControl className="w-50" size="small">
+                      <Typography variant="subtitle2" gutterBottom>
+                        Size
+                      </Typography>
+                      <Select
+                        value={size}
+                        onChange={handleSize}
+                        displayEmpty
+                        inputProps={{ "aria-label": "Without label" }}
+                        className=" rounded-3 text-muted"
+                        sx={{
+                          boxShadow: "none",
+
+                          "&.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                            {
+                              borderColor: "silver",
+                            },
+                          "&.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
+                            {
+                              borderColor: "lightgrey",
+                            },
+                        }}
+                        IconComponent={(props) => (
+                          <ExpandMoreIcon
+                            className="m-2 text-black-50"
+                            {...props}
+                          />
+                        )}
+                      >
+                        <MenuItem disabled value="">
+                          Select an option
+                        </MenuItem>
+                        <MenuItem value="33">33</MenuItem>
+                        <MenuItem value="34">34</MenuItem>
+                        <MenuItem value="35">35</MenuItem>
+                        <MenuItem value="36">36</MenuItem>
+                        <MenuItem value="37">37</MenuItem>
+                        <MenuItem value="38">38</MenuItem>
+                        <MenuItem value="39">39</MenuItem>
+                        <MenuItem value="40">40</MenuItem>
+                        <MenuItem value="41">41</MenuItem>
+                        <MenuItem value="42">42</MenuItem>
+                        <MenuItem value="43">43</MenuItem>
+                        <MenuItem value="44">44</MenuItem>
+                        <MenuItem value="45">45</MenuItem>
+                        <MenuItem value="46">46</MenuItem>
+                        <MenuItem value="47">47</MenuItem>
+                        <MenuItem value="48">48</MenuItem>
+                      </Select>
+                      <FormHelperText className="mb-4">
+                        Set the product size.
                       </FormHelperText>
                     </FormControl>
-                    <div className="w-50 ms-2">
-                      <Typography variant="subtitle2" gutterBottom>
-                        VAT Amount(%)
-                      </Typography>
-                      <input type="" name="" class="form-control rounded-3" />
-                      <FormHelperText className="mb-4">
-                        Set the product VAT about.
-                      </FormHelperText>
-                    </div>
                   </Stack>
                 </div>
               </TabPanel>
@@ -399,18 +481,49 @@ export default function NewUser() {
                   <FormHelperText className="mb-4">
                     Enter the product SKU.
                   </FormHelperText>
-                  <Typography variant="subtitle2" gutterBottom>
-                    Barcode
-                  </Typography>
-                  <input
-                    type=""
-                    name="code"
-                    class="form-control rounded-3"
-                    placeholder="Barcode Number"
-                  />
-                  <FormHelperText className="mb-4">
-                    Enter the product barcode number.
-                  </FormHelperText>
+                  <FormControl className="w-100" size="small">
+                    <Typography variant="subtitle2" gutterBottom>
+                      Height
+                    </Typography>
+                    <Select
+                      value={height}
+                      onChange={handleHeight}
+                      displayEmpty
+                      inputProps={{ "aria-label": "Without label" }}
+                      className=" rounded-3 text-muted"
+                      sx={{
+                        boxShadow: "none",
+
+                        "&.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                          {
+                            borderColor: "silver",
+                          },
+                        "&.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
+                          {
+                            borderColor: "lightgrey",
+                          },
+                      }}
+                      IconComponent={(props) => (
+                        <ExpandMoreIcon
+                          className="m-2 text-black-50"
+                          {...props}
+                        />
+                      )}
+                    >
+                      <MenuItem disabled value="">
+                        Select an option
+                      </MenuItem>
+                      <MenuItem value="Богино түрийтэй">
+                        Богино түрийтэй
+                      </MenuItem>
+                      <MenuItem value="Хагас түрийтэй">Хагас түрийтэй</MenuItem>
+                      <MenuItem value="Урт түрийтэй">Урт түрийтэй</MenuItem>
+                    </Select>
+                    <FormHelperText className="mb-4">
+                      Set the product height.
+                    </FormHelperText>
+                  </FormControl>
+
                   <Typography variant="subtitle2" gutterBottom>
                     Quantity
                   </Typography>
@@ -434,13 +547,27 @@ export default function NewUser() {
                     Enter the product quantity.
                   </FormHelperText>
                   <Typography variant="subtitle2" gutterBottom>
-                    Allow Backorders
+                    Gender
                   </Typography>
-                  <FormControlLabel
-                    control={<Checkbox defaultChecked />}
-                    label="Yes"
-                    className="text-muted"
-                  />
+                  <FormControl>
+                    <RadioGroup
+                      aria-labelledby="demo-controlled-radio-buttons-group"
+                      name="controlled-radio-buttons-group"
+                      value={gender}
+                      onChange={handleGender}
+                    >
+                      <FormControlLabel
+                        value="Эмэгтэй"
+                        control={<Radio />}
+                        label="Female"
+                      />
+                      <FormControlLabel
+                        value="Эрэгтэй"
+                        control={<Radio />}
+                        label="Male"
+                      />
+                    </RadioGroup>
+                  </FormControl>
                   <FormHelperText className="mb-4">
                     Allow customers to purchase products that are out of stock.
                   </FormHelperText>

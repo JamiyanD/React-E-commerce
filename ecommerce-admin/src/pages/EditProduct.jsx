@@ -54,7 +54,7 @@ export default function EditProduct() {
   async function axiosProduct() {
     const AXIOS_DATA = await axios.put(PRODUCTS_URL, { productsId: id });
     if (AXIOS_DATA.status == 200) {
-      setCurrentProducts(AXIOS_DATA.data.data);
+      setCurrentProducts(AXIOS_DATA.data);
     }
   }
 

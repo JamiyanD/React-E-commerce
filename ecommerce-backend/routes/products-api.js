@@ -64,6 +64,10 @@ products_router.post("/products", upload.single("image"), async (req, res) => {
     code,
     rating,
     filename,
+    gender,
+    color,
+    height,
+    size,
   } = req.body;
   console.log("file", req.file);
   console.log("body", req.body);
@@ -128,8 +132,25 @@ products_router.get("/search", async (req, res) => {
   }
 });
 
-products_router.get("/list", async (req, res) => {
+// products_router.get("/list", async (req, res) => {
+//   console.log(req.query);
+//   const page = req.query.page;
+//   console.log(page);
+//   const productsPerPage = req.query.productsPerPage;
+//   try {
+//     const savedProducts = await Products.find()
+//       .limit(productsPerPage)
+//       .skip(productsPerPage * page);
+
+//     res.json(savedProducts);
+//   } catch (error) {
+//     res.json([]);
+//   }
+// });
+
+products_router.post("/list", async (req, res) => {
   console.log(req.query);
+  console.log(req.body);
   const page = req.query.page;
   console.log(page);
   const productsPerPage = req.query.productsPerPage;
@@ -137,8 +158,22 @@ products_router.get("/list", async (req, res) => {
     const savedProducts = await Products.find()
       .limit(productsPerPage)
       .skip(productsPerPage * page);
-    console.log(savedProducts);
-    res.json(savedProducts);
+    if (req.body.select == "asc") {
+      const savedProducts = await Products.find()
+        .sort({ price: 1 })
+        .limit(productsPerPage)
+        .skip(productsPerPage * page);
+
+      res.json(savedProducts);
+    } else if (req.body.select == "desc") {
+      const savedProducts = await Products.find()
+        .sort({ price: -1 })
+        .limit(productsPerPage)
+        .skip(productsPerPage * page);
+      res.json(savedProducts);
+    } else {
+      res.json(savedProducts);
+    }
   } catch (error) {
     res.json([]);
   }

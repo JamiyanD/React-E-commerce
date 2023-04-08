@@ -22,31 +22,45 @@ export default function ProductBox({
   setAddWishlist,
   downWishList,
 }) {
-  const [defaultSelect, setDefaultSelect] = useState("");
   const [selectValue, setSelectValue] = useState("");
   const [showlist, setShowList] = useState(false);
+  const ALL_PRODUCTS_URL = "http://localhost:8080/products/products";
   const PRODUCTS_URL =
-    "http://localhost:8080/products/list?page=0&productsPerPage=16";
+    "http://localhost:8080/products/list?page=0&productsPerPage=20";
   const [showProducts, setShowProducts] = useContext(ProductsContext);
+  const [productsData, setProductsData] = useState([]);
+
+  async function axiosTotalProducts() {
+    const AXIOS_DATA = await axios.get(ALL_PRODUCTS_URL);
+    setProductsData(AXIOS_DATA.data);
+  }
 
   async function axiosProducts() {
-    const AXIOS_DATA = await axios.get(PRODUCTS_URL);
+    const AXIOS_DATA = await axios.post(PRODUCTS_URL);
     setShowProducts(AXIOS_DATA.data);
   }
 
   useEffect(() => {
     axiosProducts();
+    axiosTotalProducts();
   }, []);
-  async function handleChange(select) {
-    setSelectValue(select.target.value);
+  async function handleChange(e) {
+    setSelectValue(e.target.value);
+    console.log(e.target.value);
+    const AXIOS_DATA = await axios.post(PRODUCTS_URL, {
+      select: e.target.value,
+    });
+    setShowProducts(AXIOS_DATA.data);
   }
 
   async function handlePagination(event, value) {
     console.log("page", value);
     const PAGINATION_URL = `http://localhost:8080/products/list?page=${
       value - 1
-    }&productsPerPage=16`;
-    const PAGINATION_DATA = await axios.get(PAGINATION_URL);
+    }&productsPerPage=20`;
+    const PAGINATION_DATA = await axios.post(PAGINATION_URL, {
+      select: selectValue,
+    });
     setShowProducts(PAGINATION_DATA.data);
   }
 
@@ -96,15 +110,13 @@ export default function ProductBox({
                   <ExpandMoreIcon className="m-2 text-black-50" {...props} />
                 )}
               >
-                <MenuItem value="1">Эрэмбэ: Их сонирхсон</MenuItem>
-                <MenuItem value="2">Эрэмбэ: Дундаж үнэлгээ</MenuItem>
-                <MenuItem value="">Эрэмбэ: Шинээр</MenuItem>
-                <MenuItem value="4">Эрэмбэ: Үнэ өсөхөөр</MenuItem>
-                <MenuItem value="5">Эрэмбэ: Үнэ буурахаар</MenuItem>
+                <MenuItem value="">Шинээр</MenuItem>
+                <MenuItem value="asc">Үнэ өсөхөөр</MenuItem>
+                <MenuItem value="desc">Үнэ буурахаар</MenuItem>
               </Select>
             </FormControl>
             <p className="border-start border-2 ps-3 text-secondary">
-              1–16 харуулсан. Нийт 312
+              1–20 харуулсан. Нийт {productsData.length}
             </p>
           </div>
         </div>

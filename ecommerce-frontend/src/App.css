@@ -265,9 +265,66 @@
 }
 
 /**/
-
-.color-button:hover {
-  color: white !important;
+.Black {
+  background-color: black;
+}
+.White {
+  background-color: white;
+  color: black !important;
+}
+.Blue {
+  background-color: #1790c8;
+}
+.Grey {
+  background-color: #808080;
+}
+.Brown {
+  background-color: #825d41;
+}
+.Green {
+  background-color: #7bba3c;
+}
+.Rainbow {
+  background-image: linear-gradient(
+    to right,
+    red,
+    orange,
+    yellow,
+    green,
+    blue,
+    indigo,
+    violet
+  );
+  color: transparent;
+}
+.Purple {
+  background-color: #8d429f;
+}
+.Red {
+  background-color: #e7352b;
+}
+.Yellow {
+  background-color: #fed533;
+}
+.Pink {
+  background-color: #f0728f;
+}
+.Orange {
+  background-color: #f36b26;
+}
+.genderCheckbox:checked {
+  background-color: #e84f69;
+  box-shadow: none;
+  border: none;
+}
+.size-button {
+  width: 65px;
+}
+.color-button {
+  width: 25px;
+  height: 25px;
+}
+.size-button:hover {
   background-color: #e84f69;
   border-color: #e84f69;
 }
