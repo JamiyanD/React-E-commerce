@@ -17,7 +17,7 @@ function SubMenu() {
     <div className="submenu">
       <div class="dropdown ">
         <a
-          class=" dropdown-toggle p-2"
+          class=" dropdown-toggle p-2 dark-blue pink-hover"
           show={show}
           onMouseEnter={showDropdown}
           onMouseLeave={hideDropdown}

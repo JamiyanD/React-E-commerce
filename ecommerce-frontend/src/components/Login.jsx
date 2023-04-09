@@ -8,62 +8,57 @@ export default function Login() {
     e.preventDefault();
   }
   return (
-    <div className="d-flex container gap-5 justify-content-center">
-      <form className="d-flex flex-column col-4 me-5" onSubmit={onSubmit}>
-        <h1 className="my-5 dark-blue">Нэвтрэх</h1>
-
-        <label className="fw-semibold dark-blue">
-          Имэйл хаяг
-          <input
-            class="form-control mt-2 p-3"
-            type=""
-            name="email"
-            placeholder="Имэйл хаягаа оруулна уу"
-          />
-        </label>
-        <label className="fw-semibold dark-blue mt-4">
-          Нууц үг
-          <input
-            class="form-control my-2 p-3"
-            type="text"
-            name="password"
-            placeholder="Нууц үгээ оруулна уу"
-          />
-        </label>
-        <div className="d-flex justify-content-between align-items-center">
-          <FormControlLabel
-            value="end"
-            control={<Checkbox />}
-            label="Сануулах"
-            labelPlacement="end"
-            className="text-secondary"
-          />
-          <p className="text-secondary">Нууц үгээ мартсан уу?</p>
+    <div className="container">
+      <h1 className="my-5 dark-blue text-center col-4">Бүртгүүлэх</h1>
+      <form className="d-flex  gap-5 justify-content-center">
+        <div className="d-flex flex-column col-4 me-5" onSubmit={onSubmit}>
+          <label className="fw-semibold dark-blue">
+            Имэйл хаяг
+            <input
+              class="form-control mt-2 p-3"
+              type=""
+              name="email"
+              placeholder="Имэйл хаягаа оруулна уу"
+            />
+          </label>
+          <label className="fw-semibold dark-blue mt-4">
+            Нууц үг
+            <input
+              class="form-control my-2 p-3"
+              type="text"
+              name="password"
+              placeholder="Нууц үгээ оруулна уу"
+            />
+          </label>
+          <label className="fw-semibold dark-blue mt-4">
+            Нууц үг баталгаажуулах
+            <input
+              class="form-control my-2 p-3"
+              type="text"
+              name="password"
+              placeholder="Нууц үгээ баталгаажуулна уу"
+            />
+          </label>
         </div>
-        <button className="btn pink-bg fw-semibold btn-dark border-0 rounded-4 p-3 text-white my-4">
-          Нэвтрэх
-        </button>
-      </form>
-      <form className="d-flex flex-column col-4 ms-5" onSubmit={onSubmit}>
-        <h1 className="my-5 dark-blue">Бүртгүүлэх</h1>
+        <div className="d-flex flex-column col-4 ms-5 pt-5" onSubmit={onSubmit}>
+          <label className="fw-semibold dark-blue">
+            Имэйл хаяг
+            <input
+              class="form-control mt-2 p-3"
+              type=""
+              name="email"
+              placeholder="Имэйл хаягаа оруулна уу"
+            />
+          </label>
 
-        <label className="fw-semibold dark-blue">
-          Имэйл хаяг
-          <input
-            class="form-control mt-2 p-3"
-            type=""
-            name="email"
-            placeholder="Имэйл хаягаа оруулна уу"
-          />
-        </label>
+          <p className="text-secondary my-4">
+            Таны имэйл хаяг руу нууц үг илгээнэ.
+          </p>
 
-        <p className="text-secondary my-5">
-          Таны имэйл хаяг руу нууц үг илгээнэ.
-        </p>
-
-        <button className="btn pink-bg btn-dark fw-semibold  border-0 rounded-4 p-3 text-white ">
-          Бүртгүүлэх
-        </button>
+          <button className="btn pink-bg btn-dark fw-semibold  border-0 rounded-4 p-3 text-white ">
+            Бүртгүүлэх
+          </button>
+        </div>
       </form>
     </div>
   );

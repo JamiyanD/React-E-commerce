@@ -3,7 +3,6 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useState, useContext, useEffect } from "react";
 import { Modal } from "react-bootstrap";
-import SignUp from "./SignUp";
 import { Routes, Route, Link } from "react-router-dom";
 import menus from "../data/categories";
 import { Nav, Stack, NavLink } from "react-bootstrap";
@@ -32,14 +31,14 @@ function Header({ addWishlist, setAddWishlist, downWishList }) {
 
   async function handleSearch(e) {
     e.preventDefault();
-    // console.log(e.target.search.value);
-    // const searchInput = e.target.search.value;
-    // const SEARCH_URL = `http://localhost:8080/products/search?value=${searchInput}`;
-    // const AXIOS_DATA = await axios.get(SEARCH_URL);
-    // console.log(AXIOS_DATA);
-    // if (AXIOS_DATA.status == 200) {
-    //   setShowProducts(AXIOS_DATA.data);
-    // }
+    console.log(e.target.search.value);
+    const searchInput = e.target.search.value;
+    const SEARCH_URL = `http://localhost:8080/products/search?value=${searchInput}`;
+    const AXIOS_DATA = await axios.get(SEARCH_URL);
+    console.log(AXIOS_DATA);
+    if (AXIOS_DATA.status == 200) {
+      setShowProducts(AXIOS_DATA.data);
+    }
   }
   useEffect(() => {
     console.log(query);
@@ -62,11 +61,11 @@ function Header({ addWishlist, setAddWishlist, downWishList }) {
 
   return (
     <header className="container">
-      <div className="hstack" id="up">
+      <div className="hstack">
         <p1 className="my-3 text-black-50">Утас: (+976) 9988-2655</p1>
-        <p1 className="m-2 ms-auto text-black-50">Киткат ХХК</p1>
+        <p1 className="m-2 ms-auto text-black-50">Жаяа ХХК</p1>
       </div>
-      <div id="down" className=" d-flex align-items-center">
+      <div className=" d-flex align-items-center">
         {" "}
         <Link to={"/"} addWishlist={addWishlist}>
           <img
@@ -80,13 +79,13 @@ function Header({ addWishlist, setAddWishlist, downWishList }) {
           <Nav className="d-flex align-items-center justify-content-end gap-4 me-5">
             <SubMenu />
 
-            <NavLink className="p-0" href="/about-us">
+            <NavLink className="p-0 pink-hover" href="/about-us">
               Бидний тухай
             </NavLink>
-            <NavLink className="p-0" href="/blog">
+            <NavLink className="p-0 pink-hover" href="/blog">
               Мэдээ
             </NavLink>
-            <NavLink className="p-0" href="/contact">
+            <NavLink className="p-0 pink-hover" href="/contact">
               Холбоо барих
             </NavLink>
           </Nav>
@@ -103,13 +102,15 @@ function Header({ addWishlist, setAddWishlist, downWishList }) {
             >
               НЭВТРЭХ/БҮРТГҮҮЛЭХ
             </a>
-            <form class="dropdown-menu p-4 dropdown-menu-end login-dropdown">
+            <form class="dropdown-menu p-4 dropdown-menu-end ">
               <div className="d-flex justify-content-between">
                 <p className="">Нэвтрэх</p>
-                <p className="pink ">Бүртгүүлэх</p>
+                <Link to={"/login"}>
+                  <p className="pink ">Бүртгүүлэх</p>
+                </Link>
               </div>
               <div class="mb-3 ">
-                <label className=" text-secondary ">Имэйл хаяг</label>
+                <label className=" text-secondary mb-2">Имэйл хаяг</label>
                 <input
                   class="form-control  p-3 "
                   type=""
@@ -118,7 +119,7 @@ function Header({ addWishlist, setAddWishlist, downWishList }) {
                 />
               </div>
               <div class="mb-3">
-                <label className="text-secondary">Нууц үг</label>
+                <label className="text-secondary mb-2">Нууц үг</label>
                 <input
                   class="form-control  p-3"
                   type=""
@@ -219,7 +220,6 @@ function Header({ addWishlist, setAddWishlist, downWishList }) {
           <Cart />
         </div>
       </div>
-      <div></div>
     </header>
   );
 }
@@ -228,8 +228,10 @@ export default Header;
 const WishBox = ({ addWishlist, downWishList }) => {
   return (
     <div className="wishlist">
-      <h3>Wishlist</h3>
-      {addWishlist.length === 0 && <h4>Your wishlist is empty</h4>}
+      <h3 className="dark-blue">Хүслийн жагсаалт</h3>
+      {addWishlist.length === 0 && (
+        <p className="text-secondary">Хүслийн жагсаалт хоосон байна.</p>
+      )}
       {addWishlist.map((wish) => {
         return (
           <div className="wishlist-product" key={wish.id}>

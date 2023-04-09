@@ -19,20 +19,13 @@ import Footer from "./Footer";
 import Detail from "./Detail";
 import { useState } from "react";
 import { Routes, Route, Link } from "react-router-dom";
-import SignUp from "./SignUp";
 function Home({ addWishlist, setAddWishlist, downWishList }) {
   return (
     <div className="App ">
-      {/* <Cart /> */}
-
       <Section1 />
       <div className="container">
         <Section2 />
-        <Section3
-        // setAddWishlist={setAddWishlist}
-        // addWishlist={addWishlist}
-        // downWishList={downWishList}
-        />
+        <Section3 />
         <Section4 />
         <Section5 />
         <Section6 />
