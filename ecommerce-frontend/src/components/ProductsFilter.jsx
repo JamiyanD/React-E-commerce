@@ -102,3 +102,79 @@ export function ProductsColor({
     </div>
   );
 }
+const size = [
+  "33",
+  "34",
+  "35",
+  "36",
+  "37",
+  "38",
+  "39",
+  "40",
+  "41",
+  "42",
+  "43",
+  "44",
+  "45",
+  "46",
+  "47",
+  "48",
+];
+export function ProductsDetailSize({
+  item,
+  currentProducts,
+  sizeArray,
+  setSizeArray,
+}) {
+  const [isChecked, setIsChecked] = useState(false);
+
+  const [showProducts, setShowProducts] = useContext(ProductsContext);
+
+  function handleClick(key) {
+    setIsChecked(!isChecked);
+
+    console.log(currentProducts);
+    // const filteredData = size.filter((item) => (
+
+    // ))
+    // let sel = sizeArray;
+    // let find = sel.indexOf(key);
+    // console.log(find);
+    // if (find > -1) {
+    //   sel.splice(find, 1);
+    // } else {
+    //   sel.push(key);
+    // }
+    // setSizeArray(sel);
+    // console.log(sel);
+    // const array = [];
+    // if (sizeArray.length) {
+    //   sizeArray.map((filter) => {
+    //     const filteredProducts = productsData.filter(
+    //       (product) => product.size == filter
+    //     );
+
+    //     filteredProducts.map((object) => array.push(object));
+    //     setShowProducts(array);
+    //     // console.log(array);
+    //   });
+    // } else {
+    //   setShowProducts(productsData);
+    // }
+  }
+
+  return (
+    <div>
+      <button
+        className={
+          isChecked
+            ? "pink-bg size-button dark-blue btn border m-1"
+            : "bg-white size-button dark-blue btn border m-1"
+        }
+        onClick={() => handleClick(item)}
+      >
+        {item}
+      </button>
+    </div>
+  );
+}

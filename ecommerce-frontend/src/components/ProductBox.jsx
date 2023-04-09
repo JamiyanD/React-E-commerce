@@ -26,7 +26,7 @@ export default function ProductBox({
   const [showlist, setShowList] = useState(false);
   const ALL_PRODUCTS_URL = "http://localhost:8080/products/products";
   const PRODUCTS_URL =
-    "http://localhost:8080/products/list?page=0&productsPerPage=20";
+    "https://puuzket.onrender.com/products/list?page=0&productsPerPage=20";
   const [showProducts, setShowProducts] = useContext(ProductsContext);
   const [productsData, setProductsData] = useState([]);
 
@@ -124,13 +124,17 @@ export default function ProductBox({
         {showlist ? (
           showProducts.map((product) => (
             <div className="hstack border-bottom">
-              <img
-                src={`http://localhost:8080/upload/${product.filename}`}
-                alt=""
-                className="product-box-list-img m-4"
-              />
+              <Link to={`/product-detail/${product._id}`}>
+                <img
+                  src={`http://localhost:8080/upload/${product.filename}`}
+                  alt=""
+                  className="product-box-list-img m-4"
+                />
+              </Link>
               <div>
-                <p className="fs-5 mb-2">{product.name}</p>
+                <Link to={`/product-detail/${product._id}`}>
+                  <p className="fs-5 mb-2">{product.name}</p>
+                </Link>
                 <p>₮{product.price}</p>
                 <div className="hstack gap-2">
                   <button className="border-0 rounded-4 btn pink-bg text-white btn-dark ">
@@ -152,14 +156,13 @@ export default function ProductBox({
             <ul className="d-flex flex-wrap p-0 product">
               {showProducts.map((product, index) => {
                 return (
-                  <Link to={`/product-detail/${product._id}`}>
-                    <Products
-                      product={product}
-                      addWishlist={addWishlist}
-                      setAddWishlist={setAddWishlist}
-                      downWishList={downWishList}
-                    />
-                  </Link>
+                  <Products
+                    productsData={productsData}
+                    product={product}
+                    addWishlist={addWishlist}
+                    setAddWishlist={setAddWishlist}
+                    downWishList={downWishList}
+                  />
                 );
               })}
             </ul>

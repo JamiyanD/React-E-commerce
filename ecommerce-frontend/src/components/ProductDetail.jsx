@@ -1,24 +1,17 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import "react-inner-image-zoom/lib/InnerImageZoom/styles.css";
-import InnerImageZoom from "react-inner-image-zoom";
 import axios from "axios";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { FreeMode, Navigation, Thumbs, Mousewheel, Pagination } from "swiper";
-import { images } from "../data/images";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/thumbs";
-import "../main.scss";
-import "swiper/css/free-mode";
+import SwiperProducts from "./SwiperPoducts";
+import { ProductsDetailSize } from "./ProductsFilter";
+import PlaceIcon from "@mui/icons-material/Place";
+import Rating from "@mui/material/Rating";
 
 export default function ProductDetail() {
   const { id } = useParams();
   const [number, setNumber] = useState(1);
   const PRODUCTS_URL = "http://localhost:8080/products/products";
   const [currentProducts, setCurrentProducts] = useState("");
-  const [activeThumb, setActiveThumb] = useState(null);
-  console.log(activeThumb);
+
   async function axiosProducts() {
     const AXIOS_DATA = await axios.put(PRODUCTS_URL, { productsId: id });
     if (AXIOS_DATA.status == 200) {
@@ -29,79 +22,20 @@ export default function ProductDetail() {
   useEffect(() => {
     axiosProducts();
   }, []);
-
+  const [sizeArray, setSizeArray] = useState([]);
+  const size = [];
+  size.push(currentProducts.size);
   return (
     <div className="container">
-      <div className="d-flex">
-        <div
-          className="mb-5 d-flex"
-          style={{
-            width: "750px",
-            height: "650px",
-            backgroundColor: "#fff",
-            padding: "20px",
-          }}
-        >
-          <Swiper
-            // onMouseEnter={setActiveThumb}
-
-            onSwiper={setActiveThumb}
-            // loop={true}
-            spaceBetween={20}
-            mousewheel={true}
-            slidesPerView={4}
-            modules={[Mousewheel]}
-            className=" mySwiper"
-            direction={"vertical"}
-          >
-            {images.map((item, index) => (
-              <SwiperSlide key={index}>
-                <div className="">
-                  <img src={item.url} alt="" />
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-          <Swiper
-            loop={true}
-            spaceBetween={10}
-            navigation={true}
-            modules={[Navigation, Thumbs]}
-            grabCursor={true}
-            thumbs={{
-              swiper:
-                activeThumb && !activeThumb.destroyed ? activeThumb : null,
-            }}
-            className=" mySwiper2"
-          >
-            {images.map((item, index) => (
-              <SwiperSlide key={index}>
-                <img src={item.url} alt="" className="zoom" />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-          {/* <div className="d-flex flex-column">
-            <img
-              src="https://img.freepik.com/free-photo/new-sneakers_93675-130032.jpg?w=1380&t=st=1679499554~exp=1679500154~hmac=5c0f10e4ed882e89543abd0a3a53b8e6457e0c8b54a68e881a28e03dc537c31b"
-              alt=""
-              className="product-detail-thumbnail m-2"
-            />
-            <img
-              src="https://img.freepik.com/free-photo/new-sneakers_93675-130032.jpg?w=1380&t=st=1679499554~exp=1679500154~hmac=5c0f10e4ed882e89543abd0a3a53b8e6457e0c8b54a68e881a28e03dc537c31b"
-              alt=""
-              className="product-detail-thumbnail m-2"
-            />
-          </div>
-          <InnerImageZoom
-            zoomType="hover"
-            src={`http://localhost:8080/upload/${currentProducts.filename}`}
-            alt=""
-            className="product-detail-img m-2"
-          /> */}
+      <div className="d-flex  mt-5 gap-5">
+        <div className=" d-flex swiper-products col-7">
+          <SwiperProducts />
         </div>
         <div className="m-4 w-100">
-          <p className="fs-5 mb-2 dark-blue">{currentProducts.name}</p>
-          <p>₮{currentProducts.price}</p>
+          <h1 className="fs-4 mb-2 dark-blue">{currentProducts.name}</h1>
+
+          <p className="mb-5 ">₮ {currentProducts.price}</p>
+          <h5 className="dark-blue">Тоо хэмжээ:</h5>
           <div className="d-flex gap-3">
             <div className="rounded-5 border border-2 col-3 ">
               <button
@@ -135,20 +69,76 @@ export default function ProductDetail() {
             <strong className="dark-blue">Ангилал</strong>:{" "}
             {currentProducts.category}
           </p>
+          <h5 className="dark-blue">Гутлын размер:</h5>
+          <div className="d-flex flex-wrap">
+            {size.map((item) => (
+              <ProductsDetailSize
+                currentProducts={currentProducts}
+                item={item}
+                setSizeArray={setSizeArray}
+                sizeArray={sizeArray}
+              />
+            ))}
+          </div>
         </div>
       </div>
-      <p className="dark-blue fs-5 text-center">Үнэлгээ (0)</p>
-      <hr />
-      <div className="w-75 mx-auto rate-div text-white hstack p-4">
-        Одоогоор үнэлгээ байхгүй байна.
+      <hr className="my-4" />
+      <div className="d-flex gap-3">
+        <div className=" border  p-2 rounded">
+          <p className="text-secondary ">Барааны код</p>
+          <p className="fw-semibold dark-blue m-0">{currentProducts.code}</p>
+        </div>
+        <div className=" border  p-2 rounded">
+          <p className="text-secondary ">Төрөл</p>
+          <p className="fw-semibold dark-blue m-0">
+            {currentProducts.category}
+          </p>
+        </div>
+        <div className=" border  p-2 rounded">
+          <p className="text-secondary ">Брэнд</p>
+          <p className="fw-semibold dark-blue m-0">{currentProducts.brand}</p>
+        </div>
+        <div className=" border  p-2 rounded">
+          <p className="text-secondary ">Хүйс</p>
+          <p className="fw-semibold dark-blue m-0">{currentProducts.gender}</p>
+        </div>
+        <div className=" border  p-2 rounded">
+          <p className="text-secondary ">Ерөнхий өнгө</p>
+          <p className="fw-semibold dark-blue m-0">{currentProducts.color}</p>
+        </div>
       </div>
-      <p className="text-secondary w-75 mx-auto my-5 ">
-        Та үнэлгээ хийхийн тулд{" "}
-        <a href="#" className="dark-blue">
-          нэвтэрч орох
-        </a>{" "}
-        шаардлагатай.
-      </p>
+
+      <h5 className="dark-blue">Нэмэлт мэдээлэл</h5>
+      <p className="text-secondary ">{currentProducts.description}</p>
+      <hr className="my-4 dotted" />
+      <div className="my-4 bg-light d-flex align-items-center ">
+        <PlaceIcon
+          color="secondary"
+          className="m-2"
+          style={{ width: "60px", height: "60px" }}
+        />
+        <div className="">
+          <p className="fw-semibold dark-blue mb-1">Энгийн</p>
+          <p className="text-secondary ">24-48 цагт хүргэнэ</p>
+        </div>
+      </div>
+      <div className="my-4 bg-light d-flex align-items-center justify-content-between">
+        <div className="d-flex align-items-center">
+          <img
+            src={`http://localhost:8080/upload/${currentProducts.filename}`}
+            alt=""
+            style={{ width: "60px", height: "60px" }}
+            className="m-2"
+          />
+          <div className="">
+            <p className="fw-semibold fs-5 dark-blue mb-1">Сэтгэгдэл байхгүй</p>
+            <Rating name="half-rating" size="medium" value={0} />
+          </div>
+        </div>
+        <button className="btn me-4 btn-outline-dark  ">
+          Сэтгэгдэл үлдээх
+        </button>
+      </div>
 
       <h1 className="dark-blue text-center my-5">Ойролцоо бараанууд</h1>
       <div className="d-flex gap-3">

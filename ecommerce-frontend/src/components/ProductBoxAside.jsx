@@ -8,7 +8,7 @@ import Slider from "@mui/material/Slider";
 import axios from "axios";
 import { ProductsContext } from "../context/products";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import { ProductsSize, ProductsColor } from "./ProductsSize";
+import { ProductsSize, ProductsColor } from "./ProductsFilter";
 
 export default function ProductBoxAside() {
   const [sliderValue, setSliderValue] = useState([0, 120000]);

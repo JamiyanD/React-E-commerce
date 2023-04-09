@@ -37,6 +37,7 @@ export default function NewUser() {
   const [size, setSize] = useState("");
   const [gender, setGender] = useState("");
   const [height, setHeight] = useState("");
+  const [brand, setBrand] = useState("");
   const CATEGORIES_URL = "http://localhost:8080/products/category";
 
   async function fetchCategories() {
@@ -65,6 +66,8 @@ export default function NewUser() {
     data.append("size", currentProducts.size);
     data.append("height", currentProducts.height);
     data.append("gender", currentProducts.gender);
+    data.append("brand", currentProducts.brand);
+    data.append("description", currentProducts.description);
 
     const config = {
       headers: { "content-type": "multipart/form-data" },
@@ -91,6 +94,13 @@ export default function NewUser() {
       name: e.target.value,
     });
   }
+  function handleDescription(e) {
+    console.log(e.target.value);
+    setCurrentProducts({
+      ...currentProducts,
+      description: e.target.value,
+    });
+  }
 
   function handlePrice(e) {
     setCurrentProducts({
@@ -109,6 +119,14 @@ export default function NewUser() {
     setCurrentProducts({
       ...currentProducts,
       quantity: e.target.value,
+    });
+  }
+  function handleBrand(e) {
+    setBrand(e.target.value);
+    console.log(e.target.value);
+    setCurrentProducts({
+      ...currentProducts,
+      brand: e.target.value,
     });
   }
 
@@ -291,6 +309,7 @@ export default function NewUser() {
                     class="form-control rounded-3"
                     placeholder="Type your text here..."
                     style={{ height: "200px" }}
+                    onChange={handleDescription}
                   ></textarea>
                   <FormHelperText>
                     Set a description to the product for better visibility.
@@ -523,29 +542,67 @@ export default function NewUser() {
                       Set the product height.
                     </FormHelperText>
                   </FormControl>
+                  <Stack direction="row" gap={2}>
+                    <div className="w-50">
+                      <Typography variant="subtitle2" gutterBottom>
+                        Quantity
+                      </Typography>
 
-                  <Typography variant="subtitle2" gutterBottom>
-                    Quantity
-                  </Typography>
-                  <Stack direction="row">
-                    <input
-                      type="number"
-                      name="quantity"
-                      className="form-control rounded-3 "
-                      placeholder="On shelf"
-                      onChange={handleQuantity}
-                      value={currentProducts.quantity}
-                    />
-                    <input
-                      type="number"
-                      name="warehouse"
-                      className="form-control rounded-3 ms-2"
-                      placeholder="In warehouse"
-                    />
+                      <input
+                        type="number"
+                        name="quantity"
+                        className="form-control rounded-3 "
+                        placeholder="On shelf"
+                        onChange={handleQuantity}
+                        value={currentProducts.quantity}
+                      />
+                      <FormHelperText className="mb-4">
+                        Enter the product quantity.
+                      </FormHelperText>
+                    </div>
+                    <FormControl className="w-50" size="small">
+                      <Typography variant="subtitle2" gutterBottom>
+                        Brand
+                      </Typography>
+                      <Select
+                        value={brand}
+                        onChange={handleBrand}
+                        displayEmpty
+                        inputProps={{ "aria-label": "Without label" }}
+                        className=" rounded-3 text-muted"
+                        sx={{
+                          boxShadow: "none",
+
+                          "&.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                            {
+                              borderColor: "silver",
+                            },
+                          "&.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
+                            {
+                              borderColor: "lightgrey",
+                            },
+                        }}
+                        IconComponent={(props) => (
+                          <ExpandMoreIcon
+                            className="m-2 text-black-50"
+                            {...props}
+                          />
+                        )}
+                      >
+                        <MenuItem disabled value="">
+                          Select an option
+                        </MenuItem>
+                        <MenuItem value="Jordan">Jordan</MenuItem>
+                        <MenuItem value="Nike">Nike</MenuItem>
+                        <MenuItem value="Converse">Converse</MenuItem>
+                        <MenuItem value="Adidas">Adidas</MenuItem>
+                      </Select>
+                      <FormHelperText className="mb-4">
+                        Set the product brand.
+                      </FormHelperText>
+                    </FormControl>
                   </Stack>
-                  <FormHelperText className="mb-4">
-                    Enter the product quantity.
-                  </FormHelperText>
+
                   <Typography variant="subtitle2" gutterBottom>
                     Gender
                   </Typography>

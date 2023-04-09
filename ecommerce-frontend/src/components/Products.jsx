@@ -1,11 +1,13 @@
 import { useContext, useState } from "react";
 import { CartContext } from "../context/CartContext";
-import product from "../data/product";
+import { Link } from "react-router-dom";
+
 export default function Products({
   product,
   addWishlist,
   setAddWishlist,
   downWishList,
+  productsData,
 }) {
   const [cartList, setCartList] = useContext(CartContext);
   const [showFullCard, setShowFullCard] = useState(false);
@@ -16,7 +18,7 @@ export default function Products({
     setShowFullCard(false);
   };
   const addCartList = (id) => {
-    const filtered = product.filter((product) => product.id === id);
+    const filtered = productsData.filter((product) => product._id === id);
     setCartList([...cartList, ...filtered]);
 
     console.log(filtered);
@@ -30,11 +32,13 @@ export default function Products({
         onMouseEnter={showDropdown}
         onMouseLeave={hideDropdown}
       >
-        <img
-          src={`http://localhost:8080/upload/${product.filename}`}
-          alt=""
-          className=" product-box-img"
-        />
+        <Link to={`/product-detail/${product._id}`}>
+          <img
+            src={`http://localhost:8080/upload/${product.filename}`}
+            alt=""
+            className=" product-box-img"
+          />
+        </Link>
         {showFullCard ? (
           // <li
           //   className=" m-3  product-box-img text-center position-relative"
@@ -50,12 +54,14 @@ export default function Products({
                 <i class="bi bi-eye "></i>
               </h2>
             </div>
-            <p className="dark-blue ">{product.name}</p>
-            <p className="text-secondary ">₮ {product.price}</p>
+            <Link to={`/product-detail/${product._id}`}>
+              <p className="dark-blue my-2 ">{product.name}</p>
+            </Link>
+            <p className="text-secondary m-2">₮ {product.price}</p>
             <button
               className="border-0 rounded-4 btn dark-blue-bg text-white btn-dark "
               onClick={() => {
-                addCartList(product.id);
+                addCartList(product._id);
               }}
             >
               <i class="bi bi-basket me-2"></i>САГСАНД ХИЙХ

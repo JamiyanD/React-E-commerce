@@ -11,6 +11,8 @@ let productsSchema = new mongoose.Schema({
   height: String,
   size: Number,
   color: String,
+  brand: String,
+  description: String,
 });
 
 const Products = mongoose.model("products", productsSchema);

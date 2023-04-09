@@ -2,13 +2,14 @@ const cors = require("cors");
 const express = require("express");
 const mongoose = require("mongoose");
 const fs = require("fs");
+require("dotenv").config();
+
 const users_router = require("./routes/users-api");
 const products_router = require("./routes/products-api");
 
 const app = express();
-const PORT = 8080;
-const MONGO_CONNECTION_STRING =
-  "mongodb+srv://jamiyan:jamiyan48@jaya.qs1n9nb.mongodb.net/ecommerce";
+const PORT = process.env.PORT;
+const MONGO_CONNECTION_STRING = process.env.MONGO_CONNECTION_STRING;
 
 app.use(cors());
 app.use(express.json());
