@@ -1,16 +1,22 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import SwiperProducts from "./SwiperPoducts";
 import { ProductsDetailSize } from "./ProductsFilter";
 import PlaceIcon from "@mui/icons-material/Place";
 import Rating from "@mui/material/Rating";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import { Navigation } from "swiper";
+import { ProductsContext } from "../context/products";
 
 export default function ProductDetail() {
   const { id } = useParams();
   const [number, setNumber] = useState(1);
   const PRODUCTS_URL = "http://localhost:8080/products/products";
   const [currentProducts, setCurrentProducts] = useState("");
+  const [showProducts, setShowProducts] = useContext(ProductsContext);
 
   async function axiosProducts() {
     const AXIOS_DATA = await axios.put(PRODUCTS_URL, { productsId: id });
@@ -140,44 +146,46 @@ export default function ProductDetail() {
         </button>
       </div>
 
-      <h1 className="dark-blue text-center my-5">Ойролцоо бараанууд</h1>
-      <div className="d-flex gap-3">
-        <div className="text-center col">
-          <img
-            src="https://img.freepik.com/free-photo/shoes_1203-8153.jpg?w=1380&t=st=1679496573~exp=1679497173~hmac=6ab86931f35b6506dd844fcf08f30404e5e25832975d2762c33cece0eb69f84d"
-            alt=""
-            className="w-100"
-          />
-          <p className="dark-blue my-3">ТЭМДЭГЛЭЛИЙН ДЭВТЭР 139Х204мм</p>
-          <p className="text-secondary">₮ 10,000 НӨАТ-тай</p>
-        </div>
-        <div className="text-center col">
-          <img
-            src="https://img.freepik.com/free-photo/shoes_1203-8153.jpg?w=1380&t=st=1679496573~exp=1679497173~hmac=6ab86931f35b6506dd844fcf08f30404e5e25832975d2762c33cece0eb69f84d"
-            alt=""
-            className="w-100"
-          />
-          <p className="dark-blue my-3">ТЭМДЭГЛЭЛИЙН ДЭВТЭР 139Х204мм</p>
-          <p className="text-secondary">₮ 10,000 НӨАТ-тай</p>
-        </div>
-        <div className="text-center col">
-          <img
-            src="https://img.freepik.com/free-photo/shoes_1203-8153.jpg?w=1380&t=st=1679496573~exp=1679497173~hmac=6ab86931f35b6506dd844fcf08f30404e5e25832975d2762c33cece0eb69f84d"
-            alt=""
-            className="w-100"
-          />
-          <p className="dark-blue my-3">ТЭМДЭГЛЭЛИЙН ДЭВТЭР 139Х204мм</p>
-          <p className="text-secondary">₮ 10,000 НӨАТ-тай</p>
-        </div>
-        <div className="text-center col">
-          <img
-            src="https://img.freepik.com/free-photo/shoes_1203-8153.jpg?w=1380&t=st=1679496573~exp=1679497173~hmac=6ab86931f35b6506dd844fcf08f30404e5e25832975d2762c33cece0eb69f84d"
-            alt=""
-            className="w-100"
-          />
-          <p className="dark-blue my-3">ТЭМДЭГЛЭЛИЙН ДЭВТЭР 139Х204мм</p>
-          <p className="text-secondary">₮ 10,000 НӨАТ-тай</p>
-        </div>
+      <h1 className="dark-blue  my-5">Төстэй бараанууд</h1>
+      <div className="">
+        <Swiper
+          style={{
+            "--swiper-navigation-color": "#01213a",
+          }}
+          slidesPerView={1}
+          spaceBetween={10}
+          navigation={true}
+          breakpoints={{
+            640: {
+              slidesPerView: 2,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 4,
+              spaceBetween: 40,
+            },
+            1024: {
+              slidesPerView: 5,
+              spaceBetween: 50,
+            },
+          }}
+          modules={[Navigation]}
+        >
+          {showProducts.slice(0, 7).map((product) => (
+            <SwiperSlide>
+              <img
+                src={`http://localhost:8080/upload/${product.filename}`}
+                alt=""
+                className="w-100"
+                style={{ height: "200px" }}
+              />
+              <p className="dark-blue my-3 fw-bold text-center">
+                {product.name}
+              </p>
+              <p className="text-secondary text-center">₮ {product.price}</p>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
     </div>
   );

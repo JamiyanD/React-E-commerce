@@ -26,7 +26,7 @@ export default function ProductBox({
   const [showlist, setShowList] = useState(false);
   const ALL_PRODUCTS_URL = "http://localhost:8080/products/products";
   const PRODUCTS_URL =
-    "https://puuzket.onrender.com/products/list?page=0&productsPerPage=20";
+    "http://localhost:8080/products/list?page=0&productsPerPage=20";
   const [showProducts, setShowProducts] = useContext(ProductsContext);
   const [productsData, setProductsData] = useState([]);
 
@@ -238,11 +238,7 @@ export default function ProductBox({
                   <span class="visually-hidden">Next</span>
                 </button>
               </div>
-              {/* <img
-                src="https://img.freepik.com/free-photo/new-sneakers_93675-130032.jpg?w=1380&t=st=1679499554~exp=1679500154~hmac=5c0f10e4ed882e89543abd0a3a53b8e6457e0c8b54a68e881a28e03dc537c31b"
-                alt=""
-                className="w-50  h-100"
-              /> */}
+
               <div className="w-50 ps-3">
                 <div className="w-100 text-end">
                   <button
@@ -252,17 +248,22 @@ export default function ProductBox({
                     aria-label="Close"
                   ></button>
                 </div>
-                <p className="fs-4 mb-2 dark-blue">
+                <h1 className="fs-4 mb-2 dark-blue">
                   ТЭМДЭГЛЭЛИЙН ДЭВТЭР 117Х79мм
-                </p>
-                <p className=" fs-5">₮ 2,000</p>
-                <p className="dark-blue">Тоо хэмжээ: </p>
+                </h1>
+                <p className="mb-2 ">₮ 2,000</p>
+                <h5 className="dark-blue">Гутлын размер:</h5>
+                {/* <div className="d-flex flex-wrap">
+            {size.map((item) => (
+              <ProductsDetailSize
+                currentProducts={currentProducts}
+                item={item}
+                setSizeArray={setSizeArray}
+                sizeArray={sizeArray}
+              />
+            ))}
+          </div> */}
                 <div className="d-flex gap-3">
-                  <input
-                    type="number"
-                    name="quantity"
-                    className=" rounded-5  form-control cart-input "
-                  />
                   <button className="border-0 rounded-pill btn pink-bg text-white btn-dark p-3">
                     <i class="bi bi-basket me-2"></i>САГСАНД ХИЙХ
                   </button>

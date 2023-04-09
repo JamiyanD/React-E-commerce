@@ -41,14 +41,13 @@ export default function SWiperUI() {
         }}
         zoom={true}
         spaceBetween={10}
-        navigation={true}
         pagination={{
           clickable: true,
         }}
         thumbs={{
           swiper: activeThumb && !activeThumb.destroyed ? activeThumb : null,
         }}
-        modules={[Zoom, Navigation, Pagination, Thumbs]}
+        modules={[Zoom, Pagination, Thumbs]}
         className="mySwiper2"
       >
         {images.map((item, index) => (

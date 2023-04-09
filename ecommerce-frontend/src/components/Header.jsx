@@ -70,10 +70,10 @@ function Header({ addWishlist, setAddWishlist, downWishList }) {
         {" "}
         <Link to={"/"} addWishlist={addWishlist}>
           <img
-            style={{ width: 130, height: 130 }}
+            style={{ width: 130, height: 80 }}
             className=""
-            src="https://logodix.com/logo/1167676.png"
             alt=""
+            src="https://cdn.shopify.com/s/files/1/0593/6850/5511/files/JAYA_x_240x240.png?v=1667232437"
           ></img>
         </Link>
         <div className="  fs-5 w-50  ">
