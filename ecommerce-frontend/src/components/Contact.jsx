@@ -5,6 +5,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import React from "react";
 import GoogleMapReact from "google-map-react";
+import icon from "leaflet/dist/images/marker-icon.png";
+import iconShadow from "leaflet/dist/images/marker-shadow.png";
+import { MapContainer, TileLayer, Marker, Popup, Polygon } from "react-leaflet";
+import L from "leaflet";
+import "leaflet/dist/leaflet.css";
 
 export default function Contact() {
   const defaultProps = {
@@ -14,6 +19,14 @@ export default function Contact() {
     },
     zoom: 11,
   };
+
+  let DefaultIcon = L.icon({
+    iconUrl: icon,
+    shadowUrl: iconShadow,
+  });
+
+  L.Marker.prototype.options.icon = DefaultIcon;
+
   return (
     <div className="container ">
       <div className="d-flex gap-5 my-5">
@@ -27,7 +40,7 @@ export default function Contact() {
               style={{ color: "#28d25b" }}
               className="me-2"
             />
-            (+976)-7575-8873
+            (+976)-99882655
           </p>
           <p className="text-secondary">
             <FontAwesomeIcon
@@ -36,8 +49,8 @@ export default function Contact() {
               size="xl"
               style={{ color: "#dd3636" }}
             />
-            БГД 29-р хороо Хархорин захын зүүн талд хуучнаар (СХД 1-р хороолол
-            19-ны автобусны буудлын урд талд “Хар хорин” хороолол)
+            БГД 17-р хороо Максмол худалдааны төвийн баруун талд өөрийн оффис
+            байр.
           </p>
           <p className="text-secondary">
             <FontAwesomeIcon
@@ -108,16 +121,35 @@ export default function Contact() {
         </div>
       </div>
       <div>
-        <iframe
+        {/* <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10696.455222449256!2d106.92076028772159!3d47.914835371338675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5d969250b4dca6f5%3A0x458d53bf252ffc5c!2sPeace%20Tower%2C%20Ulaanbaatar!5e0!3m2!1sen!2smn!4v1633434386176!5m2!1sen!2smn"
           width="100%"
           height="450"
           allowfullscreen=""
           loading="lazy"
           className=""
-        ></iframe>
+        ></iframe> */}
+        <MapContainer
+          center={[51.505, -0.09]}
+          zoom={10}
+          scrollWheelZoom={false}
+        >
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+          {/* {restaurants.map((map) => {
+          console.log(map.address.coord[0]);
+          return ( */}
+          <Marker position={[-73.98241999999999, 40.579505]}>
+            <Popup>
+              A pretty CSS3 popup. <br /> Easily customizable.
+            </Popup>
+          </Marker>
+          {/* );
+        })} */}
+        </MapContainer>
       </div>
     </div>
   );
 }
-const AnyReactComponent = ({ text }) => <div>{text}</div>;

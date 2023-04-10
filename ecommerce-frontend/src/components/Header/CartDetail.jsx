@@ -1,6 +1,6 @@
 import CloseButton from "react-bootstrap/CloseButton";
 import { useContext, useState } from "react";
-import { CartContext } from "../context/CartContext";
+import { CartContext } from "../../context/CartContext";
 
 export default function CartDetail() {
   const [cartList, setCartList] = useContext(CartContext);

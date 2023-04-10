@@ -1,5 +1,5 @@
 import { Nav, NavDropdown, NavLink } from "react-bootstrap";
-import menus from "../data/categories";
+import menus from "../../data/categories";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useState } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
@@ -17,7 +17,7 @@ function SubMenu() {
     <div className="submenu">
       <div class="dropdown ">
         <a
-          class=" dropdown-toggle p-2 dark-blue pink-hover"
+          class=" dropdown-toggle py-4 dark-blue pink-hover"
           show={show}
           onMouseEnter={showDropdown}
           onMouseLeave={hideDropdown}
@@ -31,78 +31,50 @@ function SubMenu() {
         </a>
         <div className="dropdown-menu p-5 dropdown-menu-end ">
           <div className="d-flex container gap-5">
-            <div class=" login-dropdown d-flex flex-column gap-2 ">
-              <h5 className="dark-blue">Жордан</h5>
+            <div class=" login-dropdown d-flex flex-column gap-2 mx-5">
+              <h5 className="dark-blue">Ангилал</h5>
               <a class="text-secondary" href="#">
-                Action
+                Классик
               </a>
               <a class="text-secondary" href="#">
-                Another action
+                Чөлөөт пүүз
               </a>
               <a class="text-secondary" href="#">
-                Something else here
+                Спорт кет
               </a>
-            </div>
-            <div class="login-dropdown d-flex flex-column gap-2 ">
-              <h5 className="dark-blue">Чөлөөт загвар</h5>
-
               <a class="text-secondary" href="#">
-                Action
+                Сагсны пүүз
               </a>
-
               <a class="text-secondary" href="#">
-                Another action
-              </a>
-
-              <a class="text-secondary" href="#">
-                Something else here
+                Кет
               </a>
             </div>
             <div class="login-dropdown d-flex flex-column gap-2 ">
-              <h5 className="dark-blue">Уулын гутал</h5>
+              <h5 className="dark-blue">Брэнд</h5>
 
               <a class="text-secondary" href="#">
-                Action
+                Nike
               </a>
 
               <a class="text-secondary" href="#">
-                Another action
+                Adidas
               </a>
-
               <a class="text-secondary" href="#">
-                Something else here
+                Jordan
               </a>
-            </div>
-            <div class="login-dropdown d-flex flex-column gap-2  ">
-              <h5 className="dark-blue">Сагсан бөмбөг</h5>
-
               <a class="text-secondary" href="#">
-                Action
+                Converse
               </a>
-
               <a class="text-secondary" href="#">
-                Another action
-              </a>
-
-              <a class="text-secondary" href="#">
-                Something else here
+                Under Armour
               </a>
             </div>
-            <div class="login-dropdown d-flex flex-column gap-2 ">
-              <h5 className="dark-blue">Гүйлтийн гутал</h5>
-
-              <a class="text-secondary" href="#">
-                Action
-              </a>
-
-              <a class="text-secondary" href="#">
-                Another action
-              </a>
-
-              <a class="text-secondary" href="#">
-                Something else here
-              </a>
-            </div>
+            <img
+              style={{ width: 330, height: "200px" }}
+              className="ms-auto"
+              alt=""
+              src="https://cdn.shopify.com/s/files/1/0593/6850/5511/files/JAYA_x_240x240.png?v=1667232437"
+            ></img>
           </div>
         </div>
       </div>

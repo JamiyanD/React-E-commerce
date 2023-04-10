@@ -4,21 +4,22 @@ import "react-alice-carousel/lib/alice-carousel.css";
 import "./App.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Header from "./components/Header";
+import Header from "./components/Header/Header";
 import MainMenu from "./components/MainMenu";
 import Footer from "./components/Footer";
 import Detail from "./components/Detail";
 import { useState } from "react";
 
 import { Routes, Route, Link } from "react-router-dom";
-import Home from "./components/Home";
-import Login from "./components/Login";
-import ProductBox from "./components/ProductBox";
-import ProductDetail from "./components/ProductDetail";
+import Home from "./components/Home/Home";
+import Login from "./components/Header/Login";
+import ProductBox from "./components/Products/ProductBox";
+import ProductDetail from "./components/Products/ProductDetail";
 import AboutUs from "./components/AboutUs";
 import Blog from "./components/Blog";
 import Contact from "./components/Contact";
-import CartDetail from "./components/CartDetail";
+import CartDetail from "./components/Header/CartDetail";
+import BlogDetail from "./components/BlogDetail";
 function App() {
   const [addWishlist, setAddWishlist] = useState([]);
   function downWishList(productId) {
@@ -59,6 +60,7 @@ function App() {
         <Route path="/product-detail/:id" element={<ProductDetail />} />
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/blog-detail" element={<BlogDetail />} />
         <Route path="/contact" element={<Contact />} />
         <Route
           path="/cart"

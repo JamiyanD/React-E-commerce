@@ -7,9 +7,9 @@ import "swiper/css";
 import "swiper/css/zoom";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import "../main.scss";
+import "../../main.scss";
 // import "./app.css";
-import { images } from "../data/images";
+import { images } from "../../data/images";
 // import required modules
 import { Zoom, Navigation, Pagination, Mousewheel, Thumbs } from "swiper";
 

@@ -1,34 +1,35 @@
+import { faFacebook, faTwitter } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 function Footer() {
   return (
     <footer class="dark-blue-bg my-5  green">
       <div class="row container mx-auto text-white py-5">
         <div class="col text-center">
           <img
-            className="w-50"
-            src="https://logodix.com/logo/1167676.png"
+            style={{ width: "100px", height: "80px" }}
+            src="https://cdn.shopify.com/s/files/1/0593/6850/5511/files/JAYA_x_240x240.png?v=1667232437"
             alt=""
           ></img>
-          <p class=" text-start ">
-            Бичиг хэрэг, Хаяг рекламын бүх төрлийн үйлчилгээ
-          </p>
+          <p class=" text-center mt-3 ">Пүүз, кет бүх төрлийн худалдаа</p>
         </div>
         <div class="col">
           <p class="fs-5 mb-4">ЧУХАЛ ХОЛБООС</p>
           <ul class="text-secondary vstack gap-2 p-0">
             <li>Нүүр</li>
-            <li>Холбоо Барих</li>
+            <li>Бидний тухай</li>
+            <li>Мэдээ</li>
             <li>Нэвтрэх/ Бүртгүүлэх</li>
-            <li>Үйлчилгээний нөхцөл</li>
-            <li>Хүргэлтийн Нөхцөл</li>
+            <li>Холбоо Барих</li>
           </ul>
         </div>
         <div class="col">
           <p class="fs-5 mb-4">ДЭЛГҮҮР</p>
           <ul class="text-secondary vstack gap-2 p-0">
-            <li>Бичиг хэрэг</li>
-            <li>Бэлэг дурсгал</li>
-            <li>Хэвлэлийн Материал</li>
-            <li>Хаяг Хэвлэлийн Үйлдвэрлэл</li>
+            <li>Жордан</li>
+            <li>Чөлөөт пүүз</li>
+            <li>Спорт кет</li>
+            <li>Сагсны пүүз</li>
+            <li>Кет</li>
           </ul>
         </div>
         <div class="col">
@@ -40,13 +41,24 @@ function Footer() {
               Бямба-Ням: 10:00-19:00
             </li>
             <li>d.jamiyan48@gmail.com</li>
-            <li>Jaya Jaya</li>
+            <li className="d-flex align-items-center gap-2">
+              <FontAwesomeIcon
+                icon={faFacebook}
+                style={{ color: "#0091ff" }}
+                size="xl"
+              />
+              <FontAwesomeIcon
+                icon={faTwitter}
+                size="xl"
+                style={{ color: "#00b3ff" }}
+              />
+            </li>
           </ul>
         </div>
       </div>
       <hr className="text-secondary m-0" />
       <div className="d-flex justify-content-around container text-white ">
-        <p class=" my-4">2023 Киткат ХХК</p>
+        <p class=" my-4">2023 Жаяа ХХК</p>
         <p class=" my-4 ">Developed by Jaya</p>
       </div>
     </footer>

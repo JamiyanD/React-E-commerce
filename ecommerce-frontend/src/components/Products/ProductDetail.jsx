@@ -9,7 +9,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper";
-import { ProductsContext } from "../context/products";
+import { ProductsContext } from "../../context/products";
 
 export default function ProductDetail() {
   const { id } = useParams();

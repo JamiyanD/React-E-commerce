@@ -3,16 +3,14 @@ import AliceCarousel from "react-alice-carousel";
 
 function Section2() {
   return (
-    <div className="my-5 d-flex">
+    <div className=" d-flex mt-2">
       <div className="col-3 d-flex border-end">
         <h1 className="mx-4">
           <i class="bi bi-truck "></i>
         </h1>
 
         <div>
-          <h4 className="mb-2 section2-h text-primary-emphasis">
-            Хүргэлт Үнэгүй
-          </h4>
+          <h4 className="mb-2  ">Хүргэлт Үнэгүй</h4>
           <p className="text-muted">
             150,000 төгрөгнөөс дээш худалдан авалт хийсэн тохиолдолд хүргэлт
             үнэгүй.
@@ -29,7 +27,7 @@ function Section2() {
             Төлбөрийн Олон Сонголт
           </h4>
           <p className="text-muted">
-            Та хүссэн төлбөрийн сонголтоо сонгох боломжтой
+            Та хүссэн төлбөрийн сонголтоо <br /> сонгох боломжтой
           </p>
         </div>
       </div>

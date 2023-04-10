@@ -1,11 +1,11 @@
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
-import categories from "../data/categories";
+import categories from "../../data/categories";
 import { useState, useEffect, useContext } from "react";
 import Typography from "@mui/material/Typography";
 import Slider from "@mui/material/Slider";
-import product from "../data/product";
+import product from "../../data/product";
 import ProductBoxAside from "./ProductBoxAside";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
@@ -15,7 +15,7 @@ import Stack from "@mui/material/Stack";
 import { Carousel } from "react-bootstrap";
 import Products from "./Products";
 import axios from "axios";
-import { ProductsContext } from "../context/products";
+import { ProductsContext } from "../../context/products";
 import { Link } from "react-router-dom";
 export default function ProductBox({
   addWishlist,

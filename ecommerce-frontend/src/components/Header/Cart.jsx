@@ -2,7 +2,7 @@ import Badge from "@mui/material/Badge";
 import CloseIcon from "@mui/icons-material/Close";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { useContext, useState } from "react";
-import { CartContext } from "../context/CartContext";
+import { CartContext } from "../../context/CartContext";
 import { Link } from "react-router-dom";
 export default function Cart() {
   const [show, setShow] = useState(false);

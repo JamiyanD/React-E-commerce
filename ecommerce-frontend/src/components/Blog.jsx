@@ -2,48 +2,63 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import categories from "../data/categories";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Typography from "@mui/material/Typography";
 import Slider from "@mui/material/Slider";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import { Link } from "react-router-dom";
 export default function Blog() {
+  const [categories, setCategories] = useState([]);
+  const CATEGORIES_URL = "http://localhost:8080/products/category";
+  async function fetchCategories() {
+    const FETCHED_DATA = await fetch(CATEGORIES_URL);
+    const FETCHED_JSON = await FETCHED_DATA.json();
+    if (FETCHED_JSON.status == "success") {
+      setCategories(FETCHED_JSON.data);
+    }
+  }
+  useEffect(() => {
+    fetchCategories();
+  }, []);
   return (
-    <div className="container d-flex gap-5">
+    <div
+      className="container d-flex gap-5 
+    "
+    >
       <aside className=" vstack gap-5 w-25">
         <div className=" border border-1 p-3">
-          <h3 className="dark-blue">Хайлт</h3>
-          <div className="hstack">
-            <input
-              type=""
-              name=""
-              class="form-control rounded-3 w-75 me-3"
-              placeholder="Бүтээгдэхүүн хайх"
-            />
-            <button className="border-0 rounded-4 btn pink-bg text-white  btn-dark ">
-              ХАЙХ
-            </button>
-          </div>
-        </div>
-        <div className=" border border-1 p-3">
-          <h3 className=" dark-blue">Ангилал сонгох</h3>
+          <h3 className="dark-blue">Ангилал</h3>
           <hr />
-          <p className="dark-blue">Мэдээ</p>
+          {categories.map((category) => {
+            return (
+              <p
+                className="dark-blue pink-hover cursor-pointer"
+                // onClick={() => handleCategory(category.category_name)}
+              >
+                <ArrowForwardIosIcon fontSize="inherit" className="me-1" />
+                {category.category_name}
+              </p>
+            );
+          })}
         </div>
         <div className=" border border-1 p-3">
           <h3 className="dark-blue">Шинэ мэдээ</h3>
           <hr />
-          <div className="">
-            <img
-              className="w-100"
-              src="https://cdn.itoim.mn/media/imagel/14127/image.jpeg"
-              alt=""
-            />
+          <Link to={"/blog-detail"}>
+            <div className="">
+              <img
+                className="w-100 rounded"
+                src="https://cdn.itoim.mn/media/imagel/14127/image.jpeg"
+                alt=""
+              />
 
-            <p className="text-secondar mt-3">2023-03-24</p>
-            <p className="dark-blue fw-semibold">
-              “Nike”-ийн үүсгэн байгуулагч Фил Найтын амжилтын нууц
-            </p>
-          </div>
-          <div className="my-3">
+              <p className="text-secondar mt-3">2023-03-24</p>
+              <p className="dark-blue fw-semibold">
+                “Nike”-ийн үүсгэн байгуулагч Фил Найтын амжилтын нууц
+              </p>
+            </div>
+          </Link>
+          <div className="my-3 rounded">
             <img
               className="w-100"
               src="https://cdn.itoim.mn/media/imagel/14127/image.jpeg"
@@ -59,7 +74,7 @@ export default function Blog() {
       <div className="d-flex flex-wrap w-75">
         <div className=" blog-card  ">
           <img
-            className="w-100"
+            className="w-100 rounded"
             src="https://cdn.itoim.mn/media/imagel/14127/image.jpeg"
             alt=""
           />
@@ -71,7 +86,7 @@ export default function Blog() {
         </div>
         <div className="blog-card  ">
           <img
-            className="w-100"
+            className="w-100 rounded"
             src="https://cdn.itoim.mn/media/imagel/14127/image.jpeg"
             alt=""
           />
@@ -83,7 +98,7 @@ export default function Blog() {
         </div>
         <div className="blog-card  ">
           <img
-            className="w-100"
+            className="w-100 rounded"
             src="https://cdn.itoim.mn/media/imagel/14127/image.jpeg"
             alt=""
           />

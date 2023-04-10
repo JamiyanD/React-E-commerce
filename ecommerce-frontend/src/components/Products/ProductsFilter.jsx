@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { ProductsContext } from "../context/products";
+import { ProductsContext } from "../../context/products";
 import CheckIcon from "@mui/icons-material/Check";
 
 export function ProductsSize({ item, productsData, sizeArray, setSizeArray }) {

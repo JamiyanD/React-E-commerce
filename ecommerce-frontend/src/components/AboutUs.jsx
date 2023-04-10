@@ -11,21 +11,19 @@ import MenuBookIcon from "@mui/icons-material/MenuBook";
 export default function AboutUs() {
   return (
     <div>
-      <h1 className="dark-blue fs-2 text-center my-5">Киткат ХХК</h1>
+      <h1 className="dark-blue fs-2 text-center my-5">Жаяа ХХК</h1>
       <div className="container d-flex gap-5 ">
         <div className="w-50 ">
           <p className="text-secondary fs-5 lh-lg">
-            Манай компани 2007 оноос хойш Монгол улсын гадаад худалдаа
+            Манай компани 2023 оноос хойш Монгол улсын гадаад худалдаа
             үйлчилгээний салбарт тасралтгүйгээр үйл ажиллагаа эрхэлж байна.
             Компанийн үүсгэн байгуулагч болоод удирдах ажилтнууд нь тухайн
-            салбарт 15 гаруй жил ажилласан туршлагатай, салбартаа тэргүүлэх
+            салбарт 5 гаруй жил ажилласан туршлагатай, салбартаа тэргүүлэх
             зэргийн залуу мэргэжилтнүүдтэй ажиллаж байна.
           </p>
           <p className="text-secondary fs-5 lh-lg">
-            2007 онд анх “Sky star” нэртэйгээр Интернэт кафе чиглэлээр үйл
-            ажиллагаа явуулж эхэлсэн бөгөөд өдгөө нэрээ “Дөрвөлжин үсэг” ХХК
-            болгон өөрчилж одоог хүртэл тогтвортой үйл ажиллагаа явуулсаар
-            байна.
+            2023 онд анх “Жаяа” ХХК нэртэй болж одоог хүртэл тогтвортой үйл
+            ажиллагаа явуулсаар байна.
           </p>
         </div>
         <img
@@ -43,13 +41,12 @@ export default function AboutUs() {
         <div className="w-50">
           <h1 className="dark-blue fs-2 text-center mb-5">Мэндчилгээ</h1>
           <p className="text-secondary fs-5 lh-lg">
-            Мэндчилгээ “Дөрвөлжин Үсэг” “ХХК-ийн хамт олон НЭГДСЭН МЕНЕЖМЕНТИЙН
-            ТОГТОЛЦООГ үйл ажиллагаандаа амжилттай хэрэгжүүлж, шинэ оны босгон
-            дээр Чанарын менежментийн тогтолцоог нэвтрүүлэн компанийнхаа
-            өрсөлдөх чадвар, үнэ цэнэ, бүтээмжийг нэмэгдүүлэхэд нэг сэтгэлээр
-            хичээн зүтгэж, нэг баг болон ажилласан баялаг бүтээгч хамт олонд
-            баярлалаа. Компанийн 15 жилийн түүхийг бүтээлцсэн нийт ажилтнууддаа
-            баярлалаа.
+            Мэндчилгээ “Жаяа” “ХХК-ийн хамт олон НЭГДСЭН МЕНЕЖМЕНТИЙН ТОГТОЛЦООГ
+            үйл ажиллагаандаа амжилттай хэрэгжүүлж, шинэ оны босгон дээр Чанарын
+            менежментийн тогтолцоог нэвтрүүлэн компанийнхаа өрсөлдөх чадвар, үнэ
+            цэнэ, бүтээмжийг нэмэгдүүлэхэд нэг сэтгэлээр хичээн зүтгэж, нэг баг
+            болон ажилласан баялаг бүтээгч хамт олонд баярлалаа. Компанийн 1
+            жилийн түүхийг бүтээлцсэн нийт ажилтнууддаа баярлалаа.
           </p>
           <div className="d-flex justify-content-center gap-1">
             <FontAwesomeIcon icon={faStar} style={{ color: "#ffcf24" }} />
@@ -61,7 +58,7 @@ export default function AboutUs() {
           <p className="text-secondary fs-5 text-center my-3">
             Та бүхэнд ажлын амжилт хүсье!
           </p>
-          <h3 className="dark-blue text-center">Захирал Э.Мөнх-Од</h3>
+          <h3 className="dark-blue text-center">Захирал Д.Жамъян</h3>
         </div>
       </div>
       <div className="hstack py-5">
@@ -91,21 +88,21 @@ export default function AboutUs() {
       </p>
       <h1 className="dark-blue fs-2 text-center mb-5 mt-0">Эрхэм зорилго</h1>
       <p className="text-secondary fs-5 text-center container lh-lg">
-        Бичиг хэрэг, Хаяг рекламын бүх төрлийн үйлчилгээгээр дагнасан, дэлхийн
-        жишигт нийцсэн, сүүлийн үеийн дэвшилтэт техник технологийг компанидаа
-        нэвтрүүлж, хэрэглэгчдэдээ хурдан шуурхай, чанартай бүтээгдэхүүн хүргэх
-        замаар монгол улсын хөгжил дэвшил, эдийн засгийн өсөлтөд хувь нэмрээ
-        оруулсан үндэсний шилдэг компани байхад оршино.
+        Пүүз, кет бүх төрлийн худалдаагаар дагнасан, дэлхийн жишигт нийцсэн,
+        сүүлийн үеийн брэнд пүүзийг хэрэглэгчдэдээ нэвтрүүлж, хэрэглэгчдэдээ
+        хурдан шуурхай, чанартай бүтээгдэхүүн хүргэх замаар монгол улсын хөгжил
+        дэвшил, эдийн засгийн өсөлтөд хувь нэмрээ оруулсан үндэсний шилдэг
+        компани байхад оршино.
       </p>
       <div className="container d-flex gap-5 my-5 py-5">
         <div className="col-5 mx-auto position-relative">
           <img
-            src="https://img.freepik.com/free-photo/new-sneakers_93675-130032.jpg?w=1380&t=st=1679499554~exp=1679500154~hmac=5c0f10e4ed882e89543abd0a3a53b8e6457e0c8b54a68e881a28e03dc537c31b"
+            src="https://res.cloudinary.com/dq1ncokzr/image/upload/v1681126045/fmtlep192l7oqv1pxwqt.jpg"
             alt=""
             className="w-100"
           />
           <img
-            src="https://img.freepik.com/free-photo/new-sneakers_93675-130455.jpg?w=740&t=st=1679828486~exp=1679829086~hmac=0217f2fa60e55e44980b2f8a084447d432c7a56262120fd8587a5b51bfe8ba39"
+            src="https://res.cloudinary.com/dq1ncokzr/image/upload/v1681123858/s3jbl9gasge01639hyn2.jpg"
             alt=""
             className="position-absolute about-us-absolute-img "
           />
@@ -140,10 +137,7 @@ export default function AboutUs() {
           <h1 className="dark-blue fs-2 mb-5 ">
             Үйл ажиллагааны үндсэн чиглэл
           </h1>
-          <p className="text-secondary fs-5">
-            Бичиг хэрэг, Бэлэг дурсгал , Хэвлэлийн дизайнер, Эх бэлтгэгч,
-            Хүргэлтийн үйлчилгээ
-          </p>
+          <p className="text-secondary fs-5">Пүүз, кет бүх төрлийн худалдаа</p>
           <div className="d-flex my-5">
             <div className="hstack gap-4 me-5">
               <FontAwesomeIcon icon={faShoePrints} size="2xl" />

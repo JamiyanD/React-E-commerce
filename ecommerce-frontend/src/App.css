@@ -46,7 +46,7 @@
 .submenu .dropdown:hover .dropdown-menu {
   display: block;
   position: absolute;
-  inset: -25px 0px auto auto;
+  inset: -15px 0px auto auto;
   margin: 0px;
   transform: translate(0px, 126px);
 }
@@ -63,11 +63,28 @@
 /**/
 
 .main-carousel1 {
-  background-image: url("https://img.freepik.com/free-photo/still-life-perfectly-ordered-fitness-gym-accessories_52683-100701.jpg?w=1380&t=st=1679410557~exp=1679411157~hmac=7b1741966a7946b8093075693c708328409653c756d233e977377db31a9598b8");
+  background-image: url("https://res.cloudinary.com/dq1ncokzr/image/upload/v1681114936/c3hrmp84dpgzqe9sokaf.jpg");
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: center;
-  height: 50vh;
+  height: 650px !important;
+  width: 100% !important;
+}
+.main-carousel2 {
+  background-image: url("https://res.cloudinary.com/dq1ncokzr/image/upload/v1681116355/q1ofzvxf37mcuyecxeoi.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 650px !important;
+  width: 100% !important;
+}
+.main-carousel3 {
+  background-image: url("https://res.cloudinary.com/dq1ncokzr/image/upload/v1681119975/o2cklqyv0hor1bx1dkgh.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  height: 650px !important;
+  width: 100% !important;
 }
 
 .carousel-indicators button {
@@ -79,8 +96,8 @@
 
 .main-carousel-title {
   animation-name: title;
-  animation-duration: 2s;
-  animation-delay: 1s;
+  animation-duration: 1.5s;
+  animation-delay: 0.5s;
   animation-fill-mode: backwards;
 }
 
@@ -96,8 +113,8 @@
 
 .main-carousel-button {
   animation-name: button;
-  animation-duration: 2s;
-  animation-delay: 2.5s;
+  animation-duration: 1s;
+  animation-delay: 1.5s;
   animation-fill-mode: backwards;
   animation-timing-function: linear;
 }
@@ -113,7 +130,7 @@
 }
 
 .section3-div1 {
-  background-image: url("https://img.freepik.com/free-photo/health-club-without-people-with-exercise-equipment_637285-8446.jpg?w=1380&t=st=1679483862~exp=1679484462~hmac=e72aee0a15b6bcef7271588de6cd103032312417a892bae9e66fe1e3cab5adc6");
+  background-image: url("https://res.cloudinary.com/dq1ncokzr/image/upload/v1681120490/oimtt6vfvhoxdlaovenk.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   transition-duration: 0.5s;
@@ -123,23 +140,25 @@
 .section3-div2:hover,
 .section3-div3:hover,
 .section3-div4:hover {
-  background-position: 5%;
+  background-position: 10%;
 }
 
-.section3-button:hover {
+.section3-button:hover,
+.main-carousel-button:hover {
   background-color: #e84f69;
   border-color: #e84f69 !important;
 }
 
 .section3-div2 {
-  background-image: url("https://img.freepik.com/free-photo/sports-girl-training-stadium_1157-25349.jpg?w=1380&t=st=1679488106~exp=1679488706~hmac=4c00ba31a64033a1bdcf798cfbb532298924f17cccb70e07ee3b7c4bc77a776a");
+  background-image: url("https://res.cloudinary.com/dq1ncokzr/image/upload/v1681120674/urninjqnub8v2rekftgh.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
   transition-duration: 0.5s;
 }
 
 .section3-div3 {
-  background-image: url("https://img.freepik.com/free-photo/interior-equipment-modern-gym-close-up-view-suspension-straps-sport-fitness-health_613910-20264.jpg?w=1380&t=st=1679488047~exp=1679488647~hmac=fd6df7474ba19b0c32f2f993459f7ec282a517583572ecbd2e22aa3ec1278c34");
+  background-image: url("https://res.cloudinary.com/dq1ncokzr/image/upload/v1681119618/tfki0qopjqaov4igtsz2.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   height: 230px;
@@ -147,8 +166,9 @@
 }
 
 .section3-div4 {
-  background-image: url("https://img.freepik.com/free-photo/3d-realistic-render-ladies-t-shirt-clean-empty-template-mockup-design-logo_1048-17306.jpg?w=1480&t=st=1679488223~exp=1679488823~hmac=0c99fc3fa94da03fd2cf82cb6090a83ce5c37e8dd0a5bde7fe45acffa9eb3a0d");
+  background-image: url("https://res.cloudinary.com/dq1ncokzr/image/upload/v1681119731/sarkin9kt5xekd4hifu7.jpg");
   background-repeat: no-repeat;
+
   background-size: cover;
   height: 230px;
   transition-duration: 0.5s;
@@ -173,28 +193,28 @@
 }
 
 .section4-div1 {
-  background-image: url("https://img.freepik.com/free-photo/interior-equipment-modern-gym-close-up-view-suspension-straps-sport-fitness-health_613910-20264.jpg?w=1380&t=st=1679488047~exp=1679488647~hmac=fd6df7474ba19b0c32f2f993459f7ec282a517583572ecbd2e22aa3ec1278c34");
+  background-image: url("https://res.cloudinary.com/dq1ncokzr/image/upload/v1681121688/gtyjuhut2chf5omze2iy.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   transition-duration: 0.3s;
 }
 
 .section4-div2 {
-  background-image: url("https://img.freepik.com/free-photo/sports-girl-training-stadium_1157-25349.jpg?w=1380&t=st=1679488106~exp=1679488706~hmac=4c00ba31a64033a1bdcf798cfbb532298924f17cccb70e07ee3b7c4bc77a776a");
+  background-image: url("https://res.cloudinary.com/dq1ncokzr/image/upload/v1681123831/cto1hd38gfrazacnsf9v.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   transition-duration: 0.3s;
 }
 
 .section4-div3 {
-  background-image: url("https://img.freepik.com/free-photo/health-club-without-people-with-exercise-equipment_637285-8446.jpg?w=1380&t=st=1679483862~exp=1679484462~hmac=e72aee0a15b6bcef7271588de6cd103032312417a892bae9e66fe1e3cab5adc6");
+  background-image: url("https://res.cloudinary.com/dq1ncokzr/image/upload/v1681123858/s3jbl9gasge01639hyn2.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   transition-duration: 0.3s;
 }
 
 .section4-div4 {
-  background-image: url("https://img.freepik.com/free-photo/3d-realistic-render-ladies-t-shirt-clean-empty-template-mockup-design-logo_1048-17306.jpg?w=1480&t=st=1679488223~exp=1679488823~hmac=0c99fc3fa94da03fd2cf82cb6090a83ce5c37e8dd0a5bde7fe45acffa9eb3a0d");
+  background-image: url("https://res.cloudinary.com/dq1ncokzr/image/upload/v1681123925/ntkpkix6zqawxvkewapb.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   transition-duration: 0.3s;
@@ -213,7 +233,7 @@
   height: 100px;
 }
 .section5-div {
-  background-image: url("https://img.freepik.com/free-photo/3d-realistic-render-ladies-t-shirt-clean-empty-template-mockup-design-logo_1048-17306.jpg?w=1480&t=st=1679488223~exp=1679488823~hmac=0c99fc3fa94da03fd2cf82cb6090a83ce5c37e8dd0a5bde7fe45acffa9eb3a0d");
+  background-image: url("https://res.cloudinary.com/dq1ncokzr/image/upload/v1681126542/cgfqhrvbopxzqyxlq5x6.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   transition-duration: 0.5s;
@@ -224,6 +244,12 @@
 .section5-tab {
   height: 384px;
 }
+.section5-sale {
+  background-image: url("https://res.cloudinary.com/dq1ncokzr/image/upload/v1681126877/ij52azx96hsuiseatheh.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
 
 .small-carousel-div {
   height: 150px;
@@ -231,9 +257,9 @@
 }
 
 .brand-logo {
-  width: 150px;
+  width: 200px;
   height: 150px;
-  margin: 15px;
+  margin: 0 15px;
 }
 
 .form-control:focus {
@@ -409,16 +435,22 @@
   width: 200px;
   height: 200px;
   right: -55px;
-  bottom: 50px;
+  bottom: -40px;
   border: 20px solid white;
 }
 .about-us-background-img {
-  background-image: url("https://img.freepik.com/free-photo/brown-leather-shoes_74190-2611.jpg?w=1380&t=st=1679830606~exp=1679831206~hmac=c3e0a6330d97d59dfe3bd9b306adcb9a28196edaa62d81ad2b64a720faedf5d5");
+  background-image: url("https://res.cloudinary.com/dq1ncokzr/image/upload/v1681134066/rwiibkhzvxcamutnzhem.jpg");
   background-size: cover;
   background-size: 70%;
   background-position: right;
   background-repeat: no-repeat;
   height: 500px;
+}
+.leaflet-container {
+  width: 100%;
+  height: 500px;
+  position: relative;
+  outline: none;
 }
 
 /**/

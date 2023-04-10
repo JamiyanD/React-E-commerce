@@ -1,12 +1,12 @@
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
-import categories from "../data/categories";
+
 import { useState, useEffect, useContext } from "react";
 import Typography from "@mui/material/Typography";
 import Slider from "@mui/material/Slider";
 import axios from "axios";
-import { ProductsContext } from "../context/products";
+import { ProductsContext } from "../../context/products";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { ProductsSize, ProductsColor } from "./ProductsFilter";
 

@@ -1,8 +1,8 @@
 import { Stack } from "react-bootstrap";
 function Section7() {
   return (
-    <section class="  my-5">
-      <h1 className="text-center dark-blue my-5 ">Брэндүүд</h1>
+    <section class=" ">
+      <h1 className="text-center dark-blue mb-4 ">Брэндүүд</h1>
       <div className="hstack gap-5">
         <img
           class="brand-logo"
@@ -28,11 +28,6 @@ function Section7() {
         <img
           class="brand-logo"
           src="https://1000logos.net/wp-content/uploads/2016/12/converse-symbol.jpg"
-          alt=""
-        ></img>
-        <img
-          class="brand-logo"
-          src="https://1000logos.net/wp-content/uploads/2017/05/PUMA-logo.jpg"
           alt=""
         ></img>
       </div>

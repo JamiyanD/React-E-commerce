@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import { useState, useContext, useEffect } from "react";
 import { Modal } from "react-bootstrap";
 import { Routes, Route, Link } from "react-router-dom";
-import menus from "../data/categories";
+import menus from "../../data/categories";
 import { Nav, Stack, NavLink } from "react-bootstrap";
 import SubMenu from "./SubMenu";
 import Badge from "@mui/material/Badge";
@@ -12,9 +12,9 @@ import CloseIcon from "@mui/icons-material/Close";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import Cart from "./Cart";
 import axios from "axios";
-import { ProductsContext } from "../context/products";
-import Products from "./Products";
-import categories from "../data/categories";
+import { ProductsContext } from "../../context/products";
+import Products from "../Products/Products";
+import categories from "../../data/categories";
 
 function Header({ addWishlist, setAddWishlist, downWishList }) {
   const [list, setList] = useState(false);
@@ -60,7 +60,7 @@ function Header({ addWishlist, setAddWishlist, downWishList }) {
   }, [query]);
 
   return (
-    <header className="container">
+    <header className="container mb-3">
       <div className="hstack">
         <p1 className="my-3 text-black-50">Утас: (+976) 9988-2655</p1>
         <p1 className="m-2 ms-auto text-black-50">Жаяа ХХК</p1>
