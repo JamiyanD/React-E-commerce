@@ -21,7 +21,7 @@ export default function Products({
     const filtered = productsData.filter((product) => product._id === id);
     setCartList([...cartList, ...filtered]);
 
-    console.log(filtered);
+    console.log(productsData);
     console.log(cartList);
   };
 

@@ -10,6 +10,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper";
 import { ProductsContext } from "../../context/products";
+import { CartContext } from "../../context/CartContext";
 
 export default function ProductDetail() {
   const { id } = useParams();
@@ -17,6 +18,7 @@ export default function ProductDetail() {
   const PRODUCTS_URL = "http://localhost:8080/products/products";
   const [currentProducts, setCurrentProducts] = useState("");
   const [showProducts, setShowProducts] = useContext(ProductsContext);
+  const [cartList, setCartList] = useContext(CartContext);
 
   async function axiosProducts() {
     const AXIOS_DATA = await axios.put(PRODUCTS_URL, { productsId: id });
@@ -28,9 +30,21 @@ export default function ProductDetail() {
   useEffect(() => {
     axiosProducts();
   }, []);
+
   const [sizeArray, setSizeArray] = useState([]);
   const size = [];
   size.push(currentProducts.size);
+
+  const addCartList = (id) => {
+    const array = [];
+    array.push(currentProducts);
+    console.log(array);
+    console.log(cartList);
+    // const filtered = productsData.filter((product) => product._id === id);
+    setCartList([...cartList, ...array]);
+    // console.log(filtered);
+  };
+
   return (
     <div className="container">
       <div className="d-flex  mt-5 gap-5">
@@ -66,7 +80,12 @@ export default function ProductDetail() {
                 +
               </button>
             </div>
-            <button className="border-0 rounded-5 btn pink-bg text-white btn-dark col-5">
+            <button
+              className="border-0 rounded-5 btn pink-bg text-white btn-dark col-5"
+              onClick={() => {
+                addCartList(currentProducts._id);
+              }}
+            >
               <i class="bi bi-basket me-2"></i>САГСАНД ХИЙХ
             </button>
           </div>

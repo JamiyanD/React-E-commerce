@@ -4,6 +4,7 @@ import { CartContext } from "../../context/CartContext";
 
 export default function CartDetail() {
   const [cartList, setCartList] = useContext(CartContext);
+  let totalSum = 0;
   return (
     <div className="container my-5">
       <div className=" d-flex justify-content-between">
@@ -19,11 +20,12 @@ export default function CartDetail() {
             <h4 className="mt-3">Your cartlist is empty</h4>
           )}
           {cartList.map((data) => {
+            totalSum += data.price;
             return (
               <CartList
                 id={data.id}
                 title={data.title}
-                imgURL={data.imgURL}
+                filename={data.filename}
                 price={data.price}
               />
             );
@@ -42,13 +44,13 @@ export default function CartDetail() {
 
           <div className="d-flex justify-content-between align-items-center my-4">
             <h3 className="m-0 dark-blue">Дүн</h3>
-            <p className="text-secondary fs-5">₮ 4,000</p>
+            <p className="text-secondary fs-5">₮ {totalSum}</p>
           </div>
           <hr />
 
           <div className="d-flex justify-content-between mt-5 align-items-center">
             <h3 className="m-0 dark-blue">Нийт</h3>
-            <h2 className="m-0 dark-blue">₮ 7,000</h2>
+            <h2 className="m-0 dark-blue">₮ {totalSum}</h2>
           </div>
           <button className="border-0 pink-bg btn-dark btn text-white rounded-pill my-5 w-100 p-3 fw-semibold">
             Захиалах
@@ -59,12 +61,25 @@ export default function CartDetail() {
   );
 }
 
-const CartList = ({ price, id, title, imgURL }) => {
+const CartList = ({ price, id, title, filename }) => {
+  const [cartList, setCartList] = useContext(CartContext);
+  function downCartList(id) {
+    setCartList(cartList.filter((product) => product.id !== id));
+  }
+
   const [quantity, setQuantity] = useState(1);
   const multiple = quantity * price;
+  function handleQuantity(e) {
+    setQuantity(e.target.value);
+  }
   return (
     <div className="w-100 d-flex border-bottom" key={id}>
-      <img className="col-3 p-3" src={imgURL} alt="" />
+      <img
+        className="col-3 p-3"
+        src={`http://localhost:8080/upload/${filename}`}
+        alt=""
+        style={{ height: "150px" }}
+      />
       <div className="d-flex align-items-center  w-100 ">
         <p className="col-4  dark-blue mb-0">{title}</p>
 
@@ -73,12 +88,13 @@ const CartList = ({ price, id, title, imgURL }) => {
           type="number"
           name="quantity"
           value={quantity}
+          onChange={handleQuantity}
           className=" rounded-3  form-control cart-input me-5"
         />
-        <p className=" fw-semibold ms-5 mb-0 col-2">₮ 4,000</p>
+        <p className=" fw-semibold ms-5 mb-0 col-2">₮ {multiple}</p>
         <button
           className="btn-close  "
-          // onClick={() => downWishList(id)}
+          onClick={() => downCartList(id)}
         ></button>
       </div>
     </div>
