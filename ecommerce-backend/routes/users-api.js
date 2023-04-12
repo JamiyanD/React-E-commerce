@@ -124,4 +124,66 @@ users_router.get("/search", async (req, res) => {
   res.json(savedUsers);
 });
 
+users_router.post("/login", async (request, response) => {
+  const body = request.body;
+  // fs.readFile("./data/users.json", "utf-8", (readError, readData) => {
+  //   if (readError) {
+  //     response.json({
+  //       status: "file reader error",
+  //       data: [],
+  //     });
+  //   }
+  //   const usersArrayObject = JSON.parse(readData);
+  //   const foundUser = usersArrayObject.filter(
+  //     (user) => body.email === user.email
+  //   );
+  const foundUsers = await Users.findOne({ email: body.email });
+  console.log(foundUsers);
+  if (foundUsers == null) {
+    response.json({
+      status: "User Not Found",
+      data: [],
+    });
+  } else {
+    console.log(foundUsers);
+
+    const plainPassword = body.password;
+    console.log(plainPassword);
+    const savedPassword = foundUsers.password;
+    console.log(savedPassword);
+    if (plainPassword == savedPassword) {
+      response.json({
+        status: "success",
+        data: foundUsers,
+      });
+    } else {
+      response.json({
+        status: "Username or Password do not match!!",
+        data: [],
+      });
+    }
+    // bcrypt.compare(
+    //   plainPassword,
+    //   savedPassword,
+    //   (compareError, compareResult) => {
+    //     if (compareError) {
+    //       response.json({
+    //         status: "User name or password do not match",
+    //         data: [],
+    //       });
+    //     }
+
+    //     if (compareResult) {
+    //       response.json(foundUsers);
+    //     } else {
+    //       response.json({
+    //         status: "Username or Password do not match!!",
+    //         data: [],
+    //       });
+    //     }
+    //   }
+    // );
+  }
+});
+
 module.exports = users_router;

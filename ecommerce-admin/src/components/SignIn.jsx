@@ -1,9 +1,13 @@
 import React from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
+import { useContext } from "react";
+import { LoggedUsersContext } from "../context/LoggedUsers";
+
 export default function SignIn({ setShowNavbar }) {
+  const [showLoggedUsers, setShowLoggedUsers] = useContext(LoggedUsersContext);
   setShowNavbar(false);
-  const URL = "http://localhost:8080/login";
+  const URL = "http://localhost:8080/users/login";
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,7 +23,7 @@ export default function SignIn({ setShowNavbar }) {
     const FETCHED_DATA = await fetch(URL, options);
     const FETCHED_JSON = await FETCHED_DATA.json();
     console.log(FETCHED_JSON);
-
+    setShowLoggedUsers(FETCHED_JSON.data);
     if (FETCHED_JSON.status === "success") {
       swal("", "You have successfully logged in!", "success", {
         button: {
@@ -44,7 +48,7 @@ export default function SignIn({ setShowNavbar }) {
   };
 
   return (
-    <div className="d-lg-flex">
+    <div className="d-lg-flex ">
       <div className="color-blue w-100 p-4 d-lg-none">
         <img
           className="mx-auto d-block sign-logo "
@@ -52,7 +56,10 @@ export default function SignIn({ setShowNavbar }) {
           alt=""
         />
       </div>
-      <div className="d-flex flex-column align-items-center col-lg-6">
+      <div
+        className="d-flex flex-column align-items-center justify-content-center col-lg-6"
+        style={{ height: "100vh" }}
+      >
         <h4 className="text-dark fw-bolder mb-3  mt-5">Sign in</h4>
         <p className="form-text ">Your Social Campaigns </p>
         <div className="sign-button hstack mx-auto">
@@ -110,8 +117,11 @@ export default function SignIn({ setShowNavbar }) {
           Not a Member yet? <a href="/sign-up">Sign Up</a>
         </p>
       </div>
-      <div className="color-blue  d-none d-lg-block w-50 ">
-        <div className="d-flex flex-column align-items-center">
+      <div
+        className="color-blue  d-none d-lg-block w-50"
+        style={{ height: "100vh" }}
+      >
+        <div className="d-flex flex-column align-items-center justify-content-center h-100">
           <img
             src="https://preview.keenthemes.com/metronic8/demo30/assets/media/logos/custom-1.png"
             alt=""

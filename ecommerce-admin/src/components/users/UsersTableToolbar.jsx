@@ -30,7 +30,6 @@ export default function UsersTableToolbar(props) {
     const searchInput = e.target.search.value;
     const SEARCH_URL = `http://localhost:8080/users/search?value=${searchInput}`;
     const AXIOS_DATA = await axios.get(SEARCH_URL);
-    console.log(AXIOS_DATA.data);
     if (AXIOS_DATA.status == 200) {
       setUsers(AXIOS_DATA.data);
     }

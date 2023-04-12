@@ -13,11 +13,13 @@ import MenuIcon from "@mui/icons-material/Menu";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import { useState, useContext } from "react";
+import { LoggedUsersContext } from "../context/LoggedUsers";
 
 function OffcanvasNavbar() {
   const [moreIcon, setMoreIcon] = useState(true);
   const [moreIcon2, setMoreIcon2] = useState(true);
-
+  const [showLoggedUsers, setShowLoggedUsers] = useContext(LoggedUsersContext);
+  console.log(showLoggedUsers);
   return (
     <nav class="navbar navbar-expand-lg bg-white ">
       <Container className=" d-flex justify-content-between p-0">
@@ -197,7 +199,7 @@ function OffcanvasNavbar() {
             </button>
             <ul class="dropdown-menu dropdown-menu-end">
               <li>
-                <a class="dropdown-item profile-dropdown-item" href="#">
+                <a class="dropdown-item" href="#">
                   <form style={{ width: "200px" }}>
                     <TextField
                       name="search"
@@ -253,23 +255,36 @@ function OffcanvasNavbar() {
           <div class="dropdown ">
             <Avatar
               alt="Remy Sharp"
-              src="https://preview.keenthemes.com/metronic8/demo30/assets/media/avatars/300-13.jpg"
+              src={`http://localhost:8080/user-upload/${showLoggedUsers.filename}`}
               id="dropdownMenuButton"
               data-bs-toggle="dropdown"
               aria-expanded="false"
+              sx={{ width: 56, height: 56 }}
             />
             <ul
               class="dropdown-menu dropdown-menu-end "
               aria-labelledby="dropdownMenuButton"
             >
+              <li className="d-flex align-items-center p-2">
+                <img
+                  src={`http://localhost:8080/user-upload/${showLoggedUsers.filename}`}
+                  alt=""
+                  className="rounded m-2 "
+                  style={{ width: "70px", height: "60px" }}
+                />
+                <div className="">
+                  <h5 class=" fw-bold mb-1">{showLoggedUsers.full_name}</h5>
+                  <p className="text-secondary "> {showLoggedUsers.email}</p>
+                </div>
+              </li>
               <li>
-                <a class="dropdown-item profile-dropdown-item" href="#">
+                <a class="dropdown-item text-secondary" href="#">
                   My Profile
                 </a>
               </li>
 
               <li>
-                <a class="dropdown-item profile-dropdown-item" href="/sign-in">
+                <a class="dropdown-item text-secondary" href="/sign-in">
                   Sign Out
                 </a>
               </li>
