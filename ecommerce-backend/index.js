@@ -6,6 +6,7 @@ require("dotenv").config();
 
 const users_router = require("./routes/users-api");
 const products_router = require("./routes/products-api");
+const order_router = require("./routes/order-api");
 
 const app = express();
 const PORT = process.env.PORT;
@@ -17,6 +18,7 @@ app.use("/upload", express.static("upload"));
 app.use("/user-upload", express.static("user-upload"));
 app.use("/users", users_router);
 app.use("/products", products_router);
+app.use("/order", order_router);
 
 app.listen(PORT, () => {
   mongoose

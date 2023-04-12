@@ -1,6 +1,4 @@
 import * as React from "react";
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/joy/Stack";
@@ -10,9 +8,8 @@ import Box from "@mui/material/Box";
 import axios from "axios";
 import { useState, useEffect, useContext } from "react";
 import FormHelperText from "@mui/joy/FormHelperText";
-import EditIcon from "@mui/icons-material/Edit";
 import Modal from "@mui/material/Modal";
-import { ModalContext } from "../context/new-user-context";
+
 export default function AddRoles({ openRoles, setOpenRoles, setRoles }) {
   const [currentRoles, setCurrentRoles] = useState({
     roles_name: "",

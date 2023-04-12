@@ -1,37 +1,31 @@
-import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 import * as React from "react";
 import IconButton from "@mui/material/IconButton";
 import { useState, useEffect, useRef } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import SearchIcon from "@mui/icons-material/Search";
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/joy/Stack";
 import MenuItem from "@mui/material/MenuItem";
-import Container from "@mui/material/Container";
 import axios from "axios";
-import InputAdornment from "@mui/material/InputAdornment";
-import ProductsTable from "../components/ProductsTableToolbar";
-import EnhancedTableToolbar from "../components/ProductsTableToolbar";
+import EnhancedTableToolbar from "./ProductsTableToolbar";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
-import ProductsTableHead from "../components/ProductsTableHead";
+import ProductsTableHead from "./ProductsTableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Checkbox from "@mui/material/Checkbox";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import Menu from "@mui/material/Menu";
-import TablePagination from "@mui/material/TablePagination";
 import Pagination from "@mui/material/Pagination";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { height } from "@mui/system";
 import Rating from "@mui/material/Rating";
 import Chip from "@mui/material/Chip";
+
 export default function ProductsList({ currentProducts, setCurrentProducts }) {
   const URL = "http://localhost:8080/products/products";
   const [users, setUsers] = useState([]);
@@ -39,7 +33,6 @@ export default function ProductsList({ currentProducts, setCurrentProducts }) {
   async function axiosScreen() {
     const AXIOS_DATA = await axios.get(URL);
     setUsers(AXIOS_DATA.data);
-    return AXIOS_DATA;
   }
 
   useEffect(() => {

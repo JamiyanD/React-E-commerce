@@ -48,7 +48,6 @@ export default function NewUser({ setUsers }) {
 
   async function handleSubmit(e) {
     e.preventDefault();
-
     const data = new FormData();
     const files = e.target.image.files[0];
     console.log(currentUser);
@@ -65,7 +64,6 @@ export default function NewUser({ setUsers }) {
     console.log(AXIOS_DATA);
     if (AXIOS_DATA.status == 200) {
       navigate("/usersList");
-
       const AXIOS_DATA = await axios.get(USER_URL);
       console.log(AXIOS_DATA.data.data);
       setUsers(AXIOS_DATA.data.data);

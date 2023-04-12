@@ -1,19 +1,10 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import AppBar from "@mui/material/AppBar";
-import CssBaseline from "@mui/material/CssBaseline";
-import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import Avatar from "@mui/material/Avatar";
 import { Link } from "react-router-dom";
 import Container from "@mui/material/Container";
-import Form from "react-bootstrap/Form";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
-import Offcanvas from "react-bootstrap/Offcanvas";
-import Stack from "@mui/joy/Stack";
 import SearchIcon from "@mui/icons-material/Search";
 import Dropdown from "react-bootstrap/Dropdown";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -181,6 +172,16 @@ function OffcanvasNavbar() {
                       </a>
                     </li>
                   </ul>
+                </li>
+                <li class="nav-item ">
+                  <a
+                    class="nav-link active text-body"
+                    aria-current="page"
+                    href="/order"
+                  >
+                    <i class="bi bi-house-door me-2 d-lg-none"></i>
+                    <span className="dropdown-title">Order</span>
+                  </a>
                 </li>
               </ul>
             </div>

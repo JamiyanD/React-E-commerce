@@ -15,7 +15,7 @@ import { Zoom, Navigation, Pagination, Mousewheel, Thumbs } from "swiper";
 
 export default function SWiperUI() {
   const [activeThumb, setActiveThumb] = useState(null);
-  console.log(activeThumb);
+
   return (
     <>
       <Swiper

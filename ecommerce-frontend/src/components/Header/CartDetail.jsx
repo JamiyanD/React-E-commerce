@@ -1,10 +1,31 @@
 import CloseButton from "react-bootstrap/CloseButton";
 import { useContext, useState } from "react";
 import { CartContext } from "../../context/CartContext";
-
+import axios from "axios";
 export default function CartDetail() {
   const [cartList, setCartList] = useContext(CartContext);
+  const [orderData, setOrderData] = useState([]);
   let totalSum = 0;
+  const URL = "http://localhost:8080/order/order";
+  async function handleOrder() {
+    console.log(cartList);
+    cartList.map((data) => {
+      if (orderData.length < cartList.length) {
+        const putData = {
+          name: data.name,
+          order_quantity: data.order_quantity,
+          price: data.price,
+          order_date: new Date().toString().substr(3, 21),
+        };
+        orderData.push(putData);
+      }
+    });
+    console.log(orderData);
+    const AXIOS_DATA = await axios.post(URL, orderData);
+    if (AXIOS_DATA.status == 200) {
+      console.log("zahialga amjilttai");
+    }
+  }
   return (
     <div className="container my-5">
       <div className=" d-flex justify-content-between">
@@ -20,13 +41,15 @@ export default function CartDetail() {
             <h4 className="mt-3">Your cartlist is empty</h4>
           )}
           {cartList.map((data) => {
-            totalSum += data.price;
+            totalSum += data.price * data.order_quantity;
             return (
               <CartList
                 id={data.id}
                 title={data.title}
                 filename={data.filename}
                 price={data.price}
+                order_quantity={data.order_quantity}
+                name={data.name}
               />
             );
           })}
@@ -52,7 +75,10 @@ export default function CartDetail() {
             <h3 className="m-0 dark-blue">Нийт</h3>
             <h2 className="m-0 dark-blue">₮ {totalSum}</h2>
           </div>
-          <button className="border-0 pink-bg btn-dark btn text-white rounded-pill my-5 w-100 p-3 fw-semibold">
+          <button
+            className="border-0 pink-bg btn-dark btn text-white rounded-pill my-5 w-100 p-3 fw-semibold"
+            onClick={handleOrder}
+          >
             Захиалах
           </button>
         </div>
@@ -61,17 +87,14 @@ export default function CartDetail() {
   );
 }
 
-const CartList = ({ price, id, title, filename }) => {
+const CartList = ({ price, id, name, filename, order_quantity }) => {
   const [cartList, setCartList] = useContext(CartContext);
   function downCartList(id) {
     setCartList(cartList.filter((product) => product.id !== id));
   }
 
-  const [quantity, setQuantity] = useState(1);
-  const multiple = quantity * price;
-  function handleQuantity(e) {
-    setQuantity(e.target.value);
-  }
+  const multiple = order_quantity * price;
+
   return (
     <div className="w-100 d-flex border-bottom" key={id}>
       <img
@@ -81,16 +104,10 @@ const CartList = ({ price, id, title, filename }) => {
         style={{ height: "150px" }}
       />
       <div className="d-flex align-items-center  w-100 ">
-        <p className="col-4  dark-blue mb-0">{title}</p>
+        <p className="col-4  dark-blue mb-0">{name}</p>
 
         <p className="col-2 mb-0 me-4 fw-semibold">₮ {price}</p>
-        <input
-          type="number"
-          name="quantity"
-          value={quantity}
-          onChange={handleQuantity}
-          className=" rounded-3  form-control cart-input me-5"
-        />
+        <p className=" col-2  dark-blue mb-0">{order_quantity}</p>
         <p className=" fw-semibold ms-5 mb-0 col-2">₮ {multiple}</p>
         <button
           className="btn-close  "

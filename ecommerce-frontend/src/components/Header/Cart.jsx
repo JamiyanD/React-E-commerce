@@ -64,7 +64,9 @@ export default function Cart() {
                       />
                       <div className="col-6 mx-3">
                         <p className="dark-blue">{cart.name}</p>
-                        <p className="pink">1 x ₮{cart.price}</p>
+                        <p className="pink">
+                          {cart.order_quantity} x ₮{cart.price}
+                        </p>
                       </div>
                       <button
                         type="button"

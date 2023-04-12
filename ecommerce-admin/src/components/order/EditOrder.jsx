@@ -12,54 +12,76 @@ import { useState, useEffect, useContext } from "react";
 import FormHelperText from "@mui/joy/FormHelperText";
 import EditIcon from "@mui/icons-material/Edit";
 import Modal from "@mui/material/Modal";
-import { ModalContext } from "../context/new-user-context";
-export default function AddCategory({
-  openAddCategory,
-  setOpenAddCategory,
+
+export default function EditOrder({
+  openOrderEdit,
+  setOpenOrderEdit,
+  currentOrder,
+  setCurrentOrder,
   setUsers,
 }) {
-  const [currentCategory, setCurrentCategory] = useState({
-    category_name: "",
-    isEdit: false,
-  });
-  const URL = "http://localhost:8080/products/category";
-
+  const URL = "http://localhost:8080/order/order";
+  console.log(currentOrder);
   async function handleSubmit(e) {
     e.preventDefault();
-    const AXIOS_DATA = await axios.post(URL, currentCategory);
+    const putData = {
+      _id: currentOrder._id,
+      name: currentOrder.name,
+      order_quantity: currentOrder.order_quantity,
+      price: currentOrder.price,
+      isEdit: true,
+    };
+    const AXIOS_DATA = await axios.post(URL, putData);
+    console.log(AXIOS_DATA);
     if (AXIOS_DATA.status == 200) {
-      setOpenAddCategory(false);
-      setUsers(AXIOS_DATA.data.data);
-      setCurrentCategory("");
+      const AXIOS_DATA = await axios.get(URL);
+      console.log(AXIOS_DATA.data.data);
+      if (AXIOS_DATA.status == 200) {
+        setOpenOrderEdit(false);
+        setCurrentOrder("");
+        setUsers(AXIOS_DATA.data);
+      }
     }
   }
 
   function handleName(e) {
-    setCurrentCategory({
-      ...currentCategory,
-      category_name: e.target.value,
+    setCurrentOrder({
+      ...currentOrder,
+      name: e.target.value,
+    });
+  }
+  function handleQuantity(e) {
+    setCurrentOrder({
+      ...currentOrder,
+      order_quantity: e.target.value,
+    });
+  }
+  function handlePrice(e) {
+    setCurrentOrder({
+      ...currentOrder,
+      price: e.target.value,
     });
   }
 
   //   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpenAddCategory(false);
+  const handleClose = () => setOpenOrderEdit(false);
 
   return (
     <Box>
       <Modal
-        open={openAddCategory}
+        open={openOrderEdit}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box className="add-user-modal rounded-4 p-3 ">
+        <Box className="add-order-modal rounded-4 p-3 ">
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            Add User Details
+            Edit Order
           </Typography>
           <Box sx={{ flexGrow: 1, p: 2 }} className="">
             <form onSubmit={handleSubmit}>
               <Typography variant="h6" sx={{ width: "300px" }}>
-                Categories
+                Order
               </Typography>
 
               <Typography variant="subtitle2" className="mt-3">
@@ -70,7 +92,28 @@ export default function AddCategory({
                 name="name"
                 className="form-control bg-light border-0 add-user-input"
                 onChange={handleName}
-                value={currentCategory.category_name}
+                value={currentOrder.name}
+              />
+
+              <Typography variant="subtitle2" className="mt-3">
+                Quantity
+              </Typography>
+              <input
+                type=""
+                name="quantity"
+                className="form-control bg-light border-0 add-user-input"
+                onChange={handleQuantity}
+                value={currentOrder.order_quantity}
+              />
+              <Typography variant="subtitle2" className="mt-3">
+                Price
+              </Typography>
+              <input
+                type=""
+                name="price"
+                className="form-control bg-light border-0 add-user-input"
+                onChange={handlePrice}
+                value={currentOrder.price}
               />
 
               <Stack

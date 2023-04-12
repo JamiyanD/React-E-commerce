@@ -68,6 +68,8 @@ products_router.post("/products", upload.single("image"), async (req, res) => {
     color,
     height,
     size,
+    brand,
+    description,
   } = req.body;
   console.log("file", req.file);
   console.log("body", req.body);
@@ -83,6 +85,12 @@ products_router.post("/products", upload.single("image"), async (req, res) => {
           code: code,
           rating: rating,
           filename: filename,
+          gender: gender,
+          color: color,
+          height: height,
+          size: size,
+          brand: brand,
+          description: description,
         },
       }
     );

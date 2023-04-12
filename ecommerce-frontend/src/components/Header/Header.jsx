@@ -41,7 +41,6 @@ function Header({ addWishlist, setAddWishlist, downWishList }) {
     }
   }
   useEffect(() => {
-    console.log(query);
     if (query) {
       const fetchData = async () => {
         try {

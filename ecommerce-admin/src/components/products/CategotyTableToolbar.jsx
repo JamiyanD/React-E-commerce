@@ -12,16 +12,9 @@ import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import Modal from "@mui/material/Modal";
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
 import Typography from "@mui/material/Typography";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import FormHelperText from "@mui/joy/FormHelperText";
-import EditIcon from "@mui/icons-material/Edit";
-import { ModalContext } from "../context/new-user-context";
-import NewUser from "../pages/NewUser";
 import AddCategory from "./AddCategory";
 export default function CategoryTableToolbar(props) {
   const [roles, setRoles] = useState([]);

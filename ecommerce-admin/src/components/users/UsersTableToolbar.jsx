@@ -1,16 +1,10 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
 import IconButton from "@mui/material/IconButton";
 import MenuItem from "@mui/material/MenuItem";
 import axios from "axios";
 import Stack from "@mui/joy/Stack";
-import Typography from "@mui/material/Typography";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Toolbar from "@mui/material/Toolbar";
-import Tooltip from "@mui/material/Tooltip";
-import DeleteIcon from "@mui/icons-material/Delete";
-import { alpha } from "@mui/material/styles";
-import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import SearchIcon from "@mui/icons-material/Search";
@@ -18,33 +12,37 @@ import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import InputBase from "@mui/material/InputBase";
-import { useRef } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-export default function EnhancedTableToolbar(props) {
-  const [categories, setCategories] = useState([]);
+import Typography from "@mui/material/Typography";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import FormHelperText from "@mui/joy/FormHelperText";
+
+export default function UsersTableToolbar(props) {
+  const navigate = useNavigate();
+  const [roles, setRoles] = useState([]);
   const [searchColor, setSearchColor] = useState(false);
-  const URL = "http://localhost:8080/products/products";
-  const { numSelected, setUsers, handleDelete, selected, setSelected } = props;
+  const URL = "http://localhost:8080/users/users";
+  const { numSelected, setUsers, handleDelete, selected, axiosScreen } = props;
   const [selectValue, setSelectValue] = React.useState("");
 
   async function handleSearch(e) {
     e.preventDefault();
     const searchInput = e.target.search.value;
-    const SEARCH_URL = `http://localhost:8080/products/search?value=${searchInput}`;
+    const SEARCH_URL = `http://localhost:8080/users/search?value=${searchInput}`;
     const AXIOS_DATA = await axios.get(SEARCH_URL);
-    console.log(AXIOS_DATA);
+    console.log(AXIOS_DATA.data);
     if (AXIOS_DATA.status == 200) {
       setUsers(AXIOS_DATA.data);
     }
   }
 
-  const CATEGORIES_URL = "http://localhost:8080/products/category";
+  const CATEGORIES_URL = "http://localhost:8080/users/roles";
   async function fetchCategories() {
     const FETCHED_DATA = await fetch(CATEGORIES_URL);
     const FETCHED_JSON = await FETCHED_DATA.json();
+    console.log(FETCHED_JSON);
     if (FETCHED_JSON.status == "success") {
-      setCategories(FETCHED_JSON.data);
+      setRoles(FETCHED_JSON.data);
     }
   }
   useEffect(() => {
@@ -56,12 +54,24 @@ export default function EnhancedTableToolbar(props) {
     setUsers(AXIOS_DATA.data);
     if (select.target.value) {
       const filteredUser = AXIOS_DATA.data.filter(
-        (user) => user.category == select.target.value
+        (user) => user.role == select.target.value
       );
+
       setUsers(filteredUser);
     }
+    console.log(select.target.value);
     setSelectValue(select.target.value);
   }
+
+  const ROLE_URL = "http://localhost:8080/users/userRoles";
+  async function fetchRoles() {
+    const FETCHED_DATA = await fetch(ROLE_URL);
+    const FETCHED_JSON = await FETCHED_DATA.json();
+    setRoles(FETCHED_JSON);
+  }
+  useEffect(() => {
+    fetchRoles();
+  }, []);
 
   return (
     <Toolbar
@@ -72,7 +82,6 @@ export default function EnhancedTableToolbar(props) {
     >
       <form onSubmit={handleSearch}>
         <TextField
-          sx={{ flex: "1 1 100%" }}
           name="search"
           placeholder="Search Product"
           className={
@@ -152,22 +161,22 @@ export default function EnhancedTableToolbar(props) {
               )}
             >
               <MenuItem value="">Бүгд</MenuItem>
-              {categories &&
-                categories.map((category, index) => {
+              {roles &&
+                roles.map((role, index) => {
                   return (
-                    <MenuItem key={index} value={category.category_name}>
-                      {category.category_name}
+                    <MenuItem key={index} value={role.roles_name}>
+                      {role.roles_name}
                     </MenuItem>
                   );
                 })}
             </Select>
           </FormControl>
           <Button
-            href="/newProduct"
             variant="contained"
             className="color-blue rounded-3"
+            href="/newUser"
           >
-            Add product
+            Add User
           </Button>
         </Stack>
       )}

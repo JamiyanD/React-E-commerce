@@ -16,17 +16,19 @@ export default function ProductDetail() {
   const { id } = useParams();
   const [number, setNumber] = useState(1);
   const PRODUCTS_URL = "http://localhost:8080/products/products";
-  const [currentProducts, setCurrentProducts] = useState("");
+  const [currentProducts, setCurrentProducts] = useState({
+    order_quantity: 1,
+  });
   const [showProducts, setShowProducts] = useContext(ProductsContext);
   const [cartList, setCartList] = useContext(CartContext);
 
   async function axiosProducts() {
     const AXIOS_DATA = await axios.put(PRODUCTS_URL, { productsId: id });
     if (AXIOS_DATA.status == 200) {
-      setCurrentProducts(AXIOS_DATA.data);
-      console.log(AXIOS_DATA);
+      setCurrentProducts({ ...currentProducts, ...AXIOS_DATA.data });
     }
   }
+
   useEffect(() => {
     axiosProducts();
   }, []);
@@ -38,11 +40,7 @@ export default function ProductDetail() {
   const addCartList = (id) => {
     const array = [];
     array.push(currentProducts);
-    console.log(array);
-    console.log(cartList);
-    // const filtered = productsData.filter((product) => product._id === id);
     setCartList([...cartList, ...array]);
-    // console.log(filtered);
   };
 
   return (
@@ -64,6 +62,10 @@ export default function ProductDetail() {
                   if (number > 1) {
                     setNumber(number - 1);
                   }
+                  setCurrentProducts({
+                    ...currentProducts,
+                    order_quantity: number - 1,
+                  });
                 }}
               >
                 -
@@ -75,6 +77,10 @@ export default function ProductDetail() {
                 className="product-detail-button border-0 btn col-4 fs-4"
                 onClick={() => {
                   setNumber(number + 1);
+                  setCurrentProducts({
+                    ...currentProducts,
+                    order_quantity: number + 1,
+                  });
                 }}
               >
                 +
