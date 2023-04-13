@@ -11,50 +11,62 @@ import FormHelperText from "@mui/joy/FormHelperText";
 import EditIcon from "@mui/icons-material/Edit";
 import Modal from "@mui/material/Modal";
 
-export default function AddCategory({
-  openAddCategory,
-  setOpenAddCategory,
+export default function EditOrderStatus({
+  openCategoryEdit,
+  setOpenCategoryEdit,
+  currentCategory,
+  setCurrentCategory,
   setUsers,
 }) {
-  const [currentCategory, setCurrentCategory] = useState({
-    category_name: "",
-    isEdit: false,
-  });
   const URL = "http://localhost:8081/products/category";
 
+  console.log(currentCategory);
   async function handleSubmit(e) {
     e.preventDefault();
-    const AXIOS_DATA = await axios.post(URL, currentCategory);
+    const putData = {
+      _id: currentCategory._id,
+      category_name: currentCategory.category_name,
+      isEdit: true,
+    };
+    const AXIOS_DATA = await axios.post(URL, putData);
+    console.log(AXIOS_DATA);
     if (AXIOS_DATA.status == 200) {
-      setOpenAddCategory(false);
-      setUsers(AXIOS_DATA.data.data);
-      setCurrentCategory("");
+      const AXIOS_DATA = await axios.get(URL);
+      console.log(AXIOS_DATA.data.data);
+      if (AXIOS_DATA.status == 200) {
+        setOpenCategoryEdit(false);
+        setCurrentCategory("");
+        setUsers(AXIOS_DATA.data.data);
+      }
     }
   }
 
   function handleName(e) {
     setCurrentCategory({
       ...currentCategory,
-      category_name: e.target.value,
+      order_status_name: e.target.value,
     });
   }
 
   //   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpenAddCategory(false);
+  const handleClose = () => setOpenCategoryEdit(false);
 
   return (
     <Box>
       <Modal
-        open={openAddCategory}
+        open={openCategoryEdit}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
         <Box className="add-order-modal rounded-4 p-3 ">
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Edit Category
+          </Typography>
           <Box sx={{ flexGrow: 1, p: 2 }} className="">
             <form onSubmit={handleSubmit}>
               <Typography variant="h6" sx={{ width: "300px" }}>
-                Categories
+                Category
               </Typography>
 
               <Typography variant="subtitle2" className="mt-3">
@@ -65,7 +77,7 @@ export default function AddCategory({
                 name="name"
                 className="form-control bg-light border-0 add-user-input"
                 onChange={handleName}
-                value={currentCategory.category_name}
+                // value={currentCategory.order_status_name}
               />
 
               <Stack

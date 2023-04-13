@@ -173,7 +173,7 @@ export default function CategoryList() {
 
                       // selected={isSelected(parametr.id)}
                     >
-                      <TableCell sx={{ padding: 0 }}>
+                      <TableCell sx={{ padding: 0 }} className="">
                         <Checkbox
                           onClick={(event) =>
                             handleCheckbox(event, parametr._id)
@@ -183,7 +183,10 @@ export default function CategoryList() {
                         />
                       </TableCell>
 
-                      <TableCell className="fs-3 text-muted" align="center">
+                      <TableCell
+                        className="fs-3 products-tablecell-text"
+                        align="center"
+                      >
                         {parametr.category_name}
                       </TableCell>
 

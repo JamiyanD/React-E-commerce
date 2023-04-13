@@ -178,15 +178,27 @@ function OffcanvasNavbar() {
                     </li>
                   </ul>
                 </li>
-                <li class="nav-item ">
+                <li class="nav-item dropdown">
                   <a
-                    class="nav-link active text-body"
+                    class="nav-link active text-body dropdown-toggle "
                     aria-current="page"
-                    href="/order"
+                    data-bs-toggle="dropdown"
                   >
                     <i class="bi bi-house-door me-2 d-lg-none"></i>
                     <span className="dropdown-title">Order</span>
                   </a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a class="dropdown-item text-body" href="/order-status">
+                        <i class="bi bi-dot"></i> Order Status List
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item text-body" href="/order">
+                        <i class="bi bi-dot"></i> Order List
+                      </a>
+                    </li>
+                  </ul>
                 </li>
                 <li class="nav-item dropdown">
                   <a

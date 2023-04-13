@@ -88,7 +88,7 @@ export default function UsersTableHead(props) {
             align={headCell.numeric ? "right" : "left"}
             padding={headCell.disablePadding ? "none" : "normal"}
             sortDirection={orderBy === headCell.id ? order : false}
-            className="products-tablecell-text"
+            className="fw-bold"
           >
             <TableSortLabel
               active={orderBy === headCell.id}

@@ -8,45 +8,20 @@ import { visuallyHidden } from "@mui/utils";
 import * as React from "react";
 const headCells = [
   {
-    label: "NAME",
+    label: "STATUS",
     numeric: false,
     disablePadding: false,
     id: "name",
   },
   {
-    label: "EMAIL",
-    numeric: false,
-    disablePadding: false,
-    id: "email",
-  },
-  {
-    label: "DESCRIPTION",
-    numeric: false,
-    disablePadding: false,
-    id: "description",
-  },
-
-  {
-    label: "PHONE NUMBER",
-    numeric: false,
-    disablePadding: false,
-    id: "phone-number",
-  },
-  {
-    label: "JOINED DATE",
-    numeric: false,
-    disablePadding: false,
-    id: "joined-date",
-  },
-  {
     label: "ACTIONS",
     numeric: false,
     disablePadding: false,
-    id: "actions",
+    id: "action",
   },
 ];
 
-export default function CustomerTableHead(props) {
+export default function OrderStatusTableHead(props) {
   const { setSelected, users, selected, setOrderBy, orderBy, order, setOrder } =
     props;
 
@@ -84,11 +59,11 @@ export default function CustomerTableHead(props) {
         </TableCell>
         {headCells.map((headCell) => (
           <TableCell
+            align="center"
             key={headCell.id}
-            align={headCell.numeric ? "right" : "left"}
+            // align={headCell.numeric ? "right" : "left"}
             padding={headCell.disablePadding ? "none" : "normal"}
             sortDirection={orderBy === headCell.id ? order : false}
-            className="fw-bold"
           >
             <TableSortLabel
               active={orderBy === headCell.id}

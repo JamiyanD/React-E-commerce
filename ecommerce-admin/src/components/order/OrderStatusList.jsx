@@ -3,17 +3,12 @@ import { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Stack from "@mui/joy/Stack";
 import axios from "axios";
-import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import SearchIcon from "@mui/icons-material/Search";
 import TextField from "@mui/material/TextField";
-import IconButton from "@mui/material/IconButton";
 import toast, { Toaster } from "react-hot-toast";
 import Container from "@mui/material/Container";
-import UsersTableHead from "./UsersTableHead";
-import UsersTableToolbar from "./UsersTableToolbar";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -21,37 +16,49 @@ import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Checkbox from "@mui/material/Checkbox";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
 import Menu from "@mui/material/Menu";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Pagination from "@mui/material/Pagination";
-import Chip from "@mui/material/Chip";
 import { Link } from "react-router-dom";
+import CategoryTableHead from "./OrderStatusTableHead";
+import CategoryTableToolbar from "./OrderStatusTableToolbar";
+import EditCategory from "./EditOrderStatus";
+import OrderStatusTableToolbar from "./OrderStatusTableToolbar";
+import OrderStatusTableHead from "./OrderStatusTableHead";
 
-export default function UsersList() {
-  const URL = "http://localhost:8081/users/users";
+export default function OrderStatusList() {
+  const URL = "http://localhost:8081/order/status";
   const [users, setUsers] = useState([]);
+  const [currentStatus, setCurrentStatus] = useState("");
+  const [openStatusEdit, setOpenStatusEdit] = useState(false);
 
   async function axiosScreen() {
     const AXIOS_DATA = await axios.get(URL);
-
-    setUsers(AXIOS_DATA.data);
-    return AXIOS_DATA;
+    console.log(AXIOS_DATA.data.data);
+    setUsers(AXIOS_DATA.data.data);
   }
 
   useEffect(() => {
     axiosScreen();
   }, []);
 
-  async function handleDelete(userId) {
-    console.log(userId);
+  async function handleDelete(statusId) {
+    console.log(statusId);
     const data = {
-      userId: userId,
+      statusId: statusId,
     };
     const AXIOS_DATA = await axios.delete(URL, { data });
     setUsers(AXIOS_DATA.data.data);
     setSelected([]);
+  }
+
+  async function handleEdit(id) {
+    setOpenStatusEdit(true);
+    console.log(id);
+    const AXIOS_DATA = await axios.put(URL, { statusId: id });
+    setCurrentStatus({ ...currentStatus, ...AXIOS_DATA.data.data });
+    console.log(currentStatus);
   }
 
   // menu
@@ -112,15 +119,14 @@ export default function UsersList() {
       }
       return a[1] - b[1];
     });
+
     return stabilizedThis.map((el) => el[0]);
   }
-
   function getComparator(order, orderBy) {
     return order === "desc"
       ? (a, b) => descendingComparator(a, b, orderBy)
       : (a, b) => -descendingComparator(a, b, orderBy);
   }
-
   function descendingComparator(a, b, orderBy) {
     if (Number(b[orderBy]) < Number(a[orderBy])) {
       return -1;
@@ -128,6 +134,7 @@ export default function UsersList() {
     if (Number(b[orderBy]) > Number(a[orderBy])) {
       return 1;
     }
+
     return 0;
   }
   const [selectValue, setSelectValue] = useState(5);
@@ -136,7 +143,7 @@ export default function UsersList() {
     <Box sx={{ backgroundColor: "white" }} className="rounded-5 p-3">
       <Box sx={{ flexGrow: 1, p: 2 }} className="border border-1 rounded-5">
         <Box>
-          <UsersTableToolbar
+          <OrderStatusTableToolbar
             numSelected={selected.length}
             handleDelete={handleDelete}
             selected={selected}
@@ -146,7 +153,7 @@ export default function UsersList() {
 
           <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
-              <UsersTableHead
+              <OrderStatusTableHead
                 setSelected={setSelected}
                 users={users}
                 selected={selected}
@@ -165,6 +172,7 @@ export default function UsersList() {
                       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                       tabIndex={-1}
                       key={index}
+
                       // selected={isSelected(parametr.id)}
                     >
                       <TableCell sx={{ padding: 0 }}>
@@ -177,47 +185,20 @@ export default function UsersList() {
                         />
                       </TableCell>
 
-                      <TableCell className="d-flex align-items-center gap-3 fw-bold">
-                        <img
-                          src={`http://localhost:8081/user-upload/${parametr.filename}`}
-                          alt=""
-                          style={{ width: "70px", height: "70px" }}
-                          className="rounded-circle"
-                        />
-                        {parametr.full_name}
-                      </TableCell>
-                      <TableCell className="products-tablecell-text">
-                        {parametr.email}
-                      </TableCell>
-                      <TableCell>
-                        <Chip
-                          label={parametr.role}
-                          color="primary"
-                          size="small"
-                          className="chip"
-                        />
+                      <TableCell className="fs-3 text-muted" align="center">
+                        {/* {parametr.order_status_name} */}
                       </TableCell>
 
-                      <TableCell
-                        component="th"
-                        scope="row"
-                        className="products-tablecell-text"
-                      >
-                        {parametr.phone_number}
-                      </TableCell>
-                      <TableCell className="products-tablecell-text">
-                        {parametr.joined_date}
-                      </TableCell>
-                      <TableCell>
-                        {" "}
-                        <IconButton
+                      <TableCell align="center">
+                        <button
+                          className="btn btn-secondary text-secondary bg-light border-0"
                           aria-label="more"
                           id="long-button"
                           aria-haspopup="true"
                           onClick={handleMenuClick(parametr._id)}
                         >
-                          <MoreVertIcon />
-                        </IconButton>
+                          Actions <ExpandMoreIcon className=" text-secondary" />
+                        </button>
                         <Menu
                           id="long-menu"
                           MenuListProps={{
@@ -229,8 +210,10 @@ export default function UsersList() {
                           PaperProps={{}}
                         >
                           <MenuItem
-                            component={Link}
-                            to={`/user/edit/${parametr._id}`}
+                            onClick={() => {
+                              handleEdit(parametr._id);
+                              handleClose();
+                            }}
                           >
                             Edit
                           </MenuItem>
@@ -293,6 +276,13 @@ export default function UsersList() {
             />
           </Stack>
         </Box>
+        <EditCategory
+          openStatusEdit={openStatusEdit}
+          setOpenStatusEdit={setOpenStatusEdit}
+          currentStatus={currentStatus}
+          setCurrentStatus={setCurrentStatus}
+          setUsers={setUsers}
+        />
       </Box>
     </Box>
   );

@@ -22,6 +22,8 @@ import OrderList from "./components/order/OrderList";
 import NewCustomer from "./components/customer/NewCustomer";
 import CustomerList from "./components/customer/CustomerList";
 import EditCustomer from "./components/customer/EditCustomer";
+import OrderStatusList from "./components/order/OrderStatusList";
+
 function App() {
   const [showNavbar, setShowNavbar] = useState(true);
 
@@ -42,6 +44,7 @@ function App() {
           <Route path="/newProduct" element={<NewProduct />} />
           <Route path="/product/edit/:id" element={<EditProduct />} />
           <Route path="/category" element={<CategoryList />} />
+          <Route path="/order-status" element={<OrderStatusList />} />
           <Route path="/roles" element={<RolesList />} />
           <Route path="/order" element={<OrderList />} />
           <Route path="/newCustomer" element={<NewCustomer />} />

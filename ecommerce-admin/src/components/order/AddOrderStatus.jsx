@@ -11,41 +11,41 @@ import FormHelperText from "@mui/joy/FormHelperText";
 import EditIcon from "@mui/icons-material/Edit";
 import Modal from "@mui/material/Modal";
 
-export default function AddCategory({
-  openAddCategory,
-  setOpenAddCategory,
+export default function AddOrderStatus({
+  openAddStatus,
+  setOpenAddStatus,
   setUsers,
 }) {
-  const [currentCategory, setCurrentCategory] = useState({
-    category_name: "",
+  const [currentStatus, setCurrentStatus] = useState({
+    order_status_name: "",
     isEdit: false,
   });
-  const URL = "http://localhost:8081/products/category";
+  const URL = "http://localhost:8081/order/order/status";
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const AXIOS_DATA = await axios.post(URL, currentCategory);
+    const AXIOS_DATA = await axios.post(URL, currentStatus);
     if (AXIOS_DATA.status == 200) {
-      setOpenAddCategory(false);
-      setUsers(AXIOS_DATA.data.data);
-      setCurrentCategory("");
+      setOpenAddStatus(false);
+      setUsers(AXIOS_DATA.data);
+      setCurrentStatus("");
     }
   }
 
   function handleName(e) {
-    setCurrentCategory({
-      ...currentCategory,
-      category_name: e.target.value,
+    setCurrentStatus({
+      ...currentStatus,
+      order_status_name: e.target.value,
     });
   }
 
   //   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpenAddCategory(false);
+  const handleClose = () => setOpenAddStatus(false);
 
   return (
     <Box>
       <Modal
-        open={openAddCategory}
+        open={openAddStatus}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
@@ -54,7 +54,7 @@ export default function AddCategory({
           <Box sx={{ flexGrow: 1, p: 2 }} className="">
             <form onSubmit={handleSubmit}>
               <Typography variant="h6" sx={{ width: "300px" }}>
-                Categories
+                Order Status
               </Typography>
 
               <Typography variant="subtitle2" className="mt-3">
@@ -65,7 +65,7 @@ export default function AddCategory({
                 name="name"
                 className="form-control bg-light border-0 add-user-input"
                 onChange={handleName}
-                value={currentCategory.category_name}
+                value={currentStatus.order_status_name}
               />
 
               <Stack

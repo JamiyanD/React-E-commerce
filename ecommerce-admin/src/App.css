@@ -172,10 +172,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .products-tablecell-text {
   color: #7e8299 !important;
-  font-weight: 600;
-}
-.tablecell-name {
-  font-weight: 500 !important;
+  font-weight: bold !important;
 }
 
 /**/

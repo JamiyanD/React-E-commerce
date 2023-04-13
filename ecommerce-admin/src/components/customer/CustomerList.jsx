@@ -177,7 +177,7 @@ export default function CustomerList() {
                         />
                       </TableCell>
 
-                      <TableCell className="d-flex align-items-center gap-3 tablecell-name">
+                      <TableCell className="d-flex align-items-center gap-3 fw-bold">
                         <img
                           src={`http://localhost:8081/user-upload/${parametr.filename}`}
                           alt=""
