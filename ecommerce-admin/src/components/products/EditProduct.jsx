@@ -16,7 +16,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import EditProductTab from "./EditProductTab";
 
 export default function EditProduct() {
-  const PRODUCTS_URL = "http://localhost:8080/products/products";
+  const PRODUCTS_URL = "http://localhost:8081/products/products";
   const navigate = useNavigate();
   const { id } = useParams();
   const [categories, setCategories] = useState([]);
@@ -29,7 +29,7 @@ export default function EditProduct() {
   const [height, setHeight] = useState("");
   const [brand, setBrand] = useState("");
 
-  const CATEGORIES_URL = "http://localhost:8080/products/category";
+  const CATEGORIES_URL = "http://localhost:8081/products/category";
   async function fetchCategories() {
     const FETCHED_DATA = await fetch(CATEGORIES_URL);
     const FETCHED_JSON = await FETCHED_DATA.json();
@@ -114,7 +114,7 @@ export default function EditProduct() {
                 />
               ) : (
                 <img
-                  src={`http://localhost:8080/upload/${currentProducts.filename}`}
+                  src={`http://localhost:8081/upload/${currentProducts.filename}`}
                   alt=""
                   style={{ width: "200px" }}
                   className="rounded-4 shadow m-4"

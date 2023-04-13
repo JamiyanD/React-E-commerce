@@ -7,6 +7,7 @@ let usersSchema = new mongoose.Schema({
   joined_date: String,
   password: Number,
   filename: String,
+  users: String,
 });
 const User = mongoose.model("users", usersSchema);
 module.exports = User;

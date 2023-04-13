@@ -25,7 +25,7 @@ import OrderTableHead from "./OrderTableHead";
 import OrderTableToolbar from "./OrderTableToolbar";
 
 export default function OrderList() {
-  const URL = "http://localhost:8080/order/order";
+  const URL = "http://localhost:8081/order/order";
   const [users, setUsers] = useState([]);
   const [currentOrder, setCurrentOrder] = useState("");
   const [openOrderEdit, setOpenOrderEdit] = useState(false);

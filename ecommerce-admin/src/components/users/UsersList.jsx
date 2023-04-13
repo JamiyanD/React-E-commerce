@@ -30,12 +30,12 @@ import Chip from "@mui/material/Chip";
 import { Link } from "react-router-dom";
 
 export default function UsersList() {
-  const URL = "http://localhost:8080/users/users";
+  const URL = "http://localhost:8081/users/users";
   const [users, setUsers] = useState([]);
 
   async function axiosScreen() {
     const AXIOS_DATA = await axios.get(URL);
-    console.log(AXIOS_DATA.data);
+
     setUsers(AXIOS_DATA.data);
     return AXIOS_DATA;
   }
@@ -179,7 +179,7 @@ export default function UsersList() {
 
                       <TableCell className="d-flex align-items-center gap-3 tablecell-name">
                         <img
-                          src={`http://localhost:8080/user-upload/${parametr.filename}`}
+                          src={`http://localhost:8081/user-upload/${parametr.filename}`}
                           alt=""
                           style={{ width: "70px", height: "70px" }}
                           className="rounded-circle"

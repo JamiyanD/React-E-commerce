@@ -20,7 +20,7 @@ export default function EditOrder({
   setCurrentOrder,
   setUsers,
 }) {
-  const URL = "http://localhost:8080/order/order";
+  const URL = "http://localhost:8081/order/order";
   console.log(currentOrder);
   async function handleSubmit(e) {
     e.preventDefault();

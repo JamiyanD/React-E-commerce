@@ -18,7 +18,7 @@ export default function EditCategory({
   setCurrentCategory,
   setUsers,
 }) {
-  const URL = "http://localhost:8080/products/category";
+  const URL = "http://localhost:8081/products/category";
 
   console.log(currentCategory);
   async function handleSubmit(e) {

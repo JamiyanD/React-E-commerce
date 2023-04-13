@@ -57,7 +57,7 @@ export default function Cart() {
                   return (
                     <div className="p-2 d-flex border-bottom">
                       <img
-                        src={`http://localhost:8080/upload/${cart.filename}`}
+                        src={`http://localhost:8081/upload/${cart.filename}`}
                         alt=""
                         className="col-4"
                         style={{ height: "100px" }}

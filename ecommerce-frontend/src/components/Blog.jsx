@@ -9,7 +9,7 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { Link } from "react-router-dom";
 export default function Blog() {
   const [categories, setCategories] = useState([]);
-  const CATEGORIES_URL = "http://localhost:8080/products/category";
+  const CATEGORIES_URL = "http://localhost:8081/products/category";
   async function fetchCategories() {
     const FETCHED_DATA = await fetch(CATEGORIES_URL);
     const FETCHED_JSON = await FETCHED_DATA.json();

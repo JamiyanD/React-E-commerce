@@ -24,9 +24,9 @@ export default function ProductBox({
 }) {
   const [selectValue, setSelectValue] = useState("");
   const [showlist, setShowList] = useState(false);
-  const ALL_PRODUCTS_URL = "http://localhost:8080/products/products";
+  const ALL_PRODUCTS_URL = "http://localhost:8081/products/products";
   const PRODUCTS_URL =
-    "http://localhost:8080/products/list?page=0&productsPerPage=20";
+    "http://localhost:8081/products/list?page=0&productsPerPage=20";
   const [showProducts, setShowProducts] = useContext(ProductsContext);
   const [productsData, setProductsData] = useState([]);
 
@@ -55,7 +55,7 @@ export default function ProductBox({
 
   async function handlePagination(event, value) {
     console.log("page", value);
-    const PAGINATION_URL = `http://localhost:8080/products/list?page=${
+    const PAGINATION_URL = `http://localhost:8081/products/list?page=${
       value - 1
     }&productsPerPage=20`;
     const PAGINATION_DATA = await axios.post(PAGINATION_URL, {
@@ -126,7 +126,7 @@ export default function ProductBox({
             <div className="hstack border-bottom">
               <Link to={`/product-detail/${product._id}`}>
                 <img
-                  src={`http://localhost:8080/upload/${product.filename}`}
+                  src={`http://localhost:8081/upload/${product.filename}`}
                   alt=""
                   className="product-box-list-img m-4"
                 />

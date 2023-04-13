@@ -21,25 +21,25 @@ export default function UsersTableToolbar(props) {
   const navigate = useNavigate();
   const [roles, setRoles] = useState([]);
   const [searchColor, setSearchColor] = useState(false);
-  const URL = "http://localhost:8080/users/users";
+  const URL = "http://localhost:8081/users/users";
   const { numSelected, setUsers, handleDelete, selected, axiosScreen } = props;
   const [selectValue, setSelectValue] = React.useState("");
 
   async function handleSearch(e) {
     e.preventDefault();
     const searchInput = e.target.search.value;
-    const SEARCH_URL = `http://localhost:8080/users/search?value=${searchInput}`;
+    const SEARCH_URL = `http://localhost:8081/users/search?value=${searchInput}`;
     const AXIOS_DATA = await axios.get(SEARCH_URL);
     if (AXIOS_DATA.status == 200) {
       setUsers(AXIOS_DATA.data);
     }
   }
 
-  const CATEGORIES_URL = "http://localhost:8080/users/roles";
+  const CATEGORIES_URL = "http://localhost:8081/users/roles";
   async function fetchCategories() {
     const FETCHED_DATA = await fetch(CATEGORIES_URL);
     const FETCHED_JSON = await FETCHED_DATA.json();
-    console.log(FETCHED_JSON);
+
     if (FETCHED_JSON.status == "success") {
       setRoles(FETCHED_JSON.data);
     }
@@ -62,7 +62,7 @@ export default function UsersTableToolbar(props) {
     setSelectValue(select.target.value);
   }
 
-  const ROLE_URL = "http://localhost:8080/users/userRoles";
+  const ROLE_URL = "http://localhost:8081/users/userRoles";
   async function fetchRoles() {
     const FETCHED_DATA = await fetch(ROLE_URL);
     const FETCHED_JSON = await FETCHED_DATA.json();

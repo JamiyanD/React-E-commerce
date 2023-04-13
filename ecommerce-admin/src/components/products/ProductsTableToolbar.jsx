@@ -20,14 +20,14 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 export default function EnhancedTableToolbar(props) {
   const [categories, setCategories] = useState([]);
   const [searchColor, setSearchColor] = useState(false);
-  const URL = "http://localhost:8080/products/products";
+  const URL = "http://localhost:8081/products/products";
   const { numSelected, setUsers, handleDelete, selected, setSelected } = props;
   const [selectValue, setSelectValue] = React.useState("");
 
   async function handleSearch(e) {
     e.preventDefault();
     const searchInput = e.target.search.value;
-    const SEARCH_URL = `http://localhost:8080/products/search?value=${searchInput}`;
+    const SEARCH_URL = `http://localhost:8081/products/search?value=${searchInput}`;
     const AXIOS_DATA = await axios.get(SEARCH_URL);
     console.log(AXIOS_DATA);
     if (AXIOS_DATA.status == 200) {
@@ -35,7 +35,7 @@ export default function EnhancedTableToolbar(props) {
     }
   }
 
-  const CATEGORIES_URL = "http://localhost:8080/products/category";
+  const CATEGORIES_URL = "http://localhost:8081/products/category";
   async function fetchCategories() {
     const FETCHED_DATA = await fetch(CATEGORIES_URL);
     const FETCHED_JSON = await FETCHED_DATA.json();

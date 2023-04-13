@@ -34,8 +34,8 @@ export default function NewUser({ setUsers }) {
   const [image, setImage] = useState("");
   const [roles, setRoles] = useState([]);
   const navigate = useNavigate();
-  const USER_URL = "http://localhost:8080/users/users";
-  const ROLE_URL = "http://localhost:8080/users/roles";
+  const USER_URL = "http://localhost:8081/users/users";
+  const ROLE_URL = "http://localhost:8081/users/roles";
 
   async function fetchRoles() {
     const FETCHED_DATA = await fetch(ROLE_URL);

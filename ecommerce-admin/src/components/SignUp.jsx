@@ -13,7 +13,7 @@ import Checkbox from "@mui/material/Checkbox";
 import { Typography, Stack } from "@mui/material";
 export default function SignUp({ setShowNavbar }) {
   setShowNavbar(false);
-  const URL = "http://localhost:8080/login";
+  const URL = "http://localhost:8081/login";
   const navigate = useNavigate();
   const [errors, setErrors] = useState(true);
   const [validation, setValidation] = useState("");

@@ -12,14 +12,15 @@ import TextField from "@mui/material/TextField";
 import MenuIcon from "@mui/icons-material/Menu";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { LoggedUsersContext } from "../context/LoggedUsers";
+import axios from "axios";
 
-function OffcanvasNavbar() {
+function OffcanvasNavbar({ loggedUsers }) {
   const [moreIcon, setMoreIcon] = useState(true);
   const [moreIcon2, setMoreIcon2] = useState(true);
   const [showLoggedUsers, setShowLoggedUsers] = useContext(LoggedUsersContext);
-  console.log(showLoggedUsers);
+  console.log(loggedUsers);
   return (
     <nav class="navbar navbar-expand-lg bg-white ">
       <Container className=" d-flex justify-content-between p-0">
@@ -255,7 +256,7 @@ function OffcanvasNavbar() {
           <div class="dropdown ">
             <Avatar
               alt="Remy Sharp"
-              src={`http://localhost:8080/user-upload/${showLoggedUsers.filename}`}
+              src={`http://localhost:8081/user-upload/${loggedUsers.filename}`}
               id="dropdownMenuButton"
               data-bs-toggle="dropdown"
               aria-expanded="false"
@@ -267,14 +268,14 @@ function OffcanvasNavbar() {
             >
               <li className="d-flex align-items-center p-2">
                 <img
-                  src={`http://localhost:8080/user-upload/${showLoggedUsers.filename}`}
+                  src={`http://localhost:8081/user-upload/${loggedUsers.filename}`}
                   alt=""
                   className="rounded m-2 "
                   style={{ width: "70px", height: "60px" }}
                 />
                 <div className="">
-                  <h5 class=" fw-bold mb-1">{showLoggedUsers.full_name}</h5>
-                  <p className="text-secondary "> {showLoggedUsers.email}</p>
+                  <h5 class=" fw-bold mb-1">{loggedUsers.full_name}</h5>
+                  <p className="text-secondary "> {loggedUsers.email}</p>
                 </div>
               </li>
               <li>

@@ -34,7 +34,7 @@ export default function Products({
       >
         <Link to={`/product-detail/${product._id}`}>
           <img
-            src={`http://localhost:8080/upload/${product.filename}`}
+            src={`http://localhost:8081/upload/${product.filename}`}
             alt=""
             className=" product-box-img"
           />

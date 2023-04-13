@@ -19,7 +19,7 @@ import AddCategory from "./AddCategory";
 export default function CategoryTableToolbar(props) {
   const [roles, setRoles] = useState([]);
   const [searchColor, setSearchColor] = useState(false);
-  const URL = "http://localhost:8080/users/users";
+  const URL = "http://localhost:8081/users/users";
   const { numSelected, setUsers, handleDelete, selected, axiosScreen } = props;
   const [selectValue, setSelectValue] = React.useState("");
   const [openAddCategory, setOpenAddCategory] = useState(false);
@@ -27,7 +27,7 @@ export default function CategoryTableToolbar(props) {
   async function handleSearch(e) {
     e.preventDefault();
     const searchInput = e.target.search.value;
-    const SEARCH_URL = `http://localhost:8080/users/search?value=${searchInput}`;
+    const SEARCH_URL = `http://localhost:8081/users/search?value=${searchInput}`;
     const AXIOS_DATA = await axios.get(SEARCH_URL);
     console.log(AXIOS_DATA.data);
     if (AXIOS_DATA.status == 200) {

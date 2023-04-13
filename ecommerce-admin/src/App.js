@@ -2,7 +2,7 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Toolbar from "./components/Toolbar";
 import NewUser from "./components/users/NewUser";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Home from "./components/Home";
 import NewProduct from "./components/products/NewProduct";
@@ -21,9 +21,16 @@ import RolesList from "./components/users/RolesList";
 import OrderList from "./components/order/OrderList";
 function App() {
   const [showNavbar, setShowNavbar] = useState(true);
+  const [loggedUsers, setLoggedUsers] = useState({});
+  // const data = { data: "123" };
+  // useEffect(() => {
+  //   setLoggedUsers(data);
+  // }, []);
+
+  console.log(loggedUsers);
   return (
     <div className="App bg-light">
-      {showNavbar && <Navbar />}
+      {showNavbar && <Navbar loggedUsers={loggedUsers} />}
       {showNavbar && <Page />}
       {showNavbar && <Toolbar />}
       <Container className="content ">
@@ -45,11 +52,18 @@ function App() {
       <Routes>
         <Route
           path="/sign-in"
-          element={<SignIn setShowNavbar={setShowNavbar} />}
+          element={
+            <SignIn
+              setShowNavbar={setShowNavbar}
+              setLoggedUsers={setLoggedUsers}
+            />
+          }
         />
         <Route
           path="/sign-up"
-          element={<SignUp setShowNavbar={setShowNavbar} />}
+          element={
+            <SignUp setShowNavbar={setShowNavbar} loggedUsers={loggedUsers} />
+          }
         />
       </Routes>
     </div>

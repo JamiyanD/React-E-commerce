@@ -5,19 +5,19 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
 export default function Toolbar() {
-  const URL = "http://localhost:8080/products/products";
+  const URL = "http://localhost:8081/products/products";
   const [products, setProducts] = useState(0);
   const [users, setUsers] = useState(0);
   async function axiosScreen() {
     const AXIOS_DATA = await axios.get(URL);
     setProducts(AXIOS_DATA.data.length);
   }
-  const USERS_URL = "http://localhost:8080/users/users";
+  const USERS_URL = "http://localhost:8081/users/users";
   async function axiosUsers() {
     const AXIOS_DATA = await axios.get(USERS_URL);
     setUsers(AXIOS_DATA.data.length);
   }
-  const ORDER_URL = "http://localhost:8080/order/order";
+  const ORDER_URL = "http://localhost:8081/order/order";
   const [order, setOrder] = useState(0);
 
   async function axiosOrder() {

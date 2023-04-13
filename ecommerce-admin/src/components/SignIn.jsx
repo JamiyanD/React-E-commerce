@@ -4,10 +4,10 @@ import swal from "sweetalert";
 import { useContext } from "react";
 import { LoggedUsersContext } from "../context/LoggedUsers";
 
-export default function SignIn({ setShowNavbar }) {
+export default function SignIn({ setShowNavbar, setLoggedUsers, loggedUsers }) {
   const [showLoggedUsers, setShowLoggedUsers] = useContext(LoggedUsersContext);
   setShowNavbar(false);
-  const URL = "http://localhost:8080/users/login";
+  const URL = "http://localhost:8081/users/login";
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,8 +22,9 @@ export default function SignIn({ setShowNavbar }) {
     };
     const FETCHED_DATA = await fetch(URL, options);
     const FETCHED_JSON = await FETCHED_DATA.json();
-    console.log(FETCHED_JSON);
-    setShowLoggedUsers(FETCHED_JSON.data);
+    console.log(FETCHED_JSON.data);
+    setLoggedUsers(FETCHED_JSON.data);
+
     if (FETCHED_JSON.status === "success") {
       swal("", "You have successfully logged in!", "success", {
         button: {

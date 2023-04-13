@@ -18,7 +18,7 @@ export default function EditRoles({
   setCurrentRoles,
   setRoles,
 }) {
-  const URL = "http://localhost:8080/users/roles";
+  const URL = "http://localhost:8081/users/roles";
 
   console.log(currentRoles);
   async function handleSubmit(e) {

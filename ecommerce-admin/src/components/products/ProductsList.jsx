@@ -27,7 +27,7 @@ import Rating from "@mui/material/Rating";
 import Chip from "@mui/material/Chip";
 
 export default function ProductsList({ currentProducts, setCurrentProducts }) {
-  const URL = "http://localhost:8080/products/products";
+  const URL = "http://localhost:8081/products/products";
   const [users, setUsers] = useState([]);
 
   async function axiosScreen() {
@@ -176,7 +176,7 @@ export default function ProductsList({ currentProducts, setCurrentProducts }) {
                       <TableCell className="d-flex align-items-center gap-3 tablecell-name">
                         {parametr.filename && (
                           <img
-                            src={`http://localhost:8080/upload/${parametr.filename}`}
+                            src={`http://localhost:8081/upload/${parametr.filename}`}
                             alt=""
                             style={{ width: "70px", height: "70px" }}
                           />

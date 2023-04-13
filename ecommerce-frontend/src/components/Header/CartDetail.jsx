@@ -6,7 +6,7 @@ export default function CartDetail() {
   const [cartList, setCartList] = useContext(CartContext);
   const [orderData, setOrderData] = useState([]);
   let totalSum = 0;
-  const URL = "http://localhost:8080/order/order";
+  const URL = "http://localhost:8081/order/order";
   async function handleOrder() {
     console.log(cartList);
     cartList.map((data) => {
@@ -99,7 +99,7 @@ const CartList = ({ price, id, name, filename, order_quantity }) => {
     <div className="w-100 d-flex border-bottom" key={id}>
       <img
         className="col-3 p-3"
-        src={`http://localhost:8080/upload/${filename}`}
+        src={`http://localhost:8081/upload/${filename}`}
         alt=""
         style={{ height: "150px" }}
       />

@@ -15,7 +15,7 @@ import { CartContext } from "../../context/CartContext";
 export default function ProductDetail() {
   const { id } = useParams();
   const [number, setNumber] = useState(1);
-  const PRODUCTS_URL = "http://localhost:8080/products/products";
+  const PRODUCTS_URL = "http://localhost:8081/products/products";
   const [currentProducts, setCurrentProducts] = useState({
     order_quantity: 1,
   });

@@ -20,7 +20,7 @@ export default function AddCategory({
     category_name: "",
     isEdit: false,
   });
-  const URL = "http://localhost:8080/products/category";
+  const URL = "http://localhost:8081/products/category";
 
   async function handleSubmit(e) {
     e.preventDefault();
