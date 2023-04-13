@@ -1,6 +1,7 @@
 const express = require("express");
 const Users = require("../models/user-model");
 const Roles = require("../models/user-roles-model");
+const bcrypt = require("bcrypt");
 const users_router = express.Router();
 const multer = require("multer");
 const storage = multer.diskStorage({
@@ -18,6 +19,7 @@ users_router.get("/users", async (req, res) => {
   res.json(result);
 });
 
+const SALT_ROUNDS = 10;
 users_router.post("/users", upload.single("image"), async (req, res) => {
   const {
     isEdit,
@@ -52,9 +54,36 @@ users_router.post("/users", upload.single("image"), async (req, res) => {
     console.log(updateUser);
     res.json({ data: [] });
   } else {
-    const newUser = new Users(body);
-    const result = await newUser.save();
-    res.json({ data: result });
+    bcrypt.genSalt(SALT_ROUNDS, (err, salt) => {
+      if (err) {
+        response.json({
+          status: "generating salt error",
+        });
+      }
+      bcrypt.hash(password, salt, async (hashError, hashData) => {
+        if (hashError) {
+          response.json({
+            status: "hashing has error",
+            data: [],
+          });
+        }
+        console.log("hashed Data :", hashData);
+        const newUsers = {
+          full_name: full_name,
+          phone_number: phone_number,
+          email: email,
+          password: hashData,
+          role: role,
+          filename: filename,
+          joined_date: joined_date,
+          filename: filename,
+        };
+        console.log("data", newUsers);
+        const modelUsers = new Users(newUsers);
+        const result = await modelUsers.save();
+        res.json({ status: "success", data: result });
+      });
+    });
   }
 });
 
@@ -126,17 +155,7 @@ users_router.get("/search", async (req, res) => {
 
 users_router.post("/login", async (request, response) => {
   const body = request.body;
-  // fs.readFile("./data/users.json", "utf-8", (readError, readData) => {
-  //   if (readError) {
-  //     response.json({
-  //       status: "file reader error",
-  //       data: [],
-  //     });
-  //   }
-  //   const usersArrayObject = JSON.parse(readData);
-  //   const foundUser = usersArrayObject.filter(
-  //     (user) => body.email === user.email
-  //   );
+
   const foundUsers = await Users.findOne({ email: body.email });
   console.log(foundUsers);
   if (foundUsers == null) {
@@ -146,43 +165,29 @@ users_router.post("/login", async (request, response) => {
     });
   } else {
     console.log(foundUsers);
-
     const plainPassword = body.password;
-    console.log(plainPassword);
     const savedPassword = foundUsers.password;
-    console.log(savedPassword);
-    if (plainPassword == savedPassword) {
-      response.json({
-        status: "success",
-        data: foundUsers,
-      });
-    } else {
-      response.json({
-        status: "Username or Password do not match!!",
-        data: [],
-      });
-    }
-    // bcrypt.compare(
-    //   plainPassword,
-    //   savedPassword,
-    //   (compareError, compareResult) => {
-    //     if (compareError) {
-    //       response.json({
-    //         status: "User name or password do not match",
-    //         data: [],
-    //       });
-    //     }
+    bcrypt.compare(
+      plainPassword,
+      savedPassword,
+      (compareError, compareResult) => {
+        if (compareError) {
+          response.json({
+            status: "User name or password do not match",
+            data: [],
+          });
+        }
 
-    //     if (compareResult) {
-    //       response.json(foundUsers);
-    //     } else {
-    //       response.json({
-    //         status: "Username or Password do not match!!",
-    //         data: [],
-    //       });
-    //     }
-    //   }
-    // );
+        if (compareResult) {
+          response.json({ status: "success", data: foundUsers });
+        } else {
+          response.json({
+            status: "Username or Password do not match!!",
+            data: [],
+          });
+        }
+      }
+    );
   }
 });
 

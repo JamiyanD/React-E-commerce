@@ -65,7 +65,7 @@ export default function EditUserModal({
     data.append("email", currentUser.email);
     data.append("password", currentUser.password);
     data.append("role", currentUser.role);
-    data.append("joined_date", currentUser.joined_date);
+
     const AXIOS_DATA = await axios.post(url, data);
 
     if (AXIOS_DATA.status == 200) {
@@ -145,7 +145,7 @@ export default function EditUserModal({
                 />
               ) : (
                 <img
-                  src={`http://localhost:8080/user-upload/${currentUser.filename}`}
+                  src={`http://localhost:8081/user-upload/${currentUser.filename}`}
                   alt=""
                   style={{ width: "200px" }}
                   className="rounded-4 shadow m-4"

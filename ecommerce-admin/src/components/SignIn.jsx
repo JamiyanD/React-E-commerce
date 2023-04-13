@@ -2,10 +2,8 @@ import React from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import { useContext } from "react";
-import { LoggedUsersContext } from "../context/LoggedUsers";
 
-export default function SignIn({ setShowNavbar, setLoggedUsers, loggedUsers }) {
-  const [showLoggedUsers, setShowLoggedUsers] = useContext(LoggedUsersContext);
+export default function SignIn({ setShowNavbar }) {
   setShowNavbar(false);
   const URL = "http://localhost:8081/users/login";
   const navigate = useNavigate();
@@ -22,8 +20,6 @@ export default function SignIn({ setShowNavbar, setLoggedUsers, loggedUsers }) {
     };
     const FETCHED_DATA = await fetch(URL, options);
     const FETCHED_JSON = await FETCHED_DATA.json();
-    console.log(FETCHED_JSON.data);
-    setLoggedUsers(FETCHED_JSON.data);
 
     if (FETCHED_JSON.status === "success") {
       swal("", "You have successfully logged in!", "success", {

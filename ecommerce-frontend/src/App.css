@@ -564,9 +564,3 @@ input[type="number"]::-webkit-outer-spin-button {
 .big-product {
   height: 400px;
 }
-
-.signup-container {
-  width: 360px;
-  margin: auto;
-  font-family: "Inter", sans-serif;
-}

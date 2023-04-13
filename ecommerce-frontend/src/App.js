@@ -12,7 +12,7 @@ import { useState } from "react";
 
 import { Routes, Route, Link } from "react-router-dom";
 import Home from "./components/Home/Home";
-import Login from "./components/Header/Login";
+import Register from "./components/Header/Register";
 import ProductBox from "./components/Products/ProductBox";
 import ProductDetail from "./components/Products/ProductDetail";
 import AboutUs from "./components/AboutUs";
@@ -46,7 +46,7 @@ function App() {
         />
 
         <Route path="/detail" element={<Detail />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route
           path="/product-box"
           element={

@@ -13,7 +13,6 @@ import FormHelperText from "@mui/material/FormHelperText";
 import IconButton from "@mui/material/IconButton";
 import EditIcon from "@mui/icons-material/Edit";
 import NewProductTab from "./NewProductTab";
-import { LoggedUsersContext } from "../../context/LoggedUsers";
 
 export default function NewUser() {
   const PRODUCTS_UPLOAD_URL = "http://localhost:8081/products";
@@ -29,7 +28,6 @@ export default function NewUser() {
   const [height, setHeight] = useState("");
   const [brand, setBrand] = useState("");
   const CATEGORIES_URL = "http://localhost:8081/products/category";
-  const [showLoggedUsers, setShowLoggedUsers] = useContext(LoggedUsersContext);
 
   async function fetchCategories() {
     const FETCHED_DATA = await fetch(CATEGORIES_URL);
@@ -39,7 +37,7 @@ export default function NewUser() {
   useEffect(() => {
     fetchCategories();
   }, []);
-  console.log(showLoggedUsers);
+
   async function handleSubmit(e) {
     e.preventDefault();
     // console.log(e.target.image.files[0]);
@@ -59,7 +57,7 @@ export default function NewUser() {
     data.append("gender", currentProducts.gender);
     data.append("brand", currentProducts.brand);
     data.append("description", currentProducts.description);
-    data.append("users", showLoggedUsers.full_name);
+
     const config = {
       headers: { "content-type": "multipart/form-data" },
     };

@@ -1,11 +1,9 @@
 import * as React from "react";
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/joy/Stack";
 import IconButton from "@mui/material/IconButton";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Box from "@mui/material/Box";
 import axios from "axios";
 import { useState, useEffect, useContext } from "react";
@@ -15,104 +13,86 @@ import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import Tab from "@mui/material/Tab";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { Checkbox } from "@mui/material";
-import MenuItem from "@mui/material/MenuItem";
-export default function NewUser({ setUsers }) {
-  const [currentUser, setCurrentUser] = useState({
-    full_name: "",
-    email: "",
-    role: "",
-    password: "",
-    phone_number: "",
-    isEdit: false,
-    joined_date: new Date().toString().substr(3, 21),
-  });
-  const [image, setImage] = useState("");
-  const [roles, setRoles] = useState([]);
-  const navigate = useNavigate();
-  const USER_URL = "http://localhost:8081/users/users";
-  const ROLE_URL = "http://localhost:8081/users/roles";
 
-  async function fetchRoles() {
-    const FETCHED_DATA = await fetch(ROLE_URL);
-    const FETCHED_JSON = await FETCHED_DATA.json();
-    setRoles(FETCHED_JSON.data);
-  }
+export default function NewCustomer({ setUsers }) {
+  const [currentCustomer, setCurrentCustomer] = useState({});
+  const [image, setImage] = useState("");
+  const navigate = useNavigate();
+  const { id } = useParams();
+  const CUSTOMER_URL = "http://localhost:8081/customer";
+
   useEffect(() => {
-    fetchRoles();
+    axiosProduct();
   }, []);
+  async function axiosProduct() {
+    const AXIOS_DATA = await axios.put(CUSTOMER_URL, { customerId: id });
+    console.log(AXIOS_DATA);
+    if (AXIOS_DATA.status == 200) {
+      setCurrentCustomer(AXIOS_DATA.data.data);
+    }
+  }
 
   async function handleSubmit(e) {
     e.preventDefault();
     const data = new FormData();
     const files = e.target.image.files[0];
-    console.log(currentUser);
-    data.append("full_name", currentUser.full_name);
-    data.append("phone_number", currentUser.phone_number);
-    data.append("email", currentUser.email);
+    console.log(files);
+    data.append("isEdit", true);
+    data.append("customerId", id);
+    data.append("customer_name", currentCustomer.customer_name);
+    data.append("customer_phone_number", currentCustomer.customer_phone_number);
+    data.append("customer_email", currentCustomer.customer_email);
+    data.append("customer_description", currentCustomer.customer_description);
     data.append("image", files);
-    data.append("password", currentUser.password);
-    data.append("role", currentUser.role);
-    data.append("filename", currentUser.filename);
-    data.append("joined_date", currentUser.joined_date);
+    data.append("customer_password", currentCustomer.customer_password);
+    data.append("filename", currentCustomer.filename);
 
-    const AXIOS_DATA = await axios.post(USER_URL, data);
-    console.log(AXIOS_DATA);
+    const AXIOS_DATA = await axios.post(CUSTOMER_URL, data);
+
     if (AXIOS_DATA.status == 200) {
       navigate("/customerList");
-      const AXIOS_DATA = await axios.get(USER_URL);
-      console.log(AXIOS_DATA.data.data);
-      setUsers(AXIOS_DATA.data.data);
-      setCurrentUser("");
     }
   }
 
-  function handleFullName(e) {
-    setCurrentUser({
-      ...currentUser,
-      full_name: e.target.value,
+  function handleName(e) {
+    setCurrentCustomer({
+      ...currentCustomer,
+      customer_name: e.target.value,
     });
   }
 
   function handlePhoneNumber(e) {
-    setCurrentUser({
-      ...currentUser,
-      phone_number: e.target.value,
+    setCurrentCustomer({
+      ...currentCustomer,
+      customer_phone_number: e.target.value,
     });
   }
   function handleEmail(e) {
-    setCurrentUser({
-      ...currentUser,
-      email: e.target.value,
+    setCurrentCustomer({
+      ...currentCustomer,
+      customer_email: e.target.value,
     });
   }
   function handlePassword(e) {
-    setCurrentUser({
-      ...currentUser,
-      password: e.target.value,
+    setCurrentCustomer({
+      ...currentCustomer,
+      customer_password: e.target.value,
+    });
+  }
+  function handleDescription(e) {
+    setCurrentCustomer({
+      ...currentCustomer,
+      customer_description: e.target.value,
     });
   }
 
-  function handleRadio(e) {
-    console.log(e.target.value);
-    if (e.target.value) {
-      setCurrentUser({
-        ...currentUser,
-        role: e.target.value,
-      });
-    }
-  }
   function handleUpload(e) {
     setImage(URL.createObjectURL(e.target.files[0]));
     console.log(e.target.files[0]);
     const filename = e.target.value;
     console.log(filename);
-    setCurrentUser({
-      ...currentUser,
+    setCurrentCustomer({
+      ...currentCustomer,
       filename: filename.substr(12, filename.length),
     });
   }
@@ -141,7 +121,7 @@ export default function NewUser({ setUsers }) {
                 />
               ) : (
                 <img
-                  src="https://learncrypto.com/_nuxt/img/901a7a4.jpg"
+                  src={`http://localhost:8081/user-upload/${currentCustomer.filename}`}
                   alt=""
                   style={{ width: "200px" }}
                   className="rounded-4 shadow m-4"
@@ -184,7 +164,7 @@ export default function NewUser({ setUsers }) {
               <TabPanel value="1" className="p-0">
                 <div class="my-4 border border-2 border-light rounded-5 p-3">
                   <Typography variant="h6" gutterBottom className="m-3">
-                    User Information
+                    Customer Information
                   </Typography>
                   <Typography variant="subtitle2" gutterBottom>
                     Name
@@ -194,8 +174,8 @@ export default function NewUser({ setUsers }) {
                     name="fullname"
                     className="form-control mb-4"
                     placeholder="Name"
-                    onChange={handleFullName}
-                    value={currentUser.full_name}
+                    onChange={handleName}
+                    value={currentCustomer.customer_name}
                   />
 
                   <Typography variant="subtitle2" gutterBottom>
@@ -207,7 +187,7 @@ export default function NewUser({ setUsers }) {
                     className="form-control mb-4"
                     placeholder="Email"
                     onChange={handleEmail}
-                    value={currentUser.email}
+                    value={currentCustomer.customer_email}
                   />
 
                   <Typography variant="subtitle2" gutterBottom>
@@ -217,6 +197,8 @@ export default function NewUser({ setUsers }) {
                     class="form-control rounded-3"
                     placeholder="Type your text here..."
                     style={{ height: "100px" }}
+                    value={currentCustomer.customer_description}
+                    onChange={handleDescription}
                   ></textarea>
                 </div>
                 <div class="mb-4 border border-2 border-light rounded-5 p-3">
@@ -229,7 +211,7 @@ export default function NewUser({ setUsers }) {
                     className="form-control rounded-3 mb-4"
                     placeholder="Password"
                     onChange={handlePassword}
-                    value={currentUser.password}
+                    value={currentCustomer.customer_password}
                   />
 
                   <Typography variant="subtitle2" gutterBottom>
@@ -241,31 +223,8 @@ export default function NewUser({ setUsers }) {
                     class="form-control mb-4"
                     placeholder="Phone Number"
                     onChange={handlePhoneNumber}
-                    value={currentUser.phone_number}
+                    value={currentCustomer.customer_phone_number}
                   />
-
-                  <Typography variant="subtitle2" gutterBottom>
-                    Role
-                  </Typography>
-                  <RadioGroup
-                    row
-                    className="d-flex flex-wrap gap-3 "
-                    onChange={handleRadio}
-                    value={currentUser.role}
-                  >
-                    {roles &&
-                      roles.map((role, khuslen) => {
-                        return (
-                          <FormControlLabel
-                            key={khuslen}
-                            control={<Radio color="primary" />}
-                            label={role.roles_name}
-                            value={role.roles_name}
-                            className="new-product-radio"
-                          />
-                        );
-                      })}
-                  </RadioGroup>
                 </div>
               </TabPanel>
               <TabPanel value="2" className="p-0">

@@ -19,22 +19,21 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import CategoryList from "./components/products/CategoryList";
 import RolesList from "./components/users/RolesList";
 import OrderList from "./components/order/OrderList";
+import NewCustomer from "./components/customer/NewCustomer";
+import CustomerList from "./components/customer/CustomerList";
+import EditCustomer from "./components/customer/EditCustomer";
 function App() {
   const [showNavbar, setShowNavbar] = useState(true);
-  const [loggedUsers, setLoggedUsers] = useState({});
-  // const data = { data: "123" };
-  // useEffect(() => {
-  //   setLoggedUsers(data);
-  // }, []);
 
-  console.log(loggedUsers);
   return (
     <div className="App bg-light">
-      {showNavbar && <Navbar loggedUsers={loggedUsers} />}
+      {showNavbar && <Navbar />}
       {showNavbar && <Page />}
       {showNavbar && <Toolbar />}
-      <Container className="content ">
+      <div className="content container ">
         <Routes>
+          <Route path="/eCommerce" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/user-management" element={<Home />} />
           <Route path="/usersList" element={<UsersList />} />
           <Route path="/newUser" element={<NewUser />} />
@@ -42,28 +41,22 @@ function App() {
           <Route path="/productsList" element={<ProductsList />} />
           <Route path="/newProduct" element={<NewProduct />} />
           <Route path="/product/edit/:id" element={<EditProduct />} />
-          <Route path="/eCommerce" element={<Home />} />
-          <Route path="/" element={<Home />} />
           <Route path="/category" element={<CategoryList />} />
           <Route path="/roles" element={<RolesList />} />
           <Route path="/order" element={<OrderList />} />
+          <Route path="/newCustomer" element={<NewCustomer />} />
+          <Route path="/customerList" element={<CustomerList />} />
+          <Route path="/customer/edit/:id" element={<EditCustomer />} />
         </Routes>
-      </Container>
+      </div>
       <Routes>
         <Route
           path="/sign-in"
-          element={
-            <SignIn
-              setShowNavbar={setShowNavbar}
-              setLoggedUsers={setLoggedUsers}
-            />
-          }
+          element={<SignIn setShowNavbar={setShowNavbar} />}
         />
         <Route
           path="/sign-up"
-          element={
-            <SignUp setShowNavbar={setShowNavbar} loggedUsers={loggedUsers} />
-          }
+          element={<SignUp setShowNavbar={setShowNavbar} />}
         />
       </Routes>
     </div>

@@ -13,14 +13,14 @@ import MenuIcon from "@mui/icons-material/Menu";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import { useState, useContext, useEffect } from "react";
-import { LoggedUsersContext } from "../context/LoggedUsers";
+
 import axios from "axios";
 
-function OffcanvasNavbar({ loggedUsers }) {
+function OffcanvasNavbar() {
   const [moreIcon, setMoreIcon] = useState(true);
   const [moreIcon2, setMoreIcon2] = useState(true);
-  const [showLoggedUsers, setShowLoggedUsers] = useContext(LoggedUsersContext);
-  console.log(loggedUsers);
+  const [moreIcon3, setMoreIcon3] = useState(true);
+
   return (
     <nav class="navbar navbar-expand-lg bg-white ">
       <Container className=" d-flex justify-content-between p-0">
@@ -68,13 +68,14 @@ function OffcanvasNavbar({ loggedUsers }) {
                     onClick={() => {
                       setMoreIcon(!moreIcon);
                       setMoreIcon2(true);
+                      setMoreIcon3(true);
                     }}
                   >
                     {moreIcon ? (
                       <span className="dropdown-title d-flex justify-content-between align-items-center">
                         <div>
                           <i class="bi bi-person me-2 d-lg-none"></i>
-                          User Management
+                          User
                         </div>
                         <ExpandMoreIcon
                           className=" d-lg-none"
@@ -89,7 +90,7 @@ function OffcanvasNavbar({ loggedUsers }) {
                       >
                         <div>
                           <i class="bi bi-person me-2 d-lg-none"></i>
-                          User Management
+                          User
                         </div>
                         <ExpandLessIcon
                           className=" d-lg-none"
@@ -127,13 +128,14 @@ function OffcanvasNavbar({ loggedUsers }) {
                     onClick={() => {
                       setMoreIcon2(!moreIcon2);
                       setMoreIcon(true);
+                      setMoreIcon3(true);
                     }}
                   >
                     {moreIcon2 ? (
                       <span className="dropdown-title d-flex justify-content-between align-items-center">
                         <div>
                           <i class="bi bi-cart3 me-2 d-lg-none"></i>
-                          Catalog
+                          Product
                         </div>
                         <ExpandMoreIcon
                           className=" d-lg-none"
@@ -148,7 +150,7 @@ function OffcanvasNavbar({ loggedUsers }) {
                       >
                         <div className="htack">
                           <i class="bi bi-cart3 me-2 d-lg-none"> </i>
-                          Catalog
+                          Product
                         </div>
                         <ExpandLessIcon
                           className="d-lg-none"
@@ -185,6 +187,61 @@ function OffcanvasNavbar({ loggedUsers }) {
                     <i class="bi bi-house-door me-2 d-lg-none"></i>
                     <span className="dropdown-title">Order</span>
                   </a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link dropdown-toggle  active text-body"
+                    href="#"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                    onClick={() => {
+                      setMoreIcon3(!moreIcon3);
+                      setMoreIcon2(true);
+                      setMoreIcon(true);
+                    }}
+                  >
+                    {moreIcon3 ? (
+                      <span className="dropdown-title d-flex justify-content-between align-items-center">
+                        <div>
+                          <i class="bi bi-person me-2 d-lg-none"></i>
+                          Customer
+                        </div>
+                        <ExpandMoreIcon
+                          className=" d-lg-none"
+                          fontSize="small"
+                          color="disabled"
+                        />
+                      </span>
+                    ) : (
+                      <span
+                        className="dropdown-title d-flex justify-content-between align-items-center"
+                        style={{ color: "#2C9AFF" }}
+                      >
+                        <div>
+                          <i class="bi bi-person me-2 d-lg-none"></i>
+                          Customer
+                        </div>
+                        <ExpandLessIcon
+                          className=" d-lg-none"
+                          fontSize="small"
+                          color="disabled"
+                        />
+                      </span>
+                    )}
+                  </a>
+                  <ul class="dropdown-menu ">
+                    <li>
+                      <a class="dropdown-item text-body" href="/newCustomer">
+                        <i class="bi bi-dot"></i> New Customer
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item text-body" href="/customerList">
+                        <i class="bi bi-dot"></i> Customers List
+                      </a>
+                    </li>{" "}
+                  </ul>
                 </li>
               </ul>
             </div>
@@ -256,7 +313,7 @@ function OffcanvasNavbar({ loggedUsers }) {
           <div class="dropdown ">
             <Avatar
               alt="Remy Sharp"
-              src={`http://localhost:8081/user-upload/${loggedUsers.filename}`}
+              src={`http://localhost:8081/user-upload/IMG_6468.jpg`}
               id="dropdownMenuButton"
               data-bs-toggle="dropdown"
               aria-expanded="false"
@@ -268,14 +325,14 @@ function OffcanvasNavbar({ loggedUsers }) {
             >
               <li className="d-flex align-items-center p-2">
                 <img
-                  src={`http://localhost:8081/user-upload/${loggedUsers.filename}`}
+                  src={`http://localhost:8081/user-upload/IMG_6468.jpg`}
                   alt=""
                   className="rounded m-2 "
                   style={{ width: "70px", height: "60px" }}
                 />
                 <div className="">
-                  <h5 class=" fw-bold mb-1">{loggedUsers.full_name}</h5>
-                  <p className="text-secondary "> {loggedUsers.email}</p>
+                  <h5 class=" fw-bold mb-1">Jamiyan</h5>
+                  <p className="text-secondary "> jaya@gmail.com</p>
                 </div>
               </li>
               <li>

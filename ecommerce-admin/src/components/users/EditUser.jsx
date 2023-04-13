@@ -21,13 +21,7 @@ export default function EditUser() {
   const { id } = useParams();
 
   const url = "http://localhost:8081/users/users";
-  const [currentUser, setCurrentUser] = useState({
-    full_name: "",
-    email: "",
-    password: "",
-    role: "",
-    phone_number: "",
-  });
+  const [currentUser, setCurrentUser] = useState({});
 
   useEffect(() => {
     axiosProduct();
@@ -53,7 +47,7 @@ export default function EditUser() {
         <Stack alignItems="center" gap={1}>
           <Avatar
             alt="Remy Sharp"
-            src={`http://localhost:8080/user-upload/${currentUser.filename}`}
+            src={`http://localhost:8081/user-upload/${currentUser.filename}`}
             id="dropdownMenuButton"
             data-bs-toggle="dropdown"
             aria-expanded="false"
@@ -187,6 +181,22 @@ export default function EditUser() {
         currentUser={currentUser}
         setCurrentUser={setCurrentUser}
       />
+      <Stack direction="row" spacing={2}>
+        <Button
+          href={"/usersList"}
+          variant="contained"
+          className="color-blue rounded-3"
+        >
+          Save Changes
+        </Button>
+        <Button
+          href={"/usersList"}
+          variant="contained"
+          className="bg-light text-muted rounded-3"
+        >
+          Cancel
+        </Button>
+      </Stack>
     </Box>
   );
 }

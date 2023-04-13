@@ -15,6 +15,7 @@ import axios from "axios";
 import { ProductsContext } from "../../context/products";
 import Products from "../Products/Products";
 import categories from "../../data/categories";
+import { Navigate, useNavigate } from "react-router-dom";
 
 function Header({ addWishlist, setAddWishlist, downWishList }) {
   const [list, setList] = useState(false);
@@ -57,6 +58,27 @@ function Header({ addWishlist, setAddWishlist, downWishList }) {
       setCharacters([]);
     }
   }, [query]);
+
+  const URL = "http://localhost:8081/customer/login";
+  const navigate = useNavigate();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const data = {
+      customer_email: e.target.email.value,
+      customer_password: e.target.password.value,
+    };
+    const options = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    };
+    const FETCHED_DATA = await fetch(URL, options);
+    const FETCHED_JSON = await FETCHED_DATA.json();
+
+    if (FETCHED_JSON.status === "success") {
+      navigate("/");
+    }
+  };
 
   return (
     <header className="container mb-3">
@@ -101,10 +123,13 @@ function Header({ addWishlist, setAddWishlist, downWishList }) {
             >
               НЭВТРЭХ/БҮРТГҮҮЛЭХ
             </a>
-            <form class="dropdown-menu p-4 dropdown-menu-end ">
+            <form
+              class="dropdown-menu p-4 dropdown-menu-end "
+              onSubmit={handleSubmit}
+            >
               <div className="d-flex justify-content-between">
                 <p className="">Нэвтрэх</p>
-                <Link to={"/login"}>
+                <Link to={"/register"}>
                   <p className="pink ">Бүртгүүлэх</p>
                 </Link>
               </div>
@@ -112,7 +137,7 @@ function Header({ addWishlist, setAddWishlist, downWishList }) {
                 <label className=" text-secondary mb-2">Имэйл хаяг</label>
                 <input
                   class="form-control  p-3 "
-                  type=""
+                  type="email"
                   name="email"
                   placeholder="Имэйл "
                 />
@@ -122,7 +147,7 @@ function Header({ addWishlist, setAddWishlist, downWishList }) {
                 <input
                   class="form-control  p-3"
                   type=""
-                  name="email"
+                  name="password"
                   placeholder="Нууц үг"
                 />
               </div>
