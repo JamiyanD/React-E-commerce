@@ -12,20 +12,19 @@ import EditIcon from "@mui/icons-material/Edit";
 import Modal from "@mui/material/Modal";
 
 export default function EditOrderStatus({
-  openCategoryEdit,
-  setOpenCategoryEdit,
-  currentCategory,
-  setCurrentCategory,
+  openStatusEdit,
+  setOpenStatusEdit,
+  currentStatus,
+  setCurrentStatus,
   setUsers,
 }) {
-  const URL = "http://localhost:8081/products/category";
+  const URL = "http://localhost:8081/order/status";
 
-  console.log(currentCategory);
   async function handleSubmit(e) {
     e.preventDefault();
     const putData = {
-      _id: currentCategory._id,
-      category_name: currentCategory.category_name,
+      _id: currentStatus._id,
+      order_status_name: currentStatus.order_status_name,
       isEdit: true,
     };
     const AXIOS_DATA = await axios.post(URL, putData);
@@ -34,39 +33,39 @@ export default function EditOrderStatus({
       const AXIOS_DATA = await axios.get(URL);
       console.log(AXIOS_DATA.data.data);
       if (AXIOS_DATA.status == 200) {
-        setOpenCategoryEdit(false);
-        setCurrentCategory("");
+        setOpenStatusEdit(false);
+        setCurrentStatus("");
         setUsers(AXIOS_DATA.data.data);
       }
     }
   }
 
   function handleName(e) {
-    setCurrentCategory({
-      ...currentCategory,
+    setCurrentStatus({
+      ...currentStatus,
       order_status_name: e.target.value,
     });
   }
 
   //   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpenCategoryEdit(false);
+  const handleClose = () => setOpenStatusEdit(false);
 
   return (
     <Box>
       <Modal
-        open={openCategoryEdit}
+        open={openStatusEdit}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
         <Box className="add-order-modal rounded-4 p-3 ">
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            Edit Category
+            Edit Status
           </Typography>
           <Box sx={{ flexGrow: 1, p: 2 }} className="">
             <form onSubmit={handleSubmit}>
               <Typography variant="h6" sx={{ width: "300px" }}>
-                Category
+                Status
               </Typography>
 
               <Typography variant="subtitle2" className="mt-3">
@@ -77,7 +76,7 @@ export default function EditOrderStatus({
                 name="name"
                 className="form-control bg-light border-0 add-user-input"
                 onChange={handleName}
-                // value={currentCategory.order_status_name}
+                value={currentStatus.order_status_name}
               />
 
               <Stack

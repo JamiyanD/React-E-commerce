@@ -9,13 +9,21 @@ order_router.get("/order", async (req, res) => {
 });
 
 order_router.post("/order", async (req, res) => {
-  const { name, isEdit, _id, order_quantity, price } = req.body;
+  const { name, isEdit, _id, order_quantity, price, order_status_name } =
+    req.body;
   const body = req.body;
-  console.log(body);
+  console.log("post", body);
   if (isEdit) {
     const editOrder = await Order.updateOne(
       { _id: _id },
-      { $set: { name: name, order_quantity: order_quantity, price: price } }
+      {
+        $set: {
+          name: name,
+          order_quantity: order_quantity,
+          price: price,
+          order_status_name: order_status_name,
+        },
+      }
     );
     console.log(editOrder);
     const result = await Order.find({});
@@ -40,13 +48,15 @@ order_router.delete("/order", async (req, res) => {
 
 order_router.put("/order", async (req, res) => {
   const body = req.body;
-  const findCategory = await OrderStatus.findOne({ _id: body.orderId });
+
+  const findCategory = await Order.findOne({ _id: body.orderId });
+  console.log(findCategory);
   res.json(findCategory);
 });
 
 order_router.get("/order/status", async (req, res) => {
   const result = await OrderStatus.find({});
-  res.json({ status: "success", data: result });
+  res.json(result);
 });
 
 order_router.post("/order/status", async (req, res) => {
@@ -57,7 +67,7 @@ order_router.post("/order/status", async (req, res) => {
       { _id: _id },
       { $set: { order_status_name: order_status_name } }
     );
-    console.log(editStatus);
+    console.log(order_status_name);
     const result = await OrderStatus.find({});
     res.json({ data: result });
   } else {
@@ -70,7 +80,10 @@ order_router.post("/order/status", async (req, res) => {
 
 order_router.delete("/order/status", async (req, res) => {
   const body = req.body;
-  const deleteStatus = await OrderStatus.findOneAndDelete({ _id: body.userId });
+  console.log("sda", body);
+  const deleteStatus = await OrderStatus.findOneAndDelete({
+    _id: body.statusId,
+  });
   const result = await OrderStatus.find({});
   console.log(deleteStatus);
   res.json({ data: result });
@@ -78,7 +91,7 @@ order_router.delete("/order/status", async (req, res) => {
 
 order_router.put("/order/status", async (req, res) => {
   const body = req.body;
-  const findStatus = await OrderStatus.findOne({ _id: body.userId });
+  const findStatus = await OrderStatus.findOne({ _id: body.statusId });
   res.json({ data: findStatus });
 });
 

@@ -11,8 +11,9 @@ const storage = multer.diskStorage({
     cb(null, file.originalname);
   },
 });
-
 const upload = multer({ storage: storage });
+const cloudinary = require("../config/cloudinary");
+
 customer_router.get("/customer", async (req, res) => {
   const result = await Customer.find({});
   res.json(result);
@@ -28,30 +29,49 @@ customer_router.post("/customer", upload.single("image"), async (req, res) => {
     customer_phone_number,
     customer_description,
     customer_joined_date,
-    filename,
+    filepath,
     isEdit,
   } = req.body;
   const body = req.body;
   console.log("file", req.file);
   console.log("body", req.body);
   if (isEdit) {
-    const updateCustomer = await Customer.updateOne(
-      { _id: customerId },
-      {
-        $set: {
-          customer_name: customer_name,
-          customer_email: customer_email,
-          customer_password: customer_password,
-          customer_phone_number: customer_phone_number,
-          customer_description: customer_description,
-          customer_joined_date: customer_joined_date,
-          filename: filename,
-        },
-      }
-    );
-    console.log(updateCustomer);
+    if (req.file) {
+      const upload = await cloudinary.uploader.upload(req.file.path);
+      const updateCustomer = await Customer.updateOne(
+        { _id: customerId },
+        {
+          $set: {
+            customer_name: customer_name,
+            customer_email: customer_email,
+            customer_password: customer_password,
+            customer_phone_number: customer_phone_number,
+            customer_description: customer_description,
+            customer_joined_date: customer_joined_date,
+            filepath: upload.secure_url,
+          },
+        }
+      );
+    } else {
+      const updateCustomer = await Customer.updateOne(
+        { _id: customerId },
+        {
+          $set: {
+            customer_name: customer_name,
+            customer_email: customer_email,
+            customer_password: customer_password,
+            customer_phone_number: customer_phone_number,
+            customer_description: customer_description,
+            customer_joined_date: customer_joined_date,
+            filepath: filepath,
+          },
+        }
+      );
+    }
+
     res.json([]);
   } else {
+    const upload = await cloudinary.uploader.upload(req.file.path);
     bcrypt.genSalt(SALT_ROUNDS, (err, salt) => {
       if (err) {
         response.json({
@@ -67,13 +87,9 @@ customer_router.post("/customer", upload.single("image"), async (req, res) => {
         }
         console.log("hashed Data :", hashData);
         const newCustomer = {
-          customer_name: customer_name,
-          customer_email: customer_email,
+          ...body,
           customer_password: hashData,
-          customer_phone_number: customer_phone_number,
-          customer_description: customer_description,
-          customer_joined_date: customer_joined_date,
-          filename: filename,
+          filepath: upload.secure_url,
         };
         console.log("data", newCustomer);
         const modelCustomer = new Customer(newCustomer);

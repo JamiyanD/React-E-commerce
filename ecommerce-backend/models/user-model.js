@@ -6,7 +6,7 @@ let usersSchema = new mongoose.Schema({
   phone_number: String,
   joined_date: String,
   password: String,
-  filename: String,
+  filepath: String,
 });
 const User = mongoose.model("users", usersSchema);
 module.exports = User;

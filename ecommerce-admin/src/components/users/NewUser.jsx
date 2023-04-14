@@ -57,13 +57,13 @@ export default function NewUser({ setUsers }) {
     data.append("image", files);
     data.append("password", currentUser.password);
     data.append("role", currentUser.role);
-    data.append("filename", currentUser.filename);
+
     data.append("joined_date", currentUser.joined_date);
 
     const AXIOS_DATA = await axios.post(USER_URL, data);
     console.log(AXIOS_DATA);
     if (AXIOS_DATA.status == 200) {
-      navigate("/customerList");
+      navigate("/usersList");
       const AXIOS_DATA = await axios.get(USER_URL);
       console.log(AXIOS_DATA.data.data);
       setUsers(AXIOS_DATA.data.data);
@@ -108,13 +108,6 @@ export default function NewUser({ setUsers }) {
   }
   function handleUpload(e) {
     setImage(URL.createObjectURL(e.target.files[0]));
-    console.log(e.target.files[0]);
-    const filename = e.target.value;
-    console.log(filename);
-    setCurrentUser({
-      ...currentUser,
-      filename: filename.substr(12, filename.length),
-    });
   }
 
   const [value, setValue] = React.useState("1");

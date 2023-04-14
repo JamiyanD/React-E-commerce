@@ -57,7 +57,6 @@ export default function EditProduct() {
     data.append("isEdit", true);
     data.append("productsId", id);
     data.append("name", currentProducts.name);
-    data.append("filename", currentProducts.filename);
     data.append("price", currentProducts.price);
     data.append("image", files);
     data.append("code", currentProducts.code);
@@ -89,10 +88,6 @@ export default function EditProduct() {
     setImage(URL.createObjectURL(e.target.files[0]));
     const filename = e.target.value;
     console.log(filename);
-    setCurrentProducts({
-      ...currentProducts,
-      filename: filename.substr(12, filename.length),
-    });
   }
 
   return (
@@ -114,7 +109,7 @@ export default function EditProduct() {
                 />
               ) : (
                 <img
-                  src={`http://localhost:8081/upload/${currentProducts.filename}`}
+                  src={currentProducts.filepath}
                   alt=""
                   style={{ width: "200px" }}
                   className="rounded-4 shadow m-4"

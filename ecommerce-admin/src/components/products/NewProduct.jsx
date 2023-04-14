@@ -43,9 +43,8 @@ export default function NewUser() {
     // console.log(e.target.image.files[0]);
     const data = new FormData();
     const files = e.target.image.files[0];
-    console.log(currentProducts);
+
     data.append("name", currentProducts.name);
-    data.append("filename", currentProducts.filename);
     data.append("price", currentProducts.price);
     data.append("image", files);
     data.append("code", currentProducts.code);
@@ -64,17 +63,12 @@ export default function NewUser() {
     const AXIOS_DATA = await axios.post(PRODUCTS_URL, data, config);
     if (AXIOS_DATA.status == 200) {
       navigate("/productsList");
+      console.log(AXIOS_DATA.data);
     }
   }
 
   function handleUpload(e) {
     setImage(URL.createObjectURL(e.target.files[0]));
-    const filename = e.target.value;
-    console.log(filename);
-    setCurrentProducts({
-      ...currentProducts,
-      filename: filename.substr(12, filename.length),
-    });
   }
   function handleChange(select) {
     setDefaultSelect(select.target.value);
@@ -85,7 +79,6 @@ export default function NewUser() {
     });
   }
 
-  console.log(currentProducts);
   return (
     <Box
       sx={{ display: "flex", backgroundColor: "white" }}

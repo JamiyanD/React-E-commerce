@@ -2,11 +2,14 @@ import CloseButton from "react-bootstrap/CloseButton";
 import { useContext, useState } from "react";
 import { CartContext } from "../../context/CartContext";
 import axios from "axios";
+import Swal from "sweetalert2/dist/sweetalert2.js";
+import "sweetalert2/src/sweetalert2.scss";
+
 export default function CartDetail() {
   const [cartList, setCartList] = useContext(CartContext);
   const [orderData, setOrderData] = useState([]);
   let totalSum = 0;
-  const URL = "http://localhost:8081/order/order";
+  const URL = "http://localhost:8081/order";
   async function handleOrder() {
     console.log(cartList);
     cartList.map((data) => {
@@ -23,7 +26,14 @@ export default function CartDetail() {
     console.log(orderData);
     const AXIOS_DATA = await axios.post(URL, orderData);
     if (AXIOS_DATA.status == 200) {
-      console.log("zahialga amjilttai");
+      setCartList([]);
+      Swal.fire({
+        title: "Баярлалаа",
+        text: "Амжилттай захиалагдлаа",
+        icon: "success",
+        confirmButtonText: "OK",
+        confirmButtonColor: "#e84f69",
+      });
     }
   }
   return (

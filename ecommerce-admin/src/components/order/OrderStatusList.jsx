@@ -48,6 +48,7 @@ export default function OrderStatusList() {
     const data = {
       statusId: statusId,
     };
+    console.log(data);
     const AXIOS_DATA = await axios.delete(URL, { data });
     setUsers(AXIOS_DATA.data.data);
     setSelected([]);
@@ -186,7 +187,7 @@ export default function OrderStatusList() {
                       </TableCell>
 
                       <TableCell className="fs-3 text-muted" align="center">
-                        {/* {parametr.order_status_name} */}
+                        {parametr.order_status_name}
                       </TableCell>
 
                       <TableCell align="center">

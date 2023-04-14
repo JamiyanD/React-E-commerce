@@ -3,6 +3,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const fs = require("fs");
 require("dotenv").config();
+const cloudinary = require("./config/cloudinary");
+const uploader = require("./config/config");
 
 const users_router = require("./routes/users-api");
 const products_router = require("./routes/products-api");
@@ -19,8 +21,17 @@ app.use("/upload", express.static("upload"));
 app.use("/user-upload", express.static("user-upload"));
 app.use("/users", users_router);
 app.use("/products", products_router);
-app.use("/order", order_router);
+app.use(order_router);
 app.use(customer_router);
+
+// app.post("/upload", uploader.single("file"), async (req, res) => {
+//   console.log("start");
+//   const upload = await cloudinary.uploader.upload(req.file.path);
+//   return res.json({
+//     success: true,
+//     file: upload.secure_url,
+//   });
+// });
 
 app.listen(PORT, () => {
   mongoose

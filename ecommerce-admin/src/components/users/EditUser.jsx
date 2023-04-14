@@ -47,7 +47,7 @@ export default function EditUser() {
         <Stack alignItems="center" gap={1}>
           <Avatar
             alt="Remy Sharp"
-            src={`http://localhost:8081/user-upload/${currentUser.filename}`}
+            src={currentUser.filepath}
             id="dropdownMenuButton"
             data-bs-toggle="dropdown"
             aria-expanded="false"

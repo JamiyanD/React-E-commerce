@@ -12,8 +12,9 @@ const storage = multer.diskStorage({
     cb(null, file.originalname);
   },
 });
-
 const upload = multer({ storage: storage });
+const cloudinary = require("../config/cloudinary");
+
 users_router.get("/users", async (req, res) => {
   const result = await Users.find({});
   res.json(result);
@@ -29,31 +30,52 @@ users_router.post("/users", upload.single("image"), async (req, res) => {
     email,
     password,
     role,
-    filename,
+    filepath,
     joined_date,
   } = req.body;
   const body = req.body;
   console.log("file", req.file);
   console.log("body", req.body);
   if (isEdit) {
-    const updateUser = await Users.updateOne(
-      { _id: userId },
-      {
-        $set: {
-          full_name: full_name,
-          phone_number: phone_number,
-          email: email,
-          password: password,
-          role: role,
-          filename: filename,
-          joined_date: joined_date,
-          filename: filename,
-        },
-      }
-    );
-    console.log(updateUser);
+    if (req.file) {
+      const upload = await cloudinary.uploader.upload(req.file.path);
+      const updateUser = await Users.updateOne(
+        { _id: userId },
+        {
+          $set: {
+            full_name: full_name,
+            phone_number: phone_number,
+            email: email,
+            password: password,
+            role: role,
+
+            joined_date: joined_date,
+            filepath: upload.secure_url,
+          },
+        }
+      );
+    } else {
+      const updateUser = await Users.updateOne(
+        { _id: userId },
+        {
+          $set: {
+            full_name: full_name,
+            phone_number: phone_number,
+            email: email,
+            password: password,
+            role: role,
+
+            joined_date: joined_date,
+            filepath: filepath,
+          },
+        }
+      );
+    }
+
     res.json({ data: [] });
   } else {
+    const upload = await cloudinary.uploader.upload(req.file.path);
+
     bcrypt.genSalt(SALT_ROUNDS, (err, salt) => {
       if (err) {
         response.json({
@@ -69,15 +91,11 @@ users_router.post("/users", upload.single("image"), async (req, res) => {
         }
         console.log("hashed Data :", hashData);
         const newUsers = {
-          full_name: full_name,
-          phone_number: phone_number,
-          email: email,
+          ...body,
           password: hashData,
-          role: role,
-          filename: filename,
-          joined_date: joined_date,
-          filename: filename,
+          filepath: upload.secure_url,
         };
+
         console.log("data", newUsers);
         const modelUsers = new Users(newUsers);
         const result = await modelUsers.save();

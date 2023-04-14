@@ -19,7 +19,7 @@ import FormHelperText from "@mui/joy/FormHelperText";
 export default function OrderTableToolbar(props) {
   const [roles, setRoles] = useState([]);
   const [searchColor, setSearchColor] = useState(false);
-  const URL = "http://localhost:8080/users/users";
+
   const { numSelected, setUsers, handleDelete, selected, axiosScreen } = props;
   const [selectValue, setSelectValue] = React.useState("");
   const [openAddCategory, setOpenAddCategory] = useState(false);

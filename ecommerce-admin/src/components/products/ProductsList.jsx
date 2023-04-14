@@ -174,9 +174,9 @@ export default function ProductsList({ currentProducts, setCurrentProducts }) {
                       </TableCell>
 
                       <TableCell className="d-flex align-items-center gap-3 fw-bold">
-                        {parametr.filename && (
+                        {parametr.filepath && (
                           <img
-                            src={`http://localhost:8081/upload/${parametr.filename}`}
+                            src={parametr.filepath}
                             alt=""
                             style={{ width: "70px", height: "70px" }}
                           />

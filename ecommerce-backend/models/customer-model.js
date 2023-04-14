@@ -6,7 +6,7 @@ let customerSchema = new mongoose.Schema({
   customer_phone_number: Number,
   customer_description: String,
   customer_joined_date: String,
-  filename: String,
+  filepath: String,
 });
 const Customer = mongoose.model("customer", customerSchema);
 module.exports = Customer;

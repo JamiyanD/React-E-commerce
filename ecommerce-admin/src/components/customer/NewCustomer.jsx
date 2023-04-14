@@ -39,7 +39,7 @@ export default function NewCustomer({ setUsers }) {
     data.append("customer_description", currentCustomer.customer_description);
     data.append("image", files);
     data.append("customer_password", currentCustomer.customer_password);
-    data.append("filename", currentCustomer.filename);
+
     data.append("customer_joined_date", currentCustomer.customer_joined_date);
 
     const AXIOS_DATA = await axios.post(CUSTOMER_URL, data);
@@ -88,12 +88,6 @@ export default function NewCustomer({ setUsers }) {
   function handleUpload(e) {
     setImage(URL.createObjectURL(e.target.files[0]));
     console.log(e.target.files[0]);
-    const filename = e.target.value;
-    console.log(filename);
-    setCurrentCustomer({
-      ...currentCustomer,
-      filename: filename.substr(12, filename.length),
-    });
   }
 
   const [value, setValue] = React.useState("1");

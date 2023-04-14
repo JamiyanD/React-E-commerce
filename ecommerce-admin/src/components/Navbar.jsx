@@ -36,8 +36,9 @@ function OffcanvasNavbar() {
           </button>
           <a class="navbar-brand" href="/">
             <img
-              src="https://preview.keenthemes.com/metronic8/demo30/assets/media/logos/demo30.svg"
+              src="https://cdn.shopify.com/s/files/1/0593/6850/5511/files/JAYA_x_240x240.png?v=1667232437"
               alt=""
+              style={{ width: "70px", height: "60px" }}
             />
           </a>
           <div

@@ -20,7 +20,7 @@ export default function AddOrderStatus({
     order_status_name: "",
     isEdit: false,
   });
-  const URL = "http://localhost:8081/order/order/status";
+  const URL = "http://localhost:8081/order/status";
 
   async function handleSubmit(e) {
     e.preventDefault();

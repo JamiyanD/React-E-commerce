@@ -25,14 +25,14 @@ import OrderTableHead from "./OrderTableHead";
 import OrderTableToolbar from "./OrderTableToolbar";
 
 export default function OrderList() {
-  const URL = "http://localhost:8081/order/order";
+  const URL = "http://localhost:8081/order";
   const [users, setUsers] = useState([]);
-  const [currentOrder, setCurrentOrder] = useState("");
+  const [currentOrder, setCurrentOrder] = useState({});
   const [openOrderEdit, setOpenOrderEdit] = useState(false);
+  const [statusValue, setStatusValue] = useState("");
 
   async function axiosScreen() {
     const AXIOS_DATA = await axios.get(URL);
-    console.log(AXIOS_DATA.data);
     setUsers(AXIOS_DATA.data);
   }
 
@@ -52,10 +52,9 @@ export default function OrderList() {
 
   async function handleEdit(id) {
     setOpenOrderEdit(true);
-    console.log(id);
     const AXIOS_DATA = await axios.put(URL, { orderId: id });
-    setCurrentOrder({ ...currentOrder, ...AXIOS_DATA.data });
-    console.log(currentOrder);
+    setCurrentOrder(AXIOS_DATA.data);
+    setStatusValue(AXIOS_DATA.data.order_status_name);
   }
 
   // menu
@@ -198,6 +197,9 @@ export default function OrderList() {
                         {parametr.order_quantity * parametr.price}
                       </TableCell>
                       <TableCell className="products-tablecell-text">
+                        {parametr.order_status_name}
+                      </TableCell>
+                      <TableCell className="products-tablecell-text">
                         {parametr.order_date}
                       </TableCell>
 
@@ -294,6 +296,8 @@ export default function OrderList() {
           currentOrder={currentOrder}
           setCurrentOrder={setCurrentOrder}
           setUsers={setUsers}
+          setStatusValue={setStatusValue}
+          statusValue={statusValue}
         />
       </Box>
     </Box>

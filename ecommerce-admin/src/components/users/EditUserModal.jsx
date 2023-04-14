@@ -59,7 +59,7 @@ export default function EditUserModal({
     data.append("isEdit", true);
     data.append("userId", id);
     data.append("full_name", currentUser.full_name);
-    data.append("filename", currentUser.filename);
+
     data.append("phone_number", currentUser.phone_number);
     data.append("image", files);
     data.append("email", currentUser.email);
@@ -70,6 +70,7 @@ export default function EditUserModal({
 
     if (AXIOS_DATA.status == 200) {
       setOpen(false);
+      window.location.reload();
     }
   }
 
@@ -112,10 +113,6 @@ export default function EditUserModal({
     setImage(URL.createObjectURL(e.target.files[0]));
     const filename = e.target.value;
     console.log(filename);
-    setCurrentUser({
-      ...currentUser,
-      filename: filename.substr(12, filename.length),
-    });
   }
   const handleClose = () => setOpen(false);
   return (
@@ -145,7 +142,7 @@ export default function EditUserModal({
                 />
               ) : (
                 <img
-                  src={`http://localhost:8081/user-upload/${currentUser.filename}`}
+                  src={currentUser.filepath}
                   alt=""
                   style={{ width: "200px" }}
                   className="rounded-4 shadow m-4"

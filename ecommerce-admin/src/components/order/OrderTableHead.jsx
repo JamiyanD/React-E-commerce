@@ -38,6 +38,12 @@ const headCells = [
     id: "total price",
   },
   {
+    label: "STATUS",
+    numeric: false,
+    disablePadding: false,
+    id: "status",
+  },
+  {
     label: "DATE",
     numeric: false,
     disablePadding: false,

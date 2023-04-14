@@ -35,7 +35,7 @@ export default function UsersList() {
 
   async function axiosScreen() {
     const AXIOS_DATA = await axios.get(URL);
-
+    console.log(AXIOS_DATA.data);
     setUsers(AXIOS_DATA.data);
     return AXIOS_DATA;
   }
@@ -179,7 +179,7 @@ export default function UsersList() {
 
                       <TableCell className="d-flex align-items-center gap-3 fw-bold">
                         <img
-                          src={`http://localhost:8081/user-upload/${parametr.filename}`}
+                          src={parametr.filepath}
                           alt=""
                           style={{ width: "70px", height: "70px" }}
                           className="rounded-circle"

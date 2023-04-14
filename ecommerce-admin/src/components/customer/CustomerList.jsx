@@ -179,7 +179,7 @@ export default function CustomerList() {
 
                       <TableCell className="d-flex align-items-center gap-3 fw-bold">
                         <img
-                          src={`http://localhost:8081/user-upload/${parametr.filename}`}
+                          src={parametr.filepath}
                           alt=""
                           style={{ width: "70px", height: "70px" }}
                           className="rounded-circle"

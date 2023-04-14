@@ -12,6 +12,10 @@ import { useState, useEffect, useContext } from "react";
 import FormHelperText from "@mui/joy/FormHelperText";
 import EditIcon from "@mui/icons-material/Edit";
 import Modal from "@mui/material/Modal";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import MenuItem from "@mui/material/MenuItem";
 
 export default function EditOrder({
   openOrderEdit,
@@ -19,9 +23,15 @@ export default function EditOrder({
   currentOrder,
   setCurrentOrder,
   setUsers,
+  setStatusValue,
+  statusValue,
 }) {
-  const URL = "http://localhost:8081/order/order";
-  console.log(currentOrder);
+  const STATUS_URL = "http://localhost:8081/order/status";
+  const URL = "http://localhost:8081/order";
+  const [orderStatus, setOrderStatus] = useState("");
+  const navigate = useNavigate();
+  console.log(currentOrder.order_status_name);
+
   async function handleSubmit(e) {
     e.preventDefault();
     const putData = {
@@ -29,20 +39,29 @@ export default function EditOrder({
       name: currentOrder.name,
       order_quantity: currentOrder.order_quantity,
       price: currentOrder.price,
+      order_status_name: currentOrder.order_status_name,
       isEdit: true,
     };
     const AXIOS_DATA = await axios.post(URL, putData);
-    console.log(AXIOS_DATA);
     if (AXIOS_DATA.status == 200) {
       const AXIOS_DATA = await axios.get(URL);
-      console.log(AXIOS_DATA.data.data);
       if (AXIOS_DATA.status == 200) {
-        setOpenOrderEdit(false);
+        // setOpenOrderEdit(false);
         setCurrentOrder("");
-        setUsers(AXIOS_DATA.data);
+        window.location.reload();
+        // setUsers(AXIOS_DATA.data);
       }
     }
   }
+
+  async function axiosOrderStatus() {
+    const AXIOS_DATA = await axios.get(STATUS_URL);
+    setOrderStatus(AXIOS_DATA.data);
+    console.log(AXIOS_DATA.data);
+  }
+  useEffect(() => {
+    axiosOrderStatus();
+  }, []);
 
   function handleName(e) {
     setCurrentOrder({
@@ -60,6 +79,14 @@ export default function EditOrder({
     setCurrentOrder({
       ...currentOrder,
       price: e.target.value,
+    });
+  }
+
+  async function handleChange(e) {
+    setStatusValue(e.target.value);
+    setCurrentOrder({
+      ...currentOrder,
+      order_status_name: e.target.value,
     });
   }
 
@@ -115,6 +142,48 @@ export default function EditOrder({
                 onChange={handlePrice}
                 value={currentOrder.price}
               />
+              <Typography variant="subtitle2" className="mt-3">
+                Status
+              </Typography>
+              <FormControl
+                sx={{
+                  minWidth: 140,
+                }}
+                size="small"
+                className="bg-light rounded-3"
+              >
+                <Select
+                  value={statusValue}
+                  className="rounded-3"
+                  sx={{
+                    boxShadow: "none",
+                    ".MuiOutlinedInput-notchedOutline": { border: 0 },
+                    "&.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
+                      {
+                        border: 0,
+                      },
+                    "&.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                      {
+                        border: "1px solid lightgrey",
+                      },
+                  }}
+                  onChange={handleChange}
+                  inputProps={{ "aria-label": "Without label" }}
+                  displayEmpty
+                  IconComponent={(props) => (
+                    <ExpandMoreIcon className="m-2 text-black-50" {...props} />
+                  )}
+                >
+                  {orderStatus &&
+                    orderStatus.map((e, index) => {
+                      return (
+                        <MenuItem key={index} value={e.order_status_name}>
+                          {e.order_status_name}
+                        </MenuItem>
+                      );
+                    })}
+                </Select>
+              </FormControl>
 
               <Stack
                 direction="row"
