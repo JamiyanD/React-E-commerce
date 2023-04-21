@@ -4,7 +4,7 @@ function Footer() {
   return (
     <footer class="dark-blue-bg my-5  green">
       <div class="row container mx-auto text-white py-5">
-        <div class="col text-center">
+        <div class=" col-md-3 text-center mb-5">
           <img
             style={{ width: "100px", height: "80px" }}
             src="https://cdn.shopify.com/s/files/1/0593/6850/5511/files/JAYA_x_240x240.png?v=1667232437"
@@ -12,7 +12,7 @@ function Footer() {
           ></img>
           <p class=" text-center mt-3 ">Пүүз, кет бүх төрлийн худалдаа</p>
         </div>
-        <div class="col">
+        <div class=" col-6 col-md-3">
           <p class="fs-5 mb-4">ЧУХАЛ ХОЛБООС</p>
           <ul class="text-secondary vstack gap-2 p-0">
             <li>Нүүр</li>
@@ -22,7 +22,7 @@ function Footer() {
             <li>Холбоо Барих</li>
           </ul>
         </div>
-        <div class="col">
+        <div class="col-md-3 d-none d-md-block">
           <p class="fs-5 mb-4">ДЭЛГҮҮР</p>
           <ul class="text-secondary vstack gap-2 p-0">
             <li>Жордан</li>
@@ -32,7 +32,7 @@ function Footer() {
             <li>Кет</li>
           </ul>
         </div>
-        <div class="col">
+        <div class="col-6 col-md-3">
           <p class="fs-5 mb-4">БИДЭНТЭЙ ХОЛБОГДОХ</p>
           <ul class="text-secondary vstack gap-2 p-0">
             <li>(+976)-9988-2655</li>

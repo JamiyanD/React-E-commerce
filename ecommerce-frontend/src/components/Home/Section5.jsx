@@ -4,8 +4,11 @@ import TabsUnstyled from "@mui/base/TabsUnstyled";
 import TabsListUnstyled from "@mui/base/TabsListUnstyled";
 import TabPanelUnstyled from "@mui/base/TabPanelUnstyled";
 import TabUnstyled from "@mui/base/TabUnstyled";
+import { ProductsContext } from "../../context/products";
+import { useEffect, useState, useContext } from "react";
 
 function Section5() {
+  const [showProducts, setShowProducts] = useContext(ProductsContext);
   return (
     <section class="">
       <h1 className="text-center dark-blue ">Эрэлттэй бүтээгдэхүүн</h1>
@@ -22,85 +25,20 @@ function Section5() {
             ХЯМДРАЛТАЙ
           </TabUnstyled>
         </TabsListUnstyled>
-        <TabPanelUnstyled value={0} className="section5-tab hstack gap-5 ">
-          <div className="col">
-            <div className="hstack ">
-              <img
-                className="card-img m-3"
-                src="https://res.cloudinary.com/dq1ncokzr/image/upload/v1681111792/s4fpedcowsjgfo816hf4.jpg"
-                alt=""
-              />
-              <div>
-                <p className="dark-blue my-2 ">Jordan Luka 1</p>
+        <TabPanelUnstyled value={0} className="section5-tab row  ">
+          <div className="col col-lg-8 row">
+            {showProducts.slice(0, 6).map((product) => (
+              <div className="hstack col-6">
+                <img className="card-img m-3" src={product.filepath} alt="" />
+                <div>
+                  <p className="dark-blue my-2 ">{product.name}</p>
 
-                <p className="text-secondary m-2">539,900₮</p>
+                  <p className="text-secondary m-2">{product.price}</p>
+                </div>
               </div>
-            </div>
-            <div className="hstack">
-              <img
-                className="card-img m-3"
-                src="https://res.cloudinary.com/dq1ncokzr/image/upload/v1681125762/zkdbgxcv8yyxiasv2zef.jpg"
-                alt=""
-              />
-              <div>
-                <p className="dark-blue my-2 ">Air Max Excee</p>
-
-                <p className="text-secondary m-2">339,900₮</p>
-              </div>
-            </div>
-            <div className="hstack">
-              <img
-                className="card-img m-3"
-                src="https://res.cloudinary.com/dq1ncokzr/image/upload/v1681125860/wnl8j7dt9o8dziotf28s.jpg"
-                alt=""
-              />
-              <div>
-                <p className="dark-blue my-2 ">Air Max 90</p>
-
-                <p className="text-secondary m-2">429,900₮</p>
-              </div>
-            </div>
+            ))}
           </div>
-          <div className="col">
-            <div className="hstack">
-              <img
-                className="card-img m-3"
-                src="https://res.cloudinary.com/dq1ncokzr/image/upload/v1681125940/kldhzvixrhmrfkae2ldj.jpg"
-                alt=""
-              />
-              <div>
-                <p className="dark-blue my-2 ">Nike Dunk Low (GS)</p>
-
-                <p className="text-secondary m-2">239,900₮</p>
-              </div>
-            </div>
-            <div className="hstack">
-              <img
-                className="card-img m-3"
-                src="https://res.cloudinary.com/dq1ncokzr/image/upload/v1681126172/fega29b1lc3bq2mcpnmf.jpg"
-                alt=""
-              />
-              <div>
-                <p className="dark-blue my-2 ">Kyrie Low 5</p>
-
-                <p className="text-secondary m-2">339,900₮</p>
-              </div>
-            </div>
-            <div className="hstack">
-              <img
-                className="card-img m-3"
-                src="https://res.cloudinary.com/dq1ncokzr/image/upload/v1681126045/fmtlep192l7oqv1pxwqt.jpg"
-                alt=""
-              />
-              <div>
-                <p className="dark-blue my-2 ">Air Force 1</p>
-
-                <p className="text-secondary m-2">439,900₮ </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="section5-div col h-100">
+          <div className="section5-div col-lg-4 h-100 rounded">
             {" "}
             <p className="text-white m-4 mb-0">Жаяа ХХК</p>
             <h1 className="text-white ms-4 mt-0">Air Jordan 1</h1>
@@ -112,85 +50,20 @@ function Section5() {
             </button>
           </div>
         </TabPanelUnstyled>
-        <TabPanelUnstyled value={1} className="section5-tab hstack gap-5">
-          <div className="col">
-            <div className="hstack ">
-              <img
-                className="card-img m-3"
-                src="https://res.cloudinary.com/dq1ncokzr/image/upload/v1681111792/s4fpedcowsjgfo816hf4.jpg"
-                alt=""
-              />
-              <div>
-                <p className="dark-blue my-2 ">Jordan Luka 1</p>
+        <TabPanelUnstyled value={1} className="section5-tab row">
+          <div className="col col-lg-8 row">
+            {showProducts.slice(7, 13).map((product) => (
+              <div className="hstack col-6">
+                <img className="card-img m-3" src={product.filepath} alt="" />
+                <div>
+                  <p className="dark-blue my-2 ">{product.name}</p>
 
-                <p className="text-secondary m-2">539,900₮</p>
+                  <p className="text-secondary m-2">{product.price}</p>
+                </div>
               </div>
-            </div>
-            <div className="hstack">
-              <img
-                className="card-img m-3"
-                src="https://res.cloudinary.com/dq1ncokzr/image/upload/v1681125762/zkdbgxcv8yyxiasv2zef.jpg"
-                alt=""
-              />
-              <div>
-                <p className="dark-blue my-2 ">Air Max Excee</p>
-
-                <p className="text-secondary m-2">339,900₮</p>
-              </div>
-            </div>
-            <div className="hstack">
-              <img
-                className="card-img m-3"
-                src="https://res.cloudinary.com/dq1ncokzr/image/upload/v1681125860/wnl8j7dt9o8dziotf28s.jpg"
-                alt=""
-              />
-              <div>
-                <p className="dark-blue my-2 ">Air Max 90</p>
-
-                <p className="text-secondary m-2">429,900₮</p>
-              </div>
-            </div>
+            ))}
           </div>
-          <div className="col">
-            <div className="hstack">
-              <img
-                className="card-img m-3"
-                src="https://res.cloudinary.com/dq1ncokzr/image/upload/v1681125940/kldhzvixrhmrfkae2ldj.jpg"
-                alt=""
-              />
-              <div>
-                <p className="dark-blue my-2 ">Nike Dunk Low (GS)</p>
-
-                <p className="text-secondary m-2">239,900₮</p>
-              </div>
-            </div>
-            <div className="hstack">
-              <img
-                className="card-img m-3"
-                src="https://res.cloudinary.com/dq1ncokzr/image/upload/v1681126172/fega29b1lc3bq2mcpnmf.jpg"
-                alt=""
-              />
-              <div>
-                <p className="dark-blue my-2 ">Kyrie Low 5</p>
-
-                <p className="text-secondary m-2">339,900₮</p>
-              </div>
-            </div>
-            <div className="hstack">
-              <img
-                className="card-img m-3"
-                src="https://res.cloudinary.com/dq1ncokzr/image/upload/v1681126413/pcotr1nkn7hbiyxu9en1.jpg"
-                alt=""
-              />
-              <div>
-                <p className="dark-blue my-2 ">Nike Dunk high</p>
-
-                <p className="text-secondary m-2">339,900₮ </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="section5-div col h-100 rounded">
+          <div className="section5-div col-lg-4 h-100 rounded">
             {" "}
             <p className="text-white m-4 mb-0">Жаяа ХХК</p>
             <h1 className="text-white ms-4 mt-0">Air Jordan 1</h1>

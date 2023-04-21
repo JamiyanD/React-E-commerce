@@ -6,6 +6,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 function Section6() {
   const [showProducts, setShowProducts] = useContext(ProductsContext);
+  console.log(showProducts);
   return (
     <section className="">
       <h1 className="text-center dark-blue mb-4">Бусад бараанууд</h1>
@@ -32,10 +33,10 @@ function Section6() {
         }}
         modules={[Navigation]}
       >
-        {showProducts.slice(0, 7).map((product) => (
+        {showProducts.slice(30, 37).map((product) => (
           <SwiperSlide>
             <img
-              src={`http://localhost:8080/upload/${product.filename}`}
+              src={product.filepath}
               alt=""
               className="w-100"
               style={{ height: "200px" }}

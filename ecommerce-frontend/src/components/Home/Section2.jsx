@@ -3,8 +3,8 @@ import AliceCarousel from "react-alice-carousel";
 
 function Section2() {
   return (
-    <div className=" d-flex mt-2">
-      <div className="col-3 d-flex border-end">
+    <div className="  mt-2 row ">
+      <div className="col-sm-6 col-lg-3 d-flex border-end mb-4">
         <h1 className="mx-4">
           <i class="bi bi-truck "></i>
         </h1>
@@ -17,7 +17,7 @@ function Section2() {
           </p>
         </div>
       </div>
-      <div className="col-3 d-flex border-end">
+      <div className="col-sm-6 col-lg-3 d-flex border-end mb-4">
         <h1 className="mx-4">
           <i class="bi bi-credit-card"></i>
         </h1>
@@ -31,7 +31,7 @@ function Section2() {
           </p>
         </div>
       </div>
-      <div className="col-3 d-flex border-end">
+      <div className="col-sm-6 col-lg-3 d-flex border-end mb-4">
         <h1 className="mx-4">
           <i class="bi bi-gift"></i>
         </h1>
@@ -43,7 +43,7 @@ function Section2() {
           <p className="text-muted">Хүргэлт маргааш өдөртөө таны гарт</p>
         </div>
       </div>
-      <div className="col-3 d-flex border-end">
+      <div className="col-sm-6 col-lg-3 d-flex border-end mb-4">
         <h1 className="mx-4">
           <i class="bi bi-chat-right"></i>
         </h1>

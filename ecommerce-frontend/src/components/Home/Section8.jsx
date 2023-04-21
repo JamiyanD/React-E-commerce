@@ -36,7 +36,7 @@ export default function Section9() {
           </p>
           <h5 className="dark-blue">Дэлгэрэнгүй...</h5>
         </div>
-        <div className="col">
+        <div className="col d-none d-lg-block">
           <img
             className="w-100 rounded"
             src="https://cdn.itoim.mn/media/imagel/14127/image.jpeg"

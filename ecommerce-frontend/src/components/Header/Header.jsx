@@ -96,17 +96,23 @@ function Header({ addWishlist, setAddWishlist, downWishList }) {
             src="https://cdn.shopify.com/s/files/1/0593/6850/5511/files/JAYA_x_240x240.png?v=1667232437"
           ></img>
         </Link>
-        <div className="  fs-5 w-50  ">
-          <Nav className="d-flex align-items-center justify-content-end gap-4 me-5">
+        <div className="  fs-5 w-75  ">
+          <Nav className="d-flex align-items-center  gap-4 mx-3">
             <SubMenu />
 
-            <NavLink className="p-0 pink-hover" href="/about-us">
+            <NavLink
+              className="p-0 pink-hover d-none d-lg-block"
+              href="/about-us"
+            >
               Бидний тухай
             </NavLink>
-            <NavLink className="p-0 pink-hover" href="/blog">
+            <NavLink className="p-0 pink-hover d-none d-lg-block" href="/blog">
               Мэдээ
             </NavLink>
-            <NavLink className="p-0 pink-hover" href="/contact">
+            <NavLink
+              className="p-0 pink-hover d-none d-lg-block"
+              href="/contact"
+            >
               Холбоо барих
             </NavLink>
           </Nav>
@@ -121,7 +127,7 @@ function Header({ addWishlist, setAddWishlist, downWishList }) {
               role="button"
               data-bs-toggle="dropdown"
             >
-              НЭВТРЭХ/БҮРТГҮҮЛЭХ
+              НЭВТРЭХ
             </a>
             <form
               class="dropdown-menu p-4 dropdown-menu-end "
