@@ -30,7 +30,13 @@ export default function Cart() {
           style={{ fontSize: 25 }}
         ></i>
       </Badge>
-      <Offcanvas show={show} onHide={handleClose} placement="end" scroll="true">
+      <Offcanvas
+        show={show}
+        onHide={handleClose}
+        placement="end"
+        scroll="true"
+        className="w-md-50"
+      >
         <Offcanvas.Header>
           <p
             class="offcanvas-title fs-4 dark-blue"

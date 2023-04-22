@@ -91,7 +91,7 @@ function Header({ addWishlist, setAddWishlist, downWishList }) {
         <Link to={"/"} addWishlist={addWishlist}>
           <img
             style={{ height: 80 }}
-            className="w-100"
+            className="col-10"
             alt=""
             src="https://cdn.shopify.com/s/files/1/0593/6850/5511/files/JAYA_x_240x240.png?v=1667232437"
           ></img>
@@ -117,7 +117,7 @@ function Header({ addWishlist, setAddWishlist, downWishList }) {
             </NavLink>
           </Nav>
         </div>
-        <div className="d-flex align-items-center gap-4 w-50 justify-content-end">
+        <div className="d-flex align-items-center gap-3 w-50 justify-content-end">
           <div class="dropdown w-50 text-end">
             <a
               // type="button"
@@ -132,6 +132,7 @@ function Header({ addWishlist, setAddWishlist, downWishList }) {
             <form
               class="dropdown-menu p-4 dropdown-menu-end "
               onSubmit={handleSubmit}
+              style={{ width: "200px" }}
             >
               <div className="d-flex justify-content-between">
                 <p className="">Нэвтрэх</p>
@@ -177,7 +178,7 @@ function Header({ addWishlist, setAddWishlist, downWishList }) {
             style={
               characters.length ? { height: "650px" } : { height: "150px" }
             }
-            className="offcanvas offcanvas-top"
+            className="offcanvas offcanvas-top "
             data-bs-scroll="true"
             tabindex="-1"
             id="offcanvasWithBothOptions"
@@ -207,7 +208,7 @@ function Header({ addWishlist, setAddWishlist, downWishList }) {
                 />
                 <button
                   type="submit"
-                  className="border-0 rounded-4 btn pink-bg text-white col-1 btn-dark "
+                  className="border-0 rounded-4 btn pink-bg text-white  btn-dark "
                 >
                   ХАЙХ
                 </button>

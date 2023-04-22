@@ -26,7 +26,7 @@ export default function BlogDetail2() {
       className="container d-flex gap-5 
     "
     >
-      <aside className=" vstack gap-5 w-25">
+      <aside className=" vstack gap-5 d-none d-lg-block">
         <div className=" border border-1 p-3">
           <h3 className="dark-blue">Ангилал</h3>
           <hr />
@@ -75,7 +75,7 @@ export default function BlogDetail2() {
           </Link>
         </div>
       </aside>
-      <div className=" w-75">
+      <div className=" col-lg-9">
         <h1 className="dark-blue">
           Adidas компани Кане Уэстийн 1.2 тэрбум үнэ бүхий пүүзийг хэрхэн
           борлуулахаа мэдэхгүй байна гэжээ
