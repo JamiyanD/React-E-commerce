@@ -38,9 +38,9 @@ export default function CartDetail() {
   }
   return (
     <div className="container my-5">
-      <div className=" d-flex justify-content-between">
-        <div className="col-7 ">
-          <div className="w-100 row dark-blue">
+      <div className=" row  justify-content-between">
+        <div className="col-lg-7 ">
+          <div className="w-100 row dark-blue d-none d-md-flex">
             <div className=" ms-1 col-3"></div>
             <h5 className="col-3 ">БАРАА</h5>
             <h5 className="col-1 me-5 ">ҮНЭ</h5>
@@ -65,12 +65,12 @@ export default function CartDetail() {
           })}
 
           <div className="w-100 mt-4 text-end">
-            <button className="btn btn-dark pink-bg text-white  rounded-pill w-25 p-3 fw-semibold border-0 me-3">
+            <button className="btn btn-dark pink-bg text-white  rounded-pill p-3 fw-semibold border-0 me-3">
               Сагсаа Шинэчлэх
             </button>
           </div>
         </div>
-        <div className="col-4 ">
+        <div className="col-lg-4 ">
           <div className="mb-5">
             <p className="dark-blue fs-3">САГСАНД НИЙТ ДҮН</p>
           </div>
@@ -106,23 +106,51 @@ const CartList = ({ price, id, name, filename, order_quantity }) => {
   const multiple = order_quantity * price;
 
   return (
-    <div className="w-100 d-flex border-bottom" key={id}>
-      <img
-        className="col-3 p-3"
-        src={`http://localhost:8081/upload/${filename}`}
-        alt=""
-        style={{ height: "150px" }}
-      />
-      <div className="d-flex align-items-center  w-100 ">
-        <p className="col-4  dark-blue mb-0">{name}</p>
+    <div className="">
+      <div className="w-100 d-md-flex border-bottom d-none" key={id}>
+        <img
+          className="col-3 p-3"
+          src={`http://localhost:8081/upload/${filename}`}
+          alt=""
+          style={{ height: "150px" }}
+        />
+        <div className="d-flex align-items-center  w-100 ">
+          <p className="col-4  dark-blue mb-0">{name}</p>
 
-        <p className="col-2 mb-0 me-4 fw-semibold">₮ {price}</p>
-        <p className=" col-2  dark-blue mb-0">{order_quantity}</p>
-        <p className=" fw-semibold ms-5 mb-0 col-2">₮ {multiple}</p>
-        <button
-          className="btn-close  "
-          onClick={() => downCartList(id)}
-        ></button>
+          <p className="col-2 mb-0 me-4 fw-semibold">₮ {price}</p>
+          <p className=" col-2  dark-blue mb-0">{order_quantity}</p>
+          <p className=" fw-semibold ms-5 mb-0 col-2">₮ {multiple}</p>
+          <button
+            className="btn-close  "
+            onClick={() => downCartList(id)}
+          ></button>
+        </div>
+      </div>
+      <div className="w-100 d-flex border-bottom d-md-none" key={id}>
+        <img
+          className="col-3 p-3"
+          src={`http://localhost:8081/upload/${filename}`}
+          alt=""
+          style={{ height: "150px" }}
+        />
+        <div className="d-flex justify-content-between  w-100 ">
+          <div className=" d-flex flex-column dark-blue">
+            <p className="  dark-blue ">{name}</p>
+            <p className="  ">ҮНЭ</p>
+            <p className=" ">ШИРХЭГ</p>
+            <p className=" ">ДҮН</p>
+          </div>
+          <div className="d-flex flex-column">
+            <button
+              className="btn-close  mb-3"
+              onClick={() => downCartList(id)}
+            ></button>
+
+            <p className="">₮ {price}</p>
+            <p className=" ">{order_quantity}ш</p>
+            <p className=" ">₮ {multiple}</p>
+          </div>
+        </div>
       </div>
     </div>
   );

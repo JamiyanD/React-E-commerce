@@ -26,7 +26,7 @@ function Section5() {
           </TabUnstyled>
         </TabsListUnstyled>
         <TabPanelUnstyled value={0} className="section5-tab row  ">
-          <div className="col col-lg-8 row">
+          <div className="col col-lg-8 row mb-5">
             {showProducts.slice(0, 6).map((product) => (
               <div className="hstack col-6">
                 <img className="card-img m-3" src={product.filepath} alt="" />
@@ -51,7 +51,7 @@ function Section5() {
           </div>
         </TabPanelUnstyled>
         <TabPanelUnstyled value={1} className="section5-tab row">
-          <div className="col col-lg-8 row">
+          <div className="col col-lg-8 row mb-5">
             {showProducts.slice(7, 13).map((product) => (
               <div className="hstack col-6">
                 <img className="card-img m-3" src={product.filepath} alt="" />

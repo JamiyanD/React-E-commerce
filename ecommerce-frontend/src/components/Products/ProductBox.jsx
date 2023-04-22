@@ -24,9 +24,9 @@ export default function ProductBox({
 }) {
   const [selectValue, setSelectValue] = useState("");
   const [showlist, setShowList] = useState(false);
-  const ALL_PRODUCTS_URL = "http://jaya-puuz.onrender.com/products/products";
+  const ALL_PRODUCTS_URL = "http://localhost:8081/products/products";
   const PRODUCTS_URL =
-    "http://jaya-puuz.onrender.com/products/list?page=0&productsPerPage=20";
+    "http://localhost:8081/products/list?page=0&productsPerPage=20";
   const [showProducts, setShowProducts] = useContext(ProductsContext);
   const [productsData, setProductsData] = useState([]);
 
@@ -66,18 +66,52 @@ export default function ProductBox({
 
   return (
     <div className="container d-flex">
-      <ProductBoxAside />
-      <div className="w-75 ms-4">
+      <div className="d-none d-md-block col-3">
+        <ProductBoxAside className="" />
+      </div>
+      <div
+        class="offcanvas offcanvas-start"
+        tabindex="-1"
+        id="offcanvasExample"
+        aria-labelledby="offcanvasExampleLabel"
+      >
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasExampleLabel">
+            Offcanvas
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="offcanvas-body">
+          <ProductBoxAside />
+        </div>
+      </div>
+      <div className="col-md-9 ms-4">
         <div className="hstack">
-          <div>
-            <AppsIcon
-              className="mx-2"
-              onClick={() => setShowList(false)}
-            ></AppsIcon>
-            <FormatListBulletedIcon
-              color="disabled"
-              onClick={() => setShowList(true)}
-            ></FormatListBulletedIcon>
+          <div className="d-flex">
+            <div
+              className="d-flex d-md-none"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasExample"
+              aria-controls="offcanvasExample"
+            >
+              <i class="bi bi-funnel"></i>
+              <p className=" text-black-50 ms-2">Шүүх</p>
+            </div>
+            <div className="d-none d-md-block">
+              <AppsIcon
+                className="mx-2"
+                onClick={() => setShowList(false)}
+              ></AppsIcon>
+              <FormatListBulletedIcon
+                color="disabled"
+                onClick={() => setShowList(true)}
+              ></FormatListBulletedIcon>
+            </div>
           </div>
           <div className="ms-auto hstack">
             {" "}
@@ -137,8 +171,9 @@ export default function ProductBox({
                 </Link>
                 <p>₮{product.price}</p>
                 <div className="hstack gap-2">
-                  <button className="border-0 rounded-4 btn pink-bg text-white btn-dark ">
-                    <i class="bi bi-basket me-2"></i>САГСАНД ХИЙХ
+                  <button className="border-0 rounded-4 btn pink-bg text-white btn-dark d-flex ">
+                    <i class="bi bi-basket"></i>
+                    <span className="d-none d-lg-block ms-2">САГСАНД ХИЙХ</span>
                   </button>
                   <h3 className="m-0">
                     <i

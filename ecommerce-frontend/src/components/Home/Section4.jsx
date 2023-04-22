@@ -9,19 +9,19 @@ function Section4() {
         захиалаад, хүргүүлээд аваарай.
       </p>
       <div className=" row">
-        <div className="section4-div col-6 col-lg-3 mt-3 ">
+        <div className="section4-div col-6 col-lg-3  p-2 rounded">
           <div className="section4-div1  h-100 w-100 rounded"></div>
           <h2 className="section4-h ">Чөлөөт пүүз</h2>
         </div>
-        <div className="section4-div col-6 col-lg-3 mt-3">
+        <div className="section4-div col-6 col-lg-3  p-2 rounded">
           <div className="section4-div2  h-100 w-100 rounded"></div>
           <h2 className="section4-h">Жордан</h2>
         </div>
-        <div className="section4-div col-6 col-lg-3 mt-3">
+        <div className="section4-div col-6 col-lg-3  p-2 rounded">
           <div className="section4-div3  h-100 w-100 rounded"></div>
           <h2 className="section4-h ">Кет</h2>
         </div>
-        <div className="section4-div col-6 col-lg-3 mt-3">
+        <div className="section4-div col-6 col-lg-3  p-2 rounded">
           <div className="section4-div4 h-100 w-100 rounded"></div>
           <h2 className="section4-h ">Сагсны пүүз</h2>
         </div>

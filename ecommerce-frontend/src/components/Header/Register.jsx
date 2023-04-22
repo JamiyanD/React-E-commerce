@@ -69,10 +69,10 @@ export default function Login() {
   return (
     <div className="container ">
       <form
-        className="w-50 d-flex flex-column  gap-3 mx-auto"
+        className="col-lg-6 d-flex flex-column  gap-3 mx-auto"
         onSubmit={handleSubmit}
       >
-        <h1 className="dark-blue ">Бүртгүүлэх</h1>
+        <h1 className="dark-blue text-center">Бүртгүүлэх</h1>
         <div className="w-100 hstack mx-auto">
           <button className="btn btn-outline-secondary me-3 w-50 p-2">
             <img
@@ -153,7 +153,7 @@ export default function Login() {
           <Typography variant="body2">Хүлээн зөвшөөрөх</Typography>
         </Stack>
         <button
-          className=" btn pink-bg btn-dark fw-semibold  border-0 rounded-5 p-3 text-white w-50"
+          className=" btn pink-bg btn-dark fw-semibold  border-0 rounded-5 p-3 text-white w-50 mx-auto"
           type="submit"
         >
           Бүртгүүлэх

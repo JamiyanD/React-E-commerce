@@ -90,8 +90,8 @@ function Header({ addWishlist, setAddWishlist, downWishList }) {
         {" "}
         <Link to={"/"} addWishlist={addWishlist}>
           <img
-            style={{ width: 130, height: 80 }}
-            className=""
+            style={{ height: 80 }}
+            className="w-100"
             alt=""
             src="https://cdn.shopify.com/s/files/1/0593/6850/5511/files/JAYA_x_240x240.png?v=1667232437"
           ></img>

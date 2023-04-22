@@ -13,9 +13,9 @@ import { images } from "../../data/images";
 // import required modules
 import { Zoom, Navigation, Pagination, Mousewheel, Thumbs } from "swiper";
 
-export default function SWiperUI() {
+export default function SWiperUI({ img }) {
   const [activeThumb, setActiveThumb] = useState(null);
-
+  const imgArray = [img, img, img, img, img, img];
   return (
     <>
       <Swiper
@@ -28,9 +28,9 @@ export default function SWiperUI() {
         className=" mySwiper"
         direction={"vertical"}
       >
-        {images.map((item, index) => (
+        {imgArray.map((item, index) => (
           <SwiperSlide key={index}>
-            <img src={item.url} alt="" className="rounded" />
+            <img src={item} alt="" className="rounded" />
           </SwiperSlide>
         ))}
       </Swiper>
@@ -50,10 +50,10 @@ export default function SWiperUI() {
         modules={[Zoom, Pagination, Thumbs]}
         className="mySwiper2"
       >
-        {images.map((item, index) => (
+        {imgArray.map((item, index) => (
           <SwiperSlide key={index}>
             <div className="swiper-zoom-container">
-              <img src={item.url} alt="" className="rounded-4" />
+              <img src={item} alt="" className="rounded-4" />
             </div>
           </SwiperSlide>
         ))}

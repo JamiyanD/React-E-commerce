@@ -20,6 +20,7 @@ import Blog from "./components/Blog";
 import Contact from "./components/Contact";
 import CartDetail from "./components/Header/CartDetail";
 import BlogDetail from "./components/BlogDetail";
+import BlogDetail2 from "./components/BlogDetail2";
 function App() {
   const [addWishlist, setAddWishlist] = useState([]);
   function downWishList(productId) {
@@ -61,6 +62,7 @@ function App() {
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog-detail" element={<BlogDetail />} />
+        <Route path="/blog-detail2" element={<BlogDetail2 />} />
         <Route path="/contact" element={<Contact />} />
         <Route
           path="/cart"

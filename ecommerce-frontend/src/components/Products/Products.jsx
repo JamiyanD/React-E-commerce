@@ -28,7 +28,7 @@ export default function Products({
   return (
     <div>
       <li
-        className=" m-3 product-box-card "
+        className=" m-3 w-100 "
         onMouseEnter={showDropdown}
         onMouseLeave={hideDropdown}
       >
@@ -36,7 +36,7 @@ export default function Products({
           <img
             src={`http://localhost:8081/upload/${product.filename}`}
             alt=""
-            className=" product-box-img"
+            className=" product-box-img "
           />
         </Link>
         {showFullCard ? (
@@ -44,7 +44,8 @@ export default function Products({
           //   className=" m-3  product-box-img text-center position-relative"
           //   onMouseLeave={hideDropdown}
           // >
-          <div className=" product-box-card-hover  bg-white text-center shadow position-absolute">
+
+          <div className=" product-box-card-hover  bg-white text-center shadow position-md-absolute">
             <div className="position-relative w-100">
               <h2
                 data-bs-toggle="modal"

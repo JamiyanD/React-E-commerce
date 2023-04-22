@@ -143,7 +143,7 @@ export default function ProductBoxAside() {
   }
 
   return (
-    <aside className=" vstack gap-5 w-25">
+    <aside className=" vstack gap-5 ">
       <div className=" border border-1 p-3">
         <h3 className="dark-blue">Ангилал</h3>
         <hr />
@@ -231,12 +231,13 @@ export default function ProductBoxAside() {
           getAriaLabel={() => "Temperature range"}
         />
         <div className="hstack">
-          <span className="dark-blue">
-            Үнэ: ₮{sliderValue[0]} - ₮{sliderValue[1]}
+          <span className="dark-blue ">
+            Үнэ: <br className=" d-lg-none" /> ₮{sliderValue[0]} - ₮
+            {sliderValue[1]}
           </span>
-          <button className="btn border-0 dark-blue ms-auto fw-semibold pink-hover">
+          {/* <button className="btn border-0 dark-blue ms-auto fw-semibold pink-hover">
             ШҮҮЛТ
-          </button>
+          </button> */}
         </div>
       </div>
       <div className=" border border-1 p-3">

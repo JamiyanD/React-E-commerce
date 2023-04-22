@@ -12,8 +12,8 @@ export default function AboutUs() {
   return (
     <div>
       <h1 className="dark-blue fs-2 text-center my-5">Жаяа ХХК</h1>
-      <div className="container d-flex gap-5 ">
-        <div className="w-50 ">
+      <div className="container row mx-auto gap-5 ">
+        <div className="col-lg-6">
           <p className="text-secondary fs-5 lh-lg">
             Манай компани 2023 оноос хойш Монгол улсын гадаад худалдаа
             үйлчилгээний салбарт тасралтгүйгээр үйл ажиллагаа эрхэлж байна.
@@ -29,16 +29,16 @@ export default function AboutUs() {
         <img
           src="https://img.freepik.com/free-vector/hand-drawn-flat-design-people-waving-illustration_52683-79273.jpg?w=1380&t=st=1679813560~exp=1679814160~hmac=ab1c4d5d73195ac0d3841775e60ce25d06a92ac3c9ec141e0cdfec36e8d9780e"
           alt=""
-          className="col-5 mx-auto"
+          className="col-lg-5 mx-auto"
         />
       </div>
-      <div className="container d-flex gap-5 my-5">
+      <div className="container row mx-auto gap-5 my-5">
         <img
           src="https://img.freepik.com/premium-vector/smiling-young-man-face-icon_768258-1952.jpg?w=996"
           alt=""
-          className="col-4 mx-auto"
+          className="col-lg-4 mx-auto"
         />
-        <div className="w-50">
+        <div className="col-lg-6">
           <h1 className="dark-blue fs-2 text-center mb-5">Мэндчилгээ</h1>
           <p className="text-secondary fs-5 lh-lg">
             Мэндчилгээ “Жаяа” “ХХК-ийн хамт олон НЭГДСЭН МЕНЕЖМЕНТИЙН ТОГТОЛЦООГ
@@ -94,20 +94,15 @@ export default function AboutUs() {
         дэвшил, эдийн засгийн өсөлтөд хувь нэмрээ оруулсан үндэсний шилдэг
         компани байхад оршино.
       </p>
-      <div className="container d-flex gap-5 my-5 py-5">
-        <div className="col-5 mx-auto position-relative">
-          <img
-            src="https://res.cloudinary.com/dq1ncokzr/image/upload/v1681126045/fmtlep192l7oqv1pxwqt.jpg"
-            alt=""
-            className="w-100"
-          />
+      <div className="container row mx-auto gap-5 my-5 py-5">
+        <div className="col-lg-5 mx-auto position-relative about-us-background-img2">
           <img
             src="https://res.cloudinary.com/dq1ncokzr/image/upload/v1681123858/s3jbl9gasge01639hyn2.jpg"
             alt=""
             className="position-absolute about-us-absolute-img "
           />
         </div>
-        <div className="w-50 p-5 lh-lg">
+        <div className="col-lg-6 p-5 lh-lg">
           <h1 className="dark-blue fs-2 mb-5 ">Эрхэмлэх зүйлс</h1>
 
           <ul>

@@ -45,19 +45,24 @@ export default function ProductDetail() {
 
   return (
     <div className="container">
-      <div className="d-flex  mt-5 gap-5">
-        <div className=" d-flex swiper-products col-7">
-          <SwiperProducts />
+      <div className="row mt-5 ">
+        <div className=" d-flex swiper-products col-md-6 mb-4">
+          <SwiperProducts img={currentProducts.filepath} />
         </div>
-        <div className="m-4 w-100">
+        <div className="m-4 col ">
           <h1 className="fs-4 mb-2 dark-blue">{currentProducts.name}</h1>
 
           <p className="mb-5 ">₮ {currentProducts.price}</p>
           <h5 className="dark-blue">Тоо хэмжээ:</h5>
           <div className="d-flex gap-3">
-            <div className="rounded-5 border border-2 col-3 ">
+            <div
+              class="btn-group rounded-5 border border-2 "
+              role="group"
+              aria-label="Basic outlined example"
+            >
               <button
-                className="border-0 product-detail-button btn col-4 fs-4"
+                type="button"
+                class="btn  product-detail-button2"
                 onClick={() => {
                   if (number > 1) {
                     setNumber(number - 1);
@@ -70,11 +75,12 @@ export default function ProductDetail() {
               >
                 -
               </button>
-              <button className="border-0 product-detail-button btn col-4 fs-4">
+              <button type="button" class="btn  ">
                 {number}
               </button>
               <button
-                className="product-detail-button border-0 btn col-4 fs-4"
+                type="button"
+                class="btn product-detail-button1"
                 onClick={() => {
                   setNumber(number + 1);
                   setCurrentProducts({
@@ -86,13 +92,15 @@ export default function ProductDetail() {
                 +
               </button>
             </div>
+
             <button
-              className="border-0 rounded-5 btn pink-bg text-white btn-dark col-5"
+              className="border-0 rounded-5 btn pink-bg text-white btn-dar d-flex "
               onClick={() => {
                 addCartList(currentProducts._id);
               }}
             >
-              <i class="bi bi-basket me-2"></i>САГСАНД ХИЙХ
+              <i class="bi bi-basket "></i>{" "}
+              <span className=" d-md-none d-lg-block ms-2">САГСАНД ХИЙХ</span>
             </button>
           </div>
           <hr />
@@ -114,7 +122,7 @@ export default function ProductDetail() {
         </div>
       </div>
       <hr className="my-4" />
-      <div className="d-flex gap-3">
+      <div className="d-flex flex-wrap gap-3">
         <div className=" border  p-2 rounded">
           <p className="text-secondary ">Барааны код</p>
           <p className="fw-semibold dark-blue m-0">{currentProducts.code}</p>

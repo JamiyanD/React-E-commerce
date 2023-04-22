@@ -1,5 +1,6 @@
 import { faFacebook, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 function Footer() {
   return (
     <footer class="dark-blue-bg my-5  green">
@@ -15,11 +16,21 @@ function Footer() {
         <div class=" col-6 col-md-3">
           <p class="fs-5 mb-4">ЧУХАЛ ХОЛБООС</p>
           <ul class="text-secondary vstack gap-2 p-0">
-            <li>Нүүр</li>
-            <li>Бидний тухай</li>
-            <li>Мэдээ</li>
-            <li>Нэвтрэх/ Бүртгүүлэх</li>
-            <li>Холбоо Барих</li>
+            <Link to={"/"}>
+              <li>Нүүр</li>
+            </Link>
+            <Link to={"/about-us"}>
+              <li>Бидний тухай</li>
+            </Link>
+            <Link to={"/blog"}>
+              <li>Мэдээ</li>
+            </Link>
+            <Link to={"/register"}>
+              <li>Нэвтрэх/ Бүртгүүлэх</li>
+            </Link>
+            <Link to={"/contact"}>
+              <li>Холбоо Барих</li>
+            </Link>
           </ul>
         </div>
         <div class="col-md-3 d-none d-md-block">

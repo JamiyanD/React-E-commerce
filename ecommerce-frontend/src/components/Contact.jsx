@@ -29,8 +29,8 @@ export default function Contact() {
 
   return (
     <div className="container ">
-      <div className="d-flex gap-5 my-5">
-        <div className="border-end w-50 ">
+      <div className=" my-5 row">
+        <div className=" col-lg-6 border-end mb-5">
           <h1 className="dark-blue">Холбоо барих</h1>
           <p className="dark-blue fw-semibold">
             {" "}
@@ -85,7 +85,7 @@ export default function Contact() {
             />
           </div>
         </div>
-        <div className="w-50">
+        <div className="col-lg-6">
           <h1 className="dark-blue">Санал сэтгэгдэл</h1>
           <p className="text-secondary fs-4">
             Танд санал хүсэлт байвал бидэнд илгээгээрэй.
@@ -121,16 +121,8 @@ export default function Contact() {
         </div>
       </div>
       <div>
-        {/* <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10696.455222449256!2d106.92076028772159!3d47.914835371338675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5d969250b4dca6f5%3A0x458d53bf252ffc5c!2sPeace%20Tower%2C%20Ulaanbaatar!5e0!3m2!1sen!2smn!4v1633434386176!5m2!1sen!2smn"
-          width="100%"
-          height="450"
-          allowfullscreen=""
-          loading="lazy"
-          className=""
-        ></iframe> */}
         <MapContainer
-          center={[51.505, -0.09]}
+          center={[47.9157564, 106.8915926]}
           zoom={10}
           scrollWheelZoom={false}
         >
@@ -141,7 +133,7 @@ export default function Contact() {
           {/* {restaurants.map((map) => {
           console.log(map.address.coord[0]);
           return ( */}
-          <Marker position={[-73.98241999999999, 40.579505]}>
+          <Marker position={[47.9157564, 106.8915926]}>
             <Popup>
               A pretty CSS3 popup. <br /> Easily customizable.
             </Popup>
