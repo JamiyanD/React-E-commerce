@@ -12,7 +12,7 @@ const order_router = require("./routes/order-api");
 const customer_router = require("./routes/customer-api");
 
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 const MONGO_CONNECTION_STRING = process.env.MONGO_CONNECTION_STRING;
 
 app.use(cors());
@@ -23,6 +23,12 @@ app.use("/users", users_router);
 app.use("/products", products_router);
 app.use(order_router);
 app.use(customer_router);
+
+app.get("/", (request, response) => {
+  response.json({
+    data: [],
+  });
+});
 
 // app.post("/upload", uploader.single("file"), async (req, res) => {
 //   console.log("start");
@@ -38,7 +44,7 @@ app.listen(PORT, () => {
     .connect(MONGO_CONNECTION_STRING)
     .then(() => console.log("Database connected succesfully"))
     .catch((error) => console.error(error));
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Express app is running on http://localhost:${PORT}`);
 });
 
 /* */
