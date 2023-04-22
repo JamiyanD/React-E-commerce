@@ -16,6 +16,8 @@ import { ProductsContext } from "../../context/products";
 import Products from "../Products/Products";
 import categories from "../../data/categories";
 import { Navigate, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2/dist/sweetalert2.js";
+import "sweetalert2/src/sweetalert2.scss";
 
 function Header({ addWishlist, setAddWishlist, downWishList }) {
   const [list, setList] = useState(false);
@@ -74,9 +76,24 @@ function Header({ addWishlist, setAddWishlist, downWishList }) {
     };
     const FETCHED_DATA = await fetch(URL, options);
     const FETCHED_JSON = await FETCHED_DATA.json();
-
+    console.log(FETCHED_JSON);
     if (FETCHED_JSON.status === "success") {
       navigate("/");
+      Swal.fire({
+        title: "Баярлалаа",
+        text: "Амжилттай нэвтэрлээ",
+        icon: "success",
+        confirmButtonText: "OK",
+        confirmButtonColor: "#e84f69",
+      });
+    } else {
+      Swal.fire({
+        title: "Баярлалаа",
+        text: "Амжилтгүй ",
+        icon: "error",
+        confirmButtonText: "OK",
+        confirmButtonColor: "#e84f69",
+      });
     }
   };
 

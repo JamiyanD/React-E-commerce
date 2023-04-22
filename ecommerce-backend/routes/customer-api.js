@@ -3,15 +3,8 @@ const Customer = require("../models/customer-model");
 const bcrypt = require("bcrypt");
 const customer_router = express.Router();
 const multer = require("multer");
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "./user-upload");
-  },
-  filename: (req, file, cb) => {
-    cb(null, file.originalname);
-  },
-});
-const upload = multer({ storage: storage });
+const upload = require("../config/config");
+
 const cloudinary = require("../config/cloudinary");
 
 customer_router.get("/customer", async (req, res) => {
@@ -71,7 +64,7 @@ customer_router.post("/customer", upload.single("image"), async (req, res) => {
 
     res.json([]);
   } else {
-    const upload = await cloudinary.uploader.upload(req.file.path);
+    // const upload = await cloudinary.uploader.upload(req.file.path);
     bcrypt.genSalt(SALT_ROUNDS, (err, salt) => {
       if (err) {
         response.json({
@@ -89,7 +82,7 @@ customer_router.post("/customer", upload.single("image"), async (req, res) => {
         const newCustomer = {
           ...body,
           customer_password: hashData,
-          filepath: upload.secure_url,
+          // filepath: upload.secure_url,
         };
         console.log("data", newCustomer);
         const modelCustomer = new Customer(newCustomer);
@@ -165,6 +158,16 @@ customer_router.post("/customer/login", async (request, response) => {
       }
     );
   }
+});
+
+customer_router.get("/customer/search", async (req, res) => {
+  console.log(req.query);
+  const savedUsers = await Customer.find({
+    customer_name: { $regex: req.query.value, $options: "i" },
+  });
+  console.log(savedUsers);
+
+  res.json(savedUsers);
 });
 
 module.exports = customer_router;

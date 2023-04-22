@@ -4,15 +4,17 @@ const Roles = require("../models/user-roles-model");
 const bcrypt = require("bcrypt");
 const users_router = express.Router();
 const multer = require("multer");
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "./user-upload");
-  },
-  filename: (req, file, cb) => {
-    cb(null, file.originalname);
-  },
-});
-const upload = multer({ storage: storage });
+const upload = require("../config/config");
+
+// const storage = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     cb(null, "./user-upload");
+//   },
+//   filename: (req, file, cb) => {
+//     cb(null, file.originalname);
+//   },
+// });
+// const upload = multer({ storage: storage });
 const cloudinary = require("../config/cloudinary");
 
 users_router.get("/users", async (req, res) => {

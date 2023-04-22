@@ -56,7 +56,7 @@ export default function CartDetail() {
               <CartList
                 id={data.id}
                 title={data.title}
-                filename={data.filename}
+                filepath={data.filepath}
                 price={data.price}
                 order_quantity={data.order_quantity}
                 name={data.name}
@@ -97,7 +97,7 @@ export default function CartDetail() {
   );
 }
 
-const CartList = ({ price, id, name, filename, order_quantity }) => {
+const CartList = ({ price, id, name, filepath, order_quantity }) => {
   const [cartList, setCartList] = useContext(CartContext);
   function downCartList(id) {
     setCartList(cartList.filter((product) => product.id !== id));
@@ -110,7 +110,7 @@ const CartList = ({ price, id, name, filename, order_quantity }) => {
       <div className="w-100 d-md-flex border-bottom d-none" key={id}>
         <img
           className="col-3 p-3"
-          src={`http://localhost:8081/upload/${filename}`}
+          src={filepath}
           alt=""
           style={{ height: "150px" }}
         />
@@ -129,7 +129,7 @@ const CartList = ({ price, id, name, filename, order_quantity }) => {
       <div className="w-100 d-flex border-bottom d-md-none" key={id}>
         <img
           className="col-3 p-3"
-          src={`http://localhost:8081/upload/${filename}`}
+          src={filepath}
           alt=""
           style={{ height: "150px" }}
         />

@@ -10,6 +10,8 @@ import InputLabel from "@mui/material/InputLabel";
 import IconButton from "@mui/material/IconButton";
 import Checkbox from "@mui/material/Checkbox";
 import { Typography, Stack } from "@mui/material";
+import Swal from "sweetalert2/dist/sweetalert2.js";
+import "sweetalert2/src/sweetalert2.scss";
 
 export default function Login() {
   const CUSTOMER_URL = "http://localhost:8081/customer";
@@ -33,6 +35,21 @@ export default function Login() {
     console.log(FETCHED_JSON);
     if (FETCHED_JSON.status === "success") {
       navigate("/");
+      Swal.fire({
+        title: "Баярлалаа",
+        text: "Амжилттай бүртгүүллээ",
+        icon: "success",
+        confirmButtonText: "OK",
+        confirmButtonColor: "#e84f69",
+      });
+    } else {
+      Swal.fire({
+        title: "Баярлалаа",
+        text: "Амжилтгүй ",
+        icon: "error",
+        confirmButtonText: "OK",
+        confirmButtonColor: "#e84f69",
+      });
     }
     console.log(data);
 

@@ -178,12 +178,6 @@ export default function CustomerList() {
                       </TableCell>
 
                       <TableCell className="d-flex align-items-center gap-3 fw-bold">
-                        <img
-                          src={parametr.filepath}
-                          alt=""
-                          style={{ width: "70px", height: "70px" }}
-                          className="rounded-circle"
-                        />
                         {parametr.customer_name}
                       </TableCell>
                       <TableCell className="products-tablecell-text">

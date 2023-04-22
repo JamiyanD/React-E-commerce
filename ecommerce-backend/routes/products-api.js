@@ -3,15 +3,8 @@ const Category = require("../models/product-category");
 const Products = require("../models/products-model");
 const products_router = express.Router();
 const multer = require("multer");
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "./upload");
-  },
-  filename: (req, file, cb) => {
-    cb(null, file.originalname);
-  },
-});
-const upload = multer({ storage: storage });
+const upload = require("../config/config");
+
 const cloudinary = require("../config/cloudinary");
 
 products_router.post("/products", upload.single("image"), async (req, res) => {

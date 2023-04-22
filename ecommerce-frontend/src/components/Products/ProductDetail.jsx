@@ -164,7 +164,7 @@ export default function ProductDetail() {
       <div className="my-4 bg-light d-flex align-items-center justify-content-between">
         <div className="d-flex align-items-center">
           <img
-            src={`http://localhost:8080/upload/${currentProducts.filename}`}
+            src={currentProducts.filepath}
             alt=""
             style={{ width: "60px", height: "60px" }}
             className="m-2"
@@ -207,7 +207,7 @@ export default function ProductDetail() {
           {showProducts.slice(0, 7).map((product) => (
             <SwiperSlide>
               <img
-                src={`http://localhost:8080/upload/${product.filename}`}
+                src={product.filepath}
                 alt=""
                 className="w-100"
                 style={{ height: "200px" }}

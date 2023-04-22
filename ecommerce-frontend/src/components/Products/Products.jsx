@@ -19,10 +19,19 @@ export default function Products({
   };
   const addCartList = (id) => {
     const filtered = productsData.filter((product) => product._id === id);
-    setCartList([...cartList, ...filtered]);
+    const filteredData = [
+      {
+        name: filtered[0].name,
+        price: filtered[0].price,
+        order_quantity: 1,
+        filepath: filtered[0].filepath,
+      },
+    ];
+
+    setCartList([...cartList, ...filteredData]);
 
     console.log(productsData);
-    console.log(cartList);
+    console.log(filteredData);
   };
 
   return (
@@ -33,11 +42,7 @@ export default function Products({
         onMouseLeave={hideDropdown}
       >
         <Link to={`/product-detail/${product._id}`}>
-          <img
-            src={`http://localhost:8081/upload/${product.filename}`}
-            alt=""
-            className=" product-box-img "
-          />
+          <img src={product.filepath} alt="" className=" product-box-img " />
         </Link>
         {showFullCard ? (
           // <li
@@ -45,7 +50,7 @@ export default function Products({
           //   onMouseLeave={hideDropdown}
           // >
 
-          <div className=" product-box-card-hover  bg-white text-center shadow position-md-absolute">
+          <div className=" product-box-card-hover  bg-white text-center shadow position-absolute">
             <div className="position-relative w-100">
               <h2
                 data-bs-toggle="modal"

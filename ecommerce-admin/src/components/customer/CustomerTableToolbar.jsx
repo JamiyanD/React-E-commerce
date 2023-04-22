@@ -28,49 +28,12 @@ export default function CustomerTableToolbar(props) {
   async function handleSearch(e) {
     e.preventDefault();
     const searchInput = e.target.search.value;
-    const SEARCH_URL = `http://localhost:8081/users/search?value=${searchInput}`;
+    const SEARCH_URL = `http://localhost:8081/customer/search?value=${searchInput}`;
     const AXIOS_DATA = await axios.get(SEARCH_URL);
     if (AXIOS_DATA.status == 200) {
       setUsers(AXIOS_DATA.data);
     }
   }
-
-  const CATEGORIES_URL = "http://localhost:8081/users/roles";
-  async function fetchCategories() {
-    const FETCHED_DATA = await fetch(CATEGORIES_URL);
-    const FETCHED_JSON = await FETCHED_DATA.json();
-
-    if (FETCHED_JSON.status == "success") {
-      setRoles(FETCHED_JSON.data);
-    }
-  }
-  useEffect(() => {
-    fetchCategories();
-  }, []);
-
-  async function handleChange(select) {
-    const AXIOS_DATA = await axios.get(URL);
-    setUsers(AXIOS_DATA.data);
-    if (select.target.value) {
-      const filteredUser = AXIOS_DATA.data.filter(
-        (user) => user.role == select.target.value
-      );
-
-      setUsers(filteredUser);
-    }
-    console.log(select.target.value);
-    setSelectValue(select.target.value);
-  }
-
-  const ROLE_URL = "http://localhost:8081/users/userRoles";
-  async function fetchRoles() {
-    const FETCHED_DATA = await fetch(ROLE_URL);
-    const FETCHED_JSON = await FETCHED_DATA.json();
-    setRoles(FETCHED_JSON);
-  }
-  useEffect(() => {
-    fetchRoles();
-  }, []);
 
   return (
     <Toolbar
@@ -130,46 +93,6 @@ export default function CustomerTableToolbar(props) {
         </Stack>
       ) : (
         <Stack direction="row" alignItems="center" className="ms-auto" gap={2}>
-          <FormControl
-            sx={{
-              minWidth: 140,
-            }}
-            size="small"
-            className="bg-light rounded-3"
-          >
-            <Select
-              value={selectValue}
-              className="rounded-3"
-              sx={{
-                boxShadow: "none",
-                ".MuiOutlinedInput-notchedOutline": { border: 0 },
-                "&.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
-                  {
-                    border: 0,
-                  },
-                "&.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                  {
-                    border: "1px solid lightgrey",
-                  },
-              }}
-              onChange={handleChange}
-              inputProps={{ "aria-label": "Without label" }}
-              displayEmpty
-              IconComponent={(props) => (
-                <ExpandMoreIcon className="m-2 text-black-50" {...props} />
-              )}
-            >
-              <MenuItem value="">Бүгд</MenuItem>
-              {roles &&
-                roles.map((role, index) => {
-                  return (
-                    <MenuItem key={index} value={role.roles_name}>
-                      {role.roles_name}
-                    </MenuItem>
-                  );
-                })}
-            </Select>
-          </FormControl>
           <Button
             variant="contained"
             className="color-blue rounded-3"

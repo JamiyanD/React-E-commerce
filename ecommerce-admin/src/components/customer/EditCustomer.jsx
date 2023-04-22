@@ -35,15 +35,15 @@ export default function NewCustomer({ setUsers }) {
   async function handleSubmit(e) {
     e.preventDefault();
     const data = new FormData();
-    const files = e.target.image.files[0];
-    console.log(files);
+    // const files = e.target.image.files[0];
+    // console.log(files);
     data.append("isEdit", true);
     data.append("customerId", id);
     data.append("customer_name", currentCustomer.customer_name);
     data.append("customer_phone_number", currentCustomer.customer_phone_number);
     data.append("customer_email", currentCustomer.customer_email);
     data.append("customer_description", currentCustomer.customer_description);
-    data.append("image", files);
+    // data.append("image", files);
     data.append("customer_password", currentCustomer.customer_password);
 
     const AXIOS_DATA = await axios.post(CUSTOMER_URL, data);
@@ -101,7 +101,7 @@ export default function NewCustomer({ setUsers }) {
     >
       <Box sx={{ flexGrow: 1, p: 2 }} className="p-0">
         <form onSubmit={handleSubmit} encType="multipart/form-data">
-          <div className="border border-2 rounded-5 p-3  mb-3">
+          {/* <div className="border border-2 rounded-5 p-3  mb-3">
             <Typography variant="h6">Thumbnail</Typography>
             <div className="position-relative">
               {image ? (
@@ -140,7 +140,7 @@ export default function NewCustomer({ setUsers }) {
             <FormHelperText className="text-muted mx-auto">
               Only *.png, *.jpg and *.jpeg image files are accepted
             </FormHelperText>
-          </div>
+          </div> */}
           <Box sx={{ width: "100%", typography: "body1" }}>
             <TabContext value={value}>
               <Box sx={{ borderBottom: 1, borderColor: "divider" }}>

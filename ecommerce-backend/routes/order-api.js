@@ -95,4 +95,14 @@ order_router.put("/order/status", async (req, res) => {
   res.json({ data: findStatus });
 });
 
+order_router.get("/order/search", async (req, res) => {
+  console.log(req.query);
+  const savedUsers = await Order.find({
+    name: { $regex: req.query.value, $options: "i" },
+  });
+  console.log(savedUsers);
+
+  res.json(savedUsers);
+});
+
 module.exports = order_router;
