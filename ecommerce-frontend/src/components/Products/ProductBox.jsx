@@ -24,9 +24,9 @@ export default function ProductBox({
 }) {
   const [selectValue, setSelectValue] = useState("");
   const [showlist, setShowList] = useState(false);
-  const ALL_PRODUCTS_URL = "http://localhost:8081/products/products";
+  const ALL_PRODUCTS_URL = "http://jaya-puuz.onrender.com/products/products";
   const PRODUCTS_URL =
-    "http://localhost:8081/products/list?page=0&productsPerPage=20";
+    "http://jaya-puuz.onrender.com/products/list?page=0&productsPerPage=20";
   const [showProducts, setShowProducts] = useContext(ProductsContext);
   const [productsData, setProductsData] = useState([]);
 
