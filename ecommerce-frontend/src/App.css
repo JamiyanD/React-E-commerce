@@ -377,11 +377,11 @@
 }
 @media (max-width: 768px) {
   .product-box-card-hover {
-    width: 400px !important;
+    width: 350px !important;
     position: static !important;
   }
   .product-box-img {
-    width: 400px !important;
+    width: 350px !important;
   }
 }
 .product-box-card-hover {

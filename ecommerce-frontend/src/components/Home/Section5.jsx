@@ -18,7 +18,7 @@ function Section5() {
           <TabUnstyled className=" text-muted red bg-white border-0">
             ШИНЭ
           </TabUnstyled>
-          <TabUnstyled className=" text-muted mx-5 red bg-white border-0">
+          <TabUnstyled className=" text-muted mx-1 red bg-white border-0">
             ШИЛДЭГ БОРЛУУЛАЛТТАЙ
           </TabUnstyled>
           <TabUnstyled className=" text-muted red bg-white border-0">
