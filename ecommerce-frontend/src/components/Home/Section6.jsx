@@ -33,7 +33,7 @@ function Section6() {
         }}
         modules={[Navigation]}
       >
-        {showProducts.slice(30, 37).map((product) => (
+        {showProducts.slice(0, 7).map((product) => (
           <SwiperSlide>
             <img
               src={product.filepath}

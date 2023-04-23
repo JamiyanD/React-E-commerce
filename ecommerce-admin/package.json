@@ -10,7 +10,7 @@
     "@mui/joy": "^5.0.0-alpha.64",
     "@mui/lab": "^5.0.0-alpha.122",
     "@mui/material": "^5.11.6",
-    "@mui/styles": "^5.11.11",
+
     "@mui/x-data-grid": "^5.17.21",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",

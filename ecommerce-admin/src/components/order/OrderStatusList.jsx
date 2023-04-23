@@ -35,8 +35,8 @@ export default function OrderStatusList() {
 
   async function axiosScreen() {
     const AXIOS_DATA = await axios.get(URL);
-    console.log(AXIOS_DATA.data.data);
-    setUsers(AXIOS_DATA.data.data);
+    console.log(AXIOS_DATA.data);
+    setUsers(AXIOS_DATA.data);
   }
 
   useEffect(() => {
