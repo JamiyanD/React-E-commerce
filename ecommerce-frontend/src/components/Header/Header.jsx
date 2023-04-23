@@ -36,7 +36,7 @@ function Header({ addWishlist, setAddWishlist, downWishList }) {
     e.preventDefault();
     console.log(e.target.search.value);
     const searchInput = e.target.search.value;
-    const SEARCH_URL = `http://localhost:8081/products/search?value=${searchInput}`;
+    const SEARCH_URL = `https://puuzket.onrender.com/products/search?value=${searchInput}`;
     const AXIOS_DATA = await axios.get(SEARCH_URL);
     console.log(AXIOS_DATA);
     if (AXIOS_DATA.status == 200) {
@@ -48,7 +48,7 @@ function Header({ addWishlist, setAddWishlist, downWishList }) {
       const fetchData = async () => {
         try {
           const AXIOS_DATA = await axios.get(
-            `http://localhost:8081/products/search?value=${query}`
+            `https://puuzket.onrender.com/products/search?value=${query}`
           );
           setCharacters(AXIOS_DATA.data);
         } catch (error) {
@@ -61,7 +61,7 @@ function Header({ addWishlist, setAddWishlist, downWishList }) {
     }
   }, [query]);
 
-  const URL = "http://localhost:8081/customer/login";
+  const URL = "https://puuzket.onrender.com/customer/login";
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();

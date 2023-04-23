@@ -9,7 +9,7 @@ export default function CartDetail() {
   const [cartList, setCartList] = useContext(CartContext);
   const [orderData, setOrderData] = useState([]);
   let totalSum = 0;
-  const URL = "http://localhost:8081/order";
+  const URL = "https://puuzket.onrender.com/order";
   async function handleOrder() {
     console.log(cartList);
     cartList.map((data) => {

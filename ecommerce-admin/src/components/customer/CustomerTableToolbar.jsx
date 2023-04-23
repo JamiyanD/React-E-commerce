@@ -21,14 +21,14 @@ export default function CustomerTableToolbar(props) {
   const navigate = useNavigate();
   const [roles, setRoles] = useState([]);
   const [searchColor, setSearchColor] = useState(false);
-  const URL = "http://localhost:8081/users/users";
+  const URL = "https://puuzket.onrender.com/users/users";
   const { numSelected, setUsers, handleDelete, selected, axiosScreen } = props;
   const [selectValue, setSelectValue] = React.useState("");
 
   async function handleSearch(e) {
     e.preventDefault();
     const searchInput = e.target.search.value;
-    const SEARCH_URL = `http://localhost:8081/customer/search?value=${searchInput}`;
+    const SEARCH_URL = `https://puuzket.onrender.com/customer/search?value=${searchInput}`;
     const AXIOS_DATA = await axios.get(SEARCH_URL);
     if (AXIOS_DATA.status == 200) {
       setUsers(AXIOS_DATA.data);

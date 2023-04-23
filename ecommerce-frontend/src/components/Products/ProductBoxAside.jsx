@@ -13,8 +13,8 @@ import { ProductsSize, ProductsColor } from "./ProductsFilter";
 export default function ProductBoxAside() {
   const [sliderValue, setSliderValue] = useState([0, 120000]);
   const [categories, setCategories] = useState([]);
-  const PRODUCTS_URL = "http://localhost:8081/products/products";
-  const CATEGORIES_URL = "http://localhost:8081/products/category";
+  const PRODUCTS_URL = "https://puuzket.onrender.com/products/products";
+  const CATEGORIES_URL = "https://puuzket.onrender.com/products/category";
   const [showProducts, setShowProducts] = useContext(ProductsContext);
   const [productsData, setProductsData] = useState([]);
 

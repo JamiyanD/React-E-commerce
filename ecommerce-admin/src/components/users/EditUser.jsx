@@ -20,7 +20,7 @@ export default function EditUser() {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const url = "http://localhost:8081/users/users";
+  const url = "https://puuzket.onrender.com/users/users";
   const [currentUser, setCurrentUser] = useState({});
 
   useEffect(() => {

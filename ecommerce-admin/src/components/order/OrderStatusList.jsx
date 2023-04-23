@@ -28,7 +28,7 @@ import OrderStatusTableToolbar from "./OrderStatusTableToolbar";
 import OrderStatusTableHead from "./OrderStatusTableHead";
 
 export default function OrderStatusList() {
-  const URL = "http://localhost:8081/order/status";
+  const URL = "https://puuzket.onrender.com/order/status";
   const [users, setUsers] = useState([]);
   const [currentStatus, setCurrentStatus] = useState("");
   const [openStatusEdit, setOpenStatusEdit] = useState(false);

@@ -20,7 +20,7 @@ export default function AddCategory({
     category_name: "",
     isEdit: false,
   });
-  const URL = "http://localhost:8081/products/category";
+  const URL = "https://puuzket.onrender.com/products/category";
 
   async function handleSubmit(e) {
     e.preventDefault();

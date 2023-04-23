@@ -30,7 +30,7 @@ import Chip from "@mui/material/Chip";
 import { Link } from "react-router-dom";
 
 export default function CustomerList() {
-  const URL = "http://localhost:8081/customer";
+  const URL = "https://puuzket.onrender.com/customer";
   const [users, setUsers] = useState([]);
 
   async function axiosScreen() {

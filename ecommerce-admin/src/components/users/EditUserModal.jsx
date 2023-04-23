@@ -26,10 +26,10 @@ export default function EditUserModal({
   setOpen,
   open,
 }) {
-  const ROLE_URL = "http://localhost:8081/users/roles";
+  const ROLE_URL = "https://puuzket.onrender.com/users/roles";
   const [roles, setRoles] = useState([]);
   const [image, setImage] = useState("");
-  const url = "http://localhost:8081/users/users";
+  const url = "https://puuzket.onrender.com/users/users";
   const { id } = useParams();
 
   async function fetchRoles() {

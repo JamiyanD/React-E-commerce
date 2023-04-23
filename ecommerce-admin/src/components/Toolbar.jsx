@@ -5,19 +5,19 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
 export default function Toolbar() {
-  const URL = "http://localhost:8081/products/products";
+  const URL = "https://puuzket.onrender.com/products/products";
   const [products, setProducts] = useState(0);
   const [users, setUsers] = useState(0);
   async function axiosScreen() {
     const AXIOS_DATA = await axios.get(URL);
     setProducts(AXIOS_DATA.data.length);
   }
-  const USERS_URL = "http://localhost:8081/users/users";
+  const USERS_URL = "https://puuzket.onrender.com/users/users";
   async function axiosUsers() {
     const AXIOS_DATA = await axios.get(USERS_URL);
     setUsers(AXIOS_DATA.data.length);
   }
-  const ORDER_URL = "http://localhost:8081/order";
+  const ORDER_URL = "https://puuzket.onrender.com/order";
   const [order, setOrder] = useState(0);
 
   async function axiosOrder() {
@@ -25,7 +25,7 @@ export default function Toolbar() {
     setOrder(AXIOS_DATA.data.length);
   }
 
-  const CUSTOMER_URL = "http://localhost:8081/customer";
+  const CUSTOMER_URL = "https://puuzket.onrender.com/customer";
   const [customer, setCustomer] = useState([]);
 
   async function axiosCustomer() {

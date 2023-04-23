@@ -4,7 +4,7 @@ const ProductsContext = createContext(null);
 
 const ProductsProvider = ({ children }) => {
   const [showProducts, setShowProducts] = useState([]);
-  const ALL_PRODUCTS_URL = "http://localhost:8081/products/products";
+  const ALL_PRODUCTS_URL = "https://puuzket.onrender.com/products/products";
 
   async function axiosTotalProducts() {
     const AXIOS_DATA = await axios.get(ALL_PRODUCTS_URL);

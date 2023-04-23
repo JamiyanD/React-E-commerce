@@ -25,7 +25,7 @@ import OrderTableHead from "./OrderTableHead";
 import OrderTableToolbar from "./OrderTableToolbar";
 
 export default function OrderList() {
-  const URL = "http://localhost:8081/order";
+  const URL = "https://puuzket.onrender.com/order";
   const [users, setUsers] = useState([]);
   const [currentOrder, setCurrentOrder] = useState({});
   const [openOrderEdit, setOpenOrderEdit] = useState(false);

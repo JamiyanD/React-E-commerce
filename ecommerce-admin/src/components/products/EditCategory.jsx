@@ -18,7 +18,7 @@ export default function EditCategory({
   setCurrentCategory,
   setUsers,
 }) {
-  const URL = "http://localhost:8081/products/category";
+  const URL = "https://puuzket.onrender.com/products/category";
 
   console.log(currentCategory);
   async function handleSubmit(e) {

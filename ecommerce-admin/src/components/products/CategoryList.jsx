@@ -26,7 +26,7 @@ import CategoryTableToolbar from "./CategotyTableToolbar";
 import EditCategory from "./EditCategory";
 
 export default function CategoryList() {
-  const URL = "http://localhost:8081/products/category";
+  const URL = "https://puuzket.onrender.com/products/category";
   const [users, setUsers] = useState([]);
   const [currentCategory, setCurrentCategory] = useState("");
   const [openCategoryEdit, setOpenCategoryEdit] = useState(false);

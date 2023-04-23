@@ -26,8 +26,8 @@ export default function EditOrder({
   setStatusValue,
   statusValue,
 }) {
-  const STATUS_URL = "http://localhost:8081/order/status";
-  const URL = "http://localhost:8081/order";
+  const STATUS_URL = "https://puuzket.onrender.com/order/status";
+  const URL = "https://puuzket.onrender.com/order";
   const [orderStatus, setOrderStatus] = useState("");
   const navigate = useNavigate();
   console.log(currentOrder.order_status_name);

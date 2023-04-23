@@ -14,7 +14,7 @@ import Swal from "sweetalert2/dist/sweetalert2.js";
 import "sweetalert2/src/sweetalert2.scss";
 
 export default function Login() {
-  const CUSTOMER_URL = "http://localhost:8081/customer";
+  const CUSTOMER_URL = "https://puuzket.onrender.com/customer";
   const navigate = useNavigate();
   const [errors, setErrors] = useState(true);
   const [validation, setValidation] = useState("");

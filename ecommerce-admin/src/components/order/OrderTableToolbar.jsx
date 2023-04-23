@@ -27,7 +27,7 @@ export default function OrderTableToolbar(props) {
   async function handleSearch(e) {
     e.preventDefault();
     const searchInput = e.target.search.value;
-    const SEARCH_URL = `http://localhost:8081/order/search?value=${searchInput}`;
+    const SEARCH_URL = `https://puuzket.onrender.com/order/search?value=${searchInput}`;
     const AXIOS_DATA = await axios.get(SEARCH_URL);
     if (AXIOS_DATA.status == 200) {
       setUsers(AXIOS_DATA.data);

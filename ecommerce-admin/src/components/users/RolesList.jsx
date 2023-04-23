@@ -5,7 +5,7 @@ import axios from "axios";
 import EditRoles from "./EditRoles";
 export default function RolesList() {
   const [currentRoles, setCurrentRoles] = useState("");
-  const URL = "http://localhost:8081/users/roles";
+  const URL = "https://puuzket.onrender.com/users/roles";
   const [roles, setRoles] = useState([]);
   const [openRoles, setOpenRoles] = useState(false);
   const [openRolesEdit, setOpenRolesEdit] = useState(false);

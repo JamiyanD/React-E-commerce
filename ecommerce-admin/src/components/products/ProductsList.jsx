@@ -27,7 +27,7 @@ import Rating from "@mui/material/Rating";
 import Chip from "@mui/material/Chip";
 
 export default function ProductsList({ currentProducts, setCurrentProducts }) {
-  const URL = "http://localhost:8081/products/products";
+  const URL = "https://puuzket.onrender.com/products/products";
   const [users, setUsers] = useState([]);
 
   async function axiosScreen() {

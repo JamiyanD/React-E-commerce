@@ -26,7 +26,7 @@ export default function NewCustomer({ setUsers }) {
   });
   const [image, setImage] = useState("");
   const navigate = useNavigate();
-  const CUSTOMER_URL = "http://localhost:8081/customer";
+  const CUSTOMER_URL = "https://puuzket.onrender.com/customer";
 
   async function handleSubmit(e) {
     e.preventDefault();

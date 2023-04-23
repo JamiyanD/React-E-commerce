@@ -15,8 +15,8 @@ import EditIcon from "@mui/icons-material/Edit";
 import NewProductTab from "./NewProductTab";
 
 export default function NewUser() {
-  const PRODUCTS_UPLOAD_URL = "http://localhost:8081/products";
-  const PRODUCTS_URL = "http://localhost:8081/products/products";
+  const PRODUCTS_UPLOAD_URL = "https://puuzket.onrender.com/products";
+  const PRODUCTS_URL = "https://puuzket.onrender.com/products/products";
   const [categories, setCategories] = useState([]);
   const navigate = useNavigate();
   const [image, setImage] = useState("");
@@ -27,7 +27,7 @@ export default function NewUser() {
   const [gender, setGender] = useState("");
   const [height, setHeight] = useState("");
   const [brand, setBrand] = useState("");
-  const CATEGORIES_URL = "http://localhost:8081/products/category";
+  const CATEGORIES_URL = "https://puuzket.onrender.com/products/category";
 
   async function fetchCategories() {
     const FETCHED_DATA = await fetch(CATEGORIES_URL);
