@@ -150,7 +150,7 @@ export default function ProductBox({
               </Select>
             </FormControl>
             <p className="border-start border-2 ps-3 text-secondary">
-              1–20 харуулсан. Нийт {productsData.length}
+               Нийт {productsData.length}
             </p>
           </div>
         </div>

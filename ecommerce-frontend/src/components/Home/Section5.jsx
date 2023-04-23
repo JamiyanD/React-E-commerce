@@ -33,7 +33,7 @@ function Section5() {
                 <div>
                   <p className="dark-blue my-2 ">{product.name}</p>
 
-                  <p className="text-secondary m-2">{product.price}</p>
+                  <p className="text-secondary m-2">{product.price}₮</p>
                 </div>
               </div>
             ))}
@@ -58,7 +58,7 @@ function Section5() {
                 <div>
                   <p className="dark-blue my-2 ">{product.name}</p>
 
-                  <p className="text-secondary m-2">{product.price}</p>
+                  <p className="text-secondary m-2">{product.price}₮</p>
                 </div>
               </div>
             ))}
