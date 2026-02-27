@@ -79,7 +79,7 @@ customer_router.post("/customer", upload.single("image"), async (req, res) => {
           password: hashData,
           // filepath: upload.secure_url,
         };
-        console.log("data", newCustomer);
+        console.log("new customer data", newCustomer);
         const modelCustomer = new Customer(newCustomer);
         const result = await modelCustomer.save();
         res.json({ status: "success", data: result });
