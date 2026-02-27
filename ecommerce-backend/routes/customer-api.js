@@ -22,7 +22,7 @@ customer_router.post("/customer", upload.single("image"), async (req, res) => {
   } = req.body;
   const body = req.body;
   console.log("file", req.file);
-  console.log("body", req.body);
+  console.log("customer body", req.body);
   // if (isEdit) {
   //   if (req.file) {
   //     const upload = await cloudinary.uploader.upload(req.file.path);
