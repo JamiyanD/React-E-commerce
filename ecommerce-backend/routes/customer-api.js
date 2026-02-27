@@ -23,6 +23,17 @@ customer_router.post("/customer", upload.single("image"), async (req, res) => {
   const body = req.body;
   console.log("file", req.file);
   console.log("customer body", req.body);
+
+  const findCustomer = await Customer.findOne({
+    phone: phone,
+  });
+
+  if (findCustomer) {
+    return res.status(200).json({
+      status: "Ali hediin burtgegdsen bna",
+
+    });
+  }
   // if (isEdit) {
   //   if (req.file) {
   //     const upload = await cloudinary.uploader.upload(req.file.path);
@@ -59,32 +70,37 @@ customer_router.post("/customer", upload.single("image"), async (req, res) => {
 
   //   res.json([]);
   // } else {
-    // const upload = await cloudinary.uploader.upload(req.file.path);
-    bcrypt.genSalt(SALT_ROUNDS, (err, salt) => {
-      if (err) {
-        res.json({
-          status: "generating salt error",
-        });
-      }
-      bcrypt.hash(password, salt, async (hashError, hashData) => {
-        if (hashError) {
-          res.json({
-            status: "hashing has error",
-            data: [],
-          });
-        }
-        console.log("hashed Data :", hashData);
-        const newCustomer = {
-          ...body,
-          password: hashData,
-          // filepath: upload.secure_url,
-        };
-        console.log("new customer data", newCustomer);
-        const modelCustomer = new Customer(newCustomer);
-        const result = await modelCustomer.save();
-        res.json({ status: "success", data: result });
-      });
+  // const upload = await cloudinary.uploader.upload(req.file.path);
+  try {
+    const salt = await bcrypt.genSalt(SALT_ROUNDS);
+    console.log("salt", salt);
+
+    const hashData = await bcrypt.hash(String(password), salt);
+    console.log("hashed Data :", hashData);
+
+    const newCustomer = {
+      ...body,
+      password: hashData,
+      // filepath: upload.secure_url,
+    };
+
+    console.log("new customer data", newCustomer);
+
+    const modelCustomer = new Customer(newCustomer);
+    const result = await modelCustomer.save();
+
+    return res.status(200).json({
+      status: "success",
+      data: result,
     });
+
+  } catch (error) {
+    console.error("SIGNUP ERROR:", error);
+    return res.status(500).json({
+      status: "Burtgel uusgehed aldaa garlaa",
+      error: error.message,
+    });
+  }
   // }
 });
 
@@ -116,21 +132,20 @@ customer_router.get("/search", async (req, res) => {
 });
 
 customer_router.post("/customer/login", async (req, res) => {
-  const body = req.body;
+  const { phone, password } = req.body;
 
-  const foundUsers = await Customer.findOne({
-    customer_email: body.customer_email,
+  const findCustomer = await Customer.findOne({
+    phone: phone,
   });
-  console.log(foundUsers);
-  if (foundUsers == null) {
-    res.json({
-      status: "User Not Found",
-      data: [],
+  console.log("findCustomer", findCustomer);
+  if (!findCustomer) {
+    return res.status(404).json({
+      message: "User Not Found",
     });
   } else {
-    console.log(foundUsers);
-    const plainPassword = body.password;
-    const savedPassword = foundUsers.password;
+    console.log(findCustomer);
+    const plainPassword = password;
+    const savedPassword = findCustomer.password;
     bcrypt.compare(
       plainPassword,
       savedPassword,
@@ -143,7 +158,7 @@ customer_router.post("/customer/login", async (req, res) => {
         }
 
         if (compareResult) {
-          res.json({ status: "success", data: foundUsers });
+          res.json({ status: "success", data: findCustomer });
         } else {
           res.json({
             status: "Username or Password do not match!!",

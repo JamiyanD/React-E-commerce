@@ -8,6 +8,7 @@ const uploader = require("./config/config");
 
 const users_router = require("./routes/users-api");
 const products_router = require("./routes/products-api");
+const categories_router = require("./routes/categories-api");
 const order_router = require("./routes/order-api");
 const customer_router = require("./routes/customer-api");
 
@@ -17,10 +18,15 @@ const MONGO_CONNECTION_STRING = process.env.MONGO_CONNECTION_STRING;
 
 app.use(cors());
 app.use(express.json());
+app.use((req, res, next) => {
+  console.log("👉", req.method, req.url);
+  next();
+});
 app.use("/upload", express.static("upload"));
 app.use("/user-upload", express.static("user-upload"));
 app.use("/users", users_router);
 app.use("/products", products_router);
+app.use(categories_router);
 app.use(order_router);
 app.use(customer_router);
 

@@ -4,7 +4,7 @@ const Products = require("../models/products-model");
 const products_router = express.Router();
 const multer = require("multer");
 const upload = require("../config/config");
-
+const mongoose = require("mongoose");
 const cloudinary = require("../config/cloudinary");
 
 products_router.post("/products", upload.single("image"), async (req, res) => {
@@ -29,62 +29,62 @@ products_router.post("/products", upload.single("image"), async (req, res) => {
   console.log("file", req.file);
   console.log("body", req.body);
 
-  if (isEdit) {
-    if (req.file) {
-      const upload = await cloudinary.uploader.upload(req.file.path);
-      const updateProduts = await Products.updateOne(
-        { _id: productsId },
-        {
-          $set: {
-            name: name,
-            price: price,
-            quantity: quantity,
-            category: category,
-            code: code,
-            rating: rating,
-            filepath: upload.secure_url,
-            gender: gender,
-            color: color,
-            height: height,
-            size: size,
-            brand: brand,
-            description: description,
-          },
-        }
-      );
-    } else {
-      const updateProduts = await Products.updateOne(
-        { _id: productsId },
-        {
-          $set: {
-            name: name,
-            price: price,
-            quantity: quantity,
-            category: category,
-            code: code,
-            rating: rating,
-            filepath: filepath,
-            gender: gender,
-            color: color,
-            height: height,
-            size: size,
-            brand: brand,
-            description: description,
-          },
-        }
-      );
-    }
+  // if (isEdit) {
+  //   if (req.file) {
+  //     const upload = await cloudinary.uploader.upload(req.file.path);
+  //     const updateProduts = await Products.updateOne(
+  //       { _id: productsId },
+  //       {
+  //         $set: {
+  //           name: name,
+  //           price: price,
+  //           quantity: quantity,
+  //           category: category,
+  //           code: code,
+  //           rating: rating,
+  //           filepath: upload.secure_url,
+  //           gender: gender,
+  //           color: color,
+  //           height: height,
+  //           size: size,
+  //           brand: brand,
+  //           description: description,
+  //         },
+  //       }
+  //     );
+  //   } else {
+  //     const updateProduts = await Products.updateOne(
+  //       { _id: productsId },
+  //       {
+  //         $set: {
+  //           name: name,
+  //           price: price,
+  //           quantity: quantity,
+  //           category: category,
+  //           code: code,
+  //           rating: rating,
+  //           filepath: filepath,
+  //           gender: gender,
+  //           color: color,
+  //           height: height,
+  //           size: size,
+  //           brand: brand,
+  //           description: description,
+  //         },
+  //       }
+  //     );
+  //   }
 
-    const result = await Products.find({});
-    res.json({ data: result });
-  } else {
-    const upload = await cloudinary.uploader.upload(req.file.path);
-    const withCloudinary = { ...body, filepath: upload.secure_url };
-    console.log(withCloudinary);
-    const addProducts = new Products(withCloudinary);
-    const result = await addProducts.save();
-    res.json(result);
-  }
+  //   const result = await Products.find({});
+  //   res.json({ data: result });
+  // } else {
+  const upload = await cloudinary.uploader.upload(req.file.path);
+  const withCloudinary = { ...body, filepath: upload.secure_url };
+  console.log(withCloudinary);
+  const addProducts = new Products(withCloudinary);
+  const result = await addProducts.save();
+  res.json(result);
+  // }
 });
 
 products_router.get("/products", async (req, res) => {
@@ -107,6 +107,26 @@ products_router.put("/products", async (req, res) => {
   console.log(body);
   const findProducts = await Products.findOne({ _id: body.productsId });
   res.json(findProducts);
+});
+
+products_router.get("/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+
+    // if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({
+    //   message: "ObjectId format is wrong"
+    // });
+    const product = await Products.findOne({ id });
+    console.log('product',product)
+    if (!product) return res.status(404).json({
+      message: "Product Not Found"
+    });
+
+    return res.json(product);
+  } catch (err) {
+    console.log('err', err)
+    res.status(500).json({ error: err.message });
+  }
 });
 
 products_router.get("/search", async (req, res) => {
@@ -172,6 +192,7 @@ products_router.post("/list", async (req, res) => {
 
 products_router.get("/category", async (req, res) => {
   const result = await Category.find({});
+  console.log(result, 'result')
   res.json({ status: "success", data: result });
 });
 

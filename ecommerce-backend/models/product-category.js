@@ -1,8 +1,23 @@
 const mongoose = require("mongoose");
 
+const subcategorySchema = new mongoose.Schema(
+  {
+    slug: { type: String, required: true },
+    nameMn: String,
+    nameKo: String,
+    nameEn: String,
+  },
+  { _id: false }
+);
+
 const categorySchema = new mongoose.Schema({
-  category_name: { type: String, required: true },
+  id: { type: String, required: true, unique: true },
+  slug: { type: String, required: true, unique: true },
+  nameMn: String,
+  nameKo: String,
+  nameEn: String,
+  subcategories: [subcategorySchema],
+  createdAt: { type: Date, default: Date.now }
 });
 
-const Category = mongoose.model("category", categorySchema);
-module.exports = Category;
+module.exports = mongoose.model("Category", categorySchema);
