@@ -9,8 +9,23 @@ const cloudinary = require("../config/cloudinary");
 
 categories_router.get("/category", async (req, res) => {
   const result = await Category.find({});
-  console.log(result, 'result')
   res.json(result);
+});
+
+categories_router.get("/category/:slug", async (req, res) => {
+  try {
+    const slug = req.params.slug;
+    const category = await Category.findOne({ slug });
+    // console.log('CCCCCCC', slug, category)
+    if (!category) return res.status(404).json({
+      message: "Category Not Found"
+    });
+
+    return res.json(category);
+  } catch (err) {
+    console.log('err', err)
+    res.status(500).json({ error: err.message });
+  }
 });
 
 categories_router.post("/category", async (req, res) => {
@@ -36,7 +51,7 @@ categories_router.delete("/category", async (req, res) => {
   const body = req.body;
   const deleteCategory = await Category.findOneAndDelete({ _id: body.userId });
   const result = await Category.find({});
-  console.log(deleteCategory);
+  // console.log(deleteCategory);
   res.json({ data: result });
 });
 

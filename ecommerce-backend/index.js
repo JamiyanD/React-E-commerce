@@ -25,7 +25,7 @@ app.use((req, res, next) => {
 app.use("/upload", express.static("upload"));
 app.use("/user-upload", express.static("user-upload"));
 app.use("/users", users_router);
-app.use("/products", products_router);
+app.use(products_router);
 app.use(categories_router);
 app.use(order_router);
 app.use(customer_router);
@@ -45,13 +45,19 @@ app.get("/", (request, response) => {
 //   });
 // });
 
-app.listen(PORT, () => {
-  mongoose
-    .connect(MONGO_CONNECTION_STRING)
-    .then(() => console.log("Database connected succesfully"))
-    .catch((error) => console.error(error));
-  console.log(`Express app is running on http://localhost:${PORT}`);
-});
+// Connect to MongoDB first, then start the server
+mongoose
+  .connect(MONGO_CONNECTION_STRING)
+  .then(() => {
+    console.log("Database connected successfully");
+    app.listen(PORT, () => {
+      console.log(`Express app is running on http://localhost:${PORT}`);
+    });
+  })
+  .catch((error) => {
+    console.error("Database connection failed:", error.message);
+    process.exit(1);
+  });
 
 /* */
 // const SALT_ROUNDS = 10;

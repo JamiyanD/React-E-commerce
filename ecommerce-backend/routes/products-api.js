@@ -88,10 +88,27 @@ products_router.post("/products", upload.single("image"), async (req, res) => {
 });
 
 products_router.get("/products", async (req, res) => {
-  const result = await Products.find({});
-  res.json(result);
+  const query = req.query
+  console.log(query)
+  if (query) {
+    if (query) {
+      if (query.name) query.name = { $regex: query.name, $options: "i" }
+      const result = await Products.find(query);
+      console.log(result.length)
+      return res.json(result);
+    }
+    const result = await Products.find({ categorySlug: query.category });
+
+    console.log(result.length)
+    return res.json(result);
+  } else {
+    const result = await Products.find({});
+
+    console.log(result.length)
+    return res.json(result);
+  }
+
 });
-module.exports = products_router;
 
 products_router.delete("/products", async (req, res) => {
   const body = req.body;
@@ -109,7 +126,7 @@ products_router.put("/products", async (req, res) => {
   res.json(findProducts);
 });
 
-products_router.get("/:id", async (req, res) => {
+products_router.get("/products/:id", async (req, res) => {
   try {
     const id = req.params.id;
 
@@ -117,7 +134,6 @@ products_router.get("/:id", async (req, res) => {
     //   message: "ObjectId format is wrong"
     // });
     const product = await Products.findOne({ id });
-    console.log('product',product)
     if (!product) return res.status(404).json({
       message: "Product Not Found"
     });
@@ -142,6 +158,8 @@ products_router.get("/search", async (req, res) => {
     res.json([]);
   }
 });
+
+module.exports = products_router;
 
 // products_router.get("/list", async (req, res) => {
 //   console.log(req.query);
@@ -190,41 +208,41 @@ products_router.post("/list", async (req, res) => {
   }
 });
 
-products_router.get("/category", async (req, res) => {
-  const result = await Category.find({});
-  console.log(result, 'result')
-  res.json({ status: "success", data: result });
-});
+// products_router.get("/category", async (req, res) => {
+//   const result = await Category.find({});
+//   // console.log(result, 'result')
+//   res.json({ status: "success", data: result });
+// });
 
-products_router.post("/category", async (req, res) => {
-  const { category_name, isEdit, _id } = req.body;
+// products_router.post("/category", async (req, res) => {
+//   const { category_name, isEdit, _id } = req.body;
 
-  if (isEdit) {
-    const editCategory = await Category.updateOne(
-      { _id: _id },
-      { $set: { category_name: category_name } }
-    );
-    console.log(editCategory);
-    const result = await Category.find({});
-    res.json({ data: result });
-  } else {
-    const addCategory = new Category({ category_name: category_name });
-    const a = await addCategory.save();
-    const result = await Category.find({});
-    res.json({ data: result });
-  }
-});
+//   if (isEdit) {
+//     const editCategory = await Category.updateOne(
+//       { _id: _id },
+//       { $set: { category_name: category_name } }
+//     );
+//     console.log(editCategory);
+//     const result = await Category.find({});
+//     res.json({ data: result });
+//   } else {
+//     const addCategory = new Category({ category_name: category_name });
+//     const a = await addCategory.save();
+//     const result = await Category.find({});
+//     res.json({ data: result });
+//   }
+// });
 
-products_router.delete("/category", async (req, res) => {
-  const body = req.body;
-  const deleteCategory = await Category.findOneAndDelete({ _id: body.userId });
-  const result = await Category.find({});
-  console.log(deleteCategory);
-  res.json({ data: result });
-});
+// products_router.delete("/category", async (req, res) => {
+//   const body = req.body;
+//   const deleteCategory = await Category.findOneAndDelete({ _id: body.userId });
+//   const result = await Category.find({});
+//   console.log(deleteCategory);
+//   res.json({ data: result });
+// });
 
-products_router.put("/category", async (req, res) => {
-  const body = req.body;
-  const findCategory = await Category.findOne({ _id: body.userId });
-  res.json({ data: findCategory });
-});
+// products_router.put("/category", async (req, res) => {
+//   const body = req.body;
+//   const findCategory = await Category.findOne({ _id: body.userId });
+//   res.json({ data: findCategory });
+// });
