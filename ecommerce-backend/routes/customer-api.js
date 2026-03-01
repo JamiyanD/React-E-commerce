@@ -170,6 +170,22 @@ customer_router.post("/customer/login", async (req, res) => {
   }
 });
 
+customer_router.post("/customer/findByPhone", async (req, res) => {
+  const { phone } = req.body;
+
+  const findCustomer = await Customer.findOne({
+    phone: phone,
+  });
+  console.log("findCustomer", findCustomer);
+  if (!findCustomer) {
+    return res.status(404).json({
+      message: "User Not Found",
+    });
+  }
+  res.json({ status: "success", data: findCustomer });
+
+});
+
 customer_router.get("/customer/search", async (req, res) => {
   console.log(req.query);
   const savedUsers = await Customer.find({
